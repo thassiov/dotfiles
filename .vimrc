@@ -34,6 +34,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'dradtke/VIP'
+NeoBundle 'dkprice/vim-easygrep'
 
 " Theme changer
 NeoBundle 'xolox/vim-misc'
@@ -128,5 +129,7 @@ set colorcolumn=78
 set number
 set mouse=a
 set backspace=indent,eol,start
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set list
 
 colorscheme hybrid
