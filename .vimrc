@@ -40,7 +40,7 @@ NeoBundle 'dkprice/vim-easygrep'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-colorscheme-switcher'
 
-" Themes 
+" Themes
 NeoBundle 'cdmedia/itg_flat_vim'
 NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
 NeoBundle 'w0ng/vim-hybrid'
@@ -90,11 +90,13 @@ let g:syntastic_check_on_wq = 0
 filetype plugin on
 
 " Plugin - NerdTREE
-map <F2> :NERDTreeToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
+nmap tre :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Plugin - TagBar
 nmap <F3> :TagbarToggle<CR>
+nmap tag :TagbarToggle<CR>
 
 " Plugin -  MiniBufExpl (Colors)
 hi MBENormal               guifg=#808080 guibg=fg
@@ -118,7 +120,7 @@ set t_Co=256
 filetype plugin indent on
 set tabstop=2 " softtab
 set shiftwidth=2 " folding em softtab
-set fdm=indent 
+set fdm=indent
 set fdl=1
 
 nmap t% :tabedit %<CR>
