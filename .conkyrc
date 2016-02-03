@@ -85,10 +85,10 @@ ${alignr}$font < ${fs_bar 5,120 /home/Container/} > -─┘         │
 ${alignr}$font │  
 ${alignr}$font net -─┤  
 ${alignr}$font < ${tcp_portmon 1 65535 count} > connections -─┤    │  
-${alignr}$font < ${upspeed wlan0} k/s >   up -─┤    │  
-${alignr}$font < ${upspeedgraph wlan0 8,120 8b2132 fe8608} > -─┘    │    │  
-${alignr}$font < ${downspeed wlan0} k/s > down -─┘    │  
-${alignr}$font < ${downspeedgraph wlan0 8,120 8b2132 fe8608} > -─┘         │  
+${alignr}$font < ${upspeed wlp1s0} k/s >   up -─┤    │  
+${alignr}$font < ${upspeedgraph wlp1s0 8,120 8b2132 fe8608} > -─┘    │    │  
+${alignr}$font < ${downspeed wlp1s0} k/s > down -─┘    │  
+${alignr}$font < ${downspeedgraph wlp1s0 8,120 8b2132 fe8608} > -─┘         │  
 ${alignr}$font  │  
 #
 # MY PROJECTS
