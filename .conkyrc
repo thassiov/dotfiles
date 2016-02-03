@@ -94,6 +94,6 @@ ${alignr}$font  │
 # MY PROJECTS
 #
 ${alignr}$font projects -─┘  
-${alignr}$font GW last commit: ${execi 2 git --git-dir /home/thassiov/dev/freelance/gw/.git log --date=relative --format=%cd -1} -─┤       
-${alignr}$font IRIDIUM last commit: ${execi 2 git --git-dir /home/thassiov/dev/fun/iridium/.git log --date=relative --format=%cd -1} -─┤       
-${alignr}$font WALLET MIGRATION last commit: ${execi 2 git --git-dir /home/thassiov/dev/fun/wallet-migration/.git log --date=relative --format=%cd -1} -─┘       
+${alignr}$font GW last commit: ${execi 8 git --git-dir /home/thassiov/dev/freelance/gw/.git log --date=relative --format=%cd -1} -─┤       
+${alignr}$font IRIDIUM last commit: ${execi 8 git --git-dir /home/thassiov/dev/fun/iridium/.git log --date=relative --format=%cd -1} -─┤       
+${alignr}$font WALLET MIGRATION last commit: ${execi 8 git --git-dir /home/thassiov/dev/fun/wallet-migration/.git log --date=relative --format=%cd -1} -─┘       
