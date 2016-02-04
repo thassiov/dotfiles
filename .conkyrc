@@ -3,7 +3,7 @@
 
 background yes
 use_xft yes
-xftfont monospace:pixelsize=10
+xftfont Fira Mono:pixelsize=10:style=Medium
 xftalpha 0.8
 update_interval 1.0
 total_run_times 0
@@ -23,7 +23,7 @@ default_shade_color white
 default_outline_color black
 alignment top_right
 gap_x 10
-gap_y 10
+gap_y 20
 no_buffers yes
 cpu_avg_samples 2
 net_avg_samples 2
