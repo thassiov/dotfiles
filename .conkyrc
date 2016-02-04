@@ -1,5 +1,6 @@
 # this file goes in ~
-
+# Based on http://0x6c756b65.deviantart.com/art/slacker-conky-config-207760045
+#
 
 background yes
 use_xft yes
