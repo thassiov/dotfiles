@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkill x11vnc
+xrandr --output VGA1 --off
+

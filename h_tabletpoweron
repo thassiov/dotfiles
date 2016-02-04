@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Made based on < https://bbs.archlinux.org/viewtopic.php?id=191555 >
+
+# Generate modeline for the resolution of the vpn screen you are going to use with your VNC display.
+# gtf 1024 552 60
+
+# Generate a new mode
+xrandr --newmode "1024x552_60.00"  44.48  1024 1056 1160 1296  552 553 556 5720  -HSync +Vsync
+
+#  Add the desired mode to our disconnected output
+xrandr --addmode VGA1 1024x552_60.00
+
+# Enable the disconnected monitor using the newly added mode and use it to extend the desktop to the left of LVDS1:
+xrandr --output VGA1 --mode 1024x552_60.00 --right-of LVDS1
+
+# Export the invisible part of your desktop using VNC
+#x11vnc -clip 1024x552+1367+0
+x11vnc -clip 1024x552+0+0
+
