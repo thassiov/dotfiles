@@ -37,7 +37,7 @@ maximum_width 350
 TEXT
 #leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
 ${alignr}${offset -32} ${font DejaVu Sans Mono:pixelsize=14}thassiov
-${alignr}${offset 76} $font └─────────── ${sysname}   
+${alignr}${offset 76} $font └────────── Linux              
 ${alignr}$font │  
 ${alignr}$font ${nodename} -─┤  
 ${alignr}$font < ${kernel} > kernel -─┤    │  
