@@ -1,0 +1,10 @@
+
+" Use F2 to create a new tab (Ctrl+t)
+map <F2> :tabnew<CR>
+
+" Use F3 to go to the previous tab (Ctrl+PgUp)
+map <F3> :tabprevious<CR>
+
+" Use F4 to go to the next tab (Ctrl+PgDw)
+map <F4> :tabnext<CR>
+
