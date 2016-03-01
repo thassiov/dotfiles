@@ -36,4 +36,4 @@ GIT_PROMPT_ONLY_IN_REPO=1
 source ~/.bash-git-prompt/gitprompt.sh
 
 #path
-PATH=$PATH:/home/thassiov/bin:/home/thassiov/.gem/ruby/2.2.0/bin
+PATH=$PATH:~/.composer/vendor/bin

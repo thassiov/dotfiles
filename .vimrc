@@ -16,25 +16,44 @@ call neobundle#begin(expand('/home/thassiov/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
+
+" Snippets and autocompletion
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
+
+" Navigation
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'wakatime/vim-wakatime'
 NeoBundle 'fholgado/minibufexpl.vim'
+
+" Code assistance
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'scrooloose/nerdcommenter'
+
+" Git related
+NeoBundle 'airblade/vim-gitgutter'
+
+" Class and method outline
+NeoBundle 'majutsushi/tagbar'
+
+" Analytics
+NeoBundle 'wakatime/vim-wakatime'
+
+" JS Specific - Syntax highlight
 NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" Linter
 NeoBundle 'scrooloose/syntastic'
+
+" Status bar
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+
+" Don't remember
 NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'dradtke/VIP'
-NeoBundle 'dkprice/vim-easygrep'
+
 
 " Theme changer
 NeoBundle 'xolox/vim-misc'
@@ -66,7 +85,7 @@ set laststatus=2
 let g:airline_theme = 'ubaryd'
 
 " Usar python3
-"let g:UltiSnipsUsePythonVersion = 3
+"let g:UltiSnipsUsePythonVersion = 2.7
 
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -86,6 +105,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_javascript_checkers = ['jshint']
+nmap syn :SyntasticCheck<CR>
 " " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
 
@@ -129,6 +150,8 @@ set fdl=1
 nmap t% :tabedit %<CR>
 nmap td :tabclose<CR>
 nmap tn :tabnew<CR>
+
+nmap <C-0> :<C-w>_<CR>
 
 set colorcolumn=78
 set number
