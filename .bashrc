@@ -14,6 +14,9 @@ alias huebr='sudo'
 #anoying thing
 alias pacman='yaourt'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias dev='cd ~/dev'
 
 # gitprompt configuration
 
