@@ -34,6 +34,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 
 " Git related
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
 
 " Class and method outline
 NeoBundle 'majutsushi/tagbar'
@@ -129,6 +130,8 @@ hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
 hi MBEVisibleChanged       guifg=#F1266F guibg=fg
 hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
 hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+
+map <C-t> :MBEToggle<cr>
 
 " Plugin - vim colors solarized
 syntax on
