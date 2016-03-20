@@ -40,3 +40,6 @@ source ~/.bash-git-prompt/gitprompt.sh
 
 #path
 PATH=$PATH:~/.composer/vendor/bin
+
+#bin directory
+PATH=$PATH:~/bin

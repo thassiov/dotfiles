@@ -52,9 +52,14 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
-" Don't remember
+" Don't remember - NEEDS 'npm install' inside its directory
 NeoBundle 'marijnh/tern_for_vim'
 
+" For project-specific configuration
+NeoBundle 'editorconfig/editorconfig-vim'
+
+" Hex color highlighter
+NeoBundle 'hrisbra/Colorizer'
 
 " Theme changer
 NeoBundle 'xolox/vim-misc'
