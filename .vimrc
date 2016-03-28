@@ -59,7 +59,7 @@ NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 
 " Hex color highlighter
-NeoBundle 'hrisbra/Colorizer'
+" NeoBundle 'hrisbra/Colorizer'
 
 " Theme changer
 NeoBundle 'xolox/vim-misc'
@@ -168,4 +168,5 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
+set background=dark
 colorscheme hybrid
