@@ -11,5 +11,6 @@
 	# The best log ever!!!11!
 	lg = log --color --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 	# Diff using github.com/so-fancy/diff-so-fancy
-	dsf = "!git diff --color $@ | diff-so-fancy"
 
+	# Compare local branch with remote branch
+	compare-remote = diff --summary FETCH_HEAD

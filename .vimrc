@@ -56,7 +56,7 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'marijnh/tern_for_vim'
 
 " For project-specific configuration
-NeoBundle 'editorconfig/editorconfig-vim'
+"NeoBundle 'editorconfig/editorconfig-vim'
 
 " Hex color highlighter
 " NeoBundle 'hrisbra/Colorizer'

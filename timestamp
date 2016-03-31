@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Define a timestamp function
+timestamp() {
+  date
+
+}
+
+# do something...
+timestamp # print timestamp
