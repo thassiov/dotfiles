@@ -14,3 +14,6 @@
 
 	# Compare local branch with remote branch
 	compare-remote = diff --summary FETCH_HEAD
+
+	# Update remote's branch list
+	urbl = remote update origin --prune
