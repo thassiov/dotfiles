@@ -42,9 +42,6 @@ NeoBundle 'majutsushi/tagbar'
 " Analytics
 NeoBundle 'wakatime/vim-wakatime'
 
-" JS Specific - Syntax highlight
-NeoBundle 'jelera/vim-javascript-syntax'
-
 " Linter
 NeoBundle 'scrooloose/syntastic'
 
@@ -52,14 +49,10 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
-" Don't remember - NEEDS 'npm install' inside its directory
-NeoBundle 'marijnh/tern_for_vim'
-
-" For project-specific configuration | REQUIRES editorconfig-core-c package
+" For project-specific configuration
+" Note: requires editorconfig-core-c package
+" [see https://github.com/editorconfig/editorconfig-core-c#readme]
 NeoBundle 'editorconfig/editorconfig-vim'
-
-" Hex color highlighter
-" NeoBundle 'hrisbra/Colorizer'
 
 " Theme changer
 NeoBundle 'xolox/vim-misc'
@@ -70,9 +63,26 @@ NeoBundle 'cdmedia/itg_flat_vim'
 NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
 NeoBundle 'w0ng/vim-hybrid'
 
+" # LANGUAGE SPECIFIC PLUGINS
+" ## JS Plugins
+" ### Improved syntax highlight
+NeoBundle 'jelera/vim-javascript-syntax'
 
-" You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+" ### Parses js files to better sugests completions to 'neocomplete'
+" Note: NEEDS 'npm install' inside its directory
+NeoBundle 'marijnh/tern_for_vim'
+
+" ## Python Plugins
+" ### the ViM Python IDE(ish)
+NeoBundle 'klen/python-mode'
+
+" ## Rust Plugins
+" ### syntax highlighting, autoformatting
+NeoBundle 'rust-lang/rust.vim'
+
+" ## Go plugins
+" ### Go (golang) support for Vim
+NeoBundle 'fatih/vim-go'
 
 " Required:
 call neobundle#end()
