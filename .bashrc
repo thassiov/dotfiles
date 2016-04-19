@@ -1,3 +1,12 @@
+# Software list:
+# - rofi
+# - git
+# - vim
+# - byobu
+# - terminator
+# - git-bash-prompt
+
+
 #terminal
 export PS1="(\[\e[01;31m\]\t\[\e[0m\])\[\e[01;32m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[01;31m\]\h\[\e[0m\]:\[\e[01;31m\]\w\[\e[0m\]\[\e[01;37m\]\$\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
 
