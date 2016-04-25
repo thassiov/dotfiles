@@ -35,6 +35,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 " Git related
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " Class and method outline
 NeoBundle 'majutsushi/tagbar'
@@ -134,10 +135,23 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 " Added to work with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Plugin - NerdTREE
+" Plugin - NERDTree
 nmap <F2> :NERDTreeToggle<CR>
 nmap tre :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Plugin - NERDTree git
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+  \}
 
 " Plugin - TagBar
 nmap <F3> :TagbarToggle<CR>

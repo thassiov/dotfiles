@@ -52,3 +52,7 @@ PATH=$PATH:~/.composer/vendor/bin
 
 #bin directory
 PATH=$PATH:~/bin
+
+export GOPATH=~/.go
+export PATH=$PATH:~/.go/bin
+
