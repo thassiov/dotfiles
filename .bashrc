@@ -14,7 +14,7 @@ export PS1="(\[\e[01;31m\]\t\[\e[0m\])\[\e[01;32m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e
 alias ls='ls --color'
 alias l='ls --color'
 alias ll='ls -l --color'
-alias lla='ls -la --color'
+alias lll='ls -la --color'
 alias ltr='ls -ltr --color'
 
 #huehue
