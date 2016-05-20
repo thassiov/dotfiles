@@ -19,7 +19,7 @@ draw_graph_borders yes
 stippled_borders 0
 border_margin 4
 border_width 0
-default_color white
+default_color black
 default_shade_color white
 default_outline_color black
 alignment top_right
@@ -44,57 +44,12 @@ ${alignr}$font < ${kernel} > kernel -─┤    │
 ${alignr}$font < $machine >   arch -─┤    │  
 ${alignr}$font < $uptime > uptime -─┘    │  
 # ${alignr}$font │  
-${alignr}$font system -─┤  
-${alignr}$font cpu -─┤    │  
-${alignr}$font used -─┤    │    │  
-${alignr}$font < ${cpu 1}% > cpu1 -─┤    │    │    │  
-${alignr}$font < ${cpu 2}% > cpu2 -─┘    │    │    │  
-${alignr}$font freq -─┤    │    │  
-${alignr}$font < ${freq 1}mhz > cpu1 -─┤    │    │    │  
-${alignr}$font < ${freq 2}mhz > cpu2 -─┘    │    │    │  
-${alignr}$font < $loadavg > load -─┤    │    │  
-${alignr}$font < ${top name 1}  ${top cpu 1} > -─┤    │    │  
-${alignr}$font < ${top name 2}  ${top cpu 2} > -─┤    │    │  
-${alignr}$font < ${top name 3}  ${top cpu 3} > -─┤    │    │  
-${alignr}$font < ${top name 4}  ${top cpu 4} > -─┤    │    │  
-${alignr}$font < ${top name 5}  ${top cpu 5} > -─┘    │    │  
-${alignr}$font processes -─┤    │  
-${alignr}$font < $processes >   total -─┤    │    │  
-${alignr}$font < $running_processes > running -─┘    │    │  
-${alignr}$font temperature -─┘    │  
-${alignr}$font < ${hwmon temp 1} > tmp1 -─┘         │  
-# ${alignr}$font │  
-${alignr}$font resources -─┤  
-${alignr}$font < $diskio_read >  read -─┤    │  
-${alignr}$font < $diskio_write > write -─┤    │  
-${alignr}$font ram -─┤    │  
-${alignr}$font < $memperc% > used -─┤    │    │  
-${alignr}$font < $mem/$memmax > -─┘    │    │    │  
-${alignr}$font < ${top_mem name 1}  ${top_mem mem 1} > -─┤    │    │  
-${alignr}$font < ${top_mem name 2}  ${top_mem mem 2} > -─┤    │    │  
-${alignr}$font < ${top_mem name 3}  ${top_mem mem 3} > -─┤    │    │  
-${alignr}$font < ${top_mem name 4}  ${top_mem mem 4} > -─┤    │    │  
-${alignr}$font < ${top_mem name 5}  ${top_mem mem 5} > -─┘    │    │  
-${alignr}$font < $swapperc% - $swap/$swapmax > swap -─┤    │  
-${alignr}$font < ${swapbar 5,120} > -─┘    │    │  
-${alignr}$font < ${fs_used /}/${fs_size /} > root -─┤    │  
-${alignr}$font < ${fs_bar 5,120 /} > -─┘    │    │  
-${alignr}$font < ${fs_used /home}/${fs_size /home} > home -─┤    │  
-${alignr}$font < ${fs_bar 5,120 /home/muunleit/} > -─┘    │    │  
-${alignr}$font < ${fs_used /usr/local}/${fs_size /usr/local} > local -─┘    │  
-${alignr}$font < ${fs_bar 5,120 /home/Container/} > -─┘         │  
-# ${alignr}$font │  
-${alignr}$font net -─┤  
-${alignr}$font < ${tcp_portmon 1 65535 count} > connections -─┤    │  
-${alignr}$font < ${upspeed wlp1s0} k/s >   up -─┤    │  
-${alignr}$font < ${upspeedgraph wlp1s0 8,120 8b2132 fe8608} > -─┘    │    │  
-${alignr}$font < ${downspeed wlp1s0} k/s > down -─┘    │  
-${alignr}$font < ${downspeedgraph wlp1s0 8,120 8b2132 fe8608} > -─┘         │  
 # ${alignr}$font  │  
 #
 # MY PROJECTS
 #
 ${alignr}$font projects -─┘  
-${alignr}$font GW last commit: ${execi 8 git --git-dir /home/thassiov/dev/freelance/gw/.git log --date=relative --format=%cd -1} -─┤       
-${alignr}$font IRIDIUM last commit: ${execi 8 git --git-dir /home/thassiov/dev/fun/iridium/.git log --date=relative --format=%cd -1} -─┤       
-${alignr}$font WALLET MIGRATION last commit: ${execi 8 git --git-dir /home/thassiov/dev/fun/wallet-migration/.git log --date=relative --format=%cd -1} -─┘       
+${alignr}$font ANIMAIZ last commit: ${execi 8 git --git-dir /home/thassiov/dev/personal/animaiz/.git log --date=relative --format=%cd -1} -─┤       
+${alignr}$font DOIT last commit: ${execi 8 git --git-dir /home/thassiov/dev/personal/doit/.git log --date=relative --format=%cd -1} -─┤       
+${alignr}$font THEKATA last commit: ${execi 8 git --git-dir /home/thassiov/dev/personal/thekata/.git log --date=relative --format=%cd -1} -─┘       
+${alignr}$font BARISTA last commit: ${execi 8 git --git-dir /home/thassiov/dev/personal/barista/.git log --date=relative --format=%cd -1} -─┘       
