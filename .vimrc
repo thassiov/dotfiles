@@ -17,6 +17,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
 
+" VIM HARD MODE!!11!!
+NeoBundle 'wikitopian/hardmode'
 " Snippets and autocompletion
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -154,7 +156,7 @@ let g:NERDTreeIndicatorMapCustom = {
   \}
 
 " Plugin - TagBar
-nmap <F3> :TagbarToggle<CR>
+nmap <Fr> :TagbarToggle<CR>
 nmap tag :TagbarToggle<CR>
 
 " Plugin -  MiniBufExpl (Colors)
@@ -200,9 +202,5 @@ set list
 set background=dark
 colorscheme hybrid
 
-" HABIT BREAKING!!!11!
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
+" HARD MODE!!!11!!
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
