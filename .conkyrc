@@ -24,7 +24,7 @@ draw_graph_borders yes
 stippled_borders 0
 border_margin 4
 border_width 0
-default_color black
+default_color white
 default_shade_color white
 default_outline_color black
 alignment top_right
@@ -79,7 +79,12 @@ ${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/tgtctm/.git\
 #   Project: Barista  #
 ${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/barista/.git\
  log --abbrev-commit --date=relative --format=format:'%s [%ar]'\
- --all --max-count=1} [BARISTA] -─┘    │  
+ --all --max-count=1} [BARISTA] -─┤    │  
+#######################
+#   Project: Barista  #
+${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/allmygit/.git\
+ log --abbrev-commit --date=relative --format=format:'%s [%ar]'\
+ --all --max-count=1} [ALL MY GIT] -─┘    │  
 ${alignr}$font contractor projects -─┘  
 #######################
 #   Project: GW  #
