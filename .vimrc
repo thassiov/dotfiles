@@ -199,3 +199,10 @@ set list
 
 set background=dark
 colorscheme hybrid
+
+" HABIT BREAKING!!!11!
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
