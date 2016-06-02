@@ -81,10 +81,15 @@ ${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/barista/.git\
  log --abbrev-commit --date=relative --format=format:'%s [%ar]'\
  --all --max-count=1} [BARISTA] -─┤    │  
 #######################
-#   Project: Barista  #
+# Project: ALL MY GIT #
 ${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/allmygit/.git\
  log --abbrev-commit --date=relative --format=format:'%s [%ar]'\
- --all --max-count=1} [ALL MY GIT] -─┘    │  
+ --all --max-count=1} [ALL MY GIT] -─┤    │  
+#######################
+# Project: HISTORYCOLOR#
+${alignr}$font ${execi 8 git --git-dir /home/thassiov/dev/personal/historycolor/.git\
+ log --abbrev-commit --date=relative --format=format:'%s [%ar]'\
+ --all --max-count=1} [HISTORYCOLOR] -─┘    │  
 ${alignr}$font contractor projects -─┘  
 #######################
 #   Project: GW  #
