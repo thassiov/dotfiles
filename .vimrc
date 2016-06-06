@@ -17,6 +17,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
 
+" ViM's custom Slash Screen
+NeoBundle 'mhinz/vim-startify'
+
 " VIM HARD MODE!!11!!
 NeoBundle 'wikitopian/hardmode'
 " Snippets and autocompletion
@@ -97,6 +100,24 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
+
+" Startify config
+
+let g:startify_list_order = [
+				\ ['   These are my sessions:'],
+				\ 'sessions',
+				\ ['   My most recently used files'],
+				\ 'files',
+				\ ['   My most recently used files in the current directory:'],
+				\ 'dir',
+				\ ['   These are my bookmarks:'],
+				\ 'bookmarks',
+				\ ['   These are my commands:'],
+				\ 'commands',
+				\ ]
+
+let g:startify_change_to_dir = 1
+let g:startify_change_to_vcs_root = 1
 
 " airline config
 set laststatus=2
@@ -192,6 +213,8 @@ nmap tn :tabnew<CR>
 
 nmap <C-0> :<C-w>_<CR>
 
+set cursorline
+set cursorcolumn
 set colorcolumn=78
 set number
 set mouse=a
@@ -201,6 +224,11 @@ set list
 
 set background=dark
 colorscheme hybrid
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " HARD MODE!!!11!!
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>

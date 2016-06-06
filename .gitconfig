@@ -17,3 +17,6 @@
 
 	# Update remote's branch list
 	urbl = remote update origin --prune
+
+	# Git Cal
+	cal = !"git-cal"
