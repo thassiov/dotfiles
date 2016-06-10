@@ -40,6 +40,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 " Git related
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'junegunn/gv.vim'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " Class and method outline
