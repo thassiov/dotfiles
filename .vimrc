@@ -208,8 +208,8 @@ set shiftwidth=2 " folding em softtab
 set fdm=indent
 set fdl=1
 
-nmap t% :tabedit %<CR>
-nmap td :tabclose<CR>
+nmap <C-e> :tabedit %<CR>
+nmap <C-y> :tabclose<CR>
 nmap tn :tabnew<CR>
 
 nmap <C-0> :<C-w>_<CR>
