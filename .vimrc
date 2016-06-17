@@ -67,7 +67,7 @@ NeoBundle 'xolox/vim-colorscheme-switcher'
 
 " Themes
 NeoBundle 'cdmedia/itg_flat_vim'
-NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
+"NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
 NeoBundle 'w0ng/vim-hybrid'
 
 " # LANGUAGE SPECIFIC PLUGINS
