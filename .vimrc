@@ -122,8 +122,8 @@ let g:startify_change_to_vcs_root = 1
 
 " airline config
 set laststatus=2
-"let g:airline_powerline_fonts = 1
-let g:airline_theme = 'ubaryd'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'jay'
 
 " Usar python3
 "let g:UltiSnipsUsePythonVersion = 2.7
@@ -217,6 +217,11 @@ nmap <C-0> :<C-w>_<CR>
 
 " Replace in visual mode [http://stackoverflow.com/a/676619]
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
+
+" Search
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+
 
 set cursorline
 set cursorcolumn
