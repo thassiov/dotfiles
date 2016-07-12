@@ -89,3 +89,5 @@ export PATH=$PATH:~/.go/bin
 
 # My Scripts
 export PATH=$PATH:~/bin
+
+alias vimrcedit="vim ~/.vimrc"
