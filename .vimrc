@@ -249,3 +249,5 @@ noremap <Right> <NOP>
 
 " HARD MODE!!!11!!
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
+map <leader>z :Goyo<CR>
