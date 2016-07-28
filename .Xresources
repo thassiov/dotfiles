@@ -39,3 +39,8 @@ urxvt.font:              xft:firamono:medium:size=9
 ! white
 *.color7:       #c0b18b
 *.color15:      #978965
+
+URxvt.perl-ext-common:  resize-font
+URxvt.resize-font.smaller: C-S-Down
+URxvt.resize-font.bigger: C-S-Up
+
