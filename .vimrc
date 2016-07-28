@@ -69,7 +69,6 @@ NeoBundle 'xolox/vim-colorscheme-switcher'
 NeoBundle 'cdmedia/itg_flat_vim'
 "NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
 NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'morhetz/gruvbox'
 
 " I don't know what to call it
 NeoBundle 'junegunn/limelight.vim'
