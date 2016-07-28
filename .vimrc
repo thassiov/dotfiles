@@ -69,6 +69,13 @@ NeoBundle 'xolox/vim-colorscheme-switcher'
 NeoBundle 'cdmedia/itg_flat_vim'
 "NeoBundle 'flazz/vim-colorschemes' " gigantic vim colorschemes set
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'morhetz/gruvbox'
+
+" I don't know what to call it
+NeoBundle 'junegunn/limelight.vim'
+"NeoBundle 'gabrielelana/vim-markdown'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'junegunn/seoul256.vim'
 
 " # LANGUAGE SPECIFIC PLUGINS
 " ## JS Plugins
@@ -124,6 +131,8 @@ let g:startify_change_to_vcs_root = 1
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jay'
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
 
 " Usar python3
 "let g:UltiSnipsUsePythonVersion = 2.7
@@ -222,7 +231,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 
-
 set cursorline
 set cursorcolumn
 set colorcolumn=78
@@ -232,8 +240,8 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
-set background=dark
 colorscheme hybrid
+set background=dark
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
