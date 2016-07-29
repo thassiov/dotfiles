@@ -45,7 +45,7 @@ bindsym Mod1+Shift+F4 exec ~/confs/i3blocks-contrib-master/shutdown_menu/shutdow
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+F2 exec rofi -show drun -padding 20 -opacity 95
+bindsym Mod1+F2 exec rofi -show drun -padding 20 -opacity 95
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
