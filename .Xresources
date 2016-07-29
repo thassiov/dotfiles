@@ -40,7 +40,15 @@ urxvt.font:              xft:firamono:medium:size=9
 *.color7:       #c0b18b
 *.color15:      #978965
 
-URxvt.perl-ext-common:  resize-font
+urxvt*perl-lib: /home/user/urxvt-vim-scrollback
+
+URxvt.perl-ext-common:  resize-font,fullscreen,vim-scrollback
 URxvt.resize-font.smaller: C-S-Down
 URxvt.resize-font.bigger: C-S-Up
+URxvt.keysym.F11: perl:fullscreen:switch
 
+! configure alt-s as the keybinding to enter vim scrollback mode.
+urxvt.vim-scrollback: M-s
+
+! configure alt-p as the keybinding to paste mode.
+urxvt.vim-scrollback-paste: M-p
