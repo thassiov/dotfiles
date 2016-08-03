@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+echo "[ANIMAIZ] /home/thassiov/dev/personal/projects/animaiz/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/animaiz/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[WIT] /home/thassiov/dev/personal/projects/wit/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/wit/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[OYE] /home/thassiov/dev/personal/projects/oye/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/oye/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[DOIT] /home/thassiov/dev/personal/projects/doit/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/doit/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[GOALS] /home/thassiov/dev/personal/projects/wit/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/wit/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[DTF] /home/thassiov/dev/personal/projects/dtf/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/dtf/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[THEKATA] /home/thassiov/dev/personal/projects/thekata/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/thekata/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[ALLMYGIT] /home/thassiov/dev/personal/projects/allmygit/"
+echo `git --git-dir /home/thassiov/dev/personal/projects/allmygit/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "[CONFS] /home/thassiov/confs/"
+echo `git --git-dir /home/thassiov/confs/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
