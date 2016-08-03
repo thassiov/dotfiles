@@ -1,44 +1,70 @@
 #!/bin/bash
 
+
 echo "######## FROM dev/personal/projects ########"
 
+WIT="/home/thassiov/dev/personal/projects/wit/"
 echo "[WIT] Write it!"
-echo `git --git-dir /home/thassiov/dev/personal/projects/wit/.git log\
+echo `git --git-dir $WIT.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $WIT 
+git cal
 
+OYE="/home/thassiov/dev/personal/projects/oye/"
 echo ""
 echo "[OYE] ZSH Theme"
-echo `git --git-dir /home/thassiov/dev/personal/projects/oye/.git log\
+echo `git --git-dir $OYE.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $OYE
+git cal
 
+DOIT="/home/thassiov/dev/personal/projects/doit/"
 echo ""
 echo "[DOIT] A task manager for programmers"
-echo `git --git-dir /home/thassiov/dev/personal/projects/doit/.git log\
+echo `git --git-dir $DOIT.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $DOIT
+git cal
 
+GOALS="/home/thassiov/dev/personal/projects/goals"
 echo ""
 echo "[GOALS] My personal goals"
-echo `git --git-dir /home/thassiov/dev/personal/projects/goals/.git log\
+echo `git --git-dir $GOALS.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $GOALS
+git cal
 
+DTF="/home/thassiov/dev/personal/projects/dtf"
 echo ""
 echo "[DTF] Task journal"
-echo `git --git-dir /home/thassiov/dev/personal/projects/dtf/.git log\
+echo `git --git-dir $DTF.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $DTF
+git cal
 
+THEKATA="/home/thassiov/dev/personal/projects/thekata"
 echo ""
 echo "[THEKATA] Do katas everyday"
-echo `git --git-dir /home/thassiov/dev/personal/projects/thekata/.git log\
+echo `git --git-dir $THEKATA.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $THEKATA
+git cal
 
+CONFS="/home/thassiov/confs/"
 echo ""
 echo "[CONFS] My configuration files"
-echo `git --git-dir /home/thassiov/confs/.git log\
+echo `git --git-dir $CONFS.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $CONFS
+git cal
 
 echo ""
 echo "######## FROM dev/moss ########"
 
+GW="/home/thassiov/dev/moss/gw/"
 echo "[GW] Graduwe API"
-echo `git --git-dir /home/thassiov/dev/moss/gw/.git log\
+echo `git --git-dir $GW.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+cd $GW
+git cal
+
