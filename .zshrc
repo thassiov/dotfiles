@@ -91,3 +91,4 @@ export PATH=$PATH:~/.go/bin
 export PATH=$PATH:~/bin
 
 alias vimrcedit="vim ~/.vimrc"
+alias edg="vim ~/confs/dg"
