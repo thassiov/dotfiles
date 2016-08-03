@@ -1,11 +1,7 @@
 #!/bin/bash
 
+echo "######## FROM dev/personal/projects ########"
 
-echo "[ANIMAIZ] Save stray animals"
-echo `git --git-dir /home/thassiov/dev/personal/projects/animaiz/.git log\
- --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
-
-echo ""
 echo "[WIT] Write it!"
 echo `git --git-dir /home/thassiov/dev/personal/projects/wit/.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
@@ -38,4 +34,11 @@ echo `git --git-dir /home/thassiov/dev/personal/projects/thekata/.git log\
 echo ""
 echo "[CONFS] My configuration files"
 echo `git --git-dir /home/thassiov/confs/.git log\
+ --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+
+echo ""
+echo "######## FROM dev/moss ########"
+
+echo "[GW] Graduwe API"
+echo `git --git-dir /home/thassiov/dev/moss/gw/.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
