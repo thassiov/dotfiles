@@ -55,11 +55,8 @@ bindsym $mod+shift+d exec sh ~/confs/i3blocks-contrib-master/i3_workspaces.sh
 #custom start
 
 exec --no-startup-id nitrogen --restore
-exec compton &
-#exec --no-startup-id compton &
+exec --no-startup-id compton &
 #exec --no-startup-id xautolock -time 5 -locker lock
-#exec mpd &
-#exec VBoxClient --display
 
 # change focus
 #bindsym $mod+j focus left
