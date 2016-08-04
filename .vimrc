@@ -128,7 +128,7 @@ let g:startify_change_to_vcs_root = 1
 
 " airline config
 set laststatus=2
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 let g:airline_theme = 'jay'
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
@@ -218,7 +218,6 @@ set fdl=1
 
 nmap <C-e> :tabedit %<CR>
 nmap <C-y> :tabclose<CR>
-nmap tn :tabnew<CR>
 
 " ???
 nmap <C-0> :<C-w>_<CR>
@@ -251,3 +250,8 @@ noremap <Right> <NOP>
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 map <leader>z :Goyo<CR>
+
+" To view the graph log
+map gv :GV<CR>
+map gfv :GV!<CR>
+
