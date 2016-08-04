@@ -11,11 +11,9 @@ function loopDir() {
 function showGitInfo() {
 	if [[ -d "$PERSONALPROJ$dir/.git" ]]; then
 		echo ""
-		echo "[${dir^^}]"
+		echo "========[${dir^^}]========"
 		echo `git --git-dir $PERSONALPROJ$dir/.git log\
 		 --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
-		cd $PERSONALPROJ$dir/.git
-		git cal
 	fi
 }
 
@@ -30,8 +28,6 @@ echo ""
 echo "[CONFS] My configuration files"
 echo `git --git-dir $CONFS.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
-cd $CONFS
-git cal
 
 echo ""
 echo "######## FROM dev/moss ########"
@@ -40,6 +36,4 @@ GW="/home/thassiov/dev/moss/gw/"
 echo "[GW] Graduwe API"
 echo `git --git-dir $GW.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
-cd $GW
-git cal
 
