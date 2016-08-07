@@ -216,8 +216,8 @@ bar {
 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
     height 30
-    i3bar_command i3bar -t
-    status_command i3blocks -c ~/.i3/i3blocks.conf
+    #i3bar_command i3bar -t
+    status_command i3blocks 
     strip_workspace_numbers no
     position top
 }
