@@ -31,6 +31,8 @@ NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'fholgado/minibufexpl.vim'
+" Needs 'silver-searcher-git'
+NeoBundle 'rking/ag.vim'
 
 " Code assistance
 NeoBundle 'tpope/vim-surround'
@@ -219,8 +221,11 @@ set fdl=1
 nmap <C-e> :tabedit %<CR>
 nmap <C-y> :tabclose<CR>
 
-" ???
-nmap <C-0> :<C-w>_<CR>
+" Fuzzy search Selection inside files - VISUAL MODE
+vnoremap <leader>~ hy:Ag! <C-r>"
+
+" Fuzzy search - NORMAL MODE
+noremap <C-a> :Ag! 
 
 " Replace in visual mode [http://stackoverflow.com/a/676619]
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
