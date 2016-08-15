@@ -233,6 +233,8 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 " Search
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
+set ignorecase    " ignores cases when searching
+set smartcase     " switches automaticaly between upper and lower case when searching
 
 set cursorline
 set cursorcolumn
