@@ -1,0 +1,71 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = true
+visible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Fira Mono Medium 9
+scrollback_lines = 1000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default
+browser = firefox
+
+# word characters used for word selection
+# (default if unset: all graphic non-punctuation/space characters)
+#word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+[colors]
+
+# dawn theme from terminal.sexy
+# https://terminal.sexy/#GBsgm5CBNTU1dEtAbWE3dlY2YVZLa0pJQ1hhs7OzX19feFhQb2dJd2BJaWBXb1pZUl9mzc3N
+# special
+foreground      = #9b9081
+foreground_bold = #9b9081
+cursor          = #9b9081
+background      = #181b20
+
+# black
+color0  = #353535
+color8  = #5f5f5f
+
+# red
+color1  = #744b40
+color9  = #785850
+
+# green
+color2  = #6d6137
+color10 = #6f6749
+
+# yellow
+color3  = #765636
+color11 = #776049
+
+# blue
+color4  = #61564b
+color12 = #696057
+
+# magenta
+color5  = #6b4a49
+color13 = #6f5a59
+
+# cyan
+color6  = #435861
+color14 = #525f66
+
+# white
+color7  = #b3b3b3
+color15 = #cdcdcd

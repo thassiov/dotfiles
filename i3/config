@@ -18,7 +18,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Canterall 10
+font pango:FiraMono Medium 10
 font pango:FontAwesome 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -32,13 +32,13 @@ font pango:FontAwesome 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+t exec urxvt
+bindsym $mod+t exec termite
 
 # kill focused window
 bindsym Mod1+F4 kill
 
 # lock screen
-bindsym $mod+l exec i3lock
+bindsym $mod+l exec i3lock-fancy
 
 # shutdown
 bindsym Mod1+Shift+F4 exec ~/confs/i3blocks-contrib-master/shutdown_menu/shutdown_menu
