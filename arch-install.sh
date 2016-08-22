@@ -63,9 +63,8 @@ cd ~
 
 # Lastly: install the GUI packages
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status xorg xorg-server \
-xorg-xinit vim git firefox xscreensaver rxvt-unicode-256xresources \
-urxvt-resize-font-git rxvt-unicode-terminfo urxvt-fullscreen ttf-fira-mono \
-ffmpeg vlc --noconfirm
+xorg-xinit vim git firefox xscreensaver termite thunar thunar-volman \
+gvfs ffmpeg vlc --noconfirm
 
 # The audio: alsa, pulse-audio and pavucontrol
 # Other things: acpi
