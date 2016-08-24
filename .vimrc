@@ -238,7 +238,7 @@ set smartcase     " switches automaticaly between upper and lower case when sear
 
 set cursorline
 set cursorcolumn
-set colorcolumn=78
+set colorcolumn=+1
 set number
 set mouse=a
 set backspace=indent,eol,start
@@ -262,3 +262,15 @@ map <leader>z :Goyo<CR>
 map gv :GV<CR>
 map gfv :GV!<CR>
 
+" Break line at 80 in md files
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l"
