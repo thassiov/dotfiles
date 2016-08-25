@@ -66,6 +66,6 @@ yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status xorg xorg-server \
 xorg-xinit vim git firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp --noconfirm
 
-# The audio: alsa, pulse-audio and pavucontrol
+# The audio: alsa, pulse-audio, pavucontrol and pamixer
 # Other things: acpi
 
