@@ -20,3 +20,9 @@
 
 	# Git Cal
 	cal = !"git-cal"
+
+	# Get the current branch name (not so useful in itself, but used in other aliases)
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+
+	# Count commits
+	ccount = "!git rev-list --count $(git branch-name)"
