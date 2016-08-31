@@ -40,6 +40,9 @@ bindsym Mod1+F4 kill
 # lock screen
 bindsym $mod+l exec i3lock-fancy
 
+# Screenshot
+bindsym Print exec gscreenshot
+
 # shutdown
 bindsym Mod1+Shift+F4 exec ~/confs/i3blocks-contrib-master/shutdown_menu/shutdown_menu
 
