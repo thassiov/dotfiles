@@ -14,6 +14,8 @@ function showGitInfo() {
 		echo "========[${dir^^}]========"
 		echo `git --git-dir $PERSONALPROJ$dir/.git log\
 		 --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+		echo "Commits in the last 24 hours: `git --git-dir $PERSONALPROJ$dir/.git \
+			rev-list --count --since=\"24 hours ago\" HEAD `"
 	fi
 }
 
@@ -28,6 +30,8 @@ echo ""
 echo "[CONFS] My configuration files"
 echo `git --git-dir $CONFS.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
+echo "Commits in the last 24 hours: `git --git-dir $CONFS.git \
+	rev-list --count --since=\"24 hours ago\" HEAD `"
 
 echo ""
 echo "######## FROM dev/moss ########"
@@ -36,4 +40,5 @@ GW="/home/thassiov/dev/moss/gw/"
 echo "[GW] Graduwe API"
 echo `git --git-dir $GW.git log\
  --oneline --date=relative --format=format:'[%ar] %s' --all --max-count=1}`
-
+echo "Commits in the last 24 hours: `git --git-dir $GW.git \
+	rev-list --count --since=\"24 hours ago\" HEAD `"
