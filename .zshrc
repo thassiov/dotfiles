@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="oye"
+ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,3 +92,6 @@ export PATH=$PATH:~/bin
 
 alias vimrcedit="vim ~/.vimrc"
 alias edg="vim ~/confs/dg"
+
+alias dockeron="systemctl start docker.service"
+alias dockeroff="systemctl stop docker.service"
