@@ -1,4 +1,5 @@
 mpd/mpd.db
+mpd/mpd.pid
 mpd/mpd.log
 mpd/mpdstate
 *.swp
