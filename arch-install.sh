@@ -64,7 +64,7 @@ cd ~
 # Lastly: install the GUI packages
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status xorg xorg-server \
 xorg-xinit vim git firefox xscreensaver termite thunar thunar-volman \
-gvfs ffmpeg vlc mpd ncmpcpp scrot gscreenshot geeqie --noconfirm
+gvfs ffmpeg vlc mpd ncmpcpp scrot gscreenshot geeqie httpie dmenu2 --noconfirm
 
 # The audio: alsa, pulse-audio, pavucontrol and pamixer
 # Other things: acpi
