@@ -236,6 +236,7 @@ set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 set ignorecase    " ignores cases when searching
 set smartcase     " switches automaticaly between upper and lower case when searching
+set noswapfile    " no swap
 
 set cursorline
 set cursorcolumn
