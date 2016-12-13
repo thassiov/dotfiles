@@ -4,3 +4,5 @@ mpd/mpd.log
 mpd/mpdstate
 *.swp
 *.swo
+nvim/autoload
+nvim/plugged
