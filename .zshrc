@@ -90,8 +90,7 @@ export PATH=$PATH:~/.go/bin
 # My Scripts
 export PATH=$PATH:~/bin
 
-alias vimrcedit="vim ~/.vimrc"
-alias edg="vim ~/confs/dg"
+alias vim="nvim"
 
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
