@@ -68,7 +68,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp scrot gscreenshot geeqie httpie dmenu2\
-compton flashplugin otf-fira-mono oft-fira-sans otf-fontawesome nitrogen arandr --noconfirm
+compton flashplugin otf-fira-mono oft-fira-sans otf-fontawesome nitrogen arandr\
+sublime-text-dev --noconfirm
 
 # The audio: 
 yaourt -S pulseaudio pavucontrol pamixer --noconfirm
@@ -78,3 +79,21 @@ yaourt -S pulseaudio pavucontrol pamixer --noconfirm
 # Other things: 
 yaourt -S acpi --noconfirm
 
+# Now, for development
+# For node
+yaourt -S nodejs npm --noconfirm
+
+# For Ionic
+npm install -g cordova ionic
+# See <http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html>
+# It walks through the java/android environment configuration
+# Important: for android-sdk to work on x86_64, you need to uncomment the multilib repo in pacman.conf
+# Android needs 32 bit libs.
+# See <https://wiki.archlinux.org/index.php/android#Android_development> for more info
+yaourt -S jdk jre android-sdk android-sdk-platform-tools android-sdk-build-tools --noconfirm
+# Configure android stuff (as root)
+groupadd sdkusers
+gpasswd -a <user> sdkusers
+chown -R :sdkusers /opt/android-sdk/
+chmod -R g+w /opt/android-sdk/
+newgrp sdkusers
