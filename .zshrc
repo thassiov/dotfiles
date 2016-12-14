@@ -89,11 +89,11 @@ export PATH=$PATH:~/.go/bin
 
 # JAVA/ANDROID Stuff
 # watch out for the 8
-export JAVA_HOME=$PATH:/usr/lib/jvm/java-8-jdk
+export JAVA_HOME=/usr/lib/jvm/java-8-jdk
 # Assuming android-sdk was installed using yaourt
-export ANDROID_HOME=$PATH:/opt/android-sdk
-export ANDROID_TOOLS=$PATH:/opt/android-sdk/tools
-export ANDROID_PLATFORM_TOOLS=$PATH:/opt/android-sdk/platform-tools
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_TOOLS=/opt/android-sdk/tools
+export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
 
 # My Scripts
 export PATH=$PATH:~/bin
