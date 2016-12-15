@@ -68,8 +68,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp scrot gscreenshot geeqie httpie dmenu2\
-compton flashplugin otf-fira-mono oft-fira-sans otf-fontawesome nitrogen arandr\
+compton flashplugin nitrogen arandr\
 sublime-text-dev --noconfirm
+
+# fonts
+yaourt -S ttf-ms-fonts otf-fira-mono oft-fira-sans otf-fontawesome --noconfirm
 
 # The audio: 
 yaourt -S pulseaudio pavucontrol pamixer --noconfirm
