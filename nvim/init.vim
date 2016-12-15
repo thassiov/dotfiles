@@ -95,6 +95,11 @@ Plug 'mhinz/vim-startify'
 " VIM HARD MODE!!11!!
 Plug 'wikitopian/hardmode'
 
+
+" I don't know what to call it
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+
 "*****************************************************************************
 "*****************************************************************************
 
@@ -514,6 +519,20 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l"
+
+" CTRLP close buffer from buffer menu
+let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
+
+function! CtrlPMappings()
+  nnoremap <buffer> <silent> <C-@> :call <sid>DeleteBuffer()<cr>
+endfunction
+
+function! s:DeleteBuffer()
+  let path = fnamemodify(getline('.')[2:], ':p')
+  let bufn = matchstr(path, '\v\d+\ze\*No Name')
+  exec "bd" bufn ==# "" ? path : bufn
+  exec "norm \<F5>"
+endfunction
 
 "*****************************************************************************
 "*****************************************************************************
