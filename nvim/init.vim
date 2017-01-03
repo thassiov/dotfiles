@@ -64,11 +64,12 @@ endif
 
 if v:version >= 704
   "" Snippets
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'FelikZ/ctrlp-py-matcher'
 endif
 
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 "" Color
 Plug 'tomasr/molokai'
@@ -81,8 +82,8 @@ Plug 'josuegaleas/jay'
 "*****************************************************************************
 
 " javascript
-"" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+Plug 'sheerun/vim-polyglot'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " I don't know what to call it
 Plug 'junegunn/limelight.vim'
@@ -95,10 +96,8 @@ Plug 'mhinz/vim-startify'
 " VIM HARD MODE!!11!!
 Plug 'wikitopian/hardmode'
 
-
-" I don't know what to call it
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
+" Analytics
+Plug 'wakatime/vim-wakatime'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -157,7 +156,7 @@ set shell=/bin/sh
 " session management
 let g:session_directory = "~/.config/nvim/session"
 let g:session_autoload = "no"
-let g:session_autosave = "no"
+let g:session_autosave = "yes"
 let g:session_command_aliases = 1
 
 "*****************************************************************************
@@ -377,19 +376,19 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " snippets
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-"let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 " deoplete config
-"let g:deoplete#enable_at_startup = 1
-" disable autocomplete
-"let g:deoplete#disable_auto_complete = 1
-"if has("gui_running")
-"    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-"else
-"    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-"endif
+let g:deoplete#enable_at_startup = 1
+"" disable autocomplete
+let g:deoplete#disable_auto_complete = 1
+if has("gui_running")
+    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
+else
+    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
+endif
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
@@ -399,6 +398,10 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_javascript_checkers = ['jshint']
+nmap syn :SyntasticCheck<CR>
+noremap <leader>st :SyntasticToggleMode<CR>
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -489,9 +492,13 @@ let g:startify_change_to_vcs_root = 1
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 " Added to work with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+" speeds up the startup time (see
+" https://github.com/editorconfig/editorconfig-vim/issues/50#issuecomment-161892271
+" )
+let g:EditorConfig_core_mode = 'python_external'
 
 " HARD MODE!!!11!!
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+nnoremap <leader>hm <Esc>:call ToggleHardMode()<CR>
 
 map <leader>z :Goyo<CR>
 
@@ -513,12 +520,6 @@ set mouse=a
 set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l"
 
 " CTRLP close buffer from buffer menu
 let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
