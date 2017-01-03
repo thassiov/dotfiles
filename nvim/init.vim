@@ -48,6 +48,11 @@ Plug 'junegunn/gv.vim'
 " [see https://github.com/editorconfig/editorconfig-core-c#readme]
 Plug 'editorconfig/editorconfig-vim'
 
+" Code assistance
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
