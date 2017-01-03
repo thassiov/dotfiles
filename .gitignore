@@ -6,3 +6,4 @@ mpd/mpdstate
 *.swo
 nvim/autoload
 nvim/plugged
+nvim/session
