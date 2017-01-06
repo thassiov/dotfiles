@@ -466,6 +466,10 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "" Custom configs
 "*****************************************************************************
 
+" folding
+set foldenable 
+set foldmethod=indent 
+
 " javascript
 let g:javascript_enable_domhtmlcss = 1
 

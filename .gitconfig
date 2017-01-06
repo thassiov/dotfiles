@@ -25,4 +25,4 @@
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 
 	# Count commits
-	ccount = "!git rev-list --count $(git branch-name)"
+	contar-commit = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
