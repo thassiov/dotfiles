@@ -1,5 +1,6 @@
 "*****************************************************************************
 "" Vim-PLug core
+" originally from http://vim-bootstrap.com/
 "*****************************************************************************
 if has('vim_starting')
   set nocompatible               " Be iMproved
