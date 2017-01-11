@@ -54,6 +54,9 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
+" Markdown
+Plug 'gabrielelana/vim-markdown'
+
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'

@@ -49,7 +49,7 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 # User configuration
 
@@ -86,6 +86,9 @@ source $ZSH/oh-my-zsh.sh
 # GO PATH
 export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
+
+# For jekyll
+export PATH=$PATH:~/.gem/ruby/2.3.0/bin
 
 # JAVA/ANDROID Stuff
 # watch out for the 8
