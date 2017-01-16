@@ -69,7 +69,7 @@ yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp scrot gscreenshot geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr\
-sublime-text-dev editorconfig-core-c --noconfirm
+sublime-text-dev editorconfig-core-c parcellite --noconfirm
 
 # fonts
 yaourt -S ttf-ms-fonts otf-fira-mono oft-fira-sans otf-fontawesome --noconfirm
