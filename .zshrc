@@ -101,6 +101,9 @@ export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
 # My Scripts
 export PATH=$PATH:~/bin
 
+# gPodder
+GPODDER_DOWNLOAD_DIR=~/Sounds/gPodder
+
 alias vim="nvim"
 
 alias dockeron="systemctl start docker.service"
