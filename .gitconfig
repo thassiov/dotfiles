@@ -26,3 +26,6 @@
 
 	# Count commits
 	contar-commit = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
+
+    # Week
+    week-count ="!git rev-list --count HEAD --since=\"7 days ago\""
