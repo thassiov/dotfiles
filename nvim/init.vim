@@ -85,6 +85,7 @@ Plug 'tomasr/molokai'
 Plug 'mhartington/oceanic-next'
 Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
+Plug 'morhetz/gruvbox'
 
 "*****************************************************************************
 "" Custom bundles
@@ -160,7 +161,7 @@ set noswapfile
 
 set fileformats=unix,dos,mac
 set showcmd
-set shell=/bin/sh
+set shell=/usr/bin/zsh
 
 " session management
 let g:session_directory = "~/.config/nvim/session"
@@ -185,8 +186,10 @@ if (has("termguicolors"))
 endif
 
 " Theme
-colorscheme hybrid
+colorscheme gruvbox
 set background=dark
+let g:gruvbox_termcolors = 256
+let g:gruvbox_contrast_dark = "hard"
 
 set mousemodel=popup
 set t_Co=256
@@ -266,7 +269,7 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
+noremap <leader>tre :NERDTreeToggle<CR>
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
@@ -353,6 +356,7 @@ nnoremap <leader>sc :CloseSession<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
+noremap <leader>t :tabedit %<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -538,7 +542,7 @@ set list
 let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
 
 function! CtrlPMappings()
-  nnoremap <buffer> <silent> <C-@> :call <sid>DeleteBuffer()<cr>
+  nnoremap <buffer> <silent> <Del> :call <sid>DeleteBuffer()<cr>
 endfunction
 
 function! s:DeleteBuffer()
