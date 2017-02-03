@@ -198,12 +198,12 @@ set $transparent         #00000065
 
 # window colors
 #                       border              background         text                 indicator     child-border
-client.focused          $bg-color           $bg-color          $text-color          $bg-color      #859900
+client.focused          $bg-color           $bg-color          $text-color          $bg-color      #3971ED
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.focused_inactive $urgent-bg-color    $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 1
 #i3-gaps
 gaps inner 10
 gaps outer 5
