@@ -40,7 +40,8 @@ Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'junegunn/gv.vim'
@@ -238,7 +239,7 @@ endif
 
 " vim-airline
 let g:airline_theme = 'jay'
-let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -370,7 +371,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 "" ctrlp.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|bower_components)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 1
 let g:ctrlp_show_hidden = 1
@@ -404,17 +405,29 @@ else
 endif
 
 " syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_error_symbol='✗'
+"let g:syntastic_warning_symbol='⚠'
+"let g:syntastic_style_error_symbol = '✗'
+"let g:syntastic_style_warning_symbol = '⚠'
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_aggregate_errors = 1
+"
+"let g:syntastic_javascript_checkers = ['jshint']
+"nmap syn :SyntasticCheck<CR>
+"noremap <leader>st :SyntasticToggleMode<CR>
 
-let g:syntastic_javascript_checkers = ['jshint']
-nmap syn :SyntasticCheck<CR>
-noremap <leader>st :SyntasticToggleMode<CR>
+" Neomake
+let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_jsx_enabled_makers = ['jshint']
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+autocmd! BufWritePost * Neomake
+let g:neomake_verbose=3
+let g:neomake_logfile='/tmp/neomake-error.log'
+let g:neomake_open_list = 2
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -525,6 +538,10 @@ map gfv :GV!<CR>
 
 " Break line at 80 in md files
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" force text on 80 [http://stackoverflow.com/a/3033455]
+" gqG
+
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
