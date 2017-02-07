@@ -372,7 +372,8 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|bower_components)|(\.(swp|tox|ico|git|hg|svn))$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+" Custom .ctrlpignore from [http://superuser.com/a/900794]
+let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat .ctrlpignore`"'
 let g:ctrlp_use_caching = 1
 let g:ctrlp_show_hidden = 1
 
@@ -425,7 +426,7 @@ let g:neomake_javascript_jshint_maker = {
     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
     \ }
 autocmd! BufWritePost * Neomake
-let g:neomake_verbose=3
+"let g:neomake_verbose=3
 let g:neomake_logfile='/tmp/neomake-error.log'
 let g:neomake_open_list = 2
 
@@ -568,6 +569,10 @@ function! s:DeleteBuffer()
   exec "bd" bufn ==# "" ? path : bufn
   exec "norm \<F5>"
 endfunction
+
+" Replace in visual mode [http://stackoverflow.com/a/676619]
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
+
 
 "*****************************************************************************
 "*****************************************************************************
