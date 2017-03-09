@@ -69,7 +69,10 @@ yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr\
-sublime-text-dev editorconfig-core-c parcellite --noconfirm
+sublime-text-dev editorconfig-core-c parcellite tomate-gtk --noconfirm
+
+# screencast tools
+yaourt -S screenkey simplescreenrecorder --noconfirm
 
 # fonts
 yaourt -S ttf-ms-fonts otf-fira-mono oft-fira-sans otf-fontawesome --noconfirm
@@ -100,3 +103,10 @@ gpasswd -a <user> sdkusers
 chown -R :sdkusers /opt/android-sdk/
 chmod -R g+w /opt/android-sdk/
 newgrp sdkusers
+
+# Configure zsh-wakatime
+# https://github.com/wbinglee/zsh-wakatime#zsh-plugin-for-wakatime
+
+# Todoist
+# yaourt -S nwjs-sdk --noconfirm
+# git clone https://github.com/kamhix/todoist-linux.git /opt/todoist
