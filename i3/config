@@ -59,7 +59,10 @@ bindsym $mod+shift+d exec sh ~/confs/i3blocks-contrib-master/i3_workspaces.sh
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton &
-#exec --no-startup-id xautolock -time 5 -locker lock
+exec --no-startup-id parcellite &
+exec --no-startup-id lightscreen &
+exec --no-startup-id megasync &
+exec --no-startup-id xautolock -time 10 -locker lock
 
 # change focus
 #bindsym $mod+j focus left
@@ -92,6 +95,9 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen toggle
+
+# opens thunar
 bindsym $mod+f exec thunar
 
 # change container layout (stacked, tabbed, toggle split)
