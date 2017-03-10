@@ -1,10 +1,22 @@
 # My Confs
 
-[![Stories in Ready](https://badge.waffle.io/thassiov/confs.png?label=ready&title=Ready)](http://waffle.io/thassiov/confs)
+### [arch-install.sh](arch-install.sh)
+Packages I install in my Arch
 
-These are my configuration files. You can use, modify, enhance as much as you 
-want.
+### dmenu_run
+My dynamic menu's config
 
+### forceabnt.sh
+Forces ABNT 2 as my keyboard configuration
+
+### i3/
+My wm's confs (i3-gaps)
+
+### nvim/
+Nvim's configuration
+
+### termite/
+Termite's configuration
 
 ### LICENSE
 [MIT](LICENSE.md)
