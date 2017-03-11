@@ -18,6 +18,12 @@ cnoreabbrev Qall qall
 
 "" Mappings
 "*****************************************************************************
+" Save
+noremap <leader>w :w<CR>
+
+" Jump and insert
+nnoremap <leader>a A
+
 "" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
@@ -65,9 +71,7 @@ endif
 
 "" Buffer nav
 noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
 noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
 
 "" Close buffer
 noremap <leader>c :bd<CR>
