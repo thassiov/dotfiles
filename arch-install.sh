@@ -65,7 +65,7 @@ https://github.com/vimpr/vimperator-colors.git ~/.vimperator/colors
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Lastly: install the GUI packages
-yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks xorg xorg-server \
+yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks polybar xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr\
