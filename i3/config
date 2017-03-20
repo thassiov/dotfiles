@@ -200,11 +200,12 @@ set $text-color          #ffffff
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 set $transparent         #00000065
+set $active-border-color #3971ED
 
 
 # window colors
 #                       border              background         text                 indicator     child-border
-client.focused          $bg-color           $bg-color          $text-color          $bg-color      #3971ED
+client.focused          $bg-color           $bg-color          $text-color          $bg-color      $active-border-color
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.focused_inactive $urgent-bg-color    $inactive-bg-color $inactive-text-color $inactive-bg-color
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
