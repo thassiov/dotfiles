@@ -30,14 +30,14 @@ padding-right = 1
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = updates filesystem battery date menu0
+modules-right = updates wlan eth filesystem cpu memory battery date menu0
 modules-center = mpd volume
-modules-left = i3 wlan eth cpu memory
+modules-left = i3
 
 background = #66090909
 foreground = ${colors.white}
 
-underline-size = 2
+underline-size = 1
 underline-color = ${colors.white}
 
 tray-detached = false
@@ -46,7 +46,7 @@ tray-offset-x =
 tray-maxsize = 
 tray-padding = 
 
-font-0 = terminus:size=8;0
+font-0 = FiraMono:weight=medium:size=8;0
 font-1 = FontAwesome:size=10;0
 font-2 = TakaoGothic:weight=bold:size=10;0
 font-3 = FontAwesome:size=8;0
@@ -132,7 +132,7 @@ label-visible-padding = 1
 type = internal/mpd
 
 host = 127.0.0.1
-port = 4200
+port = 6600
 
 intervel = 2
 
@@ -163,6 +163,8 @@ toggle-off-foreground = #66
 
 [module/backlight]
 type = internal/xbacklight
+
+output = LVDS1
 
 format = <label> <bar>
 label = BL
@@ -198,7 +200,7 @@ type = internal/cpu
 interval = 2
 label = %{F${colors.white}  %percentage% %{F-}
 label-underline = ${colors.white}
-padding= 2
+padding= 5
 
 
 [module/memory]
@@ -211,7 +213,7 @@ label-foreground = ${colors.white}
 
 [module/wlan]
 type = internal/network
-interface = wlp12s0
+interface = wlp1s0
 interval = 3.0
 
 format-connected-padding = 1
@@ -284,8 +286,8 @@ bar-volume-empty-foreground = ${colors.gray}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC
+battery = BAT1
+adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
