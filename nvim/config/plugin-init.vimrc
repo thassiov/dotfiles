@@ -80,13 +80,13 @@ Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 
 "" Color
-Plug 'tomasr/molokai'
-Plug 'mhartington/oceanic-next'
-Plug 'w0ng/vim-hybrid'
-Plug 'josuegaleas/jay'
-Plug 'morhetz/gruvbox'
-Plug 'fxn/vim-monochrome'
-
+"Plug 'tomasr/molokai'
+"Plug 'mhartington/oceanic-next'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'josuegaleas/jay'
+"Plug 'morhetz/gruvbox'
+"Plug 'fxn/vim-monochrome'
+Plug 'rakr/vim-one'
 
 "*****************************************************************************
 "" Custom bundles

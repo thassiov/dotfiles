@@ -1,5 +1,5 @@
 " vim-airline
-let g:airline_theme = 'jay'
+let g:airline_theme = 'one'
 "let g:airline#extensions#syntastic#enabled = 1
 "let g:airline#extensions#branch#enabled = 1
 "let g:airline#extensions#tabline#enabled = 1
