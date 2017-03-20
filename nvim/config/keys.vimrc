@@ -18,6 +18,23 @@ cnoreabbrev Qall qall
 
 "" Mappings
 "*****************************************************************************
+
+" nerdtree
+noremap <leader>tre :NERDTreeToggle<CR>
+
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+
+" terminal emulation
+if g:vim_bootstrap_editor == 'nvim'
+  nnoremap <silent> <leader>sh :terminal<CR>
+else
+  nnoremap <silent> <leader>sh :VimShellCreate<CR>
+endif
+
 " Save
 noremap <leader>w :w<CR>
 
@@ -72,6 +89,9 @@ endif
 "" Buffer nav
 noremap <leader>z :bp<CR>
 noremap <leader>x :bn<CR>
+
+"" Open buffer"
+noremap <leader>b :CtrlPBuffer<CR>
 
 "" Close buffer
 noremap <leader>c :bd<CR>

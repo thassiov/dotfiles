@@ -76,8 +76,6 @@ endif
 " Theme
 colorscheme one
 set background=dark
-let g:gruvbox_termcolors = 256
-let g:gruvbox_contrast_dark = "hard"
 
 set mousemodel=popup
 set t_Co=256
@@ -90,7 +88,7 @@ if has("gui_running")
     set transparency=7
   endif
 else
-  let g:CSApprox_loaded = 1
+  "let g:CSApprox_loaded = 1
 
   " IndentLine
   let g:indentLine_enabled = 1
@@ -189,8 +187,6 @@ let g:javascript_enable_domhtmlcss = 1
 
 " Break line at 80 in md files
 au BufRead,BufNewFile *.md setlocal textwidth=80
-
-set nospell
 
 " force text on 80 [http://stackoverflow.com/a/3033455]
 " gqG

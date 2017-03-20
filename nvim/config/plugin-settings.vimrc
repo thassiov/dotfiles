@@ -1,9 +1,8 @@
 " vim-airline
 let g:airline_theme = 'one'
-"let g:airline#extensions#syntastic#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 "" NERDTree configuration
@@ -15,11 +14,8 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <leader>tre :NERDTreeToggle<CR>
 
 " grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
@@ -27,13 +23,6 @@ let Grep_Skip_Dirs = '.git node_modules'
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
-
-" terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
 
 "" ctrlp.vim
 set wildmode=list:longest,list:full
@@ -52,7 +41,6 @@ if executable('ag')
 endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-noremap <leader>b :CtrlPBuffer<CR>
 "let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
@@ -65,15 +53,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 """ deoplete config
-""let g:deoplete#enable_at_startup = 1
-"""" disable autocomplete
-"""let g:deoplete#disable_auto_complete = 1
-""if has("gui_running")
-""    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-""else
-""    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-""endif
-
 " tern and deoplete configs [https://www.gregjs.com/vim/2016/configuring-the-deoplete-asynchronous-keyword-completion-plugin-with-tern-for-vim/]
 
 let g:deoplete#enable_at_startup = 1
@@ -104,19 +83,6 @@ inoremap <expr><leader><Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-o>"
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
-" syntastic
-"let g:syntastic_always_populate_loc_list=1
-"let g:syntastic_error_symbol='✗'
-"let g:syntastic_warning_symbol='⚠'
-"let g:syntastic_style_error_symbol = '✗'
-"let g:syntastic_style_warning_symbol = '⚠'
-"let g:syntastic_auto_loc_list=1
-"let g:syntastic_aggregate_errors = 1
-"
-"let g:syntastic_javascript_checkers = ['jshint']
-"nmap syn :SyntasticCheck<CR>
-"noremap <leader>st :SyntasticToggleMode<CR>
-
 " Neomake
 let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_jsx_enabled_makers = ['jshint']
@@ -130,14 +96,13 @@ let g:neomake_logfile='/tmp/neomake-error.log'
 let g:neomake_open_list = 2
 
 " Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
-" vim-javascript
-augroup vimrc-javascript
-  autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
-augroup END
+ "vim-javascript
+"augroup vimrc-javascript
+  "autocmd!
+  "autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
+"augroup END
 
 " Startify config
 
