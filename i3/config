@@ -43,6 +43,8 @@ bindsym $mod+l exec i3lock-fancy
 # Screenshot
 bindsym Print exec gscreenshot
 
+bindsym $mod+i exec ~/bin/invert.sh
+
 # shutdown
 bindsym Mod1+Shift+F4 exec ~/confs/i3blocks-contrib-master/shutdown_menu/shutdown_menu
 
