@@ -228,12 +228,9 @@ bindsym $mod+Shift+u gaps outer current plus 6
 
 bar {
 	status_command polybar Bar
-	tray_output primary
+	tray_output LSDV1
 	separator_symbol "//"
 	strip_workspace_numbers yes
-
-	position bottom
-	mode invisible
 
 	colors {
 	   
