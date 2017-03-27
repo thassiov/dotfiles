@@ -230,7 +230,8 @@ bar {
 	status_command polybar Bar
 	tray_output LSDV1
 	separator_symbol "//"
-	strip_workspace_numbers yes
+	strip_workspace_numbers no
+    mode hide
 
 	colors {
 	   
