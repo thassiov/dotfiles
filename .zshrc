@@ -88,7 +88,7 @@ export GOPATH=~/.go
 export PATH=$PATH:~/.go/bin
 
 # For jekyll
-export PATH=$PATH:~/.gem/ruby/2.3.0/bin
+export PATH=$PATH:~/.gem/ruby/2.4.0/bin
 
 # JAVA/ANDROID Stuff
 # watch out for the 8
