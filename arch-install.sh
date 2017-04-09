@@ -110,3 +110,8 @@ newgrp sdkusers
 # Todoist
 # yaourt -S nwjs-sdk --noconfirm
 # git clone https://github.com/kamhix/todoist-linux.git /opt/todoist
+
+# git-branch-status is a must
+git clone https://github.com/bill-auger/git-branch-status/ .gbs/ # change 'gbs'
+
+
