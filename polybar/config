@@ -29,11 +29,12 @@ padding-right = 1
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = wlan filesystem cpu memory battery date
+modules-right = filesystem cpu memory battery date
 modules-center = volume
 modules-left = i3
 
-background = #66090909
+;background = #66090909
+background = #000000
 foreground = ${colors.white}
 
 underline-size = 1
