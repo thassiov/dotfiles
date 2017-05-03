@@ -7,3 +7,4 @@ mpd/mpdstate
 nvim/autoload
 nvim/plugged
 nvim/session
+nvim/.netrwhist
