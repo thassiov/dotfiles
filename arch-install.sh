@@ -69,6 +69,7 @@ yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks polybar xorg xorg-
 xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
 gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr xcalib\
+networkmanager network-manager-applet\
 sublime-text-dev editorconfig-core-c parcellite tomate-gtk --noconfirm
 
 # screencast tools
