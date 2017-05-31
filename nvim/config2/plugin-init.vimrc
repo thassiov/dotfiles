@@ -37,14 +37,24 @@ Plug 'tpope/vim-fugitive'
 
 " Status line
 Plug 'vim-airline/vim-airline'
+Plug 'joshdick/onedark.vim'
+
+" File explorer
+Plug "Shougo/vimfiler.vim"
 
 " Splash screen
 Plug 'mhinz/vim-startify'
 
 " Snippets' engine
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
+
+" Lang packs
+Plug 'sheerun/vim-polyglot'
+
+" Tern for js
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " Code assist
 Plug 'tpope/vim-surround'
