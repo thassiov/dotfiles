@@ -70,6 +70,7 @@ xorg-xinit vim firefox xscreensaver termite pcmanfm\
 gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr xcalib\
 networkmanager network-manager-applet notify-osd\
+zathura zathura-pdf-poppler\
 sublime-text-dev editorconfig-core-c parcellite tomate-gtk --noconfirm
 
 # screencast tools
