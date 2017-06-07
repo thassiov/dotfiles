@@ -103,7 +103,7 @@ bindsym $mod+v split v
 bindsym $mod+Shift+f fullscreen toggle
 
 # opens thunar
-bindsym $mod+f exec thunar
+bindsym $mod+f exec pcmanfm
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
