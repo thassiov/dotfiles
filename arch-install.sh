@@ -66,7 +66,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 # Lastly: install the GUI packages
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks polybar xorg xorg-server \
-xorg-xinit vim firefox xscreensaver termite thunar thunar-volman \
+xorg-xinit vim firefox xscreensaver termite pcmanfm\
 gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr xcalib\
 networkmanager network-manager-applet notify-osd\
