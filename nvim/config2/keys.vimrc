@@ -37,6 +37,9 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
+" nerdtree
+noremap <leader><Tab> :NERDTreeToggle<CR>
+
 "" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT

@@ -40,7 +40,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'joshdick/onedark.vim'
 
 " File explorer
-Plug "Shougo/vimfiler.vim"
+Plug 'Shougo/vimfiler.vim'
+Plug 'scrooloose/nerdtree'
 
 " Splash screen
 Plug 'mhinz/vim-startify'
@@ -84,3 +85,5 @@ endif
 
 call plug#end()
 
+set nocp 
+filetype plugin on 
