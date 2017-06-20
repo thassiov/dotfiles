@@ -60,6 +60,9 @@ noremap XX "+x<CR>
 noremap <leader>z :bp<CR>
 noremap <leader>x :bn<CR>
 
+"" Open ctrlp
+map <leader>q :CtrlP<CR>
+
 "" Open buffer"
 noremap <leader>b :CtrlPBuffer<CR>
 
