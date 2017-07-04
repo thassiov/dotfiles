@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <title>Index</title>
+            <style type="text/css" media="screen">
+                #main {
+                    margin-left: 45%;
+                    margin-top: 25%;
+                }
+                #date {
+                    font: 2em sans-serif bold;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="main">
+                <label id="date"></label>
+            </div>
+            <script charset="utf-8">
+                setInterval(function(){
+                    var date = new Date();
+                    var hh = date.getHours();
+                    var mm = date.getMinutes();
+                    var ss = date.getSeconds();
+
+                    var time = hh + ":" + mm + ":" + ss;
+
+                    document.getElementById("date").innerText = time;
+
+                }, 1000);
+            </script>
+        </body>
+    </html>
