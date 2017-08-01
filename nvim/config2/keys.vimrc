@@ -82,18 +82,8 @@ noremap <C-h> <C-w>h
 map gv :GV<CR>
 map gfv :GV!<CR>
 
-" Needs work
-function! CtrlPMappings()
-  nnoremap <buffer> <silent> <Del> :call <sid>DeleteBuffer()<cr>
-endfunction
-
-function! s:DeleteBuffer()
-  let path = fnamemodify(getline('.')[2:], ':p')
-  let bufn = matchstr(path, '\v\d+\ze\*No Name')
-  exec "bd" bufn ==# "" ? path : bufn
-  exec "norm \<F5>"
-endfunction
-
 " Replace in visual mode [http://stackoverflow.com/a/676619]
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
+" Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
+nnoremap <silent> <leader>fc zMzv
