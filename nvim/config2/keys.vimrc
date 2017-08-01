@@ -86,4 +86,4 @@ map gfv :GV!<CR>
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
 " Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
-nnoremap <silent> <leader>fc zMzv
+nnoremap <silent> <leader>fc zMzvzz
