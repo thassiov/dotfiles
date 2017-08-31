@@ -34,6 +34,7 @@ Plug 'FelikZ/ctrlp-py-matcher'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " Status line
 Plug 'vim-airline/vim-airline'
