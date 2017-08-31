@@ -11,5 +11,8 @@ map <F4> :tabnext<CR>
 " Remove navbar"
 set gui=nonavigation
 
+" Remove tabs"
+set gui=notabs
+
 " Set default colorscheme
 colorscheme indigo-fx3
