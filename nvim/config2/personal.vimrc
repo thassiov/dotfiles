@@ -138,7 +138,3 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
-" CTRLP close buffer from buffer menu
-let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
-
-
