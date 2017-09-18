@@ -103,3 +103,9 @@ else
 endif
 
 
+" vim-polyglot
+" because syntax highlight in vue files is sloooow af
+let g:polyglot_disabled = ['vue']
+au BufNewFile,BufRead *.vue set syntax=html
+
+
