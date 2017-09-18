@@ -16,3 +16,10 @@ set gui=notabs
 
 " Set default colorscheme
 colorscheme indigo-fx3
+
+" leader key
+map , <Leader>
+
+nmap <Leader>gt :set gui=tabs<CR>
+
+nmap <Leader>nn :set gui=none<CR>
