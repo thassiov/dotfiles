@@ -28,45 +28,44 @@ browser = firefox
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
-# vacuous2
-# https://terminal.sexy/#EBAQ0sW8ICAguR4ugZV8-buANWV5LSAxCzRSkJCQYGBg0UVIp7ea-uOgdJGhhzFOD4Kd__Dw
-[colors]
+# hybrid
+# http://terminal.sexy/#HR8hxcjGKCoupUJCjJRA3pNfX4GdhWePXo2HcHiANztBzGZmtb1o8MZ0gaK-spS7ir63xcjG
 
+[colors]
 # special
-foreground      = #d2c5bc
-foreground_bold = #d2c5bc
-cursor          = #d2c5bc
-background      = #101010
+foreground      = #c5c8c6
+foreground_bold = #c5c8c6
+cursor          = #c5c8c6
+background      = #1d1f21
 
 # black
-color0  = #202020
-color8  = #606060
+color0  = #282a2e
+color8  = #373b41
 
 # red
-color1  = #b91e2e
-color9  = #d14548
+color1  = #a54242
+color9  = #cc6666
 
 # green
-color2  = #81957c
-color10 = #a7b79a
+color2  = #8c9440
+color10 = #b5bd68
 
 # yellow
-color3  = #f9bb80
-color11 = #fae3a0
+color3  = #de935f
+color11 = #f0c674
 
 # blue
-color4  = #356579
-color12 = #7491a1
+color4  = #5f819d
+color12 = #81a2be
 
 # magenta
-color5  = #2d2031
-color13 = #87314e
+color5  = #85678f
+color13 = #b294bb
 
 # cyan
-color6  = #0b3452
-color14 = #0f829d
+color6  = #5e8d87
+color14 = #8abeb7
 
 # white
-color7  = #909090
-color15 = #fff0f0
-
+color7  = #707880
+color15 = #c5c8c6
