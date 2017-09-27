@@ -87,6 +87,15 @@ yaourt -S pulseaudio pavucontrol pamixer --noconfirm
 # Other things: 
 yaourt -S acpi --noconfirm
 
+# tlp - power management
+# http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#arch
+sudo pacman -S tlp tlp-rdw 
+sudo systemctl enable tlp.service
+sudo systemctl enable tlp-sleep.service 
+sudo systemctl enable NetworkManager-dispatcher.service 
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket 
+
 # Now, for development
 # For node
 yaourt -S nodejs npm --noconfirm
