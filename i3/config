@@ -73,8 +73,7 @@ exec --no-startup-id lightscreen &
 exec --no-startup-id megasync &
 exec --no-startup-id redshift-gtk &
 exec --no-startup-id xautolock -time 10 -locker lock
-exec --no-startup-id conky -c ~/.wakaconky/.conkyrc &
-exec --no-startup-id conky -c ~/.wakaconky/.gitconky &
+exec --no-startup-id python ~/.wakaconky/conkyInit.py
 
 
 #bindsym $mod+k exec conky-init.sh
