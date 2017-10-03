@@ -100,6 +100,9 @@ sudo systemctl mask systemd-rfkill.socket
 # For node
 yaourt -S nodejs npm --noconfirm
 
+# for development
+npm install eslint -g
+
 # For Ionic
 npm install -g cordova ionic
 # See <http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html>
