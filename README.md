@@ -1,22 +1,30 @@
 # My Confs
 
-### [arch-install.sh](arch-install.sh)
-Packages I install in my Arch
+## Programs
 
-### dmenu_run
-My dynamic menu's config
-
-### forceabnt.sh
-Forces ABNT 2 as my keyboard configuration
-
-### i3/
-My wm's confs (i3-gaps)
-
-### nvim/
-Nvim's configuration
-
-### termite/
-Termite's configuration
+- Window Manager
+  - i3-gaps
+- Compositor
+  - compton
+- Screen locker
+  - i3lock-fancy
+- Dynamic Menu
+  - dmenu2
+- Status Bar
+  - Polibar
+- Music Player
+  - mpd
+  - ncmpcpp
+- Terminal Emulator
+  - Termite
+- Terminal Multiplexer
+  - Tmux
+- Shell
+  - Zsh
+- Text Editor
+  - Neovim
+- VCS
+  - Git
 
 ### LICENSE
 [MIT](LICENSE.md)
