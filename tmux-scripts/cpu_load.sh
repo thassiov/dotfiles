@@ -6,6 +6,6 @@ case "$OSTYPE" in
 
         FREE_MEM=`free -h | awk '/Mem/{print $3"/"$2}'`
 
-        echo ": $CPU  $FREE_MEM"
+        echo "$CPU%   $FREE_MEM "
         ;;
 esac
