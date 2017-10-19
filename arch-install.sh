@@ -67,7 +67,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Lastly: install the GUI packages
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks polybar xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite pcmanfm\
-gvfs ffmpeg vlc mpd ncmpcpp lightscreen gpodder geeqie httpie dmenu2\
+gvfs ffmpeg vlc mpd ncmpcpp gpodder geeqie httpie dmenu2\
 compton flashplugin nitrogen arandr xcalib\
 networkmanager network-manager-applet notify-osd\
 zathura zathura-pdf-poppler\
@@ -101,7 +101,7 @@ sudo systemctl mask systemd-rfkill.socket
 yaourt -S nodejs npm --noconfirm
 
 # for development
-npm install eslint -g
+npm install jshint -g
 
 # For Ionic
 npm install -g cordova ionic

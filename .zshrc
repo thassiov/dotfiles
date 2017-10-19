@@ -129,3 +129,5 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
 ####
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
