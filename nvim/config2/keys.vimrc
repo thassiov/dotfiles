@@ -44,7 +44,8 @@ noremap <leader><Tab> :NERDTreeToggle<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
-noremap <leader>t :tabedit %<CR>
+"noremap <leader>t :tabedit %<CR>
+noremap <leader>t :call zoom#toggle()<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -60,11 +61,11 @@ noremap XX "+x<CR>
 noremap <leader>z :bp<CR>
 noremap <leader>x :bn<CR>
 
-"" Open ctrlp
-map <leader>q :CtrlP<CR>
+"" Open fzf
+map <leader>q :Files<CR>
 
 "" Open buffer"
-noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>b :Buffers<CR>
 
 "" Close buffer
 noremap <leader>c :bd<CR>
@@ -87,3 +88,9 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
 " Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
 nnoremap <silent> <leader>fc zMzvzz
+
+" To enter Goyo mode
+noremap <leader>m :Goyo<CR>
+
+noremap <leader>- :split term://zsh<CR>
+noremap <leader>\ :vsplit term://zsh<CR>

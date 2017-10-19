@@ -28,8 +28,10 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 
 " Fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -66,11 +68,22 @@ Plug 'scrooloose/nerdcommenter'
 " Navigation
 "Plug 'easymotion/vim-easymotion'
 
+" Pane
+Plug 'dhruvasagar/vim-zoom'
+
+" For md editting
+Plug 'junegunn/goyo.vim'
+
 " colorscheme
 Plug 'kristijanhusak/vim-hybrid-material'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
+
+" Linter
+" Lint engine
+"Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 
 " For project-specific configuration
 " Note: requires editorconfig-core-c package
