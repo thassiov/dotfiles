@@ -87,7 +87,8 @@ map gfv :GV!<CR>
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
 " Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
-nnoremap <silent> <leader>fc zMzvzz
+" 'cafe' stands for 'Close All Folds Except'
+nnoremap <silent> <leader>cafe zMzvzz
 
 " To enter Goyo mode
 noremap <leader>m :Goyo<CR>
