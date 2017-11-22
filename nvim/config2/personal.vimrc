@@ -131,6 +131,8 @@ set splitbelow
 set splitright
 
 set cursorcolumn
+set cursorline
+hi LineNr guifg=e5e5e5
 set colorcolumn=+1
 set number
 set mouse=a
