@@ -71,7 +71,7 @@ noremap <leader>b :Buffers<CR>
 noremap <leader>c :bd<CR>
 
 "" find text in project (the_silver_searcher)
-map <leader>s :Ag<CR>
+map <leader>s :Ag!<CR>
 
 map <leader>tl :Ag! @TODO\|@NOTE\|@FIXME<CR>
 
