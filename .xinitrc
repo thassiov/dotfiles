@@ -57,4 +57,6 @@ setxkbmap -model abnt2 -layout br
 setxkbmap -option caps:swapescape
 #exec xfce4-session
 exec i3 
+# diable ideapad beep
+xset -b
 
