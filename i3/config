@@ -231,7 +231,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 for_window [class="^.*"] border pixel 1
 #i3-gaps
-gaps inner 10
+gaps inner 5
 gaps outer 5
 #smart_gaps on
 smart_borders on
