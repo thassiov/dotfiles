@@ -244,22 +244,22 @@ bindsym $mod+Shift+u gaps outer current plus 6
 
 
 bar {
-	status_command polybar Bar
-	tray_output LSDV1
-	separator_symbol "//"
-	strip_workspace_numbers no
+    status_command polybar bar
+    tray_output LSDV1
+    separator_symbol "//"
+    strip_workspace_numbers no
     mode hide
 
-	colors {
-	   
-	    background		$bg.color
-	    statusline		$fg.color	
-	    separator		$alt.color
+    colors {
+       
+        background		$bg.color
+        statusline		$fg.color	
+        separator		$alt.color
 
-	    # class		border		background	font
-	    focused_workspace	$bg.color	$alt.color	$fg.color
-	    inactive_workspace	$bg.color	$bg.color	$fg.color
-	    active_workspace	$bg.color	$alt.color	$fg.color
-	    urgent_workspace	$bg.color	$warn.color	#ffffff
-	}
+         #class		border		background	font
+        focused_workspace	$bg.color	$alt.color	$fg.color
+        inactive_workspace	$bg.color	$bg.color	$fg.color
+        active_workspace	$bg.color	$alt.color	$fg.color
+        urgent_workspace	$bg.color	$warn.color	#ffffff
+    }
 }
