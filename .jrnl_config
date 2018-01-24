@@ -1,0 +1,13 @@
+{
+  "editor": "nvim",
+  "timeformat": "%Y-%m-%d %H:%M",
+  "default_minute": 0,
+  "default_hour": 9,
+  "linewrap": false,
+  "highlight": true,
+  "journals": {
+    "default": "/home/thassiov/MEGA/journal/journal.txt"
+  },
+  "encrypt": false,
+  "tagsymbols": "@"
+}

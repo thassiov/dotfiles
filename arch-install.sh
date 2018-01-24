@@ -46,6 +46,7 @@ ln -s confs/compton.conf .compton.conf
 ln -s confs/mpd .mpd
 ln -s confs/ncmpcpp .ncmpcpp
 ln -s confs/.i3blocks.confs .
+ln -s confs/.jrnl_config .
 
 # Install yaourt
 git clone https://aur.archlinux.org/package-query.git
@@ -68,7 +69,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yaourt -S i3-gaps i3lock i3lock-fancy i3bar i3status i3blocks polybar xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite pcmanfm\
 gvfs ffmpeg vlc mpd ncmpcpp gpodder geeqie httpie dmenu2\
-python-pip\
+python-pip jrnl\
 compton flashplugin nitrogen arandr xcalib\
 networkmanager network-manager-applet notify-osd\
 zathura zathura-pdf-poppler\
