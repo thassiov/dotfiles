@@ -84,8 +84,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # GO PATH
-export GOPATH=~/.go
-export PATH=$PATH:~/.go/bin
+export GOPATH=~/dev/go
+export PATH=$PATH:/usr/bin/go
 
 # For jekyll
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin
