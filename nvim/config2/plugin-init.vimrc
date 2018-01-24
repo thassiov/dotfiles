@@ -73,6 +73,7 @@ Plug 'dhruvasagar/vim-zoom'
 
 " For md editting
 Plug 'junegunn/goyo.vim'
+Plug 'shime/vim-livedown'
 
 " colorscheme
 Plug 'kristijanhusak/vim-hybrid-material'

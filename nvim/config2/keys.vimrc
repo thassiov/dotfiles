@@ -62,7 +62,7 @@ noremap <leader>z :bp<CR>
 noremap <leader>x :bn<CR>
 
 "" Open fzf
-map <leader>q :Files<CR>
+map <leader>q :GFiles<CR>
 
 "" Open buffer"
 noremap <leader>b :Buffers<CR>
@@ -100,3 +100,9 @@ noremap <leader>m :Goyo<CR>
 
 noremap <leader>- :split term://zsh<CR>
 noremap <leader>\ :vsplit term://zsh<CR>
+
+" find selection [http://vim.wikia.com/wiki/Search_for_visually_selected_text]
+vnoremap // y/<C-R>"<CR>
+
+" Livedown server's toggle
+nmap gm :LivedownToggle<CR>
