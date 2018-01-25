@@ -133,4 +133,5 @@ newgrp sdkusers
 # git-branch-status is a must
 git clone https://github.com/bill-auger/git-branch-status/ .gbs/ # change 'gbs'
 
-
+# zsh-autosugestions (inside ~/.oh-my-zsh/custom/plugins/)
+git clone https://github.com/zsh-users/zsh-autosuggestions
