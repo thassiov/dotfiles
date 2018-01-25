@@ -189,7 +189,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 for_window [class="^floatingVim$"] floating enable
 #bindsym $mod+Shift+a exec "termite -e nvim /home/thassiov/tmp/`date +%s.%N`.md --class floatingVim"
-bindsym $mod+Shift+a exec "termite -e jrnl --class floatingVim"
+bindsym $mod+q exec "termite -e jrnl --class floatingVim"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
