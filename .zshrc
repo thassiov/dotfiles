@@ -83,6 +83,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# BROWSER
+export BROWSER=google-chrome-stable
+
 # GO PATH
 export GOPATH=~/dev/go
 export PATH=$PATH:/usr/bin/go
