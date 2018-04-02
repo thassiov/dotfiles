@@ -106,3 +106,5 @@ vnoremap // y/<C-R>"<CR>
 
 " Livedown server's toggle
 nmap gm :LivedownToggle<CR>
+
+nmap <leader>ff :Goyo \| se nu \| GitGutterEnable \| vertical resize 100<CR>
