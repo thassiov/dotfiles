@@ -30,12 +30,12 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+line-size = 2
+line-color = #2f3640
 
 border-left-size = 9
 border-right-size = 9
-border-bottom-size = -2
+border-bottom-size = 1
 border-top-size = 5
 border-color = #00000000
 
@@ -53,11 +53,10 @@ modules-left = filesystem i3
 modules-center = mpd
 modules-right = wlan eth volume temperature memory cpu battery date
 
-tray-position = right
-tray-padding = 2
+tray-position = center
+tray-padding = 0
 ;tray-transparent = true
-;tray-background = #0063ff
-
+tray-background = #2f3640
 ;wm-restack = bspwm
 ;wm-restack = i3
 
