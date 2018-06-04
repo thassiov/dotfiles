@@ -69,7 +69,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yaourt -S i3-gaps i3lock i3lock-fancy-dualmonitors-git i3bar i3status i3blocks polybar xorg xorg-server \
 xorg-xinit vim firefox xscreensaver termite pcmanfm\
 gvfs ffmpeg vlc mpd ncmpcpp gpodder geeqie httpie dmenu2\
-python-pip jrnl\
+python-pip jrnl exa xclip\
 compton flashplugin nitrogen arandr xcalib\
 networkmanager network-manager-applet notify-osd\
 zathura zathura-pdf-poppler\
