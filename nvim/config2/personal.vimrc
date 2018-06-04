@@ -113,7 +113,7 @@ endif
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+  set clipboard+=unnamedplus
 endif
 
 " folding
