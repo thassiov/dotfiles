@@ -66,7 +66,7 @@ if (empty($TMUX))
 endif
 "
 " Theme
-colorscheme hybrid_reverse
+colorscheme gruvbox
 set background=dark
 
 set mousemodel=popup
@@ -169,3 +169,10 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+highlight Cursor guifg=white guibg=turquoise1
+highlight iCursor guifg=white guibg=OrangeRed2
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
