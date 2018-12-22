@@ -1,3 +1,9 @@
+" vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+"
+let g:gruvbox_contrast_light = 'soft'
+let g:gruvbox_contrast_dark = 'hard'
+
 " vim-airline
 let g:airline_theme = 'onedark'
 let g:airline#extensions#branch#enabled = 1

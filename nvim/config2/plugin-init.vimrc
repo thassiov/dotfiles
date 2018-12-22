@@ -51,6 +51,7 @@ Plug 'mhinz/vim-startify'
 
 " Snippets' engine
 Plug 'SirVer/ultisnips'
+
 " Snippets
 Plug 'honza/vim-snippets'
 
@@ -73,10 +74,15 @@ Plug 'dhruvasagar/vim-zoom'
 
 " For md editting
 Plug 'junegunn/goyo.vim'
-Plug 'shime/vim-livedown'
 
 " colorscheme
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'w0ng/vim-hybrid'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'dikiaap/minimalist'
+Plug 'morhetz/gruvbox'
+Plug 'archSeer/colibri.vim'
+Plug 'arcticicestudio/nord-vim', { 'tag': 'v0.9.0' }
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -90,6 +96,8 @@ Plug 'w0rp/ale'
 " Note: requires editorconfig-core-c package
 " [see https://github.com/editorconfig/editorconfig-core-c#readme]
 Plug 'editorconfig/editorconfig-vim'
+
+Plug 'vimwiki/vimwiki'
 "*****************************************************************************
 "*****************************************************************************
 

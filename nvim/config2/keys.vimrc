@@ -39,6 +39,7 @@ noremap <Leader>gr :Gremove<CR>
 
 " nerdtree
 noremap <leader><Tab> :NERDTreeToggle<CR>
+noremap <leader>f<Tab> :NERDTreeFind<CR>
 
 "" Tabs
 nnoremap <Tab> gt
@@ -63,6 +64,7 @@ noremap <leader>x :bn<CR>
 
 "" Open fzf
 map <leader>q :GFiles<CR>
+map <leader>fq :Files<CR>
 
 "" Open buffer"
 noremap <leader>b :Buffers<CR>
@@ -108,3 +110,6 @@ vnoremap // y/<C-R>"<CR>
 nmap gm :LivedownToggle<CR>
 
 nmap <leader>ff :Goyo \| se nu \| GitGutterEnable \| vertical resize 100<CR>
+
+" Format file
+map <F7> mzgg=G`z
