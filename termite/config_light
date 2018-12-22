@@ -1,0 +1,73 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = true
+visible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Fira Mono Medium 9
+scrollback_lines = 1000
+search_wrap = true
+#icon_name = terminal
+#geometry = 640x480
+
+# "system", "on" or "off"
+cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# $BROWSER is used by default
+# browser = google-chrome-stable
+# The $BROWSER env var is being set in the .zshrc file
+
+# word characters used for word selection
+# (default if unset: all graphic non-punctuation/space characters)
+#word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+# mostly-bright
+# http://terminal.sexy/#8_PzcHBw09PT72t7odVp9ZM1TsLo_sfNlcHAcHBws7Oz7VRmr9uA9ZM1Xcfq0qS0daGgkJCQ
+
+[colors]
+
+# special
+foreground      = #707070
+foreground_bold = #707070
+cursor          = #707070
+background      = #f3f3f3
+
+# black
+color0  = #d3d3d3
+color8  = #b3b3b3
+
+# red
+color1  = #ef6b7b
+color9  = #ed5466
+
+# green
+color2  = #a1d569
+color10 = #afdb80
+
+# yellow
+color3  = #f59335
+color11 = #f59335
+
+# blue
+color4  = #4ec2e8
+color12 = #5dc7ea
+
+# magenta
+color5  = #fec7cd
+color13 = #d2a4b4
+
+# cyan
+color6  = #95c1c0
+color14 = #75a1a0
+
+# white
+color7  = #707070
+color15 = #909090
