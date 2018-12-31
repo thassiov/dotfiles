@@ -113,3 +113,6 @@ nmap <leader>ff :Goyo \| se nu \| GitGutterEnable \| vertical resize 100<CR>
 
 " Format file
 map <F7> mzgg=G`z
+
+noremap <leader>cbd :set background=dark<CR>
+noremap <leader>cbl :set background=light<CR>
