@@ -90,9 +90,6 @@ export BROWSER=google-chrome-stable
 export GOPATH=~/dev/go
 export PATH=$PATH:/usr/bin/go
 
-# For jekyll
-export PATH=$PATH:~/.gem/ruby/2.4.0/bin
-
 # JAVA/ANDROID Stuff
 # watch out for the 8
 export JAVA_HOME=/usr/lib/jvm/java-8-jdk
@@ -104,10 +101,17 @@ export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
 # My Scripts
 export PATH=$PATH:~/bin
 
-# gPodder
-GPODDER_DOWNLOAD_DIR=~/Sounds/gPodder
 
 alias vim="nvim"
+
+function ls () {
+    if exa &> /dev/null
+    then
+        exa "$@" --color always
+    else
+        command ls "$@"
+    fi
+}
 
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
