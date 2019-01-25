@@ -45,8 +45,6 @@ noremap <leader>f<Tab> :NERDTreeFind<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
-"noremap <leader>t :tabedit %<CR>
-noremap <leader>t :call zoom#toggle()<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -97,19 +95,11 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 " 'cafe' stands for 'Close All Folds Except'
 nnoremap <silent> <leader>cafe zMzvzz
 
-" To enter Goyo mode
-noremap <leader>m :Goyo<CR>
-
 noremap <leader>- :split term://zsh<CR>
 noremap <leader>\ :vsplit term://zsh<CR>
 
 " find selection [http://vim.wikia.com/wiki/Search_for_visually_selected_text]
 vnoremap // y/<C-R>"<CR>
-
-" Livedown server's toggle
-nmap gm :LivedownToggle<CR>
-
-nmap <leader>ff :Goyo \| se nu \| GitGutterEnable \| vertical resize 100<CR>
 
 " Format file
 map <F7> mzgg=G`z

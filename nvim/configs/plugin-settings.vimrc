@@ -1,11 +1,5 @@
-" vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-"
-let g:gruvbox_contrast_light = 'soft'
-let g:gruvbox_contrast_dark = 'hard'
-
 " vim-airline
-let g:airline_theme = 'onedark'
+let g:airline_theme = 'nord'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -21,32 +15,6 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-
-"" ctrlp.vim
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-"set wildmode=list:longest,list:full
-"set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|bower_components)|(\.(swp|tox|ico|git|hg|svn))$'
-" Custom .ctrlpignore from [http://superuser.com/a/900794]
-"let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-"let g:ctrlp_use_caching = 1
-"let g:ctrlp_show_hidden = 1
-
-
-" tern
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
-
-
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
 
 " Startify config
 let g:startify_change_to_dir = 1
@@ -109,24 +77,6 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-
-" vim-polyglot
-" because syntax highlight in vue files is sloooow af
-" let g:polyglot_disabled = ['vue']
-au BufNewFile,BufRead *.vue set syntax=html
-
-" Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_javascript_checkers = ['jshint']
-
 " fzf
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -185,11 +135,3 @@ command! -bang -nargs=* Ag
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
-
-" LIVEDOWN
-" should markdown preview get shown automatically upon opening markdown buffer
-let g:livedown_autorun = 0
-" should the browser window pop-up upon previewing
-let g:livedown_open = 1 
-" the port on which Livedown server will run
-let g:livedown_port = 1337

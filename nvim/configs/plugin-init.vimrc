@@ -43,23 +43,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'joshdick/onedark.vim'
 
 " File explorer
-Plug 'Shougo/vimfiler.vim'
 Plug 'scrooloose/nerdtree'
 
 " Splash screen
 Plug 'mhinz/vim-startify'
 
-" Snippets' engine
-Plug 'SirVer/ultisnips'
-
-" Snippets
-Plug 'honza/vim-snippets'
-
 " Lang packs
 Plug 'sheerun/vim-polyglot'
-
-" Tern for js
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " Code assist
 Plug 'tpope/vim-surround'
@@ -69,19 +59,7 @@ Plug 'scrooloose/nerdcommenter'
 " Navigation
 "Plug 'easymotion/vim-easymotion'
 
-" Pane
-Plug 'dhruvasagar/vim-zoom'
-
-" For md editting
-Plug 'junegunn/goyo.vim'
-
 " colorscheme
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'w0ng/vim-hybrid'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'dikiaap/minimalist'
-Plug 'morhetz/gruvbox'
-Plug 'archSeer/colibri.vim'
 Plug 'arcticicestudio/nord-vim', { 'tag': 'v0.9.0' }
 
 " Analytics
@@ -96,8 +74,6 @@ Plug 'w0rp/ale'
 " Note: requires editorconfig-core-c package
 " [see https://github.com/editorconfig/editorconfig-core-c#readme]
 Plug 'editorconfig/editorconfig-vim'
-
-Plug 'vimwiki/vimwiki'
 "*****************************************************************************
 "*****************************************************************************
 
