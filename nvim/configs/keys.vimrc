@@ -93,7 +93,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
 " Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
 " 'cafe' stands for 'Close All Folds Except'
-nnoremap <silent> <leader>cafe zMzvzz
+nnoremap <silent> <leader>fafe zMzvzz
 
 noremap <leader>- :split term://zsh<CR>
 noremap <leader>\ :vsplit term://zsh<CR>

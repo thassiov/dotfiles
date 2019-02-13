@@ -28,8 +28,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 
 " Fuzzy finder
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -56,8 +54,10 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
-" Navigation
-"Plug 'easymotion/vim-easymotion'
+" Snippets and autocompletion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " colorscheme
 Plug 'arcticicestudio/nord-vim', { 'tag': 'v0.9.0' }
@@ -67,7 +67,6 @@ Plug 'wakatime/vim-wakatime'
 
 " Linter
 " Lint engine
-"Plug 'vim-syntastic/syntastic'
 Plug 'w0rp/ale'
 
 " For project-specific configuration

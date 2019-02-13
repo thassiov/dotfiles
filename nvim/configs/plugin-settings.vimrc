@@ -1,3 +1,12 @@
+" Deoplete conf
+let g:deoplete#enable_at_startup = 1"
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+"
 " vim-airline
 let g:airline_theme = 'nord'
 let g:airline#extensions#branch#enabled = 1
