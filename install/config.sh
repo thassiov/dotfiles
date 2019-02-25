@@ -10,3 +10,8 @@ sudo systemctl enable tlp-sleep.service
 sudo systemctl enable NetworkManager-dispatcher.service 
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket 
+
+# configure touch pad - synaptics
+# configure screen bright - add user to the screen group
+# enable newworkmanager's deamon (systemctl enable ...)
+

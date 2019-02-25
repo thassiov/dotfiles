@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# also go in /etc/makepkg.conf and change makeflags to 'j(number of processors - 1)'
+# to compile things quickly
+
 mv ~/.bashrc ~/.bashrc.old
 ln -s ~/confs/.zshrc .
 source ~/.zshrc
