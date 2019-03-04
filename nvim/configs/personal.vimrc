@@ -66,7 +66,7 @@ if (empty($TMUX))
 endif
 "
 " Theme
-colorscheme nord
+colorscheme hybrid
 set background=dark
 
 set mousemodel=popup
