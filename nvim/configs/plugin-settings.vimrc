@@ -2,13 +2,14 @@
 let g:deoplete#enable_at_startup = 1"
 
 " Ultisnips
+let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
-"
-" vim-airline
-let g:airline_theme = 'nord'
+
+"" vim-airline
+let g:airline_theme = 'jay'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
