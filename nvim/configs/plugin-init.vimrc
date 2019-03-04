@@ -61,6 +61,9 @@ Plug 'honza/vim-snippets'
 
 " colorscheme
 Plug 'arcticicestudio/nord-vim', { 'tag': 'v0.9.0' }
+Plug 'w0ng/vim-hybrid'
+Plug 'josuegaleas/jay'
+Plug 'rakr/vim-one'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
