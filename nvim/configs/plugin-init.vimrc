@@ -42,6 +42,7 @@ Plug 'joshdick/onedark.vim'
 
 " File explorer
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Splash screen
 Plug 'mhinz/vim-startify'
@@ -67,6 +68,9 @@ Plug 'rakr/vim-one'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
+
+" For my writting
+Plug 'junegunn/goyo.vim'
 
 " Linter
 " Lint engine
