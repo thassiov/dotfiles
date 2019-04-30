@@ -107,4 +107,6 @@ map <F7> mzgg=G`z
 noremap <leader>cbd :set background=dark<CR>
 noremap <leader>cbl :set background=light<CR>
 
-noremap <leader>g :Goyo<CR>
+noremap <leader>mm :Goyo<CR>
+
+nnoremap <F5> "=strftime("%c")<CR>P
