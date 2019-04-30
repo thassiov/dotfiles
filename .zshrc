@@ -138,3 +138,6 @@ export KEYTIMEOUT=1
 ####
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# for grv [https://github.com/rgburke/grv]
+unalias grv
