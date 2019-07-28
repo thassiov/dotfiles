@@ -51,9 +51,10 @@ bindsym Mod1+Shift+F4 exec ~/confs/i3blocks-contrib-master/shutdown_menu/shutdow
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
-bindsym Mod1+F2 exec ~/confs/dmenu_run
+bindsym Mod1+F2 exec ~/confs/rofi/rofi-run
+bindsym Mod1+F3 exec ~/confs/rofi/rofi-dmenu
 
-bindsym Mod1+F3 exec j4-dmenu-desktop --dmenu="dmenu -i -fn 'Fira Mono Medium-8' -l 30"
+bindsym $mod+Tab exec ~/confs/rofi/rofi-window
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -70,9 +71,9 @@ exec --no-startup-id NetworkManager &
 exec --no-startup-id nm-applet &
 exec --no-startup-id compton &
 exec --no-startup-id parcellite &
+exec --no-startup-id rescuetime &
 exec --no-startup-id megasync &
-exec --no-startup-id redshift-qt &
-exec --no-startup-id xautolock -time 10 -locker lock
+exec --no-startup-id redshift &
 
 exec killall -q notify-osd
 exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
@@ -187,8 +188,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 for_window [class="^floatingVim$"] floating enable
-#bindsym $mod+Shift+a exec "termite -e nvim /home/thassiov/tmp/`date +%s.%N`.md --class floatingVim"
-bindsym $mod+q exec "termite -e jrnl --class floatingVim"
+bindsym $mod+q exec "termite -e tj --class floatingVim"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
