@@ -38,8 +38,10 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
 
 " nerdtree
-noremap <leader><Tab> :NERDTreeToggle<CR>
-noremap <leader>f<Tab> :NERDTreeFind<CR>
+"noremap <leader><Tab> :NERDTreeToggle<CR>
+"noremap <leader>f<Tab> :NERDTreeFind<CR>
+noremap <leader><Tab> :Lex 20<CR>
+noremap <leader>f<Tab> :Lex 20<CR>
 
 "" Tabs
 nnoremap <Tab> gt

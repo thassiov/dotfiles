@@ -42,9 +42,6 @@ Plug 'vim-airline/vim-airline'
 " File explorer
 Plug 'scrooloose/nerdtree'
 
-" Splash screen
-Plug 'mhinz/vim-startify'
-
 " Lang packs
 Plug 'sheerun/vim-polyglot'
 
