@@ -38,11 +38,9 @@ Plug 'junegunn/gv.vim'
 
 " Status line
 Plug 'vim-airline/vim-airline'
-Plug 'joshdick/onedark.vim'
 
 " File explorer
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Splash screen
 Plug 'mhinz/vim-startify'
@@ -55,16 +53,9 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
-" Snippets and autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 " colorscheme
-Plug 'arcticicestudio/nord-vim', { 'tag': 'v0.9.0' }
 Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
-Plug 'rakr/vim-one'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
