@@ -49,7 +49,7 @@ ZSH_THEME="refined"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-nvm)
 
 # User configuration
 
@@ -83,24 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# BROWSER
-export BROWSER=google-chrome-stable
-
-# GO PATH
-export GOPATH=~/dev/go
-export PATH=$PATH:/usr/bin/go
-
-# JAVA/ANDROID Stuff
-# watch out for the 8
-export JAVA_HOME=/usr/lib/jvm/java-8-jdk
-# Assuming android-sdk was installed using yaourt
-export ANDROID_HOME=/opt/android-sdk
-export ANDROID_TOOLS=/opt/android-sdk/tools
-export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
-
-# My Scripts
-export PATH=$PATH:~/bin
-
+# my exported variables
+source ~/.envs
 
 alias vim="nvim"
 
@@ -115,6 +99,8 @@ function ls () {
 
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
+
+export EDITOR="nvim"
 
 ####  VI MODE [https://dougblack.io/words/zsh-vi-mode.html]
 bindkey -v
