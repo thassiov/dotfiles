@@ -1,6 +1,3 @@
-" Deoplete conf
-let g:deoplete#enable_at_startup = 1"
-
 " Ultisnips
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -8,16 +5,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
-"" vim-airline
-let g:airline_theme = 'jay'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1
-
 "" NERDTree configuration
-let g:NERDTreeChDirMode=2
+let g:NERDTreeChDirMode=2start
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
@@ -25,36 +14,6 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-
-" NERDTree Git Plugin
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-
-" Startify config
-let g:startify_change_to_dir = 1
-let g:startify_change_to_vcs_root = 1
-let g:startify_list_order = [
-				\ ['   These are my sessions:'],
-				\ 'sessions',
-				\ ['   My most recently used files'],
-				\ 'files',
-				\ ['   My most recently used files in the current directory:'],
-				\ 'dir',
-				\ ['   These are my bookmarks:'],
-				\ 'bookmarks',
-				\ ['   These are my commands:'],
-				\ 'commands',
-				\ ]
 
 " Plugin - Editor Config
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
@@ -64,42 +23,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " https://github.com/editorconfig/editorconfig-vim/issues/50#issuecomment-161892271
 " )
 let g:EditorConfig_core_mode = 'python_external'
-
-" vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '|'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '|'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = '░'
-  let g:airline#extensions#tabline#left_alt_sep = '░'
-
-  " powerline symbols
-  let g:airline_left_sep = '░'
-  let g:airline_left_alt_sep = '░'
-  let g:airline_right_sep = '░'
-  let g:airline_right_alt_sep = '░'
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
 
 " fzf
 " This is the default extra key bindings

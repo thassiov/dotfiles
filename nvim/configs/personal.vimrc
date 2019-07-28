@@ -89,12 +89,6 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
-
 "*****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
