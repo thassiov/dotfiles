@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rofi -show run -theme paper-float -font "Fira Mono Medium 10" -o 85
