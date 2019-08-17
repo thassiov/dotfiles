@@ -36,6 +36,9 @@
 
     # last-commit
     last-commit = "show --stat"
+
+    # open grv
+    pane = "!grv"
 [color]
 	ui = true
 [color "diff-highlight"]
