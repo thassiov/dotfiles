@@ -135,6 +135,7 @@ set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
 
+" In case NERDTREE is not available
 let g:NetrwIsOpen=0
 
 function! ToggleNetrw()

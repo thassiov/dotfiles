@@ -33,8 +33,6 @@ Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -44,11 +42,6 @@ Plug 'scrooloose/nerdtree'
 
 " Lang packs
 Plug 'sheerun/vim-polyglot'
-
-" Code assist
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
 
 " colorscheme
 Plug 'w0ng/vim-hybrid'
