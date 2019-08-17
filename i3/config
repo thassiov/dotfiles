@@ -72,7 +72,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id compton &
 exec --no-startup-id parcellite &
 exec --no-startup-id rescuetime &
-exec --no-startup-id megasync &
+#exec --no-startup-id megasync &
 exec --no-startup-id redshift &
 
 exec killall -q notify-osd
