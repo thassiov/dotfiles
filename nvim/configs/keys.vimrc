@@ -98,5 +98,5 @@ noremap <leader>mm :Goyo<CR>
 
 nnoremap <F5> "=strftime("%c")<CR>P
 
-nnoremap ; :bnext<CR>
-nnoremap \ :bprevious<CR>
+nnoremap <A-z> :bnext<CR>
+nnoremap <A-\> :bprevious<CR>
