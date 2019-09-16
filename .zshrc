@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="refined"
+ZSH_THEME="intheloop"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,7 @@ ZSH_THEME="refined"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-nvm)
+plugins=(git zsh-autosuggestions zsh-nvm aws kube-ps1)
 
 # User configuration
 
@@ -57,6 +57,11 @@ plugins=(git zsh-autosuggestions zsh-nvm)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# kubernetes stuff in the ps1
+PROMPT='$(kube_ps1) '$PROMPT
+# do not display kubernetes information when opening a new session
+kubeoff
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -100,6 +105,9 @@ function ls () {
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
 
+alias kon="kubeon"
+alias koff="kubeoff"
+
 export EDITOR="nvim"
 
 ####  VI MODE [https://dougblack.io/words/zsh-vi-mode.html]
@@ -127,3 +135,6 @@ export KEYTIMEOUT=1
 
 # for grv [https://github.com/rgburke/grv]
 unalias grv
+
+# make pyenv work
+eval "$(pyenv init -)"
