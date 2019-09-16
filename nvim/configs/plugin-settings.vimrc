@@ -9,10 +9,9 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " Plugin - Editor Config
-let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 " Added to work with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " speeds up the startup time (see
 " https://github.com/editorconfig/editorconfig-vim/issues/50#issuecomment-161892271
 " )
-let g:EditorConfig_core_mode = 'python_external'
+" let g:EditorConfig_core_mode = 'external_command'

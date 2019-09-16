@@ -58,8 +58,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
 
 " For project-specific configuration
-" Note: requires editorconfig-core-c package
-" [see https://github.com/editorconfig/editorconfig-core-c#readme]
+" NOTE: requires npm install -g editorconfig !!!!
 Plug 'editorconfig/editorconfig-vim'
 "*****************************************************************************
 "*****************************************************************************
