@@ -33,6 +33,7 @@ Plug 'junegunn/fzf.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -41,21 +42,40 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 
 " Lang packs
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
+" Now I'm using coc's plugin for it
 
 " colorscheme
 Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'rakr/vim-two-firewatch'
+Plug 'arcticicestudio/nord-vim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
+
+" Code assist
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
 
 " For my writting
 Plug 'junegunn/goyo.vim'
 
 " Linter
 " Lint engine
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+" coc already does that via plugin
+
+"" Snippets and autocompletion
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" This hot new shiny stuff
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/vista.vim'
 
 " For project-specific configuration
 " NOTE: requires npm install -g editorconfig !!!!

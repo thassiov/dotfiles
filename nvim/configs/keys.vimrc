@@ -27,6 +27,16 @@ nnoremap <leader>a A
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
 " nerdtree
 noremap <leader><Tab> :NERDTreeToggle<CR>
 noremap <leader>f<Tab> :NERDTreeFind<CR>
@@ -100,3 +110,7 @@ nnoremap <F5> "=strftime("%c")<CR>P
 
 nnoremap <A-z> :bnext<CR>
 nnoremap <A-\> :bprevious<CR>
+
+" Open symbols
+" map <leader>d :Vista!!<CR>
+" noremap <leader>f :Vista finder coc<CR>

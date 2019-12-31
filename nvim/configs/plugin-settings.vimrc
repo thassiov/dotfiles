@@ -1,3 +1,6 @@
+"" Deoplete configuration
+" let g:deoplete#enable_at_startup = 1"
+
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
