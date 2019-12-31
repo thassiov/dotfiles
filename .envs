@@ -7,14 +7,18 @@ export ANDROID_TOOLS=/opt/android-sdk/tools
 export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
 
 # My Scripts
-export PATH=$PATH:~/bin
+export MY_SCRIPTS=~/bin
 
 # BROWSER
-export BROWSER=google-chrome-stable
+# export BROWSER=google-chrome-stable
+export BROWSER=firefox
 
 # GO PATH
-export GOPATH=~/dev/go
-export PATH=$PATH:/usr/bin/go
+export GO_PATH=/usr/bin/go
+
+export NPM_LOCAL=~/.local/bin
+
+export PATH=$PATH:$GO_PATH:$NPM_LOCAL:$MY_SCRIPTS
 
 export TF_LOG=TRACE
 export TF_LOG_PATH=/home/thassiov/.terraform.log

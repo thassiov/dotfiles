@@ -67,6 +67,7 @@ bindsym $mod+shift+w exec /opt/firefox/firefox
 #custom start
 
 exec --no-startup-id nitrogen --restore
+# exec --no-startup-id variety &
 exec --no-startup-id NetworkManager &
 exec --no-startup-id nm-applet &
 exec --no-startup-id compton &
@@ -187,8 +188,17 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# my own journal
 for_window [class="^floatingVim$"] floating enable
-bindsym $mod+q exec "termite -e tj --class floatingVim"
+bindsym $mod+n exec "termite -e tj --class floatingVim"
+
+# spotify tui
+for_window [class="^floatingSpotify$"] floating enable
+bindsym $mod+q exec "termite -e spt --class floatingSpotify"
+
+# my pomodoro
+for_window [class="^floatingPomodoro$"] floating enable move right 900 px resize set 270 80 
+bindsym $mod+p exec "termite -c /home/thassiov/confs/termite/config_dark_big_font -e pomodoro --class floatingPomodoro"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

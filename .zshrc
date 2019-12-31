@@ -49,7 +49,7 @@ ZSH_THEME="intheloop"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-nvm aws kube-ps1)
+plugins=(git aws kube-ps1)
 
 # User configuration
 
@@ -61,7 +61,6 @@ source $ZSH/oh-my-zsh.sh
 # kubernetes stuff in the ps1
 PROMPT='$(kube_ps1) '$PROMPT
 # do not display kubernetes information when opening a new session
-kubeoff
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -91,6 +90,11 @@ kubeoff
 # my exported variables
 source ~/.envs
 
+alias k="kubectl"
+alias kaf="kubectl apply -f"
+alias kdf="kubectl delete -f"
+alias klf="kubectl logs -f"
+alias kgp="kubectl get pods"
 alias vim="nvim"
 
 function ls () {
@@ -108,7 +112,13 @@ alias dockeroff="systemctl stop docker.service"
 alias kon="kubeon"
 alias koff="kubeoff"
 
+alias view_image="geeqie"
+
 export EDITOR="nvim"
+
+function find_here () {
+    find $(pwd) -name "*$1*" | xargs bat
+}
 
 ####  VI MODE [https://dougblack.io/words/zsh-vi-mode.html]
 bindkey -v
