@@ -40,6 +40,7 @@ Plug 'vim-airline/vim-airline'
 
 " File explorer
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Lang packs
 "Plug 'sheerun/vim-polyglot'
