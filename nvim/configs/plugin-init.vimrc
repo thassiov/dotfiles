@@ -52,6 +52,7 @@ Plug 'josuegaleas/jay'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'rakr/vim-two-firewatch'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ryanoasis/vim-devicons'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'

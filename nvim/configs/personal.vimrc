@@ -111,8 +111,8 @@ if has('unnamedplus')
 endif
 
 " folding
-set foldenable 
-set foldmethod=indent 
+set foldenable
+set foldmethod=indent
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -134,6 +134,10 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
+
+" change selection color to yellow (more readable)
+" [http://vim.1045645.n5.nabble.com/Howto-change-selected-text-s-color-background-tp1192545p1192547.html]
+hi Visual guifg=blue guibg=yellow
 
 " In case NERDTREE is not available
 let g:NetrwIsOpen=0

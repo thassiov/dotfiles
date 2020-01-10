@@ -111,6 +111,11 @@ nnoremap <F5> "=strftime("%c")<CR>P
 nnoremap <A-z> :bnext<CR>
 nnoremap <A-\> :bprevious<CR>
 
+" decode base64 text selection [https://stackoverflow.com/a/7846569]
+vnoremap <leader>d64 c<c-r>=system('base64 --decode', @")<cr><esc>
+" encode base64 text selection
+vnoremap <leader>e64 c<c-r>=system('base64', @")<cr><esc>
+
 " Open symbols
 " map <leader>d :Vista!!<CR>
 " noremap <leader>f :Vista finder coc<CR>
