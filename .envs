@@ -19,6 +19,3 @@ export GO_PATH=/usr/bin/go
 export NPM_LOCAL=~/.local/bin
 
 export PATH=$PATH:$GO_PATH:$NPM_LOCAL:$MY_SCRIPTS
-
-export TF_LOG=TRACE
-export TF_LOG_PATH=/home/thassiov/.terraform.log
