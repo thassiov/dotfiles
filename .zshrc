@@ -49,7 +49,7 @@ ZSH_THEME="intheloop"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws kube-ps1)
+plugins=(git)
 
 # User configuration
 
@@ -57,10 +57,6 @@ plugins=(git aws kube-ps1)
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
-# kubernetes stuff in the ps1
-PROMPT='$(kube_ps1) '$PROMPT
-# do not display kubernetes information when opening a new session
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -90,11 +86,6 @@ PROMPT='$(kube_ps1) '$PROMPT
 # my exported variables
 source ~/.envs
 
-alias k="kubectl"
-alias kaf="kubectl apply -f"
-alias kdf="kubectl delete -f"
-alias klf="kubectl logs -f"
-alias kgp="kubectl get pods"
 alias vim="nvim"
 
 function ls () {
@@ -108,9 +99,6 @@ function ls () {
 
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
-
-alias kon="kubeon"
-alias koff="kubeoff"
 
 alias view_image="geeqie"
 
@@ -145,6 +133,4 @@ export KEYTIMEOUT=1
 
 # for grv [https://github.com/rgburke/grv]
 unalias grv
-
-# make pyenv work
-eval "$(pyenv init -)"
+source /usr/share/nvm/init-nvm.sh
