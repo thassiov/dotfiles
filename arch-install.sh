@@ -41,6 +41,7 @@ ln -s confs/.xinit .
 ln -s confs/.Xmodmap .
 ln -s confs/tmux.conf .tmux.conf
 ln -s confs/compton.conf .compton.conf
+ln -s confs/.envs .
 
 # Install yay (you'll need base-devel)
 git clone https://aur.archlinux.org/yay.git
@@ -78,7 +79,7 @@ pcmanfm \
 ## office stuff\
 libreoffice-fresh evince \
 ## file system stuff
-mtools dosfstools gvfs gparted \ 
+mtools dosfstools ntfs-3g gvfs gparted \ 
 ## other stuff
 gksu \
 --noconfirm
