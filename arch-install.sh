@@ -107,3 +107,8 @@ sudo systemctl mask systemd-rfkill.socket
 
 # git-branch-status is a must
 # git clone https://github.com/bill-auger/git-branch-status/ .gbs/ # change 'gbs'
+
+# IMPORTANT!!!!
+# Don't forget to set the `/etc/locale.conf` file as `LANG=en_US.UTF-8` after
+# generating the locales with locale-gen of else the default lang `C` will be
+# set and a lot of characters will not render correctly.
