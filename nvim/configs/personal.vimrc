@@ -106,6 +106,8 @@ if has('autocmd')
 endif
 
 "" Copy/Paste/Cut
+" IMPORTANT: install `xclip` or else it will try to use tmux and it won't
+" work properly
 if has('unnamedplus')
   set clipboard+=unnamedplus
 endif

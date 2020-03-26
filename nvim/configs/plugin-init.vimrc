@@ -35,6 +35,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
+" Splash!
+Plug 'mhinz/vim-startify'
 " Status line
 Plug 'vim-airline/vim-airline'
 
