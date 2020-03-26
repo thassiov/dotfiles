@@ -58,7 +58,7 @@ i3-gaps i3lock i3lock-fancy-dualmonitors-git i3status i3blocks \
 polybar xorg xorg-server xorg-xinit xscreensaver \
 compton nitrogen arandr xcalib rofi \
 networkmanager network-manager-applet notify-osd \
-parcellite geeqie \
+parcellite geeqie scrot \
 ## types stuff
 ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete
 ## browsers
@@ -70,10 +70,14 @@ ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
 termite vim neovim \
 editorconfig-core-c httpie \
-exa xclip \
+exa xclip bat \
 python-pip \
 nvm-git \
 diff-so-fancy grv \
+the_silver_searcher \
+xclip \
+docker-compose \
+vagrant virtualbox virtualbox-host-modules-arch\
 ## file explorer
 pcmanfm \
 ## office stuff\
@@ -90,7 +94,10 @@ pip install neovim
 # pulse audio needs to be a daemon
 pulseaudio -D
 
-# Other things: 
+# virtualbox modules need to be loaded! [https://wiki.archlinux.org/index.php/VirtualBox]
+# if you don't want to be bothered, simply reboot and the modules will load at startup
+
+# Other things:
 yay -S acpi --noconfirm
 
 # tlp - power management
