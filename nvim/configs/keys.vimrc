@@ -116,6 +116,8 @@ vnoremap <leader>d64 c<c-r>=system('base64 --decode', @")<cr><esc>
 " encode base64 text selection
 vnoremap <leader>e64 c<c-r>=system('base64', @")<cr><esc>
 
+noremap <leader>t :FloatermToggle<CR>
+
 " Open symbols
 " map <leader>d :Vista!!<CR>
 " noremap <leader>f :Vista finder coc<CR>

@@ -100,6 +100,8 @@ function ls () {
 alias dockeron="systemctl start docker.service"
 alias dockeroff="systemctl stop docker.service"
 
+alias vbox=VBoxManage
+
 alias view_image="geeqie"
 
 export EDITOR="nvim"

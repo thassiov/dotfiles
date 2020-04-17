@@ -40,9 +40,13 @@ Plug 'mhinz/vim-startify'
 " Status line
 Plug 'vim-airline/vim-airline'
 
-" File explorer
+" File explorer and navigation
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kshenoy/vim-signature'
+
+" awesome floating terminal
+Plug 'voldikss/vim-floaterm'
 
 " Lang packs
 "Plug 'sheerun/vim-polyglot'
@@ -54,6 +58,8 @@ Plug 'josuegaleas/jay'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'rakr/vim-two-firewatch'
 Plug 'arcticicestudio/nord-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 
 " Analytics

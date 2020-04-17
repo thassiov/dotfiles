@@ -35,8 +35,8 @@ source .zshrc
 mkdir ~/.config
 ln -s confs/nvim ~/.config/
 ln -s confs/termite ~/.config/
+ln -s confs/dunst ~/.config/
 ln -s confs/.gitconfig .
-ln -s confs/.xscreensaver .
 ln -s confs/.xinit .
 ln -s confs/.Xmodmap .
 ln -s confs/tmux.conf .tmux.conf
@@ -54,13 +54,18 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Lastly: install the packages
 yay -S \
 ## desktop stuff
-i3-gaps i3lock i3lock-fancy-dualmonitors-git i3status i3blocks \
-polybar xorg xorg-server xorg-xinit xscreensaver \
-compton nitrogen arandr xcalib rofi \
+xorg xorg-server xorg-xinit xlockmore xautolock \
+i3-gaps i3status polybar compton nitrogen \
+arandr xcalib rofi dunst \
 networkmanager network-manager-applet notify-osd \
 parcellite geeqie scrot \
+spotify popcorntime-bin \
+reaper-bin \
+postman-bin \
+redshift \
 ## types stuff
-ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete
+ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete \
+noto-fonts-emoji \ # the emoji font
 ## browsers
 firefox google-chrome \
 ## audio
@@ -97,14 +102,28 @@ pulseaudio -D
 # virtualbox modules need to be loaded! [https://wiki.archlinux.org/index.php/VirtualBox]
 # if you don't want to be bothered, simply reboot and the modules will load at startup
 
+# About Termite: remember to set the $TERM as "xterm-termite" or else colors and italics,
+# for example, won't work properly.
+# [https://github.com/thestinger/termite/blob/956556306869060efd2fa3a7d5cf98de2289d9aa/README.rst#terminfo]
+# This configuration also need to be set on tmux conf at the "default-terminal" and "terminal-overrides"
+# [https://sunaku.github.io/tmux-24bit-color.html#usage]
+
 # Other things:
 yay -S acpi --noconfirm
 
+# Install the HP printer
+# [https://unix.stackexchange.com/a/392629/10333]
+# "hp-scan is the 'HPLIP Scan Utility'. If you need that tool, you will need to install `python-pillow`."
+# [https://wiki.archlinux.org/index.php/SANE/Scanner-specific_problems#HP]
+
 # tlp - power management
 # http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#arch
+# don't forget to set `USB_AUTOSUSPEND=0` at `/etc/tlp.conf` or else usb charging
+# won't work [https://linrunner.de/en/tlp/docs/tlp-configuration.html#usb]
 sudo pacman -S tlp tlp-rdw 
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service 
+
 sudo systemctl enable NetworkManager-dispatcher.service 
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket 

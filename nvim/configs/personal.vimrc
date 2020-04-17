@@ -52,7 +52,7 @@ endif
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
+"if (empty($TMUX))
   if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -63,11 +63,15 @@ if (empty($TMUX))
   if (has("termguicolors"))
     set termguicolors
   endif
-endif
+"endif
 "
 " Theme
 set background=dark
-colorscheme nord
+let g:gruvbox_contrast_dark="medium"
+let g:gruvbox_improved_warnings=1
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+colorscheme gruvbox
 
 set mousemodel=popup
 set t_Co=256
