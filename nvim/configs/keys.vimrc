@@ -111,12 +111,12 @@ nnoremap <F5> "=strftime("%c")<CR>P
 nnoremap <A-z> :bnext<CR>
 nnoremap <A-\> :bprevious<CR>
 
-" decode base64 text selection [https://stackoverflow.com/a/7846569]
-vnoremap <leader>d64 c<c-r>=system('base64 --decode', @")<cr><esc>
-" encode base64 text selection
-vnoremap <leader>e64 c<c-r>=system('base64', @")<cr><esc>
-
 noremap <leader>t :FloatermToggle<CR>
+
+" close all other buffers
+" [https://stackoverflow.com/a/42071865/931704] - the snippet
+" [https://vi.stackexchange.com/a/2288] - about the bar/pipe character
+noremap <leader>o :%bd\|e#<CR>
 
 " Open symbols
 " map <leader>d :Vista!!<CR>
