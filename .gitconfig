@@ -14,28 +14,25 @@
 	# Diff using github.com/so-fancy/diff-so-fancy
 
 	# Compare local branch with remote branch
-	compare-remote = diff --summary FETCH_HEAD
+	compare-local-to-remote = diff --summary FETCH_HEAD
 
 	# Update remote's branch list
-	urbl = remote update origin --prune
-
-	# Git Cal
-	cal = !"git-cal"
+	get-remote-branches = remote update origin --prune
 
 	# Get the current branch name (not so useful in itself, but used in other aliases)
-	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	get-branch-name = "!git rev-parse --abbrev-ref HEAD"
 
 	# Count commits
-	contar-commit = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
+	get-commit-count = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
 
     # author count
-    author-count = "!git shortlog -s -n"
+    get-author-count = "!git shortlog -s -n"
 
     # Week
-    week-count ="!git rev-list --count HEAD --since=\"7 days ago\""
+    get-week-count ="!git rev-list --count HEAD --since=\"7 days ago\""
 
     # last-commit
-    last-commit = "show --stat"
+    get-last-commit = "show --stat"
 
     # open grv
     pane = "!grv"
