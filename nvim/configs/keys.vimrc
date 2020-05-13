@@ -19,9 +19,8 @@ cnoreabbrev Qall qall
 
 " Save
 noremap <leader>w :w<CR>
-
-" Jump and insert
-nnoremap <leader>a A
+" Close buffer
+noremap <leader>q :bd<CR>
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
@@ -62,8 +61,8 @@ noremap <leader>z :bp<CR>
 noremap <leader>x :bn<CR>
 
 "" Open fzf
-map <leader>q :GFiles<CR>
-map <leader>fq :Files<CR>
+map <leader>a :GFiles<CR>
+map <leader>aq :Files<CR>
 
 "" Open buffer"
 noremap <leader>b :Buffers<CR>
@@ -104,7 +103,7 @@ map <F7> mzgg=G`z
 noremap <leader>cbd :set background=dark<CR>
 noremap <leader>cbl :set background=light<CR>
 
-noremap <leader>mm :Goyo<CR>
+noremap <leader>G :Goyo<CR>
 
 nnoremap <F5> "=strftime("%c")<CR>P
 
