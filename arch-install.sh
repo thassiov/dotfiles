@@ -90,7 +90,7 @@ libreoffice-fresh evince \
 ## file system stuff
 mtools dosfstools ntfs-3g gvfs gparted \ 
 ## other stuff
-gksu \
+gksu vnstat \
 --noconfirm
 
 # python support for neovim
@@ -98,6 +98,10 @@ pip install neovim
 
 # pulse audio needs to be a daemon
 pulseaudio -D
+
+# configure vnstat [https://wiki.archlinux.org/index.php/VnStat]
+# sudo systemctl start vnstat.service
+# sudo systemctl enable vnstat.service
 
 # virtualbox modules need to be loaded! [https://wiki.archlinux.org/index.php/VirtualBox]
 # if you don't want to be bothered, simply reboot and the modules will load at startup
