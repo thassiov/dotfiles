@@ -35,8 +35,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-" Splash!
+" Splash screen
 Plug 'mhinz/vim-startify'
+
 " Status line
 Plug 'vim-airline/vim-airline'
 
@@ -48,18 +49,10 @@ Plug 'kshenoy/vim-signature'
 " awesome floating terminal
 Plug 'voldikss/vim-floaterm'
 
-" Lang packs
-"Plug 'sheerun/vim-polyglot'
-" Now I'm using coc's plugin for it
-
 " colorscheme
+Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'rakr/vim-two-firewatch'
-Plug 'arcticicestudio/nord-vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 
 " Analytics
@@ -73,19 +66,26 @@ Plug 'scrooloose/nerdcommenter'
 " For my writting
 Plug 'junegunn/goyo.vim'
 
-" Linter
-" Lint engine
-" Plug 'w0rp/ale'
-" coc already does that via plugin
-
-"" Snippets and autocompletion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 " This hot new shiny stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liuchengxu/vista.vim'
+" coc extensions
+let g:coc_global_extensions = [
+            \'coc-marketplace',
+            \'coc-snippets',
+            \'coc-ultisnips',
+            \'coc-tslint',
+            \'coc-tsserver',
+            \'coc-eslint',
+            \'coc-go',
+            \'coc-json',
+            \'coc-html',
+            \'coc-css',
+            \'coc-markdownlint',
+            \'coc-yaml',
+            \]
+
+" Debugger @TODO test this plugin
+" Plug 'vim-vdebug/vdebug'
 
 " For project-specific configuration
 " NOTE: requires npm install -g editorconfig !!!!
@@ -100,5 +100,5 @@ endif
 
 call plug#end()
 
-set nocp 
+set nocp
 filetype plugin on 
