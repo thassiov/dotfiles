@@ -124,11 +124,16 @@ set foldmethod=indent
 set splitbelow
 set splitright
 
+" set cursor line and column color [https://stackoverflow.com/a/29167687/931704]
+" '#34495e' is wet asphalt [https://flatuicolors.com/palette/defo]
 set cursorcolumn
+hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
 set cursorline
-hi LineNr guifg=e5e5e5
-set colorcolumn=+1
+hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
+set colorcolumn=80
+hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
 set number
+hi LineNr guifg=#e5e5e5
 set mouse=a
 set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
