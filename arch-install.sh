@@ -62,7 +62,8 @@ parcellite geeqie scrot \
 spotify popcorntime-bin \
 reaper-bin \
 postman-bin \
-redshift \
+gammy \ # blue light blocker
+blueman \
 ## types stuff
 ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete \
 noto-fonts-emoji \ # the emoji font
@@ -98,6 +99,12 @@ pip install neovim
 
 # pulse audio needs to be a daemon
 pulseaudio -D
+
+# the bluetooth need to be enabled if `blueman` gets installed
+# also we need to check if the rfkill is allowing the bluetooth device
+# sudo rfkill unblock all (this commands solves some headaches)
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
 
 # configure vnstat [https://wiki.archlinux.org/index.php/VnStat]
 # sudo systemctl start vnstat.service
