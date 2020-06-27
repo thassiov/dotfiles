@@ -88,6 +88,9 @@ nnoremap <leader>120 :Goyo 120<CR>
 "" Cool floating terminal - Floaterm"
 nnoremap <leader>t :FloatermToggle<CR>
 
+"" A hack to wrap the current file into 78 char lines"
+nnoremap <leader>T :set textwidth=78<CR>ggVGgq
+
 "" BUFFER AND TAB NAVIGATION - Ctrl and Tab"
 
 "" Navigate between tabs using Tab
