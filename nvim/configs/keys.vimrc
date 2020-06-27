@@ -17,106 +17,127 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-" Save
-noremap <leader>w :w<CR>
-" Close buffer
-noremap <leader>q :bd<CR>
 
-"" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+"" Leader - special shortcuts"
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+" Save file
+nnoremap <leader>w :write<CR>
+" close all other buffers (different from :only)
+" [https://stackoverflow.com/a/42071865/931704] - the snippet
+" [https://vi.stackexchange.com/a/2288] - about the bar/pipe character
+nnoremap <leader>o :%bd\|e#<CR>
 
-" nerdtree
+"" Leader - plugin access
+
+"" Git - vim-fugitive
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>vd :Gvdiff<CR>
+
+"" NERDTree
 noremap <leader><Tab> :NERDTreeToggle<CR>
 noremap <leader>f<Tab> :NERDTreeFind<CR>
-"noremap <leader><Tab> :call ToggleNetrw()<CR>
 
-"" Tabs
+"" Fuzzy finder -  fzf
+nnoremap <leader>q :GFiles<CR>
+nnoremap <leader>fq :Files<CR>
+" This is the default extra key bindings. They work inside fzf's pane
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+"" Find text in project (the_silver_searcher)
+nnoremap <leader>s :Ag!<CR>
+
+"" Find special tokens (this can be useful)"
+nnoremap <leader>tl :Ag! @TODO\|@NOTE\|@FIXME<CR>
+
+" COC mappings
+
+" Managing CoC extension
+" Manage extensions
+nnoremap <leader>cex  :<C-u>CocList extensions<cr> " Manage extensions
+" Open marketplace list (depends on coc.marketplace being present)
+nnoremap <leader>cmkt  :<C-u>CocList marketplace<cr> " Open marketplace list (depends on coc.marketplace being present)
+" Show commands
+nnoremap <leader>cc  :<C-u>CocList commands<cr> " Show commands
+
+" Code
+" Show all diagnostics
+nnoremap <leader>cd  :<C-u>CocList diagnostics<cr> " Show all diagnostics
+" Fix autofix problem of current line
+nnoremap <leader>ff  <Plug>(coc-fix-current)  " Fix autofix problem of current line
+" Find symbol of current document
+nnoremap <leader>ol  :<C-u>CocList outline<cr> " Find symbol of current document
+
+" Go to definition (in a new tab [https://github.com/neoclide/coc.nvim/issues/1249])
+" Maybe use this mappings
+nnoremap <leader>gd :call CocAction('jumpDefinition', 'tabe')<CR> " Go to definition
+" Go to references
+nnoremap <leader>gr :call CocAction('jumpReferences')<CR> " Go to references
+" Go to type definition
+nnoremap <leader>gy :call CocAction('jumpTypeDefinition')<CR> " Go to type definition
+" Go to implementation
+"nnoremap <leader>ci <Plug>(coc-implementation)
+
+"" Markdown focus mode - Goyo"
+nnoremap <leader>G :Goyo<CR>
+nnoremap <leader>120 :Goyo 120<CR>
+
+"" Cool floating terminal - Floaterm"
+nnoremap <leader>t :FloatermToggle<CR>
+
+"" BUFFER AND TAB NAVIGATION - Ctrl and Tab"
+
+"" Navigate between tabs using Tab
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-"" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
-"" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
-
-"" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>x :bn<CR>
-
-"" Open fzf
-map <leader>a :GFiles<CR>
-map <leader>aq :Files<CR>
+"" Switching windows
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 "" Open buffer"
-noremap <leader>b :Buffers<CR>
-
+nnoremap <C-b> :Buffers<CR>
 "" Close buffer
-noremap <leader>c :bd<CR>
+nnoremap <C-c> :bd<CR>
+"" Next buffer"
+nnoremap <C-p> :bnext<CR>
+"" Previous buffer"
+nnoremap <C-o> :bprevious<CR>
 
-"" find text in project (the_silver_searcher)
-map <leader>s :Ag!<CR>
+"" MISC"
 
-map <leader>tl :Ag! @TODO\|@NOTE\|@FIXME<CR>
+" Reaload my vim config (assuming it is in the correct directory)
+nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
 
-"" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
-
-"" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
-
-" Replace in visual mode [http://stackoverflow.com/a/676619]
-vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
+"" Print the current timestamp in cursor position"
+nnoremap <leader><F5> "=strftime("%c")<CR>P
 
 " Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
 " 'cafe' stands for 'Close All Folds Except'
-nnoremap <silent> <leader>fafe zMzvzz
-
-noremap <leader>- :split term://zsh<CR>
-noremap <leader>\ :vsplit term://zsh<CR>
+nnoremap <leader>fafe zMzvzz
 
 " find selection [http://vim.wikia.com/wiki/Search_for_visually_selected_text]
 vnoremap // y/<C-R>"<CR>
 
+"" Clean search (highlight)
+nnoremap <leader><space> :noh<cr>
+
+" Replace in visual mode [http://stackoverflow.com/a/676619]
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
+
+"" THINGS I RARELY USE - OF FORGOT HOW TO"
+
 " Format file
 map <F7> mzgg=G`z
 
-noremap <leader>cbd :set background=dark<CR>
-noremap <leader>cbl :set background=light<CR>
-
-noremap <leader>G :Goyo<CR>
-
-nnoremap <F5> "=strftime("%c")<CR>P
-
-nnoremap <A-z> :bnext<CR>
-nnoremap <A-\> :bprevious<CR>
-
-noremap <leader>t :FloatermToggle<CR>
-
-" close all other buffers
-" [https://stackoverflow.com/a/42071865/931704] - the snippet
-" [https://vi.stackexchange.com/a/2288] - about the bar/pipe character
-noremap <leader>o :%bd\|e#<CR>
-
-" Open symbols
-" map <leader>d :Vista!!<CR>
-" noremap <leader>f :Vista finder coc<CR>
+"" I think I used this when I didn't know how to share the system's
+" clipboard with vim's
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>

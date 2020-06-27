@@ -26,6 +26,11 @@ set incsearch
 set ignorecase
 set smartcase
 
+" Formatting
+" Set to force automatic comment insertion (I like it)
+" [https://vim.fandom.com/wiki/Disable_automatic_comment_insertion]
+set formatoptions=cro
+
 "" Directories for swp files
 set nobackup
 set noswapfile

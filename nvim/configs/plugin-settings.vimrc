@@ -1,6 +1,3 @@
-"" Deoplete configuration
-" let g:deoplete#enable_at_startup = 1"
-
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
@@ -32,3 +29,15 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " https://github.com/editorconfig/editorconfig-vim/issues/50#issuecomment-161892271
 " )
 " let g:EditorConfig_core_mode = 'external_command'
+
+" NERDCommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
