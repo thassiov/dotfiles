@@ -262,7 +262,7 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> 
+format-volume = <label-volume>
 label-volume = VOL:%percentage%
 format-underline = #cdcdcd
 label-volume-foreground = ${root.foreground}
