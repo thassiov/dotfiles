@@ -44,7 +44,7 @@ xkb_symbols "basic" {
 
     key <AB01> {	[	  z,	Z       ]	};
     key <AB02> {	[	  x,	X       ]	};
-    key <AB03> {	[	  c,	C		]	};
+    key <AB03> {	[	  c,	C,ccedilla,Ccedilla	]	};
     key <AB04> {	[	  v,	V		]	};
     key <AB05> {	[	  b,	B		]	};
     key <AB06> {	[	  n,	N		]	};
