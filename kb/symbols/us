@@ -39,7 +39,7 @@ xkb_symbols "basic" {
     key <AC07> {	[	  j,	J,Down]	};
     key <AC08> {	[	  k,	K,Up]	};
     key <AC09> {	[	  l,	L,Right]	};
-    key <AC10> {	[ semicolon,	colonm,Prior		]	};
+    key <AC10> {	[ semicolon,	colon,Prior		]	};
     key <AC11> {	[ apostrophe,	quotedbl,Next	]	};
 
     key <AB01> {	[	  z,	Z       ]	};
