@@ -1,52 +1,58 @@
 [user]
-	name = thassiov
-	email = tvmcarvalho@gmail.com
+  name = thassiov
+  email = tvmcarvalho@gmail.com
 [core]
-	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  editor = nvim
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
-	default = matching
+  default = matching
 [pull]
-	rebase = true
+  rebase = true
 [alias]
-	# The best log ever!!!11!
-	lg = log --color --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-	# Diff using github.com/so-fancy/diff-so-fancy
+  # The best log ever!!!11!
+  lg = log --color --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  # Diff using github.com/so-fancy/diff-so-fancy
 
-	# Compare local branch with remote branch
-	compare-local-to-remote = diff --summary FETCH_HEAD
+  # Compare local branch with remote branch
+  compare-local-to-remote = diff --summary FETCH_HEAD
 
-	# Update remote's branch list
-	get-remote-branches = remote update origin --prune
+  # Update remote's branch list
+  get-remote-branches = remote update origin --prune
 
-	# Get the current branch name (not so useful in itself, but used in other aliases)
-	get-branch-name = "!git rev-parse --abbrev-ref HEAD"
+  # Get the current branch name (not so useful in itself, but used in other aliases)
+  get-branch-name = "!git rev-parse --abbrev-ref HEAD"
 
-	# Count commits
-	get-commit-count = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
+  # Count commits
+  get-commit-count = "!git rev-list --count $(git rev-parse --abbrev-ref HEAD)"
 
-    # author count
-    get-author-count = "!git shortlog -s -n"
+  # author count
+  get-author-count = "!git shortlog -s -n"
 
-    # Week
-    get-week-count ="!git rev-list --count HEAD --since=\"7 days ago\""
+  # Week
+  get-week-count ="!git rev-list --count HEAD --since=\"7 days ago\""
 
-    # last-commit
-    get-last-commit = "show --stat"
+  # last-commit
+  get-last-commit = "show --stat"
 
-    # open grv
-    pane = "!grv"
+  # get tags (oldest to newest based on semver)
+  get-tags = "tag -l --sort=v:refname"
+
+  # get tags in reverse order (newest to oldest based on semver)
+  get-tags-reverse = "tag -l --sort=-v:refname"
+
+  # open grv
+  pane = "!grv"
 [color]
-	ui = true
+  ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+  meta = yellow
+  frag = magenta bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse

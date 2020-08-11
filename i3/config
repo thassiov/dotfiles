@@ -38,7 +38,7 @@ bindsym $mod+t exec termite -e tmux
 bindsym $mod+k kill
 
 # lock screen
-bindsym $mod+l xlock
+bindsym $mod+l exec xlock
 
 # Screenshot
 bindsym $mod+[ exec scrot
@@ -177,14 +177,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # my own journal
 for_window [class="^floatingVim$"] floating enable
 bindsym $mod+n exec "termite -e tj --class floatingVim"
-
-# spotify tui
-#for_window [class="^floatingSpotify$"] floating enable
-#bindsym $mod+q exec "termite -e spt --class floatingSpotify"
-
-# my pomodoro
-for_window [class="^floatingPomodoro$"] floating enable move right 900 px resize set 270 80 
-bindsym $mod+p exec "termite -c /home/thassiov/confs/termite/config_dark_big_font -e pomodoro --class floatingPomodoro"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

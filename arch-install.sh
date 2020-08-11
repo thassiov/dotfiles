@@ -55,7 +55,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 yay -S \
 ## desktop stuff
 xorg xorg-server xorg-xinit xlockmore xautolock \
-i3-gaps i3status polybar compton nitrogen \
+xf86-input-synaptics \ # make the touchpad work (also, see 70-synaptics.conf)
+i3-gaps i3status polybar compton nitrogen feh \
 arandr xcalib rofi dunst \
 networkmanager network-manager-applet notify-osd \
 parcellite geeqie scrot \
@@ -89,7 +90,7 @@ pcmanfm \
 ## office stuff\
 libreoffice-fresh evince \
 ## file system stuff
-mtools dosfstools ntfs-3g gvfs gparted \ 
+mtools dosfstools ntfs-3g gvfs gparted
 ## other stuff
 gksu vnstat \
 --noconfirm
@@ -131,13 +132,13 @@ yay -S acpi --noconfirm
 # http://linrunner.de/en/tlp/docs/tlp-linux-advanced-power-management.html#arch
 # don't forget to set `USB_AUTOSUSPEND=0` at `/etc/tlp.conf` or else usb charging
 # won't work [https://linrunner.de/en/tlp/docs/tlp-configuration.html#usb]
-sudo pacman -S tlp tlp-rdw 
+sudo pacman -S tlp tlp-rdw
 sudo systemctl enable tlp.service
-sudo systemctl enable tlp-sleep.service 
+sudo systemctl enable tlp-sleep.service
 
-sudo systemctl enable NetworkManager-dispatcher.service 
+sudo systemctl enable NetworkManager-dispatcher.service
 sudo systemctl mask systemd-rfkill.service
-sudo systemctl mask systemd-rfkill.socket 
+sudo systemctl mask systemd-rfkill.socket
 
 # Configure zsh-wakatime
 # https://github.com/wbinglee/zsh-wakatime#zsh-plugin-for-wakatime
@@ -149,3 +150,10 @@ sudo systemctl mask systemd-rfkill.socket
 # Don't forget to set the `/etc/locale.conf` file as `LANG=en_US.UTF-8` after
 # generating the locales with locale-gen of else the default lang `C` will be
 # set and a lot of characters will not render correctly.
+
+# android stuff for when react native is needed
+# Important: remember to enable the multilib repository at pacman.conf
+# [https://wiki.archlinux.org/index.php/Android]
+# Also point JAVA_HOME to openjdk 8!!!
+yay -S jdk jdk8-openjdk android-studio android-sdk android-sdk-platform-tools android-emulator --noconfirm
+npm install expo-cli --global
