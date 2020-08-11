@@ -31,6 +31,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" thing
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -40,11 +43,7 @@ Plug 'mhinz/vim-startify'
 
 " Status line
 Plug 'vim-airline/vim-airline'
-
-" File explorer and navigation
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'kshenoy/vim-signature'
+Plug 'vim-airline/vim-airline-themes'
 
 " awesome floating terminal
 Plug 'voldikss/vim-floaterm'
@@ -54,6 +53,12 @@ Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
 Plug 'ryanoasis/vim-devicons'
+Plug 'skbolton/embark'
+Plug 'hardcoreplayers/oceanic-material'
+Plug 'hzchirs/vim-material'
+Plug 'mhartington/oceanic-next'
+Plug 'ayu-theme/ayu-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -65,6 +70,9 @@ Plug 'scrooloose/nerdcommenter'
 
 " For my writting
 Plug 'junegunn/goyo.vim'
+
+" tags
+Plug 'liuchengxu/vista.vim'
 
 " This hot new shiny stuff
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -82,14 +90,13 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-markdownlint',
             \'coc-yaml',
+            \'coc-explorer',
             \]
-
-" Debugger @TODO test this plugin
-" Plug 'vim-vdebug/vdebug'
 
 " For project-specific configuration
 " NOTE: requires npm install -g editorconfig !!!!
 Plug 'editorconfig/editorconfig-vim'
+
 "*****************************************************************************
 "*****************************************************************************
 

@@ -12,9 +12,9 @@ set binary
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Enable hidden buffers
@@ -72,11 +72,8 @@ endif
 "
 " Theme
 set background=dark
-let g:gruvbox_contrast_dark="medium"
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_comments=1
-colorscheme gruvbox
+let g:palenight_terminal_italics=1
+colorscheme palenight
 
 set mousemodel=popup
 set t_Co=256
