@@ -50,7 +50,6 @@ bindsym $mod+a exec ~/confs/rofi/rofi-dmenu
 bindsym $mod+Tab exec ~/confs/rofi/rofi-window
 
 #custom start
-exec --no-startup-id nitrogen --restore
 exec --no-startup-id NetworkManager &
 exec --no-startup-id nm-applet &
 exec --no-startup-id compton &
