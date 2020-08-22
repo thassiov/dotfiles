@@ -39,7 +39,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Splash screen
-Plug 'mhinz/vim-startify'
+Plug 'hardcoreplayers/dashboard-nvim'
+
+" Special Syntax
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -78,19 +81,19 @@ Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
 let g:coc_global_extensions = [
+            \'coc-css',
+            \'coc-eslint',
+            \'coc-explorer',
+            \'coc-go',
+            \'coc-html',
+            \'coc-json',
+            \'coc-markdownlint',
             \'coc-marketplace',
             \'coc-snippets',
-            \'coc-ultisnips',
-            \'coc-tslint',
+            \'coc-tslint-plugin',
             \'coc-tsserver',
-            \'coc-eslint',
-            \'coc-go',
-            \'coc-json',
-            \'coc-html',
-            \'coc-css',
-            \'coc-markdownlint',
+            \'coc-ultisnips',
             \'coc-yaml',
-            \'coc-explorer',
             \]
 
 " For project-specific configuration
