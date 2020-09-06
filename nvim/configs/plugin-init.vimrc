@@ -73,6 +73,8 @@ Plug 'scrooloose/nerdcommenter'
 
 " For my writting
 Plug 'junegunn/goyo.vim'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 
 " tags
 Plug 'liuchengxu/vista.vim'

@@ -89,15 +89,18 @@ nnoremap <leader>gy :call CocAction('jumpTypeDefinition')<CR>
 " Open file explorer
 nnoremap <leader><Tab> :CocCommand explorer<CR>
 
+" A hack to wrap the current file into 78 char lines"
+nnoremap <leader>6 :set textwidth=78<Return>ggVGgq
+
 " Markdown focus mode - Goyo"
-nnoremap <leader>5 :Goyo<CR>
-nnoremap <leader>% :Goyo 120<CR>
+nnoremap <leader>7 :Goyo 120<CR>
+nnoremap <leader>& :Goyo<CR>
+
+" Open Note
+nnoremap <leader>n :Note<CR>
 
 " Cool floating terminal - Floaterm"
-nnoremap <leader>t :FloatermToggle<CR>
-
-" A hack to wrap the current file into 78 char lines"
-nnoremap <leader>T :set textwidth=78<Return>ggVGgq
+nnoremap <leader>' :FloatermToggle<CR>
 
 " BUFFER AND TAB NAVIGATION - Ctrl and Tab"
 
