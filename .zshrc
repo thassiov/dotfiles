@@ -138,3 +138,6 @@ unalias grv
 source /usr/share/nvm/init-nvm.sh
 
 alias search="ag -i"
+
+alias get-data-consuption-wifi="sudo vnstat -i wlp2s0"
+alias get-data-consuption-cable="sudo vnstat -i enp1s0"
