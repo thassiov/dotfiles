@@ -81,11 +81,11 @@ nnoremap <leader>ff  <Plug>(coc-fix-current)
 " Go to definition (in a new tab [https://github.com/neoclide/coc.nvim/issues/1249])
 " Maybe use this mappings
 " Go to definition
-nnoremap <leader>gd :call CocAction('jumpDefinition', 'tabe')<CR>
+nnoremap <leader>jd :call CocAction('jumpDefinition')<CR>
 " Go to references
-nnoremap <leader>gr :call CocAction('jumpReferences')<CR>
+nnoremap <leader>jr :call CocAction('jumpReferences')<CR>
 " Go to type definition
-nnoremap <leader>gy :call CocAction('jumpTypeDefinition')<CR>
+nnoremap <leader>jy :call CocAction('jumpTypeDefinition')<CR>
 " Open file explorer
 nnoremap <leader><Tab> :CocCommand explorer<CR>
 
@@ -104,10 +104,12 @@ nnoremap <leader>' :FloatermToggle<CR>
 
 " BUFFER AND TAB NAVIGATION - Ctrl and Tab"
 
-" Navigate between tabs using Tab
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
+" Navigate between buffers using Tab
+" Next buffer"
+nnoremap <Tab> :bnext<CR>
+" Previous buffer"
+nnoremap <S-Tab> :bprevious<CR>
+" nnoremap <silent> <S-t> :tabnew<CR>
 
 " Switching windows
 nnoremap <C-j> <C-w>j
@@ -118,9 +120,9 @@ nnoremap <C-h> <C-w>h
 " Close buffer
 nnoremap <C-c> :bd<CR>
 " Next buffer"
-nnoremap <C-x> :bnext<CR>
+" nnoremap <C-x> :bnext<CR>
 " Previous buffer"
-nnoremap <C-z> :bprevious<CR>
+" nnoremap <C-z> :bprevious<CR>
 
 " MISC"
 

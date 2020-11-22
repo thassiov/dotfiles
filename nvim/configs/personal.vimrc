@@ -72,8 +72,12 @@ endif
 "
 " Theme
 set background=dark
-let g:palenight_terminal_italics=1
-colorscheme palenight
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_improved_warnings=1
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+colorscheme gruvbox
+" colorscheme minimalist
 
 set mousemodel=popup
 set t_Co=256
@@ -105,6 +109,12 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
+"" Make .tsx file work correctly with the .ts syntax
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+augroup END
+
 " Disable visualbell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
@@ -132,8 +142,8 @@ set cursorcolumn
 hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
 set cursorline
 hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
-set colorcolumn=80
-hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
+" set colorcolumn=80
+" hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
 set number
 set mouse=a
 set backspace=indent,eol,start
@@ -150,6 +160,7 @@ set guicursor+=i:blinkwait10
 " change selection color to yellow (more readable)
 " [http://vim.1045645.n5.nabble.com/Howto-change-selected-text-s-color-background-tp1192545p1192547.html]
 hi Visual guifg=blue guibg=yellow
+
 
 " In case NERDTREE is not available
 let g:NetrwIsOpen=0

@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys"
+ZSH_THEME="refined"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,13 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  git-prompt
+  helm
+  kube-ps1
+  vi-mode
+)
 
 # User configuration
 
@@ -111,14 +117,14 @@ function find_here () {
 }
 
 ####  VI MODE [https://dougblack.io/words/zsh-vi-mode.html]
-bindkey -v
-
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
+# bindkey -v
+# 
+# bindkey '^P' up-history
+# bindkey '^N' down-history
+# bindkey '^?' backward-delete-char
+# bindkey '^h' backward-delete-char
+# bindkey '^w' backward-kill-word
+# bindkey '^r' history-incremental-search-backward
 
 function zle-line-init zle-keymap-select {
 	VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
@@ -141,3 +147,10 @@ alias search="ag -i"
 
 alias get-data-consuption-wifi="sudo vnstat -i wlp2s0"
 alias get-data-consuption-cable="sudo vnstat -i enp1s0"
+
+# meteor 'multiple instances' utility
+alias meteor='INSTANCE_IP=127.0.0.1 meteor'
+
+alias btop='bpytop'
+
+alias k='kubectl'

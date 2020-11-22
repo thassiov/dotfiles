@@ -37,6 +37,7 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 
 " Splash screen
 Plug 'hardcoreplayers/dashboard-nvim'
@@ -51,17 +52,17 @@ Plug 'vim-airline/vim-airline-themes'
 " awesome floating terminal
 Plug 'voldikss/vim-floaterm'
 
+" zoom split (?)
+Plug 'dhruvasagar/vim-zoom'
+
 " colorscheme
 Plug 'morhetz/gruvbox'
-Plug 'w0ng/vim-hybrid'
 Plug 'josuegaleas/jay'
 Plug 'ryanoasis/vim-devicons'
-Plug 'skbolton/embark'
-Plug 'hardcoreplayers/oceanic-material'
-Plug 'hzchirs/vim-material'
-Plug 'mhartington/oceanic-next'
-Plug 'ayu-theme/ayu-vim'
-Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'logico/typewriter-vim'
+Plug 'joshdick/onedark.vim'
+Plug 'dikiaap/minimalist'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
