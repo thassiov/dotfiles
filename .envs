@@ -25,3 +25,5 @@ export FZF_DEFAULT_COMMAND='ag --ignore node_modules -g ""'
 export KUBECONFIG=~/.kube/config
 
 export PROMPT='$(kube_ps1)'$PROMPT
+# start the prompt with the kubernetes indicator turned off
+kubeoff
