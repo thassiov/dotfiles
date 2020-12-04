@@ -53,7 +53,6 @@ plugins=(
   git
   git-prompt
   helm
-  kube-ps1
   vi-mode
 )
 

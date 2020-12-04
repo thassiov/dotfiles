@@ -10,7 +10,7 @@ export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
 export MY_SCRIPTS=~/bin
 
 # BROWSER
-export BROWSER=google-chrome-stable
+export BROWSER=brave
 # export BROWSER=firefox
 
 # GO PATH
@@ -24,6 +24,6 @@ export FZF_DEFAULT_COMMAND='ag --ignore node_modules -g ""'
 
 export KUBECONFIG=~/.kube/config
 
-export PROMPT='$(kube_ps1)'$PROMPT
+# export PROMPT='$(kube_ps1)'$PROMPT
 # start the prompt with the kubernetes indicator turned off
-kubeoff
+# kubeoff
