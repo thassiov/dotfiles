@@ -20,8 +20,6 @@ export NPM_LOCAL=~/.local/bin
 
 export PATH=$PATH:$GO_PATH:$NPM_LOCAL:$MY_SCRIPTS
 
-export FZF_DEFAULT_COMMAND='ag --ignore node_modules -g ""'
-
 export KUBECONFIG=~/.kube/config
 
 # export PROMPT='$(kube_ps1)'$PROMPT
