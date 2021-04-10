@@ -147,6 +147,8 @@ alias search="ag -i"
 alias get-data-consuption-wifi="sudo vnstat -i wlp2s0"
 alias get-data-consuption-cable="sudo vnstat -i enp1s0"
 
+alias get-keysyms="xev"
+
 # meteor 'multiple instances' utility
 alias meteor='INSTANCE_IP=127.0.0.1 meteor'
 
