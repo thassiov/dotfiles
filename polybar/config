@@ -261,7 +261,7 @@ format-underline = #cdcdcd
 label = %date% %time%
 
 [module/volume]
-type = internal/volume
+type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume = VOL:%percentage%
