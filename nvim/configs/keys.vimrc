@@ -34,7 +34,7 @@ nnoremap <Leader>gs :Gstatus<CR>
 " Git blame
 nnoremap <Leader>gb :Gblame<CR>
 " Git diff
-nnoremap <Leader>vd :Gvdiff<CR>
+nnoremap <Leader>gd :Gvdiff<CR>
 
 " Vista.vim
 " Open bar with current file's symbols"
@@ -66,35 +66,37 @@ nnoremap <leader>@ :Ag! @TODO\|@NOTE\|@FIXME<CR>
 
 " Managing CoC extension
 " Manage extensions
-nnoremap <leader>cex  :<C-u>CocList extensions<CR>
+nnoremap <leader>E  :<C-u>CocList extensions<CR>
 " Open marketplace list (depends on coc.marketplace being present)
-nnoremap <leader>cmkt  :<C-u>CocList marketplace<CR>
+nnoremap <leader>M  :<C-u>CocList marketplace<CR>
 " Show commands
-nnoremap <leader>cc  :<C-u>CocList commands<CR>
+nnoremap <leader>C  :<C-u>CocList commands<CR>
 
 " Code
 " Show all diagnostics
-nnoremap <leader>cd  :<C-u>CocList diagnostics<CR>
+nnoremap <leader>D  :<C-u>CocList diagnostics<CR>
 " Fix autofix problem of current line
 nnoremap <leader>ff  <Plug>(coc-fix-current)
 
 " Go to definition (in a new tab [https://github.com/neoclide/coc.nvim/issues/1249])
 " Maybe use this mappings
 " Go to definition
-nnoremap <leader>jd :call CocAction('jumpDefinition')<CR>
+nnoremap <leader>d :call CocAction('jumpDefinition')<CR>
 " Go to references
-nnoremap <leader>jr :call CocAction('jumpReferences')<CR>
+nnoremap <leader>r :call CocAction('jumpReferences')<CR>
 " Go to type definition
-nnoremap <leader>jy :call CocAction('jumpTypeDefinition')<CR>
+" nnoremap <leader>y :call CocAction('jumpTypeDefinition')<CR>
 " Open file explorer
 nnoremap <leader><Tab> :CocCommand explorer<CR>
+
+nnoremap <leader>cc :CocAction<CR>
 
 " A hack to wrap the current file into 78 char lines"
 nnoremap <leader>6 :set textwidth=78<Return>ggVGgq
 
 " Markdown focus mode - Goyo"
-nnoremap <leader>7 :Goyo 120<CR>
-nnoremap <leader>& :Goyo<CR>
+nnoremap <leader>g :Goyo 120<CR>
+nnoremap <leader>G :Goyo<CR>
 
 " Open Note
 nnoremap <leader>n :Note<CR>
@@ -145,7 +147,7 @@ vnoremap // y/<C-R>"<CR>
 " Replace in visual mode [http://stackoverflow.com/a/676619]
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
 
-" THINGS I RARELY USE - OF FORGOT HOW TO"
+" THINGS I RARELY USE - OR FORGOT HOW TO"
 
 nnoremap <leader>/ :noh<Return>
 

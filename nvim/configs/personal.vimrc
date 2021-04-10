@@ -72,12 +72,8 @@ endif
 "
 " Theme
 set background=dark
-let g:gruvbox_contrast_dark="hard"
-let g:gruvbox_improved_warnings=1
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_comments=1
-colorscheme gruvbox
-" colorscheme minimalist
+let ayucolor="dark"
+colorscheme ayu
 
 set mousemodel=popup
 set t_Co=256
@@ -139,9 +135,9 @@ set splitright
 " set cursor line and column color [https://stackoverflow.com/a/29167687/931704]
 " '#34495e' is wet asphalt [https://flatuicolors.com/palette/defo]
 set cursorcolumn
-hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
+hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#0a0a0f gui=bold
 set cursorline
-hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#34495e gui=bold
+hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#0a0a0f gui=bold
 " set colorcolumn=80
 " hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
 set number
@@ -150,7 +146,7 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
-highlight Cursor guifg=white guibg=black
+highlight Cursor guifg=white guibg=#34498f
 highlight iCursor guifg=white guibg=steelblue
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
@@ -180,3 +176,5 @@ function! ToggleNetrw()
         silent Lexplore 20
     endif
 endfunction
+
+set conceallevel=2

@@ -40,7 +40,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
 " Splash screen
-Plug 'hardcoreplayers/dashboard-nvim'
+" Plug 'hardcoreplayers/dashboard-nvim'
 
 " Special Syntax
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -63,6 +63,11 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'logico/typewriter-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'dikiaap/minimalist'
+Plug 'wadackel/vim-dogrun'
+Plug 'yuttie/hydrangea-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -76,6 +81,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'godlygeek/tabular'
+" Plug 'plasticboy/vim-markdown'
 
 " tags
 Plug 'liuchengxu/vista.vim'
