@@ -64,7 +64,13 @@ spotify popcorntime-bin \
 reaper-bin \
 postman-bin \
 gammy \ # blue light blocker
-blueman \
+# bluetooth
+# [http://donjajo.com/bluetooth-fix-a2dp-source-profile-connect-failed-xx-protocol-not-available-linux/]
+# If you don't have the pulseaudio-bluetooth package, bluetooth headsets won't work because it tries to
+# use a protocol that is not there
+# example -> "src/service.c:btd_service_connect() a2dp-sink profile connect failed for 5C:C6:E9:EF:89:13: Protocol not available"
+# also pulseaudio-bluetooth installs sbc package, which is essential to make the bluetooth keyboard work
+blueman pulseaudio-bluetooth \
 ## types stuff
 ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete \
 noto-fonts-emoji \ # the emoji font
@@ -79,20 +85,23 @@ termite vim neovim \
 editorconfig-core-c httpie \
 exa xclip bat \
 python-pip \
+bpytop \
 nvm-git \
 diff-so-fancy grv \
 the_silver_searcher \
 xclip \
 docker-compose \
-vagrant virtualbox virtualbox-host-modules-arch\
+vagrant virtualbox virtualbox-host-modules-arch \
+robo3t-bin \
 ## file explorer
 pcmanfm \
 ## office stuff\
 libreoffice-fresh evince \
 ## file system stuff
-mtools dosfstools ntfs-3g gvfs gparted
+mtools dosfstools ntfs-3g gvfs gparted \
 ## other stuff
 gksu vnstat \
+openssh \
 --noconfirm
 
 # python support for neovim
@@ -121,7 +130,11 @@ sudo systemctl enable bluetooth.service
 # [https://sunaku.github.io/tmux-24bit-color.html#usage]
 
 # Other things:
-yay -S acpi --noconfirm
+yay -S acpi acpilight --noconfirm
+# acpilight replaces `xorg-xbacklight` installed with `xorg-server`
+# add the user to the `video` group or else xbacklight command will not work due to permission issues
+# [https://gitlab.com/wavexx/acpilight/-/issues/16]
+usermod -a -G video thassiov
 
 # Install the HP printer
 # [https://unix.stackexchange.com/a/392629/10333]
@@ -139,6 +152,11 @@ sudo systemctl enable tlp-sleep.service
 sudo systemctl enable NetworkManager-dispatcher.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
+
+# configure the clock (this is very important because windows keep messing with the hw clock)
+# [https://unix.stackexchange.com/a/336598]
+sudo systemctl start systemd-timesyncd
+sudo systemctl enable systemd-timesyncd
 
 # Configure zsh-wakatime
 # https://github.com/wbinglee/zsh-wakatime#zsh-plugin-for-wakatime
