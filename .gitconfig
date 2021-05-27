@@ -16,6 +16,8 @@
   # Compare local branch with remote branch
   compare-local-to-remote = diff --summary FETCH_HEAD
 
+  # 
+  branches= branch --all
   # Update remote's branch list
   get-remote-branches = remote update origin --prune
 
