@@ -28,13 +28,17 @@ nnoremap <leader>o :%bd\|e#<CR>
 
 " Leader - plugin access
 
-" Git - vim-fugitive
+" Git vim-fugitive
 " Git status
 nnoremap <Leader>gs :Gstatus<CR>
 " Git blame
 nnoremap <Leader>gb :Gblame<CR>
 " Git diff
 nnoremap <Leader>gd :Gvdiff<CR>
+
+" GV - gv.vim
+map <Leader>gv :GV<CR>
+map <Leader>gfv :GV!<CR>
 
 " Vista.vim
 " Open bar with current file's symbols"
@@ -70,7 +74,7 @@ nnoremap <leader>E  :<C-u>CocList extensions<CR>
 " Open marketplace list (depends on coc.marketplace being present)
 nnoremap <leader>M  :<C-u>CocList marketplace<CR>
 " Show commands
-nnoremap <leader>C  :<C-u>CocList commands<CR>
+nnoremap <leader>cl  :<C-u>CocList commands<CR>
 
 " Code
 " Show all diagnostics
@@ -86,23 +90,12 @@ nnoremap <leader>d :call CocAction('jumpDefinition')<CR>
 nnoremap <leader>r :call CocAction('jumpReferences')<CR>
 " Go to type definition
 " nnoremap <leader>y :call CocAction('jumpTypeDefinition')<CR>
+" Search under cursor, project wide
+nnoremap <C-s> :CocSearch <C-R>=expand("<cword>")<CR><CR>
 " Open file explorer
 nnoremap <leader><Tab> :CocCommand explorer<CR>
 
-nnoremap <leader>cc :CocAction<CR>
-
-" A hack to wrap the current file into 78 char lines"
-nnoremap <leader>6 :set textwidth=78<Return>ggVGgq
-
-" Markdown focus mode - Goyo"
-nnoremap <leader>g :Goyo 120<CR>
-nnoremap <leader>G :Goyo<CR>
-
-" Open Note
-nnoremap <leader>n :Note<CR>
-
-" Cool floating terminal - Floaterm"
-nnoremap <leader>' :FloatermToggle<CR>
+nnoremap <leader>C :CocAction<CR>
 
 " BUFFER AND TAB NAVIGATION - Ctrl and Tab"
 

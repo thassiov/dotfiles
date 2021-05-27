@@ -49,25 +49,11 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" awesome floating terminal
-Plug 'voldikss/vim-floaterm'
-
-" zoom split (?)
-Plug 'dhruvasagar/vim-zoom'
-
 " colorscheme
-Plug 'morhetz/gruvbox'
 Plug 'josuegaleas/jay'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'logico/typewriter-vim'
-Plug 'joshdick/onedark.vim'
-Plug 'dikiaap/minimalist'
-Plug 'wadackel/vim-dogrun'
-Plug 'yuttie/hydrangea-vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -77,13 +63,6 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
-" For my writting
-Plug 'junegunn/goyo.vim'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
-Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
-
 " tags
 Plug 'liuchengxu/vista.vim'
 
@@ -91,10 +70,8 @@ Plug 'liuchengxu/vista.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " coc extensions
 let g:coc_global_extensions = [
-            \'coc-css',
             \'coc-eslint',
             \'coc-explorer',
-            \'coc-go',
             \'coc-html',
             \'coc-json',
             \'coc-markdownlint',
@@ -103,7 +80,6 @@ let g:coc_global_extensions = [
             \'coc-tslint-plugin',
             \'coc-tsserver',
             \'coc-ultisnips',
-            \'coc-yaml',
             \]
 
 " For project-specific configuration

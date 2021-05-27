@@ -155,3 +155,5 @@ alias meteor='INSTANCE_IP=127.0.0.1 meteor'
 alias btop='bpytop'
 
 alias k='kubectl'
+
+alias groot='cd $(git get-root-dir) && echo "I am groot!"'

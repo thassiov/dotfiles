@@ -96,12 +96,14 @@ robo3t-bin \
 ## file explorer
 pcmanfm \
 ## office stuff\
-libreoffice-fresh evince \
+libreoffice-fresh evince foliate \
 ## file system stuff
 mtools dosfstools ntfs-3g gvfs gparted \
 ## other stuff
 gksu vnstat \
 openssh \
+## kubernetes stuff
+k3d kubectl kubectx \
 --noconfirm
 
 # python support for neovim

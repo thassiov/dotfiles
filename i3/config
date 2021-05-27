@@ -126,6 +126,13 @@ bindsym $mod+space focus mode_toggle
  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
  bindsym $mod+0 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
+ bindsym $mod+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) play-pause # play-pause current player
+ bindsym $mod+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) stop # stop current player
+ bindsym $mod+Shift+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
+ bindsym $mod+Shift+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
+
+ bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
+ 
  # Sreen brightness controls
  bindsym XF86MonBrightnessUp exec ~/confs/scripts/monitor/screen-brightness.sh inc # increase screen brightness
  bindsym XF86MonBrightnessDown exec ~/confs/scripts/monitor/screen-brightness.sh dec # decrease screen brightness
@@ -169,8 +176,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # my own journal
-for_window [class="^floatingVim$"] floating enable
-bindsym $mod+n exec "termite -e tj --class floatingVim"
+# for_winsow [class="^floatingVim$"] floating enable
+# bindsym $mod+n exec "termite -e tj --class floatingVim"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

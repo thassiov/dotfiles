@@ -40,6 +40,15 @@
   # get tags in reverse order (newest to oldest based on semver)
   get-tags-reverse = "tag -l --sort=-v:refname"
 
+  # gets back to the previous branch
+  get-back = "checkout @{-1}"
+
+  # prints the project's root dir (where .git is at)
+  get-root-dir = "rev-parse --show-toplevel"
+
+  # do not show package-lock.json in diffs
+  diff-ignore-package-lock-json = "diff ':!package-lock.json'"
+
   # open grv
   pane = "!grv"
 [color]
@@ -56,3 +65,5 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+[init]
+	defaultBranch = main
