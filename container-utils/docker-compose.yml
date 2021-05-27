@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  dns:
+    image: defreitas/dns-proxy-server
+    hostname: dns
+    restart: unless-stopped
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - /etc/resolv.conf:/etc/resolv.conf
+
+  logs:
+    image: amir20/dozzle
+    hostname: logs
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8080:8080
