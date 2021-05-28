@@ -77,7 +77,6 @@ let g:coc_global_extensions = [
             \'coc-markdownlint',
             \'coc-marketplace',
             \'coc-snippets',
-            \'coc-tslint-plugin',
             \'coc-tsserver',
             \'coc-ultisnips',
             \]
@@ -97,4 +96,4 @@ endif
 call plug#end()
 
 set nocp
-filetype plugin on 
+filetype plugin on
