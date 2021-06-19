@@ -54,6 +54,7 @@ plugins=(
   git-prompt
   helm
   vi-mode
+  kube-ps1
 )
 
 # User configuration
@@ -157,3 +158,12 @@ alias btop='bpytop'
 alias k='kubectl'
 
 alias groot='cd $(git get-root-dir) && echo "I am groot!"'
+
+KUBE_PS1_PREFIX=""
+KUBE_PS1_SUFFIX=""
+KUBE_PS1_CTX_COLOR=yellow
+KUBE_PS1_NS_COLOR=white
+
+# make kube_ps1 work
+PROMPT='$(kube_ps1)'$PROMPT
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)

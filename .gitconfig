@@ -51,6 +51,16 @@
   # do not show package-lock.json in diffs
   diff-ignore-package-lock-json = "diff ':!package-lock.json'"
 
+  # Delete branches:  [https://stackoverflow.com/a/41465769/931704]
+  # Delete all local branches but master and the current one, only if they are fully merged with master.
+  # branch-delete-useless = "!f(){\
+  #   git branch | grep -v "master" | grep -v ^* | xargs git branch -d;\
+  #   }; f"
+  # Delete all local branches but master and the current one.
+  # branch-delete-useless-force = "!f(){\
+  #   git branch | grep -v "master" | grep -v ^* | xargs git branch -D;\
+  #   }; f"
+
   # open grv
   pane = "!grv"
 [color]
