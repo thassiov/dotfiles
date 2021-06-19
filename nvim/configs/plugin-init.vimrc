@@ -39,9 +39,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
-" Splash screen
-" Plug 'hardcoreplayers/dashboard-nvim'
-
 " Special Syntax
 Plug 'MaxMEllon/vim-jsx-pretty'
 
@@ -53,7 +50,15 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'josuegaleas/jay'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ayu-theme/ayu-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'w0ng/vim-hybrid'
+Plug 'morhetz/gruvbox'
+
+" markdown stuff
+" Plug 'logico/typewriter-vim'
+" Plug 'godlygeek/tabular'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'

@@ -96,6 +96,7 @@ nnoremap <C-s> :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader><Tab> :CocCommand explorer<CR>
 
 nnoremap <leader>C :CocAction<CR>
+nnoremap <leader>c :CocCommand<CR>
 
 " BUFFER AND TAB NAVIGATION - Ctrl and Tab"
 
@@ -139,6 +140,9 @@ vnoremap // y/<C-R>"<CR>
 
 " Replace in visual mode [http://stackoverflow.com/a/676619]
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"
+
+" Toggle colorscheme dark/light mode
+nnoremap <leader><ESC> :call ToggleLightDarkTheme()<CR>
 
 " THINGS I RARELY USE - OR FORGOT HOW TO"
 
