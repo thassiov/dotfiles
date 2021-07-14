@@ -1,3 +1,3 @@
 #1/bin/bash
 
-echo `acpi | cut -d "," -f2`
+echo `acpi | tail -n +2 | cut -d "," -f2`
