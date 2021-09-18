@@ -12,6 +12,7 @@ export MY_SCRIPTS=~/bin
 # BROWSER
 export BROWSER=brave
 # export BROWSER=firefox
+export EDITOR="nvim"
 
 # GO PATH
 export GO_PATH=/usr/bin/go
@@ -23,6 +24,12 @@ export RUBY_PATH=~/.local/share/gem/ruby/2.7.0/bin
 export PATH=$PATH:$GO_PATH:$NPM_LOCAL:$RUBY_PATH:$MY_SCRIPTS
 
 export KUBECONFIG=~/.kube/config
+
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git/*,.meteor/*}"'
+
+# vi-mode
+export KEYTIMEOUT=1
 
 # export PROMPT='$(kube_ps1)'$PROMPT
 # start the prompt with the kubernetes indicator turned off

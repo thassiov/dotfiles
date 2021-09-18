@@ -50,11 +50,13 @@ ZSH_THEME="refined"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  fzf-tab
   git
   git-prompt
   helm
   vi-mode
   kube-ps1
+  ripgrep
 )
 
 # User configuration
@@ -92,78 +94,29 @@ source $ZSH/oh-my-zsh.sh
 # my exported variables
 source ~/.envs
 
-alias vim="nvim"
+# my aliases and functions
+source ~/.clialiases
 
-function ls () {
-    if exa &> /dev/null
-    then
-        exa "$@" --color always
-    else
-        command ls "$@"
-    fi
-}
+# my keybindings
+source ~/.zsh-keybindings
 
-alias dockeron="systemctl start docker.service"
-alias dockeroff="systemctl stop docker.service"
+# vi-mode things
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_INDICATOR="%S%F{orange}%B[NORMAL]%b%f%s "
 
-alias vbox=VBoxManage
-
-alias view_image="geeqie"
-
-export EDITOR="nvim"
-
-function find_here () {
-    find $(pwd) -name "*$1*" | xargs bat
-}
-
-####  VI MODE [https://dougblack.io/words/zsh-vi-mode.html]
-# bindkey -v
-# 
-# bindkey '^P' up-history
-# bindkey '^N' down-history
-# bindkey '^?' backward-delete-char
-# bindkey '^h' backward-delete-char
-# bindkey '^w' backward-kill-word
-# bindkey '^r' history-incremental-search-backward
-
-function zle-line-init zle-keymap-select {
-	VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-	RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-	zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
-export KEYTIMEOUT=1
-####
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# for grv [https://github.com/rgburke/grv]
-unalias grv
-source /usr/share/nvm/init-nvm.sh
-
-alias search="ag -i"
-
-alias get-data-consuption-wifi="sudo vnstat -i wlp2s0"
-alias get-data-consuption-cable="sudo vnstat -i enp1s0"
-
-alias get-keysyms="xev"
-
-# meteor 'multiple instances' utility
-alias meteor='INSTANCE_IP=127.0.0.1 meteor'
-
-alias btop='bpytop'
-
-alias k='kubectl'
-
-alias groot='cd $(git get-root-dir) && echo "I am groot!"'
-
+# make kube_ps1 work
 KUBE_PS1_PREFIX=""
 KUBE_PS1_SUFFIX=""
 KUBE_PS1_CTX_COLOR=yellow
 KUBE_PS1_NS_COLOR=white
 
-# make kube_ps1 work
+# print info aboug vi-mode and kube_ps1 in my ps1 (left and right)
 PROMPT='$(kube_ps1)'$PROMPT
+RPROMPT='$(vi_mode_prompt_info)'
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+
+# make my fuzzy funder work
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf-tab enabled by default (toggle using ctrl+i)
+enable-fzf-tab

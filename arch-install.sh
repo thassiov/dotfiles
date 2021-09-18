@@ -104,6 +104,8 @@ gksu vnstat \
 openssh \
 ## kubernetes stuff
 k3d kubectl kubectx \
+dust duf-bin \
+ripgrep \
 --noconfirm
 
 # python support for neovim
@@ -115,7 +117,7 @@ pulseaudio -D
 # the bluetooth need to be enabled if `blueman` gets installed
 # also we need to check if the rfkill is allowing the bluetooth device
 # sudo rfkill unblock all (this commands solves some headaches)
-sudo systemctl start bluetooth.service
+#sudo systemctl start bluetooth.service
 sudo systemctl enable bluetooth.service
 
 # configure vnstat [https://wiki.archlinux.org/index.php/VnStat]
@@ -154,6 +156,11 @@ sudo systemctl enable tlp-sleep.service
 sudo systemctl enable NetworkManager-dispatcher.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
+
+# because of bluetooth
+# depending on the configuration (and I don't know what I did wrong), everytime you boot, the bluetooth will be
+# soft blocked. I have to run rfkill and restart the bluetooth service everytime. This tries to remedy this
+sudo systemctl enable rfkill-unblock@all
 
 # configure the clock (this is very important because windows keep messing with the hw clock)
 # [https://unix.stackexchange.com/a/336598]

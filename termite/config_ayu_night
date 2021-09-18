@@ -29,33 +29,27 @@ cursor_shape = block
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
-# Project:    Nord Termite
-# Repository: https://github.com/arcticicestudio/nord-termite
-# License:    MIT
-
+# terminal.sexy - ayu night  [https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/termite/ayu]
 [colors]
-cursor = #d8dee9
-cursor_foreground = #2e3440
-
-foreground = #d8dee9
-foreground_bold = #d8dee9
-background = #2e3440
-
-highlight = #4c566a
-
-color0  = #3b4252
-color1  = #bf616a
-color2  = #a3be8c
-color3  = #ebcb8b
-color4  = #81a1c1
-color5  = #b48ead
-color6  = #88c0d0
-color7  = #e5e9f0
-color8  = #4c566a
-color9  = #bf616a
-color10 = #a3be8c
-color11 = #ebcb8b
-color12 = #81a1c1
-color13 = #b48ead
-color14 = #8fbcbb
-color15 = #eceff4
+background = #0f1419
+cursor = #f29718
+foreground = #e6e1cf
+color0 = #000000
+color1 = #ff3333
+color2 = #b8cc52
+color3 = #e7c547
+color4 = #36a3d9
+color5 = #f07178
+color6 = #95e6cb
+color7 = #ffffff
+color8 = #323232
+color9 = #ff6565
+color10 = #eafe84
+color11 = #fff779
+color12 = #68d5ff
+color13 = #ffa3aa
+color14 = #c7fffd
+color15 = #ffffff
+colorBD = #e6e1cf
+colorIT =
+colorUL =
