@@ -27,17 +27,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 
-" Fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" thing
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
 
 " Special Syntax
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -45,20 +37,17 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 " Status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lua/lsp-status.nvim'
 
 " colorscheme
 Plug 'josuegaleas/jay'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ayu-theme/ayu-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
+Plug 'Luxed/ayu-vim'
+Plug 'ghifarit53/tokyonight-vim'
+" Plug 'ayu-theme/ayu-vim'
 
-" markdown stuff
-" Plug 'logico/typewriter-vim'
-" Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'junegunn/goyo.vim'
-" Plug 'junegunn/limelight.vim'
+" this is nice to focus
+Plug 'junegunn/goyo.vim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -68,27 +57,41 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 
-" tags
-Plug 'liuchengxu/vista.vim'
-
-" This hot new shiny stuff
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" coc extensions
-let g:coc_global_extensions = [
-            \'coc-eslint',
-            \'coc-explorer',
-            \'coc-html',
-            \'coc-json',
-            \'coc-markdownlint',
-            \'coc-marketplace',
-            \'coc-snippets',
-            \'coc-tsserver',
-            \'coc-ultisnips',
-            \]
-
 " For project-specific configuration
 " NOTE: requires npm install -g editorconfig !!!!
 Plug 'editorconfig/editorconfig-vim'
+
+" idk
+Plug 'neoclide/npm.nvim'
+
+
+" Tree view
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'folke/lsp-colors.nvim'
+
+" diagnostics and stuff
+Plug 'glepnir/lspsaga.nvim'
+
+" Autocompletion
+Plug 'hrsh7th/nvim-compe'
+
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Telescope's stuff
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 "*****************************************************************************
 "*****************************************************************************

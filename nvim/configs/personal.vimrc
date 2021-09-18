@@ -73,6 +73,8 @@ endif
 " Theme
 set background=dark
 let ayucolor="dark"
+let g:ayu_italic_comment = 1 
+let g:ayu_sign_contrast = 1 
 colorscheme ayu
 
 set mousemodel=popup
@@ -109,6 +111,7 @@ augroup END
 augroup SyntaxSettings
     autocmd!
     autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+    autocmd BufNewFile,BufRead Tiltfile set filetype=python
 augroup END
 
 " Disable visualbell
@@ -133,11 +136,11 @@ set splitbelow
 set splitright
 
 " set cursor line and column color [https://stackoverflow.com/a/29167687/931704]
-" '#34495e' is wet asphalt [https://flatuicolors.com/palette/defo]
+" '#182C61' is called ending navy blue [https://flatuicolors.com/palette/in]
 set cursorcolumn
-hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#0a0a0f gui=bold
+hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
 set cursorline
-hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#0a0a0f gui=bold
+hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
 " set colorcolumn=80
 " hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
 set number
@@ -146,52 +149,72 @@ set backspace=indent,eol,start
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set list
 
-highlight Cursor guifg=white guibg=#34498f
+highlight LineNr guifg=grey
+
+" '#FC427B' is called sasquatch socks
+" [https://flatuicolors.com/palette/in]
+highlight Cursor guifg=yellow guibg=#FC427B
 highlight iCursor guifg=white guibg=steelblue
 set guicursor=n-v-c:block-Cursor
-set guicursor+=i:ver100-iCursor
+" set guicursor+=i:ver100-iCursor
 set guicursor+=n-v-c:blinkon0
 set guicursor+=i:blinkwait10
 
 " change selection color to yellow (more readable)
 " [http://vim.1045645.n5.nabble.com/Howto-change-selected-text-s-color-background-tp1192545p1192547.html]
-hi Visual guifg=blue guibg=yellow
+hi Visual guibg=#404040
 
-
-" In case NERDTREE is not available
-let g:NetrwIsOpen=0
-
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, "&filetype") == "netrw")
-                silent exe "bwipeout " . i
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Lexplore 20
-    endif
-endfunction
+set conceallevel=2
 
 function ToggleLightDarkTheme()
-  if &g:background == 'dark'
+  if g:ayucolor == "dark"
+    set background=dark
+    let g:ayu_italic_comment = 1 
+    let g:ayu_sign_contrast = 1 
+    let g:ayucolor="mirage"
+    let g:airline_theme="jay"
+    colorscheme ayu
+  elseif g:ayucolor == 'mirage'
     set background=light
-    let g:gruvbox_improved_warnings=1
-    let g:gruvbox_italic=1
-    let g:gruvbox_italicize_comments=1
-    let g:gruvbox_contrast_light = 'soft'
-    let g:airline_theme = "gruvbox"
-    colorscheme gruvbox
+    let g:ayu_italic_comment = 1 
+    let g:ayu_sign_contrast = 1 
+    let g:ayucolor="light"
+    let g:airline_theme="jay"
+    colorscheme ayu
   else
     set background=dark
+    let g:ayu_italic_comment = 1 
+    let g:ayu_sign_contrast = 1 
     let g:ayucolor="dark"
-    let g:airline_theme = "jay"
+    let g:airline_theme="jay"
     colorscheme ayu
   endif
 endfunction
 
-set conceallevel=2
+" Goyo.vim
+let g:goyo_width=100
+
+" handles goyo_enter and goyo_leave events
+function! s:goyo_enter()
+  " if executable('tmux') && strlen($TMUX)
+  "   silent !tmux set status off
+  "   silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  " endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  set nu
+endfunction
+
+function! s:goyo_leave()
+  " if executable('tmux') && strlen($TMUX)
+  "   silent !tmux set status on
+  "   silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  " endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
