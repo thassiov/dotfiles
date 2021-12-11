@@ -48,7 +48,7 @@ bindsym --release Shift+$mod+[ exec scrot -s
 bindsym $mod+q exec ~/confs/rofi/rofi-run
 bindsym $mod+a exec ~/confs/rofi/rofi-dmenu
 bindsym $mod+Tab exec ~/confs/rofi/rofi-window
-bindsym $mod+n exec networkmanager_dmenu
+# bindsym $mod+n exec networkmanager_dmenu
 
 #custom start
 # exec --no-startup-id NetworkManager &
@@ -178,8 +178,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # my own journal
-# for_winsow [class="^floatingVim$"] floating enable
-# bindsym $mod+n exec "termite -e tj --class floatingVim"
+for_window [class="^floatingVim$"] floating enable
+bindsym $mod+n exec "termite -e tj --class floatingVim"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
