@@ -71,9 +71,9 @@ nnoremap <leader>@ <cmd>lua require('telescope.builtin').grep_string()<CR>
 
 " Code
 " show diagnostics for the current buffer
-nnoremap <leader>' <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
+nnoremap <leader>' <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 " show diagnostics for the current workspace
-nnoremap <leader>D <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>
+nnoremap <leader>D :Telescope diagnostics<CR>
 " Fix autofix problem of current line
 " nnoremap <leader>ff  <Plug>(coc-fix-current)
 
@@ -83,12 +83,8 @@ nnoremap <leader>d <cmd>lua require('telescope.builtin').lsp_definitions()<CR>
 " Go to references
 nnoremap <leader>r <cmd>lua require('telescope.builtin').lsp_references()<CR>
 " Get documentation on hovered word
-nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-" Preview definition
-nnoremap <silent> J <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
-" nnoremap <leader>y :call CocAction('jumpTypeDefinition')<CR>
-" Search under cursor, project wide
-" nnoremap <C-s> :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+
 " Open file explorer
 nnoremap <leader><Tab> :NvimTreeToggle<CR>
 

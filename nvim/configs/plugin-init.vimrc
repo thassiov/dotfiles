@@ -63,7 +63,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
 " diagnostics and stuff
-Plug 'glepnir/lspsaga.nvim'
 Plug 'folke/lsp-colors.nvim'
 
 " Autocompletion
