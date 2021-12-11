@@ -29,25 +29,16 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Git
 Plug 'airblade/vim-gitgutter'
+" @TODO I need to use more the features of fugitive or else I need to get rid
+" of it
 Plug 'tpope/vim-fugitive'
-
-" Special Syntax
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Status line
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'nvim-lua/lsp-status.nvim'
 
 " colorscheme
 Plug 'josuegaleas/jay'
-Plug 'ryanoasis/vim-devicons'
 Plug 'Luxed/ayu-vim'
-Plug 'ghifarit53/tokyonight-vim'
-" Plug 'ayu-theme/ayu-vim'
-
-" this is nice to focus
-Plug 'junegunn/goyo.vim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -55,27 +46,25 @@ Plug 'wakatime/vim-wakatime'
 " Code assist
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 " For project-specific configuration
-" NOTE: requires npm install -g editorconfig !!!!
 Plug 'editorconfig/editorconfig-vim'
 
-" idk
-Plug 'neoclide/npm.nvim'
-
-
 " Tree view
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-web-devicons' " for file icons - needs global configs
 Plug 'kyazdani42/nvim-tree.lua'
+
+" things I don't need but do need
+Plug 'kazhala/close-buffers.nvim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'folke/lsp-colors.nvim'
+Plug 'williamboman/nvim-lsp-installer'
 
 " diagnostics and stuff
 Plug 'glepnir/lspsaga.nvim'
+Plug 'folke/lsp-colors.nvim'
 
 " Autocompletion
 Plug 'hrsh7th/nvim-compe'
@@ -89,7 +78,7 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Telescope's stuff
-Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 

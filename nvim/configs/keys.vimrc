@@ -31,25 +31,26 @@ nnoremap <leader>Q :q<CR>
 " close all other buffers (different from :only)
 "[https://stackoverflow.com/a/42071865/931704] - the snippet
 "[https://vi.stackexchange.com/a/2288] - about the bar/pipe character
-nnoremap <leader>O :%bd\|e#<CR>
+" nnoremap <leader>O :%bd\|e#<CR>
+nnoremap <leader>O <cmd>lua require('close_buffers').delete({ type = 'hidden', force = true })<CR>
 
 " Leader - plugin access
 
 " Git vim-fugitive
 " Git status
-nnoremap <Leader>gs <cmd>lua require('telescope.builtin').git_status(require('telescope.themes').get_ivy({}))<CR>
+nnoremap <Leader>gs <cmd>lua require('telescope.builtin').git_status()<CR>
 " builtin.git_status
 " Git blame
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gb :Git blame<CR>
 " Git diff
 nnoremap <Leader>gd :Gvdiff<CR>
 
 " symbols
 " symbols fuzzy search on current buffer's 
-nnoremap <leader>4 <cmd>lua require('telescope.builtin').lsp_document_symbols(require('telescope.themes').get_dropdown({}))<CR>
+nnoremap <leader>4 <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
 
 " finder
-" Open list of buffers"
+" Open list of buffers
 nnoremap <leader>3 <cmd>lua require('telescope.builtin').buffers()<CR>
 " Open list of files managed by git"
 nnoremap <leader>1 <cmd>lua require('telescope.builtin').git_files()<CR>
@@ -68,9 +69,6 @@ nnoremap <leader>2 <cmd>lua require('telescope.builtin').live_grep()<CR>
 " Find text under cursor
 nnoremap <leader>@ <cmd>lua require('telescope.builtin').grep_string()<CR>
 
-" Goyo.vim
-nnoremap <leader>o :Goyo<CR>
-
 " Code
 " show diagnostics for the current buffer
 nnoremap <leader>' <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
@@ -79,14 +77,15 @@ nnoremap <leader>D <cmd>lua require('telescope.builtin').lsp_workspace_diagnosti
 " Fix autofix problem of current line
 " nnoremap <leader>ff  <Plug>(coc-fix-current)
 
-" Go to definition (in a new tab [https://github.com/neoclide/coc.nvim/issues/1249])
 " Maybe use this mappings
 " Go to definition
 nnoremap <leader>d <cmd>lua require('telescope.builtin').lsp_definitions()<CR>
 " Go to references
 nnoremap <leader>r <cmd>lua require('telescope.builtin').lsp_references()<CR>
 " Get documentation on hovered word
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+" Preview definition
+nnoremap <silent> J <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 " nnoremap <leader>y :call CocAction('jumpTypeDefinition')<CR>
 " Search under cursor, project wide
 " nnoremap <C-s> :CocSearch <C-R>=expand("<cword>")<CR><CR>

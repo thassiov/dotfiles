@@ -1,18 +1,3 @@
-lua << END
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
-END
-
-" Statusline
-function! LspStatus() abort
-  if luaeval('#vim.lsp.buf_get_clients() > 0')
-    " return luaeval("require('lsp-status').status()")
-    return "⚙️"
-  endif
-
-  return ''
-endfunction
-
 " vim-airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -56,11 +41,3 @@ else
 endif
 
 let g:airline_symbols.dirty=""
-
-function! AccentDemo()
-  " Due to some potential rendering issues, the use of the `space` variable is
-  " recommended.
-  let s:spc = g:airline_symbols.space
-  let g:airline_section_c .= '%{LspStatus()}'
-endfunction
-autocmd VimEnter * call AccentDemo()
