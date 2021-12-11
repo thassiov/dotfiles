@@ -34,7 +34,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " Status line
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 
 " colorscheme
 Plug 'josuegaleas/jay'
