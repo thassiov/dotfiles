@@ -31,8 +31,8 @@ nnoremap <leader>Q :q<CR>
 " close all other buffers (different from :only)
 "[https://stackoverflow.com/a/42071865/931704] - the snippet
 "[https://vi.stackexchange.com/a/2288] - about the bar/pipe character
-" nnoremap <leader>O :%bd\|e#<CR>
-nnoremap <leader>O <cmd>lua require('close_buffers').delete({ type = 'hidden', force = true })<CR>
+nnoremap <leader>o <cmd>lua require('close_buffers').delete({ type = 'hidden', force = true })<CR>
+nnoremap <leader>O <cmd>lua require('close_buffers').delete({ type = 'other' })<CR>
 
 " Leader - plugin access
 
