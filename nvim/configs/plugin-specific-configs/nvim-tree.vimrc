@@ -108,7 +108,7 @@ lua <<EOF
       view = {
         width = 40,
         height = 30,
-        side = 'left',
+        side = 'right',
         auto_resize = false,
         mappings = {
           custom_only = false,
