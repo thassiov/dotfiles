@@ -50,13 +50,14 @@ ZSH_THEME="refined"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  fzf-tab
+  # fzf-tab
   git
   git-prompt
   helm
   vi-mode
   kube-ps1
   ripgrep
+  aws
 )
 
 # User configuration
@@ -119,4 +120,4 @@ RPROMPT='$(vi_mode_prompt_info)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fzf-tab enabled by default (toggle using ctrl+i)
-enable-fzf-tab
+# enable-fzf-tab

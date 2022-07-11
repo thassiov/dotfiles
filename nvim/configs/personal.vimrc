@@ -48,9 +48,8 @@ set number
 
 let no_buffers_menu=1
 
-" " Or if you have Neovim >= 0.1.5
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
 
 "Credit joshdick
@@ -73,8 +72,8 @@ endif
 " Theme
 set background=dark
 let ayucolor="dark"
-let g:ayu_italic_comment = 1 
-let g:ayu_sign_contrast = 1 
+let g:ayu_italic_comment = 1
+let g:ayu_sign_contrast = 1
 colorscheme ayu
 
 set mousemodel=popup
@@ -138,9 +137,10 @@ set splitright
 " set cursor line and column color [https://stackoverflow.com/a/29167687/931704]
 " '#182C61' is called ending navy blue [https://flatuicolors.com/palette/in]
 set cursorcolumn
-hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
+" hi CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
 set cursorline
-hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
+" hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guibg=#182C61 gui=bold
+hi CursorLine gui=bold 
 " set colorcolumn=80
 " hi ColorColumn ctermfg=White ctermbg=Yellow cterm=bold guibg=#e77f67 gui=bold
 set number

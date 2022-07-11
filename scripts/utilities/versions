@@ -1,0 +1,31 @@
+#!/bin/bash
+
+reset="\e[0m"
+
+# for fgbg in 38 48 ; do # Foreground / Background
+#     for color in {0..255} ; do # Colors
+#         # Display the color
+#         printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color
+#         # Display 6 colors per lines
+#         if [ $((($color + 1) % 6)) == 4 ] ; then
+#             echo # New line
+#         fi
+#     done
+#     echo # New line
+# done
+
+printVersionOf () {
+  fgbg=$(shuf -i 38-48 -n 1)
+  color=$(shuf -i 0-255 -n 1)
+  version="$(${1} --version)"
+  printf "\e[${fgbg};5;%sm  %3s   \e[0m" $color $1 $version
+  echo
+}
+
+echo "versions of installed programs"
+# printVersionOf nvm
+printVersionOf node
+printVersionOf npm
+printVersionOf python
+# printVersionOf nvim
+# printVersionOf vim

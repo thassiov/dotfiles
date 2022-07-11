@@ -4,4 +4,4 @@ bindkey -M vicmd 'E' edit-command-line
 
 bindkey -s '^F' '~/confs/scripts/utilities/find-file.sh^M'
 
-bindkey -s '^I' toggle-fzf-tab
+# bindkey -s '^I' toggle-fzf-tab

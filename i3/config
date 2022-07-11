@@ -32,7 +32,7 @@ font pango:FontAwesome 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+t exec termite -e tmux
+bindsym $mod+t exec alacritty -e tmux
 
 # kill focused window
 bindsym $mod+k kill
@@ -45,14 +45,14 @@ bindsym $mod+[ exec scrot
 bindsym --release Shift+$mod+[ exec scrot -s
 
 # start dmenu (a program launcher)
-bindsym $mod+q exec ~/confs/rofi/rofi-run
-bindsym $mod+a exec ~/confs/rofi/rofi-dmenu
-bindsym $mod+Tab exec ~/confs/rofi/rofi-window
+bindsym $mod+q exec ~/.dotfiles/rofi/rofi-run
+bindsym $mod+a exec ~/.dotfiles/rofi/rofi-dmenu
+bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
 # bindsym $mod+n exec networkmanager_dmenu
 
 #custom start
 # exec --no-startup-id NetworkManager &
-exec --no-startup-id nm-applet &
+# exec --no-startup-id nm-applet &
 exec --no-startup-id compton &
 exec --no-startup-id parcellite &
 exec --no-startup-id rescuetime &

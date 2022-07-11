@@ -1,0 +1,59 @@
+" Map leader to ,
+let mapleader=','
+
+"*****************************************************************************
+" Abbreviations
+"*****************************************************************************
+" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+" Switching windows
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" Leader - special shortcuts"
+" Save file
+nnoremap <leader>w :write<CR>
+
+" close the current buffer (does not handle unsaved buffers)
+nnoremap <leader>Q :q<CR>
+" close all other buffers (different from :only)
+"[https://stackoverflow.com/a/42071865/931704] - the snippet
+"[https://vi.stackexchange.com/a/2288] - about the bar/pipe character
+nnoremap <leader>O :%bd\|e#<CR>
+
+" BUFFER AND TAB NAVIGATION - Ctrl and Tab"
+
+" Navigate between buffers using Tab
+" Next buffer"
+nnoremap <Tab> :bnext<CR>
+" Previous buffer"
+nnoremap <S-Tab> :bprevious<CR>
+" nnoremap <silent> <S-t> :tabnew<CR>
+
+" Close buffer
+nnoremap <C-c> :bd<CR>
+
+" Folds all blocks except current [https://stackoverflow.com/a/8735199/931704]
+" 'cafe' stands for 'Close All Folds Except'
+nnoremap <leader>fafe zMzvzz
+
+" find selection [http://vim.wikia.com/wiki/Search_for_visually_selected_text]
+vnoremap // y/<C-R>"<CR>
+
+" Clean search (highlight)
+nnoremap <leader>. :noh<Return>
+
+" Replace in visual mode [http://stackoverflow.com/a/676619]
+vnoremap <C-r> "hy:%s/<C-r>h//g<left><left>"

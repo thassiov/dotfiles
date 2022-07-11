@@ -60,8 +60,7 @@ i3-gaps i3status polybar compton nitrogen feh \
 arandr xcalib rofi dunst \
 networkmanager network-manager-applet notify-osd \
 parcellite geeqie scrot \
-spotify popcorntime-bin \
-reaper-bin \
+spotify \
 postman-bin \
 gammy \ # blue light blocker
 # bluetooth
@@ -75,13 +74,13 @@ blueman pulseaudio-bluetooth \
 ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete \
 noto-fonts-emoji \ # the emoji font
 ## browsers
-firefox google-chrome \
+brave-bin \
 ## audio
 pulseaudio pavucontrol pamixer \
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
-termite vim neovim \
+alacritty neovim \
 editorconfig-core-c httpie \
 exa xclip bat \
 python-pip \
@@ -93,6 +92,7 @@ xclip \
 docker-compose \
 vagrant virtualbox virtualbox-host-modules-arch \
 robo3t-bin \
+fzf \
 ## file explorer
 pcmanfm \
 ## office stuff\
@@ -121,8 +121,8 @@ pulseaudio -D
 sudo systemctl enable bluetooth.service
 
 # configure vnstat [https://wiki.archlinux.org/index.php/VnStat]
-# sudo systemctl start vnstat.service
-# sudo systemctl enable vnstat.service
+sudo systemctl start vnstat.service
+sudo systemctl enable vnstat.service
 
 # virtualbox modules need to be loaded! [https://wiki.archlinux.org/index.php/VirtualBox]
 # if you don't want to be bothered, simply reboot and the modules will load at startup

@@ -40,6 +40,7 @@ Plug 'nvim-lualine/lualine.nvim'
 " colorscheme
 Plug 'josuegaleas/jay'
 Plug 'Luxed/ayu-vim'
+Plug 'morhetz/gruvbox'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'

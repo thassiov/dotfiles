@@ -43,7 +43,7 @@ nnoremap <Leader>gs <cmd>lua require('telescope.builtin').git_status()<CR>
 " Git blame
 nnoremap <Leader>gb :Git blame<CR>
 " Git diff
-nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gd :Gdiffsplit<CR>
 
 " symbols
 " symbols fuzzy search on current buffer's 
@@ -89,7 +89,7 @@ nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <leader><Tab> :NvimTreeToggle<CR>
 
 " lsp actions
-nnoremap <leader>a <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>
+nnoremap <leader>a <cmd>lua require('telescope.builtin').lsp_code_actions()<CR>
 nnoremap <leader>A <cmd>lua require('telescope.builtin').lsp_range_code_actions()<CR>
 
 " vim commands
