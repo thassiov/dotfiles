@@ -58,7 +58,7 @@ xorg xorg-server xorg-xinit xlockmore xautolock \
 xf86-input-synaptics \ # make the touchpad work (also, see 70-synaptics.conf)
 i3-gaps i3status polybar compton nitrogen feh \
 arandr xcalib rofi dunst \
-networkmanager network-manager-applet notify-osd \
+iwd iwgtk notify-osd \
 parcellite geeqie scrot \
 spotify \
 postman-bin \
@@ -80,7 +80,7 @@ pulseaudio pavucontrol pamixer \
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
-alacritty neovim \
+alacritty \
 editorconfig-core-c httpie \
 exa xclip bat \
 python-pip \
@@ -153,7 +153,7 @@ sudo pacman -S tlp tlp-rdw
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 
-sudo systemctl enable NetworkManager-dispatcher.service
+# sudo systemctl enable NetworkManager-dispatcher.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
 

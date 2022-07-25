@@ -18,10 +18,6 @@ lua <<EOF
       ignore_ft_on_setup  = {},
       create_in_closed_folder = false,
       respect_buf_cwd = true,
-      update_to_buf_dir   = {
-        enable = true,
-        auto_open = true,
-      },
       open_on_tab         = false,
       hijack_cursor       = false,
       update_cwd          = false,
@@ -61,7 +57,6 @@ lua <<EOF
         width = 40,
         height = 30,
         side = 'right',
-        auto_resize = false,
         mappings = {
           custom_only = false,
           list = {}

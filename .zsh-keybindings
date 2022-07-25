@@ -5,3 +5,9 @@ bindkey -M vicmd 'E' edit-command-line
 bindkey -s '^F' '~/confs/scripts/utilities/find-file.sh^M'
 
 # bindkey -s '^I' toggle-fzf-tab
+
+# Installing fzf does not automaticaly enable its key-bindings or completion, so:
+if [[ -d /usr/share/fzf ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
