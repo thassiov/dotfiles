@@ -101,6 +101,9 @@ source ~/.clialiases
 # my keybindings
 source ~/.zsh-keybindings
 
+# custom functions
+source ~/.cli-functions
+
 # vi-mode things
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 MODE_INDICATOR="%S%F{orange}%B[NORMAL]%b%f%s "
@@ -121,3 +124,4 @@ RPROMPT='$(vi_mode_prompt_info)'
 
 # fzf-tab enabled by default (toggle using ctrl+i)
 # enable-fzf-tab
+export PATH=/home/thassiov/.meteor:$PATH
