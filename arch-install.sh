@@ -80,6 +80,7 @@ pulseaudio pavucontrol pamixer \
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
+cmake unzip \
 alacritty \
 editorconfig-core-c httpie \
 exa xclip bat \
