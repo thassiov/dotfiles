@@ -40,7 +40,6 @@ ln -s confs/.gitconfig .
 ln -s confs/.xinit .
 ln -s confs/.Xmodmap .
 ln -s confs/tmux.conf .tmux.conf
-ln -s confs/compton.conf .compton.conf
 ln -s confs/.envs .
 
 # Install yay (you'll need base-devel)
@@ -56,8 +55,8 @@ yay -S \
 ## desktop stuff
 xorg xorg-server xorg-xinit xlockmore xautolock \
 xf86-input-synaptics \ # make the touchpad work (also, see 70-synaptics.conf)
-i3-gaps i3status polybar compton nitrogen feh \
-arandr xcalib rofi dunst \
+i3-gaps i3status polybar picom nitrogen feh \
+arandr autorandr xcalib rofi dunst \
 iwd iwgtk notify-osd \
 parcellite geeqie scrot \
 spotify \
@@ -76,7 +75,7 @@ noto-fonts-emoji \ # the emoji font
 ## browsers
 brave-bin \
 ## audio
-pulseaudio pavucontrol pamixer \
+pulseaudio pavucontrol pamixer playerctl \
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff

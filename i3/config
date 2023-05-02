@@ -53,12 +53,12 @@ bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
 #custom start
 # exec --no-startup-id NetworkManager &
 # exec --no-startup-id nm-applet &
-exec --no-startup-id compton &
+exec --no-startup-id picom &
 exec --no-startup-id parcellite &
-exec --no-startup-id rescuetime &
+# exec --no-startup-id rescuetime &
 exec --no-startup-id gammy &
 exec --no-startup-id blueman-manager &
-exec xautolock -detectsleep -time 5 -corners 000- -locker xlock -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
+# exec xautolock -detectsleep -time 5 -corners 000- -locker xlock -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
 
 # diable ideapad beep
 exec xset -b
@@ -136,12 +136,10 @@ bindsym $mod+space focus mode_toggle
  bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
  
  # Sreen brightness controls
- bindsym XF86MonBrightnessUp exec ~/confs/scripts/monitor/screen-brightness.sh inc # increase screen brightness
- bindsym XF86MonBrightnessDown exec ~/confs/scripts/monitor/screen-brightness.sh dec # decrease screen brightness
-
- # Sreen brightness controls
- bindsym $mod+control+equal exec ~/confs/scripts/monitor/screen-brightness.sh inc  # increase screen brightness
- bindsym $mod+control+minus exec ~/confs/scripts/monitor/screen-brightness.sh dec # decrease screen brightness
+ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1
+ bindsym $mod+control+equal exec xbacklight -inc 5 -steps 1
+ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1
+ bindsym $mod+control+minus exec xbacklight -dec 5 -steps 1
 
 set $workspace1 "1:"
 set $workspace2 "2:"
@@ -165,10 +163,6 @@ bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
-
-assign [class="Firefox"] $workspace2
-assign [class="Rambox"] $workspace3
-assign [class="Vlc"] $workspace6
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -113,12 +113,12 @@ env:
 font:
   # Normal (roman) font face
   normal:
-    family: "FuraCode Nerd Font Mono"
+    family: "FiraMono"
     style: Medium
 
   # Bold font face
   bold:
-    family: "FuraCode Nerd Font Mono"
+    family: "FiraMono"
     style: Bold
 
   # Italic font face
