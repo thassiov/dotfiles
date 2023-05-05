@@ -113,12 +113,12 @@ env:
 font:
   # Normal (roman) font face
   normal:
-    family: "FiraMono"
-    style: Medium
+    family: "FiraMonoNerdFontMono"
+    style: "Medium"
 
   # Bold font face
   bold:
-    family: "FiraMono"
+    family: "FiraMonoNerdFontPropo"
     style: Bold
 
   # Italic font face
@@ -132,7 +132,7 @@ font:
   #   style: BoldItalic
 
   # Point size
-  size: 8
+  size: 10
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false

@@ -51,11 +51,8 @@ bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
 # bindsym $mod+n exec networkmanager_dmenu
 
 #custom start
-# exec --no-startup-id NetworkManager &
-# exec --no-startup-id nm-applet &
 exec --no-startup-id picom &
 exec --no-startup-id parcellite &
-# exec --no-startup-id rescuetime &
 exec --no-startup-id gammy &
 exec --no-startup-id blueman-manager &
 # exec xautolock -detectsleep -time 5 -corners 000- -locker xlock -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
