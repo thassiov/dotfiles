@@ -61,11 +61,22 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kazhala/close-buffers.nvim'
 
 " LSP
+" :MasonUpdate updates registry contents
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+
+" Debugger
+" @TODO setup keybindings [https://github.com/mfussenegger/nvim-dap#usage]
+Plug 'mfussenegger/nvim-dap'
+Plug 'jay-babu/mason-nvim-dap.nvim'
 
 " diagnostics and stuff
 Plug 'folke/lsp-colors.nvim'
+" @TODO configure builtins [https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md]
+Plug 'jose-elias-alvarez/null-ls.nvim'
+" @TODO configure automatic setup [https://github.com/jay-babu/mason-null-ls.nvim#automatic-setup-usage]
+Plug 'jay-babu/mason-null-ls.nvim'
 
 " Autocompletion
 Plug 'hrsh7th/nvim-compe'

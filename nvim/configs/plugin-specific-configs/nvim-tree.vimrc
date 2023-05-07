@@ -14,8 +14,6 @@ lua <<EOF
     require'nvim-tree'.setup {
       disable_netrw       = true,
       hijack_netrw        = true,
-      open_on_setup       = false,
-      ignore_ft_on_setup  = {},
       create_in_closed_folder = false,
       respect_buf_cwd = true,
       open_on_tab         = false,
@@ -55,7 +53,6 @@ lua <<EOF
       },
       view = {
         width = 40,
-        height = 30,
         side = 'right',
         mappings = {
           custom_only = false,
