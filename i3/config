@@ -50,8 +50,12 @@ bindsym $mod+a exec ~/.dotfiles/rofi/rofi-dmenu
 bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
 # bindsym $mod+n exec networkmanager_dmenu
 
+# enable/disable touchpad
+bindsym $mod+Shift+T exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
+
 #custom start
-exec --no-startup-id picom &
+# exec --no-startup-id picom &
+exec --no-startup-id nm-applet &
 exec --no-startup-id parcellite &
 exec --no-startup-id gammy &
 exec --no-startup-id blueman-manager &
