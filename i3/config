@@ -44,7 +44,22 @@ bindsym $mod+l exec xlock
 bindsym $mod+[ exec scrot
 bindsym --release Shift+$mod+[ exec scrot -s
 
+# i3 floating windows
+# enable startup in float from exec by setting the x11 class to floating
+# many apps support '--class floating' for setting the x11 class (the instance get renamed)
+for_window [class="float"] floating enable
+bindsym $mod+n exec "alacritty -e tj --class float"
+
+
+# Pomodoro timer
+bindsym $mod+p exec tomate-gtk
+
+# my journal
+# for_window [class="^floatingVim$"] floating enable
+# bindsym $mod+n exec "termite -e tj --class floatingVim"
+
 # start dmenu (a program launcher)
+bindsym $mod+o exec ~/.dotfiles/rofi/rofi-emoji
 bindsym $mod+q exec ~/.dotfiles/rofi/rofi-run
 bindsym $mod+a exec ~/.dotfiles/rofi/rofi-dmenu
 bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
@@ -171,10 +186,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# my own journal
-for_window [class="^floatingVim$"] floating enable
-bindsym $mod+n exec "termite -e tj --class floatingVim"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

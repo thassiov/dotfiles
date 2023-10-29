@@ -71,7 +71,7 @@ nnoremap <leader>@ <cmd>lua require('telescope.builtin').grep_string()<CR>
 
 " Code
 " show diagnostics for the current buffer
-nnoremap <leader>' <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <leader>' <cmd>lua vim.diagnostic.open_float()<CR>
 " show diagnostics for the current workspace
 nnoremap <leader>D :Telescope diagnostics<CR>
 " Fix autofix problem of current line
@@ -114,6 +114,9 @@ nnoremap <leader>T :call ToggleLightDarkTheme()<CR>
 nnoremap <C-c> :bd<CR>
 
 " MISC"
+
+" Toggle Goyo | focused buffer 
+nnoremap <leader>z :Goyo<CR>
 
 " Reaload my vim config (assuming it is in the correct directory)
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>

@@ -6,12 +6,18 @@ output DP-3
 off
 output DP-4
 off
+output DP-3-1
+off
+output DP-3-2
+off
+output DP-3-3
+off
 output eDP-1
 crtc 0
-mode 1680x1050
+mode 1920x1200
 pos 0x0
 primary
-rate 59.95
+rate 59.88
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12

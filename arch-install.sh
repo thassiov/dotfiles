@@ -68,14 +68,20 @@ gammy \ # blue light blocker
 # use a protocol that is not there
 # example -> "src/service.c:btd_service_connect() a2dp-sink profile connect failed for 5C:C6:E9:EF:89:13: Protocol not available"
 # also pulseaudio-bluetooth installs sbc package, which is essential to make the bluetooth keyboard work
-blueman pulseaudio-bluetooth \
+# blueman pulseaudio-bluetooth \
 ## types stuff
 ttf-ms-fonts otf-fira-mono otf-fira-sans nerd-fonts-complete \
 noto-fonts-emoji \ # the emoji font
 ## browsers
 brave-bin \
 ## audio
-pulseaudio pavucontrol pamixer playerctl \
+# pulseaudio pavucontrol pamixer playerctl \
+# I'm trying to use pipewire now
+# [https://unix.stackexchange.com/a/634106] 
+# [https://askubuntu.com/a/1397581]
+# [https://www.redpill-linpro.com/techblog/2021/05/31/better-bluetooth-headset-audio-with-msbc.html]
+# [https://wiki.archlinux.org/title/PipeWire]
+pipewire pipewire-pulse wireplumber qpwgraph\
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
@@ -86,7 +92,7 @@ exa xclip bat \
 python-pip \
 bpytop \
 nvm-git \
-diff-so-fancy grv \
+git-delta grv \
 the_silver_searcher \
 xclip \
 docker-compose \
@@ -106,6 +112,8 @@ openssh \
 k3d kubectl kubectx \
 dust duf-bin \
 ripgrep \
+## pomodoro stuff
+tomate-gtk tomate-statusicon-plugin \
 --noconfirm
 
 # python support for neovim

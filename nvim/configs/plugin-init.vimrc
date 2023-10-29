@@ -32,6 +32,7 @@ Plug 'airblade/vim-gitgutter'
 " @TODO I need to use more the features of fugitive or else I need to get rid
 " of it
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 
 " Status line
 " Plug 'vim-airline/vim-airline'
@@ -41,6 +42,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'josuegaleas/jay'
 Plug 'Luxed/ayu-vim'
 Plug 'morhetz/gruvbox'
+Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -59,6 +61,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 " things I don't need but do need
 Plug 'kazhala/close-buffers.nvim'
+Plug 'junegunn/goyo.vim'
 
 " LSP
 " :MasonUpdate updates registry contents

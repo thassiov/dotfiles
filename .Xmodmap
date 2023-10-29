@@ -2,3 +2,6 @@ remove Lock = Caps_Lock
 add Lock = Escape
 keysym Caps_Lock = Escape
 keysym Escape = Caps_Lock
+
+keycode  64 = Super_L NoSymbol Super_L
+keycode 133 = Alt_L Meta_L Alt_L Meta_L

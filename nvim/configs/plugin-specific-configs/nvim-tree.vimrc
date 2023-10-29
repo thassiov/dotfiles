@@ -54,10 +54,6 @@ lua <<EOF
       view = {
         width = 40,
         side = 'right',
-        mappings = {
-          custom_only = false,
-          list = {}
-        }
       },
       renderer = {
         indent_markers = {

@@ -130,6 +130,9 @@ endif
 set foldenable
 set foldmethod=indent
 
+" disable folding in telescope's result window [https://github.com/nvim-telescope/telescope.nvim/issues/991#issuecomment-882059894]
+autocmd! FileType TelescopeResults setlocal nofoldenable
+
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright

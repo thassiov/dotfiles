@@ -3,7 +3,6 @@
   email = tvmcarvalho@gmail.com
 [core]
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
   default = matching
 [pull]
@@ -90,6 +89,7 @@
   syntax-theme = Monokai Extended
   navigate = true
   line-numbers = true
+  side-by-side = true
 
 [interactive]
   diffFilter = delta --color-only
