@@ -55,11 +55,11 @@ yay -S \
 ## desktop stuff
 xorg xorg-server xorg-xinit xlockmore xautolock \
 xf86-input-synaptics \ # make the touchpad work (also, see 70-synaptics.conf)
-i3-gaps i3status polybar picom nitrogen feh \
+i3-gaps i3status i3-layouts polybar picom nitrogen feh \
 arandr autorandr xcalib rofi dunst \
 iwd iwgtk notify-osd \
 parcellite geeqie scrot \
-spotify \
+spotify spotify-tray-git \
 postman-bin \
 gammy \ # blue light blocker
 # bluetooth

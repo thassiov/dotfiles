@@ -43,6 +43,7 @@ Plug 'josuegaleas/jay'
 Plug 'Luxed/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
+Plug 'folke/tokyonight.nvim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
