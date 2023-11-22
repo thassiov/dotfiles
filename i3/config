@@ -248,6 +248,8 @@ bindsym $mod+Shift+u gaps outer current plus 6
 
 
 bar {
-    status_command i3status --config ~/.dotfiles/i3status.conf
     position top
+    # output primary
+    workspace_buttons yes
+    status_command i3status --config ~/.dotfiles/i3status.conf
 }
