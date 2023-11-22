@@ -59,10 +59,10 @@ bindsym $mod+p exec tomate-gtk
 # bindsym $mod+n exec "termite -e tj --class floatingVim"
 
 # start dmenu (a program launcher)
-bindsym $mod+o exec ~/.dotfiles/rofi/rofi-emoji
-bindsym $mod+q exec ~/.dotfiles/rofi/rofi-run
-bindsym $mod+a exec ~/.dotfiles/rofi/rofi-dmenu
-bindsym $mod+Tab exec ~/.dotfiles/rofi/rofi-window
+bindsym $mod+o exec rofi -show emoji
+bindsym $mod+q exec rofi -show-icons -show run
+bindsym $mod+a exec rofi -show-icons -show drun
+bindsym $mod+Tab exec rofi -show-icons -show window
 # bindsym $mod+n exec networkmanager_dmenu
 
 # enable/disable touchpad
@@ -70,14 +70,15 @@ bindsym $mod+Shift+T exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
 
 #custom start
 # exec --no-startup-id picom &
+exec --no-startup-id i3-layouts &
 exec --no-startup-id nm-applet &
 exec --no-startup-id parcellite &
 exec --no-startup-id gammy &
 exec --no-startup-id blueman-manager &
 # exec xautolock -detectsleep -time 5 -corners 000- -locker xlock -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
 
-# diable ideapad beep
-exec xset -b
+# disable ideapad beep
+# exec xset -b
 
 exec killall -q notify-osd
 exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
@@ -105,6 +106,11 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# vstack left (i3-layouts)
+bindsym $mod+Shift+9 exec i3l vstack 0.65 left to workspace 1
+bindsym $mod+Shift+0 exec i3l none
+
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -239,27 +245,9 @@ bindsym $mod+y gaps inner current minus 6
 bindsym $mod+u gaps inner current plus 6
 bindsym $mod+Shift+y gaps outer current minus 6
 bindsym $mod+Shift+u gaps outer current plus 6
-#workspace $workspace2 gaps inner 0
-#workspace $workspace2 gaps outer 0
 
 
 bar {
-    status_command polybar bar
-    tray_output LSDV1
-    separator_symbol "//"
-    strip_workspace_numbers no
-    mode hide
-
-    colors {
-       
-        background		$bg.color
-        statusline		$fg.color	
-        separator		$alt.color
-
-         #class		border		background	font
-        focused_workspace	$bg.color	$alt.color	$fg.color
-        inactive_workspace	$bg.color	$bg.color	$fg.color
-        active_workspace	$bg.color	$alt.color	$fg.color
-        urgent_workspace	$bg.color	$warn.color	#ffffff
-    }
+    status_command i3status --config ~/.dotfiles/i3status.conf
+    position top
 }
