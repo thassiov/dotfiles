@@ -2,7 +2,7 @@
 # edit command on vim
 bindkey -M vicmd 'E' edit-command-line
 
-bindkey -s '^F' '~/confs/scripts/utilities/find-file.sh^M'
+bindkey -s '^F' '~/.dotfiles/scripts/utilities/find-file.sh'
 
 # bindkey -s '^I' toggle-fzf-tab
 

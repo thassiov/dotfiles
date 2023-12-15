@@ -92,7 +92,7 @@ exa xclip bat \
 python-pip \
 bpytop \
 nvm-git \
-git-delta grv \
+git-delta lazygit \
 the_silver_searcher \
 xclip \
 docker-compose \

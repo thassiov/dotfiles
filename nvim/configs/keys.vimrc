@@ -45,6 +45,13 @@ nnoremap <Leader>gb :Git blame<CR>
 " Git diff
 nnoremap <Leader>gd :Gdiffsplit<CR>
 
+
+" Lazygit
+" Open for current working directory
+nnoremap <leader>gg :LazyGit<CR>
+" Open for the current buffer
+nnoremap <leader>G :LazyGitCurrentFile<CR>
+
 " symbols
 " symbols fuzzy search on current buffer's 
 nnoremap <leader>4 <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
@@ -77,6 +84,10 @@ nnoremap <leader>D :Telescope diagnostics<CR>
 " Fix autofix problem of current line
 " nnoremap <leader>ff  <Plug>(coc-fix-current)
 
+" Test runner
+nmap <silent> <leader>T :TestNearest<CR>
+nmap <silent> <leader>t :TestFile<CR>
+
 " Maybe use this mappings
 " Go to definition
 nnoremap <leader>d <cmd>lua require('telescope.builtin').lsp_definitions()<CR>
@@ -108,7 +119,7 @@ nnoremap <S-Tab> :bprevious<CR>
 " nnoremap <silent> <S-t> :tabnew<CR>
 
 " ToggleLightDarkTheme
-nnoremap <leader>T :call ToggleLightDarkTheme()<CR>
+" nnoremap <leader>T :call ToggleLightDarkTheme()<CR>
 
 " Close buffer
 nnoremap <C-c> :bd<CR>

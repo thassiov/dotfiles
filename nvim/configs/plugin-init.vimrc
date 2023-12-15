@@ -33,6 +33,7 @@ Plug 'airblade/vim-gitgutter'
 " of it
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-flog'
+Plug 'kdheepak/lazygit.nvim'
 
 " Status line
 " Plug 'vim-airline/vim-airline'
@@ -44,6 +45,9 @@ Plug 'Luxed/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 Plug 'folke/tokyonight.nvim'
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+Plug 'kepano/flexoki-neovim'
+Plug 'tiagovla/tokyodark.nvim'
 
 " Analytics
 Plug 'wakatime/vim-wakatime'
@@ -81,6 +85,9 @@ Plug 'folke/lsp-colors.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 " @TODO configure automatic setup [https://github.com/jay-babu/mason-null-ls.nvim#automatic-setup-usage]
 Plug 'jay-babu/mason-null-ls.nvim'
+" Test runner
+Plug 'vim-test/vim-test'
+Plug 'voldikss/vim-floaterm'
 
 " Autocompletion
 Plug 'hrsh7th/nvim-compe'
@@ -97,6 +104,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+"" Things specific to code/filetypes
+
+"CSV stuff
+Plug 'chrisbra/csv.vim'
 
 "*****************************************************************************
 "*****************************************************************************

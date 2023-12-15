@@ -71,12 +71,10 @@ endif
 "
 " Theme
 set background=dark
-" let ayucolor="dark"
-" let g:ayu_italic_comment = 1
-" let g:ayu_sign_contrast = 1
-" colorscheme ayu
-
-colorscheme tokyonight-night
+let ayucolor="dark"
+let g:ayu_italic_comment = 1
+let g:ayu_sign_contrast = 1
+colorscheme ayu
 
 set mousemodel=popup
 set t_Co=256

@@ -53,7 +53,6 @@ plugins=(
   # fzf-tab
   git
   git-prompt
-  helm
   vi-mode
   kube-ps1
   ripgrep
@@ -119,9 +118,11 @@ PROMPT='$(kube_ps1)'$PROMPT
 RPROMPT='$(vi_mode_prompt_info)'
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
+# make aws ps1 work
+SHOW_AWS_PROMPT=true
+
 # make my fuzzy funder work
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fzf-tab enabled by default (toggle using ctrl+i)
 # enable-fzf-tab
-export PATH=/home/thassiov/.meteor:$PATH

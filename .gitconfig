@@ -61,7 +61,7 @@
   #   }; f"
 
   # open grv
-  pane = "!grv"
+  pane = "!lazygit"
 [color]
   ui = true
 [color "diff-highlight"]
