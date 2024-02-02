@@ -10,7 +10,7 @@ passwd thassiov
 # add 'thassiov' to the sudoers' file
 
 # Third: install the first packages
-pacman -S nvim git docker tmux zsh curl sudo which htop
+pacman -S nvim git docker docker-buildx tmux zsh curl sudo which htop
 
 # Forth: now login with the new user
 su thassiov
