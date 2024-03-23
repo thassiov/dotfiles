@@ -109,7 +109,7 @@ augroup END
 "" Make .tsx file work correctly with the .ts syntax
 augroup SyntaxSettings
     autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+    " autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
     autocmd BufNewFile,BufRead Tiltfile set filetype=python
 augroup END
 

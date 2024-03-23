@@ -79,12 +79,14 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
 Plug 'jay-babu/mason-nvim-dap.nvim'
 
+" Linting and formatting (used by mason)
+Plug 'mfussenegger/nvim-lint'
+Plug 'mhartington/formatter.nvim'
+
 " diagnostics and stuff
 Plug 'folke/lsp-colors.nvim'
-" @TODO configure builtins [https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md]
-Plug 'jose-elias-alvarez/null-ls.nvim'
-" @TODO configure automatic setup [https://github.com/jay-babu/mason-null-ls.nvim#automatic-setup-usage]
-Plug 'jay-babu/mason-null-ls.nvim'
+Plug 'folke/trouble.nvim'
+
 " Test runner
 Plug 'vim-test/vim-test'
 Plug 'voldikss/vim-floaterm'

@@ -127,7 +127,7 @@ nnoremap <C-c> :bd<CR>
 " MISC"
 
 " Toggle Goyo | focused buffer 
-nnoremap <leader>z :Goyo<CR>
+nnoremap <leader>z :Goyo 130<CR>
 
 " Reaload my vim config (assuming it is in the correct directory)
 nnoremap <leader>0 :so ~/.config/nvim/init.vim<CR>
