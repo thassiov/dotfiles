@@ -1,0 +1,50 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[[colors.indexed_colors]]
+color = "0xff9e64"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xdb4b4b"
+index = 17
+
+[colors.bright]
+black = "0x414868"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xc0caf5"
+yellow = "0xe0af68"
+
+[colors.normal]
+black = "0x15161e"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xa9b1d6"
+yellow = "0xe0af68"
+
+[colors.primary]
+background = "0x1a1b26"
+foreground = "0xc0caf5"
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.16"
+
+[font]
+size = 9
+
+[font.bold]
+family = "FiraMonoNerdFontPropo"
+style = "Bold"
+
+[font.normal]
+family = "FiraMonoNerdFontMono"
+style = "Medium"
