@@ -2,9 +2,6 @@
   name = thassiov
   email = tvmcarvalho@gmail.com
 
-[includeIf "gitdir/i:~/dev/work/"]
-  path = ~/.dotfiles/.gitconfig.work
-
 [core]
   editor = nvim
 [push]

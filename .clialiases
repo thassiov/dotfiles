@@ -38,8 +38,7 @@ alias k='kubectl'
 
 alias groot='cd $(git get-root-dir) && echo "I am groot!"'
 
-alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
-alias nvim-lazyvim='NVIM_APPNAME="nvim-lazyvim" nvim'
-alias nvim-legacy='NVIM_APPNAME="nvim-legacy" nvim'
-alias nvim="nvim-lazyvim"
 alias vim="nvim"
+alias nvim-kickstart='nvim -u ~/.dotfiles/nvim-configs/kickstart'
+alias nvim-lazyvim='nvim -u ~/.dotfiles/nvim-configs/lazyvim-distro'
+alias nvim-legacy='nvim -u ~/.dotfiles/nvim-configs/legacy'
