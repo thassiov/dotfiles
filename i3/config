@@ -33,6 +33,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+t exec alacritty -e tmux
+# start a terminal in the company's workstation
+bindsym $mod+Control+t exec alacritty -e ssh -t ilia-workstation tmux
 
 # kill focused window
 bindsym $mod+k kill
@@ -66,7 +68,7 @@ bindsym $mod+Tab exec rofi -show-icons -show window
 # bindsym $mod+n exec networkmanager_dmenu
 
 # enable/disable touchpad
-bindsym $mod+Shift+T exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
+bindsym $mod+Shift+t exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
 
 #custom start
 # exec --no-startup-id picom &
