@@ -1,8 +1,0 @@
-# 
-# /etc/fstab: static file system information
-#
-# <file system>	<dir>	<type>	<options>	<dump>	<pass>
-# /dev/sda2
-UUID=433b4b7f-1ad7-4cc9-a9d5-b6a0abe2f11b	/         	ext4      	rw,relatime,data=ordered	0 1
-
-/dev/sda4    /mnt/tn1st    ntfs-3g    uid=1000,gid=1000,dmask=027,fmask=137    0    0

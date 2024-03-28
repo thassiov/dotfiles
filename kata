@@ -1,9 +1,0 @@
-#!/bin/bash
-
-NEW_KATA_DIR=/home/thassiov/dev/personal/practice/daily/$(date +%d-%m-%Y_%H-%M-%S)
-
-mkdir $NEW_KATA_DIR
-cd $NEW_KATA_DIR
-npm init -y
-touch index.js
-nvim index.js
