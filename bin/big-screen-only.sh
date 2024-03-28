@@ -1,1 +1,0 @@
-/home/thassiov/.screenlayout/big-screen-only.sh

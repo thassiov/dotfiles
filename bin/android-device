@@ -1,2 +1,0 @@
-#!/bin/bash
-emulator -avd New_Device_API_29

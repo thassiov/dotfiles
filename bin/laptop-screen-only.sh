@@ -1,1 +1,0 @@
-/home/thassiov/.screenlayout/laptop-screen-only.sh

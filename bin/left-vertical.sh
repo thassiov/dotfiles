@@ -1,1 +1,0 @@
-/home/thassiov/.screenlayout/left-vertical.sh

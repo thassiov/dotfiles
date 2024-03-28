@@ -1,1 +1,0 @@
-/home/thassiov/confs/container-utils/dns-container-start.sh

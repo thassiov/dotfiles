@@ -1,1 +1,0 @@
-/home/thassiov/confs/container-utils/log-container-start.sh
