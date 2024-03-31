@@ -75,13 +75,14 @@ noto-fonts-emoji \ # the emoji font
 ## browsers
 brave-bin \
 ## audio
-# pulseaudio pavucontrol pamixer playerctl \
+# this installs pulse and also makes sure the internal microphone (xps) works
+pulseaudio pulseaudio-bluetooth pavucontrol pamixer playerctl alsa-tools alsa-utils alsa-card-profiles pulseaudio-alsa  \
 # I'm trying to use pipewire now
 # [https://unix.stackexchange.com/a/634106] 
 # [https://askubuntu.com/a/1397581]
 # [https://www.redpill-linpro.com/techblog/2021/05/31/better-bluetooth-headset-audio-with-msbc.html]
 # [https://wiki.archlinux.org/title/PipeWire]
-pipewire pipewire-pulse wireplumber qpwgraph\
+# pipewire pipewire-pulse wireplumber qpwgraph\
 ## codecs
 ffmpeg flashplugin vlc \
 ## terminal and text editor stuff
