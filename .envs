@@ -10,8 +10,8 @@
 export MY_SCRIPTS=~/bin
 
 # BROWSER
-export BROWSER=brave
-# export BROWSER=firefox
+# export BROWSER=brave
+export BROWSER=firefox
 export EDITOR="nvim"
 
 # GO PATH
