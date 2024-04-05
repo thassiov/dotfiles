@@ -23,7 +23,7 @@ crtc 0
 mode 2560x1440
 pos 1080x240
 primary
-rate 120.00
+rate 59.95
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12

@@ -1,0 +1,168 @@
+{
+    "additional-repositories": [
+        "multilib"
+    ],
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pulseaudio"
+    },
+    "bootloader": "Grub",
+    "config_version": "2.7.1",
+    "debug": false,
+    "disk_config": {
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "Boot"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "09cfb833-af53-4d39-b9d1-df3b4f18bb0d",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 203
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 3
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "8b529d23-3356-4925-8759-3a6c7050a49d",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 20
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 216006656
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/home",
+                        "obj_id": "99998fc4-895f-4e6f-9cdd-dd8dc45048a3",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 32212254720
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 20
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
+    "disk_encryption": {
+        "encryption_type": "luks",
+        "partitions": [
+            "8b529d23-3356-4925-8759-3a6c7050a49d",
+            "99998fc4-895f-4e6f-9cdd-dd8dc45048a3"
+        ]
+    },
+    "hostname": "dev-machine",
+    "kernels": [
+        "linux-lts"
+    ],
+    "locale_config": {
+        "kb_layout": "br-abnt2",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": {
+        "custom_mirrors": [],
+        "mirror_regions": {
+            "Brazil": [
+                "https://mirror.ufscar.br/archlinux/$repo/os/$arch",
+                "http://mirror.ufscar.br/archlinux/$repo/os/$arch",
+                "http://mirror.ufam.edu.br/archlinux/$repo/os/$arch",
+                "http://archlinux.c3sl.ufpr.br/$repo/os/$arch"
+            ]
+        }
+    },
+    "network_config": {
+        "type": "nm"
+    },
+    "no_pkg_lookups": false,
+    "ntp": true,
+    "offline": false,
+    "packages": [
+        "git",
+        "neovim",
+        "curl",
+        "htop",
+        "firefox"
+    ],
+    "parallel downloads": 0,
+    "profile_config": {
+        "gfx_driver": "All open-source",
+        "greeter": "lightdm-gtk-greeter",
+        "profile": {
+            "custom_settings": {
+                "Xfce4": {}
+            },
+            "details": [
+                "Xfce4"
+            ],
+            "main": "Desktop"
+        }
+    },
+    "script": "guided",
+    "silent": false,
+    "skip_ntp": false,
+    "skip_version_check": false,
+    "swap": true,
+    "timezone": "America/Sao_Paulo",
+    "uki": false,
+    "version": "2.7.1"
+}
