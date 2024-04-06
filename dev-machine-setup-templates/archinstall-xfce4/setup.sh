@@ -20,7 +20,7 @@ cd ~
 
 echo
 echo "Installing packages"
-yay -S $(awk '{print $1}' /home/thassiov/shared/packages.list) --noconfirm
+yay -S $(awk '{print $1}' /home/thassiov/shared/packages-guest.list) --noconfirm
 
 echo
 echo "Configure ssh server"
