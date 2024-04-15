@@ -59,7 +59,6 @@ sudo systemctl start bluetooth.service
 echo
 echo "Enable tlp power management"
 sudo systemctl enable tlp.service
-sudo systemctl enable tlp-sleep.service
 
 echo
 echo "Unblock antenas"
@@ -68,7 +67,7 @@ sudo systemctl mask systemd-rfkill.socket
 sudo systemctl enable rfkill-unblock@all
 
 echo
-echo "Configure thassiov user oh-my-zsh"
+echo "Configure thassiov user oh-my-zsh and set zsh as default shell"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo
@@ -107,6 +106,14 @@ ln -s ~/.dotfiles/nvim-configs/kickstart ~/.config/nvim
 echo
 echo "Echoing machine interfaces"
 ip a
+
+echo
+echo "Manual tasks"
+echo "1 - Don't forget to set `USB_AUTOSUSPEND=0` at `/etc/tlp.conf` or else usb charging won't work [https://linrunner.de/en/tlp/docs/tlp-configuration.html#usb]"
+echo "2 - Check to see if the virtualbox daemon is enabled. You can enable it manually or simply restart the machine"
+echo "3 - Make sure to link `70-synaptics.conf` file at `/etc/X11/xorg.conf.d` to make the touchpad work"
+echo "4 - Make sure to link `.Xmodmap` at the $HOME directory if needed"
+echo "5 - Run the `kb/symbols/replace-files.sh` script to make the 60% keyboard work properly"
 
 echo
 echo "Done. Happy hacking!"
