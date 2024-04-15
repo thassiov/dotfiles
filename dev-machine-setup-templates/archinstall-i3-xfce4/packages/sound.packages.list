@@ -6,3 +6,4 @@ alsa-tools
 alsa-utils
 alsa-card-profiles
 pulseaudio-alsa
+sof-firmware
