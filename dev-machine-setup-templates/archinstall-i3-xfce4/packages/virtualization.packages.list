@@ -1,0 +1,8 @@
+vagrant
+docker 
+docker-buildx
+docker-compose
+k3d-bin
+virtualbox
+virtualbox-host-dkms
+linux-lts-headers

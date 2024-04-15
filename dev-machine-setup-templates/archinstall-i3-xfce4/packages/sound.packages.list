@@ -1,0 +1,8 @@
+pulseaudio
+pavucontrol
+pamixer
+playerctl
+alsa-tools
+alsa-utils
+alsa-card-profiles
+pulseaudio-alsa
