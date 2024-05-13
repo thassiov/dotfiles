@@ -5,4 +5,5 @@ docker-compose
 k3d-bin
 virtualbox
 virtualbox-host-dkms
+virtualbox-ext-oracle
 linux-lts-headers

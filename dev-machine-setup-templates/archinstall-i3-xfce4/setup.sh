@@ -47,6 +47,10 @@ echo "Add user thassiov to video group"
 sudo gpasswd -a thassiov video
 
 echo
+echo "Add user thassiov to vboxusers group"
+sudo gpasswd -a thassiov vboxusers
+
+echo
 echo "Enable vnstat"
 sudo systemctl enable vnstat.service
 sudo systemctl start vnstat.service
