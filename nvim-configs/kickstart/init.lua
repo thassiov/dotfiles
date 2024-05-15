@@ -935,6 +935,12 @@ require("lazy").setup({
 				},
 			})
 			vim.keymap.set("n", "<leader><Tab>", require("nvim-tree.api").tree.toggle, { desc = "[S]earch [H]elp" })
+			vim.keymap.set(
+				"n",
+				"<leader><S-Tab>",
+				"<cmd>NvimTreeFindFileToggle<CR>",
+				{ desc = "[S]earch and focus [H]elp" }
+			)
 		end,
 	},
 
