@@ -33,32 +33,12 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+t exec alacritty -e tmux
-# start a terminal in the company's workstation
-bindsym $mod+Control+t exec alacritty -e ssh -t ilia-workstation tmux
 
 # kill focused window
 bindsym $mod+k kill
 
 # lock screen
 bindsym $mod+l exec xlock
-
-# Screenshot
-bindsym $mod+[ exec scrot
-bindsym --release Shift+$mod+[ exec scrot -s
-
-# i3 floating windows
-# enable startup in float from exec by setting the x11 class to floating
-# many apps support '--class floating' for setting the x11 class (the instance get renamed)
-for_window [class="float"] floating enable
-bindsym $mod+n exec "alacritty -e tj --class float"
-
-
-# Pomodoro timer
-bindsym $mod+p exec tomate-gtk
-
-# my journal
-# for_window [class="^floatingVim$"] floating enable
-# bindsym $mod+n exec "termite -e tj --class floatingVim"
 
 # start dmenu (a program launcher)
 bindsym $mod+o exec rofi -show emoji
@@ -67,30 +47,11 @@ bindsym $mod+a exec rofi -show-icons -show drun
 bindsym $mod+Tab exec rofi -show-icons -show window
 # bindsym $mod+n exec networkmanager_dmenu
 
-# enable/disable touchpad
+# enable/disable touchpad (for when using the notebook's keyboard
 bindsym $mod+Shift+t exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
 
-#custom start
-# exec --no-startup-id picom &
-exec --no-startup-id i3-layouts &
-exec --no-startup-id nm-applet &
-exec --no-startup-id parcellite &
-exec --no-startup-id gammy &
-exec --no-startup-id blueman-manager &
-exec --no-startup-id nitrogren --set-zoom-fill /home/thassiov/pics/wallpaper/traf-ukTd6UiQbLQ-unsplash.jpg &
-# exec xautolock -detectsleep -time 5 -corners 000- -locker xlock -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" &
-
-# disable ideapad beep
-# exec xset -b
-
-exec killall -q notify-osd
-exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
-
-# change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-#bindsym $mod+semicolon focus right
+# opens thunar
+bindsym $mod+f exec pcmanfm
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -98,34 +59,18 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+semicolon move right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# vstack left (i3-layouts)
-bindsym $mod+Shift+9 exec i3l vstack 0.65 left to workspace 1
-bindsym $mod+Shift+0 exec i3l none
-
-
 # split in horizontal orientation
 bindsym $mod+h split h
-
 # split in vertical orientation
 bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen toggle
-
-# opens thunar
-bindsym $mod+f exec pcmanfm
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -137,34 +82,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-#bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
- #Pulse Audio controls
- # To discover the right sink, do 'pactl list short' and find 'alsa_output*RUNNING'
- bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
- bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
- bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
- bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #increase sound volume
- bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
- bindsym $mod+0 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
-
- bindsym $mod+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) play-pause # play-pause current player
- bindsym $mod+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) stop # stop current player
- bindsym $mod+Shift+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
- bindsym $mod+Shift+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
-
- bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
- 
- # Sreen brightness controls
- bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1
- bindsym $mod+control+equal exec xbacklight -inc 5 -steps 1
- bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1
- bindsym $mod+control+minus exec xbacklight -dec 5 -steps 1
 
 set $workspace1 "1:main"
 # always set the first workspace to the main screen (for when using multiple monitors)
@@ -198,6 +115,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+r mode "resize"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -222,39 +141,18 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-set $bg-color 	         #000000
-set $inactive-bg-color   #000000
-set $text-color          #ffffff
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
-set $transparent         #00000065
-set $active-border-color #3971ED
-
-
-# window colors
-#                       border              background         text                 indicator     child-border
-client.focused          $bg-color           $bg-color          $text-color          $bg-color      $active-border-color
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.focused_inactive $urgent-bg-color    $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
-
 for_window [class="^.*"] border pixel 1
 #i3-gaps
 gaps inner 5
 gaps outer 5
 #smart_gaps on
 smart_borders on
-bindsym $mod+y gaps inner current minus 6
-bindsym $mod+u gaps inner current plus 6
-bindsym $mod+Shift+y gaps outer current minus 6
-bindsym $mod+Shift+u gaps outer current plus 6
 
-
-bar {
-    position top
-    # output primary
-    workspace_buttons yes
-    status_command i3status --config ~/.dotfiles/i3status.conf
-}
+# startup apps
+exec --no-startup-id i3-layouts &
+exec --no-startup-id nm-applet &
+exec --no-startup-id parcellite &
+exec --no-startup-id blueman-manager &
+exec killall -q notify-osd
+exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
+exec_always --no-startup-id ~/.config/polybar/launch-polybar.sh
