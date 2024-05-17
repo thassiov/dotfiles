@@ -1,11 +1,3 @@
-
-# edit command on vim
-bindkey -M vicmd 'E' edit-command-line
-
-bindkey -s '^F' '~/.dotfiles/scripts/utilities/find-file.sh'
-
-# bindkey -s '^I' toggle-fzf-tab
-
 # Installing fzf does not automaticaly enable its key-bindings or completion, so:
 if [[ -d /usr/share/fzf ]]; then
   source /usr/share/fzf/key-bindings.zsh

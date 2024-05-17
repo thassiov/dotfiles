@@ -1,18 +1,11 @@
-# JAVA/ANDROID Stuff
-# watch out for the 8 (some problems with xml in other versions)
-# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-# Assuming android-sdk was installed using yay
-# export ANDROID_HOME=/opt/android-sdk
-# export ANDROID_TOOLS=/opt/android-sdk/tools
-# export ANDROID_PLATFORM_TOOLS=/opt/android-sdk/platform-tools
-
 # My Scripts
 export MY_SCRIPTS=~/bin
 
 # BROWSER
-# export BROWSER=brave
-export BROWSER=firefox
-export EDITOR="nvim"
+export BROWSER=brave
+
+# EDITOR
+export EDITOR=nvim
 
 # GO PATH
 export GO_PATH=/usr/bin/go
@@ -32,7 +25,3 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 
 # vi-mode
 export KEYTIMEOUT=1
-
-# export PROMPT='$(kube_ps1)'$PROMPT
-# start the prompt with the kubernetes indicator turned off
-# kubeoff
