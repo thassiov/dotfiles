@@ -1,2 +1,12 @@
 setxkbmap -option
 setxkbmap -model abnt2 -layout br
+
+# Esc key is single quote, quote, tilde
+xmodmap -e "keycode 9 = apostrophe       quotedbl       dead_tilde"
+
+# Capslock is disabled and Capslock button is Escape
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "keycode 66 = Escape"
+
+# AltGr is Mode_switch
+xmodmap -e "keycode 108 = Mode_switch"

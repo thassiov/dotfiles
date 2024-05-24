@@ -1,0 +1,14 @@
+#!/bin/bash
+
+CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
+
+if [ $CURRENT_LAYOUT == 'us' ]; then
+	echo "Setting abnt2-dev keyboard layout"
+	$PWD/useabntkb
+elif [ $CURRENT_LAYOUT == 'br' ]; then
+	echo "Setting us-dev keyboard layout"
+	$PWD/useuskb
+else
+	echo "Setting us-dev keyboard layout (default)"
+	$PWD/useuskb
+fi

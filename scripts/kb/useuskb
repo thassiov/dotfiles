@@ -1,2 +1,18 @@
 setxkbmap -option
 setxkbmap -model logitech_base -layout us
+
+# Esc key is single quote, quote, tilde
+xmodmap -e "keycode 9 = apostrophe       quotedbl       dead_tilde"
+
+# Apostrofe (single quote) key is acute, grave, circumflex
+xmodmap -e "keycode 48 = dead_acute       dead_grave       dead_circumflex"
+
+# c key have cedilla: c, C, ç, Ç
+xmodmap -e "keycode 54 = c       C        ccedilla        Ccedilla"
+
+# Capslock is disabled and Capslock button is Escape
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "keycode 66 = Escape"
+
+# AltGr is Mode_switch
+xmodmap -e "keycode 108 = Mode_switch"
