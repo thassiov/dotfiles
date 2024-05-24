@@ -1,0 +1,11 @@
+! br-abnt2-dev.map 
+
+! Esc key is single quote, quote, tilde
+keycode 9 = apostrophe       quotedbl
+
+! Capslock is disabled and Capslock button is Escape
+remove lock = Caps_Lock
+keycode 66 = Escape
+
+! AltGr is Mode_switch
+keycode 108 = Mode_switch

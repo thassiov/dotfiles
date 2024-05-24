@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 setxkbmap -option
 setxkbmap -model abnt2 -layout br
 

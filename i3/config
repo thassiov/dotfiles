@@ -40,6 +40,8 @@ bindsym $mod+k kill
 # lock screen
 bindsym $mod+l exec xlock
 
+bindsym $mod+BackSpace exec $HOME/.dotfiles/scripts/kb/togglekblayouts
+
 # start dmenu (a program launcher)
 bindsym $mod+o exec rofi -show emoji
 bindsym $mod+q exec rofi -show-icons -show run
@@ -48,7 +50,7 @@ bindsym $mod+Tab exec rofi -show-icons -show window
 # bindsym $mod+n exec networkmanager_dmenu
 
 # enable/disable touchpad (for when using the notebook's keyboard
-bindsym $mod+Shift+t exec ~/.dotfiles/scripts/utilities/toggle-touchpad.sh
+bindsym $mod+Shift+t exec $HOME/.dotfiles/scripts/utilities/toggle-touchpad.sh
 
 # opens thunar
 bindsym $mod+f exec pcmanfm

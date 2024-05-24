@@ -1,0 +1,14 @@
+# us-dev.map - intended for use with 60-65% keyboards
+include "/usr/share/kbd/keymaps/i386/qwerty/us.map.gz"
+
+# Esc key is single quote, quote, tilde
+keycode 1 = apostrophe       quotedbl       asciitilde
+
+# Apostrofe (single quote) key is acute, grave, circumflex
+keycode 40 = dead_acute       dead_grave       asciicircum 
+
+# c key have cedilla: c, C, ç, Ç
+keycode 46 = c       C        +ccedilla        +Ccedilla
+
+# Capslock is Escape
+keycode 58 = Escape
