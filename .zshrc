@@ -15,19 +15,21 @@ source "${ZINIT_HOME}/zinit.zsh"
 # my exported variables
 source ~/.envs
 
-# my aliases and functions
+# custom aliases 
 source ~/.clialiases
 
 # custom functions
 source ~/.cli-functions
 
 # snippets
+zinit snippet OMZP::vi-mode
 zinit snippet OMZP::git
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::fzf
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -56,7 +58,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit light jeffreytse/zsh-vi-mode
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -66,13 +67,3 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
-# Cursor styling
-ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLINKING_BLOCK
-
-# Mode indicators
-
-
-# Shell integrations
-eval "$(fzf --zsh)"
