@@ -55,6 +55,23 @@ bindsym $mod+Shift+t exec $HOME/.dotfiles/scripts/utilities/toggle-touchpad.sh
 # opens thunar
 bindsym $mod+f exec pcmanfm
 
+ #Pulse Audio controls
+ # To discover the right sink, do 'pactl list short' and find 'alsa_output*RUNNING'
+ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+ bindsym XF86AudioPlay exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) play-pause # play-pause current player
+ bindsym $mod+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) stop # stop current player
+ bindsym XF86AudioPrev exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
+ bindsym XF86AudioNext exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
+
+ bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
+
+ # Sreen brightness controls
+ bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1
+ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
