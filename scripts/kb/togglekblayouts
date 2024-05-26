@@ -1,14 +1,24 @@
 #!/usr/bin/env bash
 
+# [https://unix.stackexchange.com/a/12074/10333]
 CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
+NEW_KB_LAYOUT=""
+
+# [https://unix.stackexchange.com/a/17500/10333]
+SCRIPT_DIRECTORY="$(dirname "$(readlink -f "$0")")"
 
 if [ $CURRENT_LAYOUT == 'us' ]; then
+	NEW_KB_LAYOUT="BR-DEV"
 	echo "Setting abnt2-dev keyboard layout"
-	$PWD/useabntkb
+	$SCRIPT_DIRECTORY/useabntkb
 elif [ $CURRENT_LAYOUT == 'br' ]; then
+	NEW_KB_LAYOUT="US-DEV"
 	echo "Setting us-dev keyboard layout"
-	$PWD/useuskb
+	$SCRIPT_DIRECTORY/useuskb
 else
+	NEW_KB_LAYOUT="US-DEV"
 	echo "Setting us-dev keyboard layout (default)"
-	$PWD/useuskb
+	$SCRIPT_DIRECTORY/useuskb
 fi
+
+notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT"
