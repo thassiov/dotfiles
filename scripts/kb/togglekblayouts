@@ -21,4 +21,4 @@ else
 	$SCRIPT_DIRECTORY/useuskb
 fi
 
-notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT"
+notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT" --icon="$SCRIPT_DIRECTORY/keyboard.png"
