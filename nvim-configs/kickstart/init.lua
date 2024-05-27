@@ -196,6 +196,14 @@ vim.keymap.set(
 	{ desc = "Close buffers and leave only the current buffer open" }
 )
 
+vim.keymap.set("n", "<esc>", function()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_config(win).relative == "win" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
+end, { desc = "Closes popups (floating windows) using Esc" })
+
 -- Fold keymaps
 vim.keymap.set(
 	"n",
