@@ -83,8 +83,10 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
+--
+--
 
--- Set <space> as the leader key
+-- NOTE: ########################################### NVIM SETTINGS
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ","
@@ -144,23 +146,63 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = ">·", trail = "~", space = "␣", eol = "¬" }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
+-- Show which column your cursor is on
+vim.opt.cursorcolumn = true
+-- Make current line bold
+vim.cmd.highlight("CursorLine gui=bold")
+-- Make the numbers column grey so it is easier to see on dark themes
+vim.cmd.highlight("LineNr guifg=grey")
+-- Make text selections yellow to make them easier to see
+vim.cmd.hi("Visual guibg=#404040")
+
+vim.opt.guicursor = "n-v-c:block-Cursor,n-v-c:blinkon0,i:blinkwait10"
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+
+-- NOTE: ########################################### NVIM KEYMAPS
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
-vim.keymap.set("n", "<leader>.", "<cmd>nohlsearch<CR>")
+-- Selection keymaps
+vim.keymap.set("n", "<leader>.", "<cmd>nohlsearch<CR>", { desc = "Clear highlight" })
+
+-- Buffer keymaps
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save buffer" })
+vim.keymap.set("n", "<C-c>", "<cmd>bd<CR>", { desc = "Close buffer" })
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Navigate to the next open buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Navigate to the previous open buffer" })
+vim.keymap.set(
+	"n",
+	"<leader>o",
+	"<cmd>lua require('close_buffers').delete({ type = 'hidden', force = true })<CR>",
+	{ desc = "Close buffers and leave only the buffers that are open in the screen" }
+)
+
+vim.keymap.set(
+	"n",
+	"<leader>O",
+	"<cmd>lua require('close_buffers').delete({ type = 'other' })<CR>",
+	{ desc = "Close buffers and leave only the current buffer open" }
+)
+
+-- Fold keymaps
+vim.keymap.set(
+	"n",
+	"<leader>fafe",
+	"zMzvzz",
+	{ desc = "Folds all foldable blocks except the current one under cursor" }
+)
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -168,24 +210,8 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
@@ -205,6 +231,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- NOTE: ########################################### NVIM PLUGINS
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -367,16 +394,46 @@ require("lazy").setup({
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			vim.keymap.set("n", "<leader>1", builtin.git_files, { desc = "Search git files in project" })
+			vim.keymap.set("n", "<leader>!", builtin.find_files, { desc = "Search all files in project" })
+			vim.keymap.set("n", "<leader>2", builtin.live_grep, { desc = "Search text in project (fuzzy)" })
+			vim.keymap.set("n", "<leader>@", builtin.grep_string, { desc = "Search text under cursor" })
+			vim.keymap.set("n", "<leader>3", builtin.buffers, { desc = "Search open buffers" })
+			vim.keymap.set("n", "<leader>4", builtin.lsp_document_symbols, { desc = "Search current document symbols" })
+			vim.keymap.set(
+				"n",
+				"<leader>$",
+				builtin.lsp_dynamic_workspace_symbols,
+				{ desc = "Search current project symbols" }
+			)
+			vim.keymap.set("n", "<leader>5", builtin.git_commits, { desc = "Search inside commits" })
+			vim.keymap.set("n", "<leader>%", builtin.git_bcommits, { desc = "Search commits for the current buffer" })
+
+			vim.keymap.set("n", "<leader>d", builtin.lsp_definitions, { desc = "Go to definition" })
+			vim.keymap.set("n", "<leader>td", builtin.lsp_type_definitions, { desc = "Go to type definition" })
+			vim.keymap.set("n", "<leader>r", builtin.lsp_references, { desc = "Go to references" })
+
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable under the cursor" })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Execute code action" })
+
+			vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "Git status" })
+
+			vim.keymap.set(
+				"n",
+				"<leader>a",
+				vim.lsp.buf.code_action,
+				{ desc = "See available actions at the current cursor position" }
+			)
+
+			vim.keymap.set(
+				"n",
+				"<leader>'",
+				vim.diagnostic.open_float,
+				{ desc = "Show diagnostics for the current file" }
+			)
+			vim.keymap.set("n", "<leader>D", builtin.diagnostics, { desc = "Search diagnostics" })
+
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 			-- Slightly advanced example of overriding default behavior and theme
 			vim.keymap.set("n", "<leader>/", function()
@@ -461,50 +518,9 @@ require("lazy").setup({
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
-					-- Jump to the definition of the word under your cursor.
-					--  This is where a variable was first declared, or where a function is defined, etc.
-					--  To jump back, press <C-t>.
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-					-- Find references for the word under your cursor.
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-
-					-- Jump to the implementation of the word under your cursor.
-					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-
-					-- Jump to the type of the word under your cursor.
-					--  Useful when you're not sure what type a variable is and you want to see
-					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-
-					-- Fuzzy find all the symbols in your current document.
-					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-
-					-- Fuzzy find all the symbols in your current workspace.
-					--  Similar to document symbols, except searches over your entire project.
-					map(
-						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
-					)
-
-					-- Rename the variable under your cursor.
-					--  Most Language Servers support renaming across files, etc.
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-					-- Execute a code action, usually your cursor needs to be on top of an error
-					-- or a suggestion from your LSP for this to activate.
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
 					-- Opens a popup that displays documentation about the word under your cursor
 					--  See `:help K` for why this keymap.
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
-
-					-- WARN: This is not Goto Definition, this is Goto Declaration.
-					--  For example, in C this would take you to the header.
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
@@ -556,6 +572,30 @@ require("lazy").setup({
 				-- tsserver = {},
 				--
 
+				bashls = {},
+				clangd = {},
+				cssls = {},
+				diagnosticls = {},
+				dockerls = {},
+				docker_compose_language_service = {},
+				eslint = {},
+				gopls = {},
+				graphql = {},
+				html = {},
+				helm_ls = {},
+				jsonls = {},
+				ltex = {},
+				autotools_ls = {},
+				marksman = {},
+				spectral = {},
+				pylsp = {},
+				sqlls = {},
+				taplo = {},
+				vimls = {},
+				lemminx = {},
+				yamlls = {},
+				terraformls = {},
+
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -603,6 +643,12 @@ require("lazy").setup({
 		end,
 	},
 
+	{ -- LSP specific for typescript
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
+
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		opts = {
@@ -621,10 +667,19 @@ require("lazy").setup({
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
-				--
-				-- You can use a sub-list to tell conform to run *until* a formatter
-				-- is found.
-				-- javascript = { { "prettierd", "prettier" } },
+				c = { "astyle" },
+				cpp = { "astyle" },
+				css = { { "prettierd", "prettier" } },
+				javascript = { { "prettierd", "prettier" } },
+				typescript = { { "prettierd", "prettier" } },
+				graphql = { { "prettierd", "prettier" } },
+				json = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
+				yaml = { { "prettierd", "prettier" } },
+				terraform = { "terraform_fmt" },
+				markdown = { "markdownlint" },
+				sql = { "sqlfmt" },
+				go = { { "goimports", "gofumpt" } },
 			},
 		},
 	},
@@ -649,12 +704,12 @@ require("lazy").setup({
 					-- `friendly-snippets` contains a variety of premade snippets.
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					{
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
+					},
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
@@ -685,9 +740,9 @@ require("lazy").setup({
 				-- No, but seriously. Please read `:help ins-completion`, it is really good!
 				mapping = cmp.mapping.preset.insert({
 					-- Select the [n]ext item
-					["<C-n>"] = cmp.mapping.select_next_item(),
+					["<Tab>"] = cmp.mapping.select_next_item(),
 					-- Select the [p]revious item
-					["<C-p>"] = cmp.mapping.select_prev_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Scroll the documentation window [b]ack / [f]orward
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -696,7 +751,7 @@ require("lazy").setup({
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
@@ -739,16 +794,13 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"Shatur/neovim-ayu",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
-
-			-- You can configure highlights by doing something like:
-			vim.cmd.hi("Comment gui=none")
+			vim.cmd.colorscheme("ayu-dark")
 		end,
 	},
 
@@ -770,6 +822,10 @@ require("lazy").setup({
 			--  - yinq - [Y]ank [I]nside [N]ext [']quote
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
+
+			require("mini.pairs").setup()
+			require("mini.tabline").setup()
+			-- require('mini.test').setup()
 
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
@@ -797,11 +853,74 @@ require("lazy").setup({
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "ayu_mirage",
+					component_separators = { left = "|", right = "|" },
+					section_separators = { left = "░", right = "░" },
+				},
+				tabline = {
+					lualine_a = { "buffers" },
+					lualine_b = {},
+					lualine_c = {},
+					lualine_x = {},
+					lualine_y = {},
+					lualine_z = { "tabs" },
+				},
+			})
+		end,
+	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc" },
+			ensure_installed = {
+				"bash",
+				"c",
+				"html",
+				"lua",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"cpp",
+				"css",
+				"cmake",
+				"diff",
+				"csv",
+				"dockerfile",
+				"git_config",
+				"git_rebase",
+				"gitcommit",
+				"gitignore",
+				"graphql",
+				"hcl",
+				"jsdoc",
+				"json",
+				"jsonc",
+				"javascript",
+				"luadoc",
+				"markdown",
+				"passwd",
+				"pem",
+				"python",
+				"rasi",
+				"readline",
+				"regex",
+				"rust",
+				"go",
+				"sql",
+				"ssh_config",
+				"terraform",
+				"toml",
+				"tmux",
+				"tsx",
+				"vim",
+				"xml",
+			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
