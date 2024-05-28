@@ -418,7 +418,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>%", builtin.git_bcommits, { desc = "Search commits for the current buffer" })
 
 			vim.keymap.set("n", "<leader>d", builtin.lsp_definitions, { desc = "Go to definition" })
-			vim.keymap.set("n", "<leader>td", builtin.lsp_type_definitions, { desc = "Go to type definition" })
+			vim.keymap.set("n", "<leader>dt", builtin.lsp_type_definitions, { desc = "Go to type definition" })
 			vim.keymap.set("n", "<leader>r", builtin.lsp_references, { desc = "Go to references" })
 
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename variable under the cursor" })
@@ -465,6 +465,8 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>sn", function()
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end, { desc = "[S]earch [N]eovim files" })
+
+			vim.keymap.set("n", "<leader><leader>", builtin.commands, { desc = "Opens the commands list" })
 		end,
 	},
 
@@ -655,6 +657,15 @@ require("lazy").setup({
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
+	},
+	{ -- Testing utility
+		"vim-test/vim-test",
+		dependencies = {
+			"voldikss/vim-floaterm",
+		},
+		config = function()
+			vim.g["test#strategy"] = "dispatch"
+		end,
 	},
 
 	{ -- Autoformat
