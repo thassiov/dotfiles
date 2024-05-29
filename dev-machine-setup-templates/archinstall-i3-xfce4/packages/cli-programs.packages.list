@@ -21,3 +21,5 @@ ntfs-3g
 gvfs
 blueman
 scrot
+jq
+tidy
