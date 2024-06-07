@@ -225,6 +225,10 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Testing
+vim.keymap.set("n", "<leader>t", "<cmd>TestNearest<CR>", { desc = "Tests nearest available test" })
+vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>", { desc = "Tests entire current file" })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -663,8 +667,26 @@ require("lazy").setup({
 		dependencies = {
 			"voldikss/vim-floaterm",
 		},
-		config = function()
-			vim.g["test#strategy"] = "dispatch"
+		init = function()
+			vim.g["test#strategy"] = "floaterm"
+		end,
+	},
+
+	"tpope/vim-surround",
+	"jiangmiao/auto-pairs",
+	{
+		"preservim/nerdcommenter",
+		init = function()
+			-- Add spaces after comment delimiters by default
+			vim.g["NERDSpaceDelims"] = 1
+			-- Use compact syntax for prettified multi-line comments
+			vim.g["NERDCompactSexyComs"] = 1
+			-- Align line-wise comment delimiters flush left instead of following code indentation
+			vim.g["NERDDefaultAlign"] = "left"
+			-- Allow commenting and inverting empty lines (useful when commenting a region)
+			vim.g["NERDCommentEmptyLines"] = 1
+			-- Enable trimming of trailing whitespace when uncommenting
+			vim.g["NERDTrimTrailingWhitespace"] = 1
 		end,
 	},
 	{
@@ -858,7 +880,7 @@ require("lazy").setup({
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
 
-			require("mini.pairs").setup()
+			-- require("mini.pairs").setup()
 			require("mini.tabline").setup()
 			-- require('mini.test').setup()
 
@@ -867,7 +889,7 @@ require("lazy").setup({
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			-- require("mini.surround").setup()
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
