@@ -8,10 +8,11 @@ robo3t-bin
 libreoffice-fresh
 evince
 firefox
-thunderbird
 autorandr
 geeqie
 dmenu
 i3
 polybar
 rofi
+gksu
+xdotool

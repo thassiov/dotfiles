@@ -7,6 +7,11 @@ NEW_KB_LAYOUT=""
 # [https://unix.stackexchange.com/a/17500/10333]
 SCRIPT_DIRECTORY="$(dirname "$(readlink -f "$0")")"
 
+# Make sure capslock is disabled of else it will stay in a 'cant disable it' as the key will be disabled after.
+# We depend on xdotool package to accomplish it
+# [ https://forum.puppylinux.com/viewtopic.php?p=15893&sid=e5cc979f654b4d761e5bd4656574f05a#p15893 ]
+[[ $(xset -q) =~ (Caps Lock: *on) ]] && xdotool key Caps_Lock
+
 if [ $CURRENT_LAYOUT == 'us' ]; then
 	NEW_KB_LAYOUT="BR-DEV"
 	echo "Setting abnt2-dev keyboard layout"
