@@ -8,4 +8,4 @@ nvim/autoload
 nvim/plugged
 nvim/session
 nvim/.netrwhist
-tmux/plugins
+tmux/.config/tmux/plugins
