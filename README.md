@@ -1,30 +1,20 @@
-# My Confs
+# My dotfiles
+made with love <3
 
-## Programs
+## Contents
 
-- Window Manager
-  - i3-gaps
-- Compositor
-  - compton
-- Screen locker
-  - i3lock-fancy
-- Dynamic Menu
-  - dmenu2
-- Status Bar
-  - Polibar
-- Music Player
-  - mpd
-  - ncmpcpp
-- Terminal Emulator
-  - Termite
-- Terminal Multiplexer
-  - Tmux
-- Shell
-  - Zsh
-- Text Editor
-  - Neovim
-- VCS
-  - Git
+- i3
+- Polybar
+- Alacritty
+- Tmux
+- Neovim
+- rofi
+- dunst
+- xrandr
+- autorandr
+- git
+- xinit
 
-### LICENSE
-[MIT](LICENSE.md)
+## Installing
+
+It has `stow` as a dependency
