@@ -70,9 +70,10 @@ sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
 sudo systemctl enable rfkill-unblock@all
 
-echo
-echo "Clone dotfiles"
-git clone https://github.com/thassiov/dotfiles $HOME/.dotfiles
+# this will be used when I make a script hosted on my website
+#echo
+#echo "Clone dotfiles"
+#git clone https://github.com/thassiov/dotfiles $HOME/.dotfiles
 
 echo
 echo "Ensure .config directory exists"
