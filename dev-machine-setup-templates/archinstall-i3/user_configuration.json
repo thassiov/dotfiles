@@ -22,7 +22,7 @@
                         "fs_type": "fat32",
                         "mount_options": [],
                         "mountpoint": "/boot",
-                        "obj_id": "047f90d1-99ea-46e2-ab26-39eb9f8cfe72",
+                        "obj_id": "f6c1f1ac-7044-4808-a751-96d0b2625b8a",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
@@ -49,7 +49,7 @@
                         "fs_type": "ext4",
                         "mount_options": [],
                         "mountpoint": "/",
-                        "obj_id": "4f2ad7a1-307b-410e-9b8e-76cee62a66a8",
+                        "obj_id": "ad40fe31-9937-4b08-ba24-12ce00fb967b",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
@@ -82,22 +82,22 @@
                         "fs_type": "ext4",
                         "mount_options": [],
                         "mountpoint": "/home",
-                        "obj_id": "6201f954-53bc-4c85-b6a1-850b3bfa1ec5",
+                        "obj_id": "e3e82f3f-a876-4b35-aa6f-ff0d130a3e4f",
                         "size": {
                             "sector_size": {
                                 "unit": "B",
                                 "value": 512
                             },
                             "unit": "B",
-                            "value": 42733666304
+                            "value": 42949538304
                         },
                         "start": {
                             "sector_size": {
                                 "unit": "B",
                                 "value": 512
                             },
-                            "unit": "B",
-                            "value": 216006656
+                            "unit": "sectors",
+                            "value": 2
                         },
                         "status": "create",
                         "type": "primary"
