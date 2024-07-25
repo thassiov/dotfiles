@@ -80,9 +80,9 @@ echo "Ensure .config directory exists"
 mkdir .config
 
 echo
-echo "Setup configuration files for my applications (alacritty, i3, nvim, etc)"
-cd $HOME
-make config
+#echo "Setup configuration files for my applications (alacritty, i3, nvim, etc)"
+#cd $HOME
+#make config
 
 echo
 echo "Echoing machine interfaces"
