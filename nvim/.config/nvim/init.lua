@@ -672,7 +672,7 @@ require("lazy").setup({
 			vim.g["test#strategy"] = "floaterm"
 		end,
 	},
-	{
+	{ -- dap - debugger utils
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
@@ -706,6 +706,14 @@ require("lazy").setup({
 			vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
 				require("dap.ui.widgets").preview()
 			end, { desc = "debugger preview symbol" })
+		end,
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		config = function()
+			require("mason-nvim-dap").setup({
+				ensure_installed = { "node2", "js", "delve" },
+			})
 		end,
 	},
 	"tpope/vim-surround",
