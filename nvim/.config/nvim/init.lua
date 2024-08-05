@@ -672,7 +672,42 @@ require("lazy").setup({
 			vim.g["test#strategy"] = "floaterm"
 		end,
 	},
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+		},
+		config = function()
+			local dap = require("dap")
 
+			local dapui = require("dapui")
+			dap.listeners.before.attach.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.launch.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited.dapui_config = function()
+				dapui.close()
+			end
+
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "toggles a [d]ebugger [b]reakpoint" })
+			vim.keymap.set("n", "<leader>dr", dap.continue, { desc = "[d]ebugger [r]un" })
+			vim.keymap.set("n", "<S-l>", dap.step_over, { desc = "debugger step over" })
+			vim.keymap.set("n", "<S-j>", dap.step_into, { desc = "debugger step into" })
+			vim.keymap.set("n", "<S-k>", dap.step_out, { desc = "debugger step out" })
+			vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
+				require("dap.ui.widgets").hover()
+			end, { desc = "debugger hover symbol" })
+			vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
+				require("dap.ui.widgets").preview()
+			end, { desc = "debugger preview symbol" })
+		end,
+	},
 	"tpope/vim-surround",
 	"jiangmiao/auto-pairs",
 	{
