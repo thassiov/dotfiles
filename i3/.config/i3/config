@@ -33,6 +33,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+t exec alacritty -e tmux
+# start terminal on ilia.work.grid.local
+
+bindsym $mod+Shift+t exec alacritty -e ssh thassiov@ilia.work.grid.local
 
 # kill focused window
 bindsym $mod+k kill
@@ -50,7 +53,7 @@ bindsym $mod+Tab exec rofi -show-icons -show window
 # bindsym $mod+n exec networkmanager_dmenu
 
 # enable/disable touchpad (for when using the notebook's keyboard
-bindsym $mod+Shift+t exec $HOME/.dotfiles/scripts/utilities/toggle-touchpad.sh
+# bindsym $mod+Shift+t exec $HOME/.dotfiles/scripts/utilities/toggle-touchpad.sh
 
 # opens thunar
 bindsym $mod+f exec pcmanfm
