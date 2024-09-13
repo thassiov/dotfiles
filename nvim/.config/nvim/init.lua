@@ -474,7 +474,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader><leader>", builtin.commands, { desc = "Opens the commands list" })
 		end,
 	},
-
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -599,7 +598,6 @@ require("lazy").setup({
 				html = {},
 				helm_ls = {},
 				jsonls = {},
-				ltex = {},
 				autotools_ls = {},
 				marksman = {},
 				spectral = {},
@@ -610,8 +608,6 @@ require("lazy").setup({
 				lemminx = {},
 				yamlls = {},
 				terraformls = {},
-
-				tsserver = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -659,7 +655,6 @@ require("lazy").setup({
 			})
 		end,
 	},
-
 	{ -- LSP specific for typescript
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -767,7 +762,6 @@ require("lazy").setup({
 			{ "<leader>vh", "<cmd>HurlVerbose<CR>", desc = "Run Api in verbose mode" },
 		},
 	},
-
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		opts = {
@@ -802,7 +796,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
 	{ -- Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -952,7 +945,6 @@ require("lazy").setup({
 			require("nordic").load()
 		end,
 	},
-
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -969,6 +961,7 @@ require("lazy").setup({
 			require("render-markdown").setup({})
 		end,
 	},
+	"bullets-vim/bullets.vim",
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()
