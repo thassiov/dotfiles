@@ -121,6 +121,12 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.breakindent = true
 vim.opt.foldmethod = "indent"
 
+-- NOTE: Tabs and indents
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -839,6 +845,8 @@ require("lazy").setup({
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
+
+			require("luasnip").filetype_extend("typescript", { "javascript" })
 
 			-- [https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry]
 			local has_words_before = function()
