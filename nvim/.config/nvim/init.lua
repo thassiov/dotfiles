@@ -92,6 +92,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
+-- omg dont create a new swap file
+vim.opt.swapfile = false
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -478,6 +481,14 @@ require("lazy").setup({
 			end, { desc = "[S]earch [N]eovim files" })
 
 			vim.keymap.set("n", "<leader><leader>", builtin.commands, { desc = "Opens the commands list" })
+		end,
+		init = function()
+			-- pleeeease do not fold results inside telescope's picker
+			-- https://www.reddit.com/r/neovim/comments/18j38g0/folding_feature_is_causing_issues_with_multiple/
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "TelescopeResults",
+				command = "setlocal nofoldenable",
+			})
 		end,
 	},
 	{ -- LSP Configuration & Plugins
@@ -945,12 +956,15 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
+	{ -- Theme
+		"rebelot/kanagawa.nvim",
 		config = function()
-			require("nordic").load()
+			require("kanagawa").setup({
+				theme = "dragon",
+			})
+		end,
+		init = function()
+			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
 	-- Highlight todo, notes, etc in comments
@@ -1104,6 +1118,8 @@ require("lazy").setup({
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
+	-- sidebars
+	-- file tree
 	{
 		"kyazdani42/nvim-tree.lua",
 		config = function()
@@ -1220,7 +1236,25 @@ require("lazy").setup({
 			)
 		end,
 	},
+	-- code outline
+	{
+		"hedyhli/outline.nvim",
+		config = function()
+			-- Example mapping to toggle outline
+			vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
+			-- pleeeease do not fold results inside outline's picker
+			-- https://www.reddit.com/r/neovim/comments/18j38g0/folding_feature_is_causing_issues_with_multiple/
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "Outline",
+				command = "setlocal nofoldenable",
+			})
+
+			require("outline").setup({
+				-- Your setup opts here (leave empty to use defaults)
+			})
+		end,
+	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
 	-- place them in the correct locations.
