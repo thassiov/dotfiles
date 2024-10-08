@@ -1,35 +1,43 @@
 live_config_reload = true
 
-# Colors (Nordic)
-# https://github.com/alacritty/alacritty-theme/blob/master/themes/nordic.toml
+# Kanagawa Alacritty Colors
+# https://github.com/rebelot/kanagawa.nvim/blob/master/extras/alacritty_kanagawa.yml
 
-[colors.primary]
-background = '#242933'
-foreground = '#BBBDAF'
+[[colors.indexed_colors]]
+color = "0xffa066"
+index = 16
 
-[colors.normal]
-black = '#191C1D'
-red = '#BD6062'
-green = '#A3D6A9'
-yellow = '#F0DFAF'
-blue = '#8FB4D8'
-magenta = '#C7A9D9'
-cyan = '#B6D7A8'
-white = '#BDC5BD'
+[[colors.indexed_colors]]
+color = "0xff5d62"
+index = 17
 
 [colors.bright]
-black = '#727C7C'
-red = '#D18FAF'
-green = '#B7CEB0'
-yellow = '#BCBCBC'
-blue = '#E0CF9F'
-magenta = '#C7A9D9'
-cyan = '#BBDA97'
-white = '#BDC5BD'
+black = "0x727169"
+blue = "0x7fb4ca"
+cyan = "0x7aa89f"
+green = "0x98bb6c"
+magenta = "0x938aa9"
+red = "0xe82424"
+white = "0xdcd7ba"
+yellow = "0xe6c384"
+
+[colors.normal]
+black = "0x090618"
+blue = "0x7e9cd8"
+cyan = "0x6a9589"
+green = "0x76946a"
+magenta = "0x957fb8"
+red = "0xc34043"
+white = "0xc8c093"
+yellow = "0xc0a36e"
+
+[colors.primary]
+background = "0x1f1f28"
+foreground = "0xdcd7ba"
 
 [colors.selection]
-text = '#000000'
-background = '#F0DFAF'
+background = "0x2d4f67"
+foreground = "0xc8c093"
 
 [env]
 WINIT_X11_SCALE_FACTOR = "1.16"
