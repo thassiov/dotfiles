@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 --[[
 
 =====================================================================
@@ -235,8 +236,8 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Testing
-vim.keymap.set("n", "<leader>t", "<cmd>TestNearest<CR>", { desc = "Tests nearest available test" })
-vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>", { desc = "Tests entire current file" })
+-- vim.keymap.set("n", "<leader>t", "<cmd>TestNearest<CR>", { desc = "Tests nearest available test" })
+-- vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>", { desc = "Tests entire current file" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -678,12 +679,50 @@ require("lazy").setup({
 		opts = {},
 	},
 	{ -- Testing utility
-		"vim-test/vim-test",
+		"nvim-neotest/neotest",
 		dependencies = {
-			"voldikss/vim-floaterm",
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-neotest/neotest-jest",
 		},
-		init = function()
-			vim.g["test#strategy"] = "floaterm"
+		config = function()
+			require("neotest").setup({
+				discovery = {
+					enabled = false,
+				},
+				adapters = {
+					require("neotest-jest")({
+						jestCommand = "npm test --",
+						jest_test_discovery = false,
+						jestConfigFile = "",
+						env = { CI = true },
+						cwd = function(path)
+							return vim.fn.getcwd()
+						end,
+					}),
+				},
+				status = { virtual_text = true },
+				output = {
+					enabled = true,
+					open_on_run = true,
+				},
+			})
+
+			local neotest = require("neotest")
+			local test = neotest.run
+
+			vim.keymap.set("n", "<leader>t", test.run, { desc = "run nearest test" })
+			vim.keymap.set("n", "<leader>st", test.stop, { desc = "stop running test" })
+			vim.keymap.set("n", "<leader>to", neotest.output_panel.toggle, { desc = "open test output panel" })
+			vim.keymap.set("n", "<leader>T", function()
+				test.run(vim.fn.expand("%"))
+			end, { desc = "run current test file" })
+
+			vim.keymap.set("n", "<leader>dt", function()
+				test.run({ strategy = "dap" })
+			end, { desc = "run nearest test in debug mode" })
 		end,
 	},
 	{ -- dap - debugger utils
@@ -694,6 +733,26 @@ require("lazy").setup({
 		},
 		config = function()
 			local dap = require("dap")
+
+			dap.configurations.typescript = {
+				{
+					name = "Launch",
+					type = "node2",
+					request = "launch",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
+					console = "integratedTerminal",
+				},
+				{
+					-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+					name = "Attach to process",
+					type = "node2",
+					request = "attach",
+					processId = require("dap.utils").pick_process,
+				},
+			}
 
 			local dapui = require("dapui")
 			dap.listeners.before.attach.dapui_config = function()
@@ -957,14 +1016,11 @@ require("lazy").setup({
 		end,
 	},
 	{ -- Theme
-		"rebelot/kanagawa.nvim",
+		"Shatur/neovim-ayu",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			require("kanagawa").setup({
-				theme = "dragon",
-			})
-		end,
-		init = function()
-			vim.cmd.colorscheme("kanagawa")
+			require("ayu").colorscheme()
 		end,
 	},
 	-- Highlight todo, notes, etc in comments
