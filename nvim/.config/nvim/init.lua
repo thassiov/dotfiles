@@ -236,8 +236,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Testing
--- vim.keymap.set("n", "<leader>t", "<cmd>TestNearest<CR>", { desc = "Tests nearest available test" })
--- vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>", { desc = "Tests entire current file" })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -679,50 +677,14 @@ require("lazy").setup({
 		opts = {},
 	},
 	{ -- Testing utility
-		"nvim-neotest/neotest",
+		"vim-test/vim-test",
 		dependencies = {
-			"nvim-neotest/nvim-nio",
-			"nvim-lua/plenary.nvim",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-neotest/neotest-jest",
+			"voldikss/vim-floaterm",
 		},
-		config = function()
-			require("neotest").setup({
-				discovery = {
-					enabled = false,
-				},
-				adapters = {
-					require("neotest-jest")({
-						jestCommand = "npm test --",
-						jest_test_discovery = false,
-						jestConfigFile = "",
-						env = { CI = true },
-						cwd = function(path)
-							return vim.fn.getcwd()
-						end,
-					}),
-				},
-				status = { virtual_text = true },
-				output = {
-					enabled = true,
-					open_on_run = true,
-				},
-			})
-
-			local neotest = require("neotest")
-			local test = neotest.run
-
-			vim.keymap.set("n", "<leader>t", test.run, { desc = "run nearest test" })
-			vim.keymap.set("n", "<leader>st", test.stop, { desc = "stop running test" })
-			vim.keymap.set("n", "<leader>to", neotest.output_panel.toggle, { desc = "open test output panel" })
-			vim.keymap.set("n", "<leader>T", function()
-				test.run(vim.fn.expand("%"))
-			end, { desc = "run current test file" })
-
-			vim.keymap.set("n", "<leader>dt", function()
-				test.run({ strategy = "dap" })
-			end, { desc = "run nearest test in debug mode" })
+		init = function()
+			vim.g["test#strategy"] = "neovim"
+			vim.keymap.set("n", "<leader>t", "<cmd>TestNearest<CR>", { desc = "Tests nearest available test" })
+			vim.keymap.set("n", "<leader>T", "<cmd>TestFile<CR>", { desc = "Tests entire current file" })
 		end,
 	},
 	{ -- dap - debugger utils
