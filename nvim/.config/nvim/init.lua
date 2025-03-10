@@ -296,15 +296,29 @@ require("lazy").setup({
 	-- See `:help gitsigns` to understand what the configuration keys do
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
+	},
+
+	{
+		"tpope/vim-fugitive",
+		init = function()
+			vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
+			vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>", { desc = "Git blame" })
+		end,
+	},
+
+	{
+		"sindrets/diffview.nvim",
 		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
+			keymaps = {
+				view = {
+					{ "n", "<leader>q", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" } },
+				},
 			},
 		},
+		init = function()
+			vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewFileHistory %<CR>", { desc = "Git diff current file" })
+			vim.keymap.set("n", "<leader>gD", "<cmd>DiffviewOpen<CR>", { desc = "Git diff index" })
+		end,
 	},
 
 	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -913,7 +927,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ -- Theme
+	{
 		"Shatur/neovim-ayu",
 		lazy = false,
 		priority = 1000,
@@ -921,6 +935,33 @@ require("lazy").setup({
 			require("ayu").colorscheme()
 		end,
 	},
+
+	-- { -- Theme
+	--   "catppuccin/nvim",
+	--   name = "catppuccin",
+	--   priority = 1000,
+	--   opts = {
+	--     flavour = "mocha",
+	--     color_overrides = {
+	--       mocha = {
+	--         base = "#000000",
+	--         mantle = "#000000",
+	--         crust = "#000000",
+	--       },
+	--     },
+	--     integrations = {
+	--       telescope = {
+	--         enabled = true,
+	--       },
+	--       cmp = true,
+	--       gitsigns = true,
+	--       nvimtree = true,
+	--       treesitter = true,
+	--       notify = false,
+	--     },
+	--   },
+	-- },
+
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -985,7 +1026,7 @@ require("lazy").setup({
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "ayu_mirage",
+					theme = "iceberg_dark",
 					component_separators = { left = "|", right = "|" },
 					section_separators = { left = "░", right = "░" },
 				},

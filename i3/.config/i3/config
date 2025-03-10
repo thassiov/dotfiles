@@ -35,7 +35,7 @@ floating_modifier $mod
 bindsym $mod+t exec alacritty -e tmux
 # start terminal on ilia.work.grid.local
 
-bindsym $mod+Shift+t exec alacritty -e ssh thassiov@ilia.work.grid.local
+bindsym $mod+Shift+t exec alacritty
 
 # kill focused window
 bindsym $mod+k kill
@@ -175,7 +175,7 @@ exec --no-startup-id i3-layouts &
 exec --no-startup-id nm-applet &
 exec --no-startup-id parcellite &
 exec --no-startup-id blueman-manager &
-exec --no-startup-id feh --bg-scale $HOME/.dotfiles/wallpaper/fabian-kozdon-5ZeooCGNw3s-unsplash.jpg &
+exec --no-startup-id feh --bg-scale $HOME/.dotfiles/wallpaper/pure-black.png &
 exec killall -q notify-osd
 exec --no-startup-id dunst -c $HOME/.config/dunst/dunstrc
 exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
