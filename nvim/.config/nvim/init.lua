@@ -936,31 +936,12 @@ require("lazy").setup({
 		end,
 	},
 
-	-- { -- Theme
-	--   "catppuccin/nvim",
-	--   name = "catppuccin",
-	--   priority = 1000,
-	--   opts = {
-	--     flavour = "mocha",
-	--     color_overrides = {
-	--       mocha = {
-	--         base = "#000000",
-	--         mantle = "#000000",
-	--         crust = "#000000",
-	--       },
-	--     },
-	--     integrations = {
-	--       telescope = {
-	--         enabled = true,
-	--       },
-	--       cmp = true,
-	--       gitsigns = true,
-	--       nvimtree = true,
-	--       treesitter = true,
-	--       notify = false,
-	--     },
-	--   },
-	-- },
+	{ -- zen mode
+		"folke/zen-mode.nvim",
+		config = function()
+			vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Opens current buffer in zen mode" })
+		end,
+	},
 
 	-- Highlight todo, notes, etc in comments
 	{
