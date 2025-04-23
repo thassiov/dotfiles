@@ -107,7 +107,7 @@ bindsym $mod+space focus mode_toggle
 
 set $workspace1 "1:main"
 # always set the first workspace to the main screen (for when using multiple monitors)
-workspace "1:main" output primary
+# workspace "1:main" output primary
 set $workspace2 "2:sec"
 set $workspace3 "3:sec"
 set $workspace4 "4:sec"
