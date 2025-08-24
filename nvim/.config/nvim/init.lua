@@ -927,11 +927,18 @@ require("lazy").setup({
 			})
 		end,
 	},
+
+	-- Theme
 	{
 		"Shatur/neovim-ayu",
 		lazy = false,
 		priority = 1000,
 		config = function()
+			require("ayu").setup({
+				overrides = {
+					Normal = { bg = "#05070A" },
+				},
+			})
 			require("ayu").colorscheme()
 		end,
 	},
@@ -1078,7 +1085,7 @@ require("lazy").setup({
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = false },
 		},
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`

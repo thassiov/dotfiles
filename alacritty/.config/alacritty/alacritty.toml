@@ -31,7 +31,7 @@ white = "0xc8c093"
 yellow = "0xc0a36e"
 
 [colors.primary]
-background = "0x1f1f28"
+background = "0x05070A"
 foreground = "0xdcd7ba"
 
 [colors.selection]
@@ -42,7 +42,7 @@ foreground = "0xc8c093"
 WINIT_X11_SCALE_FACTOR = "1.16"
 
 [font]
-size = 9
+size = 7.6
 
 [font.bold]
 family = "FiraMonoNerdFontPropo"
@@ -51,6 +51,3 @@ style = "Bold"
 [font.normal]
 family = "FiraMonoNerdFontMono"
 style = "Medium"
-
-[general]
-live_config_reload = true
