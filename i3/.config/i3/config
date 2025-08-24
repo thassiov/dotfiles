@@ -61,19 +61,31 @@ bindsym $mod+f exec pcmanfm
  #Pulse Audio controls
  # To discover the right sink, do 'pactl list short' and find 'alsa_output*RUNNING'
  bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+ bindsym $mod+equal exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+
  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+ bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+
  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+ bindsym $mod+Enter exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
+
+ bindsym $mod+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) stop # stop current player
 
  bindsym XF86AudioPlay exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) play-pause # play-pause current player
- bindsym $mod+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) stop # stop current player
- bindsym XF86AudioPrev exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
- bindsym XF86AudioNext exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
+ bindsym $mod+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) play-pause # play-pause current player
 
- bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
+ bindsym XF86AudioPrev exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
+ bindsym $mod+Shift+comma exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) previous # previous on current player
+
+ bindsym XF86AudioNext exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
+ bindsym $mod+Shift+period exec --no-startup-id playerctl -p $(playerctl -l | tail -n1) next # next on current player
+
+ # bindsym $mod+semicolon exec --no-startup-id notify-send "$(playerctl -p $(playerctl -l | tail -n1) metadata | grep -E '\<album\>|artist|title' | tac | cut -d ':' -f2 | cut -d ' ' -f2- | sed -e 's/^[[:space:]]*//' | sed -z 's/\n/\ -\ /')"
 
  # Sreen brightness controls
  bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1
  bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1
+ bindsym $mod+space exec $HOME/.dotfiles/scripts/utilities/toggle-xbacklight-brightness.sh
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -102,12 +114,10 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
+set $workspace0 "0:sec"
 set $workspace1 "1:main"
 # always set the first workspace to the main screen (for when using multiple monitors)
-# workspace "1:main" output primary
+workspace "1:main" output primary
 set $workspace2 "2:sec"
 set $workspace3 "3:sec"
 set $workspace4 "4:sec"
@@ -115,6 +125,7 @@ set $workspace5 "5:sec"
 set $workspace6 "6:sec"
 
 # switch to workspace
+bindsym $mod+0 workspace $workspace0
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -123,6 +134,7 @@ bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 
 # move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace $workspace0
 bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
