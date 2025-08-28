@@ -146,7 +146,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+-- vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -336,22 +336,22 @@ require("lazy").setup({
 	-- after the plugin has been loaded:
 	--  config = function() ... end
 
-	{ -- Useful plugin to show you pending keybinds.
-		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup()
-
-			-- Document existing key chains
-			require("which-key").register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-			})
-		end,
-	},
+	-- { -- Useful plugin to show you pending keybinds.
+	--   "folke/which-key.nvim",
+	--   event = "VimEnter", -- Sets the loading event to 'VimEnter'
+	--   config = function() -- This is the function that runs, AFTER loading
+	--     require("which-key").setup()
+	--
+	--     -- Document existing key chains
+	--     require("which-key").register({
+	--       ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+	--       ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+	--       ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+	--       ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+	--       ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+	--     })
+	--   end,
+	-- },
 
 	-- NOTE: Plugins can specify dependencies.
 	--
@@ -622,7 +622,7 @@ require("lazy").setup({
 				diagnosticls = {},
 				dockerls = {},
 				docker_compose_language_service = {},
-				eslint = {},
+				-- eslint = {},
 				gopls = {},
 				graphql = {},
 				html = {},
@@ -685,7 +685,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{ -- LSP specific for typescript
+	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
@@ -760,7 +760,7 @@ require("lazy").setup({
 				-- languages here or re-enable it for the disabled ones.
 				local disable_filetypes = { c = true, cpp = true }
 				return {
-					timeout_ms = 500,
+					timeout_ms = 700,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
 				}
 			end,
@@ -770,17 +770,17 @@ require("lazy").setup({
 				-- python = { "isort", "black" },
 				c = { "astyle" },
 				cpp = { "astyle" },
-				css = { { "prettierd", "prettier" } },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				graphql = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
-				yaml = { { "prettierd", "prettier" } },
+				css = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				graphql = { "prettierd", "prettier", stop_after_first = true },
+				json = { "prettierd", "prettier", stop_after_first = true },
+				html = { "prettierd", "prettier", stop_after_first = true },
+				yaml = { "prettierd", "prettier", stop_after_first = true },
 				terraform = { "terraform_fmt" },
 				markdown = { "markdownlint" },
 				sql = { "sqlfmt" },
-				go = { { "goimports", "gofumpt" } },
+				go = { "goimports", "gofumpt", stop_after_first = true },
 			},
 		},
 	},
