@@ -106,6 +106,7 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.opt.number = true
+
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
@@ -130,6 +131,8 @@ vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+
+vim.opt.termguicolors = true
 
 -- Save undo history
 vim.opt.undofile = true
@@ -166,11 +169,11 @@ vim.opt.cursorline = true
 -- Show which column your cursor is on
 vim.opt.cursorcolumn = true
 -- Make current line bold
-vim.cmd.highlight("CursorLine gui=bold")
+-- vim.cmd.highlight("CursorLine gui=bold")
 -- Make the numbers column grey so it is easier to see on dark themes
-vim.cmd.highlight("LineNr guifg=grey")
+-- vim.cmd.highlight("LineNr guifg=grey")
 -- Make text selections yellow to make them easier to see
-vim.cmd.hi("Visual guibg=#404040")
+-- vim.cmd.hi("Visual guibg=#404040")
 
 vim.opt.guicursor = "n-v-c:block-Cursor,n-v-c:blinkon0,i:blinkwait10"
 
@@ -940,6 +943,13 @@ require("lazy").setup({
 				},
 			})
 			require("ayu").colorscheme()
+
+			-- Make current line bold
+			vim.cmd.highlight("CursorLine gui=bold")
+			-- Make the numbers column grey so it is easier to see on dark themes
+			vim.cmd.highlight("LineNr guifg=grey")
+			-- Make text selections yellow to make them easier to see
+			vim.cmd.hi("Visual guibg=#404040")
 		end,
 	},
 
@@ -964,6 +974,21 @@ require("lazy").setup({
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
 		config = function()
 			require("render-markdown").setup({})
+		end,
+	},
+	{
+		"atiladefreitas/dooing",
+		config = function()
+			require("dooing").setup({
+				quick_keys = false,
+				per_project = {
+					default_filename = "todo-list.json",
+				},
+				keymaps = {
+					toggle_window = "<leader>L",
+					open_project_todo = "<leader>l",
+				},
+			})
 		end,
 	},
 	"bullets-vim/bullets.vim",
