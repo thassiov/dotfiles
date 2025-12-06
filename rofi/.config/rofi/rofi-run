@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rofi -show run -config ${PWD}/arc-dark-theme.rasi -font "Fira Mono Medium 10" -o 85
+rofi -show-icons -show run

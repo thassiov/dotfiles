@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rofi -show emoji -config ${PWD}/arc-dark-theme.rasi -font "Fira Mono Medium 10" -o 85
+rofi -show emoji
 
