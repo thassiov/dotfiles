@@ -15,6 +15,10 @@ source "${ZINIT_HOME}/zinit.zsh"
 # my exported variables
 source ~/.envs
 
+# sensitive environment variables (API keys, tokens, etc.)
+# this file is gitignored - copy from .envs.sensitive.example and fill in your values
+[ -f ~/.envs.sensitive ] && source ~/.envs.sensitive
+
 # custom aliases 
 source ~/.clialiases
 
