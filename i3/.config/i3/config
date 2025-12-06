@@ -27,6 +27,7 @@ bindsym $mod+q exec $HOME/.config/rofi/rofi-run
 bindsym $mod+a exec $HOME/.config/rofi/rofi-dmenu
 bindsym $mod+Tab exec $HOME/.config/rofi/rofi-window
 bindsym $mod+m exec $HOME/.dotfiles/scripts/utilities/rofi-autorandr.sh
+bindsym $mod+Shift+slash exec $HOME/.dotfiles/scripts/utilities/i3-shortcuts-help.sh
 
 # opens thunar
 bindsym $mod+f exec pcmanfm
@@ -153,6 +154,28 @@ gaps outer 5
 smart_gaps on
 smart_borders on
 
+# i3bar configuration
+bar {
+    status_command py3status
+    position top
+    font pango:FiraMono Medium 10, FontAwesome 10
+    separator_symbol "  |  "
+
+    colors {
+        background #282A2E
+        statusline #C5C8C6
+        separator  #C5C8C6
+
+        # workspace colors       border  backgr  text
+        focused_workspace       #F0C674 #373B41 #C5C8C6
+        active_workspace        #373B41 #282A2E #C5C8C6
+        inactive_workspace      #282A2E #282A2E #707880
+        urgent_workspace        #A54242 #A54242 #C5C8C6
+    }
+
+    tray_output primary
+}
+
 # startup apps
 exec --no-startup-id i3-layouts &
 exec --no-startup-id nm-applet &
@@ -161,4 +184,5 @@ exec --no-startup-id blueman-manager &
 exec --no-startup-id feh --bg-scale $HOME/.dotfiles/wallpaper/pure-black.png &
 exec killall -q notify-osd
 exec --no-startup-id dunst -c $HOME/.config/dunst/dunstrc
-exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
+# Polybar disabled - using i3bar instead
+# exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
