@@ -1,0 +1,85 @@
+# i3status configuration file
+# see "man i3status" for documentation.
+
+general {
+        colors = true
+        interval = 1
+        color_good = "#8ABEB7"
+        color_degraded = "#F0C674"
+        color_bad = "#A54242"
+}
+
+order += "disk /"
+order += "disk /home"
+order += "disk /storage"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "volume_status"
+order += "keyboard_layout"
+order += "cpu_usage"
+order += "memory"
+order += "battery all"
+order += "tztime local"
+
+disk "/" {
+        format = "/ %percentage_used"
+}
+
+disk "/home" {
+        format = "/home %percentage_used"
+}
+
+disk "/storage" {
+        format = "/storage %percentage_used"
+}
+
+wireless _first_ {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = ""
+}
+
+ethernet _first_ {
+        format_up = "E: %ip"
+        format_down = ""
+}
+
+volume_status {
+        format = "VOL {percentage}%"
+        format_muted = "VOL muted"
+        button_mute = 1
+        button_up = 4
+        button_down = 5
+        color_good = "#C5C8C6"
+        thresholds = [(0, "good")]
+}
+
+cpu_usage {
+        format = "CPU %usage"
+}
+
+memory {
+        format = "RAM %percentage_used"
+        threshold_degraded = "10%"
+        format_degraded = "RAM < %percentage_available"
+}
+
+battery all {
+        format = "%status %percentage %remaining"
+        format_down = ""
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "?"
+        status_full = "☻"
+        low_threshold = 10
+        last_full_capacity = true
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+keyboard_layout {
+        format = "⌨ {layout}"
+        color_good = "#C5C8C6"
+        cache_timeout = 0.5
+}
