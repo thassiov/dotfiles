@@ -1,0 +1,24 @@
+# US-DEV Console Keymap
+# Custom US layout with developer-friendly modifications
+
+# Start with standard US layout
+include "us"
+
+# Caps Lock -> Escape (keycode 58 in console)
+keycode 58 = Escape
+
+# Esc key -> apostrophe, quotedbl, dead_tilde (keycode 1 in console)
+keycode 1 = apostrophe quotedbl asciitilde
+
+# Apostrophe key -> dead_acute, dead_grave, dead_circumflex (keycode 40 in console)
+keycode 40 = +dead_acute +dead_grave +dead_circumflex
+
+# C key with cedilla: c, C, ccedilla, Ccedilla (keycode 46 in console)
+keycode 46 = c C ccedilla Ccedilla
+
+# AltGr setup (right Alt as Mode_switch)
+# This allows the third/fourth level symbols
+altgr keycode 46 = ccedilla
+altgr shift keycode 46 = Ccedilla
+altgr keycode 1 = asciitilde
+altgr keycode 40 = +dead_circumflex

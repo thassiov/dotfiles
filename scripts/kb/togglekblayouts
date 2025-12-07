@@ -1,29 +1,112 @@
 #!/usr/bin/env bash
 
-# [https://unix.stackexchange.com/a/12074/10333]
-CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
+# Universal Keyboard Layout Toggle
+# Works in X11, Wayland, and TTY/Console
+
+SCRIPT_DIRECTORY="$(dirname "$(readlink -f "$0")")"
+CURRENT_LAYOUT=""
 NEW_KB_LAYOUT=""
 
-# [https://unix.stackexchange.com/a/17500/10333]
-SCRIPT_DIRECTORY="$(dirname "$(readlink -f "$0")")"
+# Detect environment
+detect_environment() {
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        echo "wayland"
+    elif [ -n "$DISPLAY" ]; then
+        echo "x11"
+    else
+        echo "tty"
+    fi
+}
 
-# Make sure capslock is disabled of else it will stay in a 'cant disable it' as the key will be disabled after.
-# We depend on xdotool package to accomplish it
-# [ https://forum.puppylinux.com/viewtopic.php?p=15893&sid=e5cc979f654b4d761e5bd4656574f05a#p15893 ]
-[[ $(xset -q) =~ (Caps Lock: *on) ]] && xdotool key Caps_Lock
+# Get current layout based on environment
+get_current_layout() {
+    local env=$(detect_environment)
 
-if [ $CURRENT_LAYOUT == 'us' ]; then
-	NEW_KB_LAYOUT="BR-DEV"
-	echo "Setting abnt2-dev keyboard layout"
-	$SCRIPT_DIRECTORY/useabntkb
-elif [ $CURRENT_LAYOUT == 'br' ]; then
-	NEW_KB_LAYOUT="US-DEV"
-	echo "Setting us-dev keyboard layout"
-	$SCRIPT_DIRECTORY/useuskb
+    case "$env" in
+        x11)
+            # X11: use setxkbmap
+            setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'
+            ;;
+        tty)
+            # TTY: check a state file since we can't query loadkeys easily
+            if [ -f /tmp/current_kb_layout ]; then
+                cat /tmp/current_kb_layout
+            else
+                echo "us"  # default
+            fi
+            ;;
+        wayland)
+            # Wayland: compositor-specific, defaulting to state file
+            if [ -f /tmp/current_kb_layout ]; then
+                cat /tmp/current_kb_layout
+            else
+                echo "us"  # default
+            fi
+            ;;
+    esac
+}
+
+# Set keyboard layout based on environment
+set_layout() {
+    local layout="$1"
+    local env=$(detect_environment)
+
+    case "$env" in
+        x11)
+            # X11: use existing scripts
+            if [ "$layout" == "us" ]; then
+                NEW_KB_LAYOUT="US-DEV"
+                echo "Setting us-dev keyboard layout"
+                "$SCRIPT_DIRECTORY/useuskb"
+            else
+                NEW_KB_LAYOUT="BR-DEV"
+                echo "Setting abnt2-dev keyboard layout"
+                "$SCRIPT_DIRECTORY/useabntkb"
+            fi
+
+            # Handle Caps Lock if it's on
+            if [[ $(xset -q 2>/dev/null) =~ (Caps Lock: *on) ]]; then
+                xdotool key Caps_Lock 2>/dev/null
+            fi
+
+            # Send notification
+            notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT" \
+                --icon="$SCRIPT_DIRECTORY/keyboard.png" 2>/dev/null
+            ;;
+
+        tty)
+            # TTY: use loadkeys with console keymaps
+            if [ "$layout" == "us" ]; then
+                NEW_KB_LAYOUT="US-DEV"
+                echo "Setting us-dev keyboard layout (TTY)"
+                sudo loadkeys "$SCRIPT_DIRECTORY/keymaps/console/us-dev.map"
+            else
+                NEW_KB_LAYOUT="BR-DEV"
+                echo "Setting br-dev keyboard layout (TTY)"
+                sudo loadkeys "$SCRIPT_DIRECTORY/keymaps/console/br-dev.map"
+            fi
+
+            # Save state
+            echo "$layout" > /tmp/current_kb_layout
+            echo "Changed keyboard layout to $NEW_KB_LAYOUT"
+            ;;
+
+        wayland)
+            # Wayland: compositor-specific (add support as needed)
+            echo "Wayland support not yet implemented"
+            echo "Please configure keyboard layout in your compositor settings"
+            ;;
+    esac
+}
+
+# Main toggle logic
+CURRENT_LAYOUT=$(get_current_layout)
+
+if [ "$CURRENT_LAYOUT" == "us" ]; then
+    set_layout "br"
+elif [ "$CURRENT_LAYOUT" == "br" ]; then
+    set_layout "us"
 else
-	NEW_KB_LAYOUT="US-DEV"
-	echo "Setting us-dev keyboard layout (default)"
-	$SCRIPT_DIRECTORY/useuskb
+    # Default to US if unknown
+    set_layout "us"
 fi
-
-notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT" --icon="$SCRIPT_DIRECTORY/keyboard.png"

@@ -1,0 +1,15 @@
+# BR-DEV Console Keymap
+# Custom Brazilian ABNT2 layout with developer-friendly modifications
+
+# Start with standard Brazilian ABNT2 layout
+include "br-abnt2"
+
+# Caps Lock -> Escape (keycode 58 in console)
+keycode 58 = Escape
+
+# Esc key -> apostrophe, quotedbl, dead_tilde (keycode 1 in console)
+keycode 1 = apostrophe quotedbl asciitilde
+
+# AltGr setup (right Alt as Mode_switch)
+# This allows the third/fourth level symbols
+altgr keycode 1 = asciitilde

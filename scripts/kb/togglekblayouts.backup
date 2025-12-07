@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# [https://unix.stackexchange.com/a/12074/10333]
+CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
+NEW_KB_LAYOUT=""
+
+# [https://unix.stackexchange.com/a/17500/10333]
+SCRIPT_DIRECTORY="$(dirname "$(readlink -f "$0")")"
+
+# Make sure capslock is disabled of else it will stay in a 'cant disable it' as the key will be disabled after.
+# We depend on xdotool package to accomplish it
+# [ https://forum.puppylinux.com/viewtopic.php?p=15893&sid=e5cc979f654b4d761e5bd4656574f05a#p15893 ]
+[[ $(xset -q) =~ (Caps Lock: *on) ]] && xdotool key Caps_Lock
+
+if [ $CURRENT_LAYOUT == 'us' ]; then
+	NEW_KB_LAYOUT="BR-DEV"
+	echo "Setting abnt2-dev keyboard layout"
+	$SCRIPT_DIRECTORY/useabntkb
+elif [ $CURRENT_LAYOUT == 'br' ]; then
+	NEW_KB_LAYOUT="US-DEV"
+	echo "Setting us-dev keyboard layout"
+	$SCRIPT_DIRECTORY/useuskb
+else
+	NEW_KB_LAYOUT="US-DEV"
+	echo "Setting us-dev keyboard layout (default)"
+	$SCRIPT_DIRECTORY/useuskb
+fi
+
+notify-send "Changed keyboard layout" "Now using $NEW_KB_LAYOUT" --icon="$SCRIPT_DIRECTORY/keyboard.png"
