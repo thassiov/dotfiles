@@ -16,8 +16,9 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "volume_status"
 order += "keyboard_layout"
-order += "cpu_usage"
+order += "sysdata"
 order += "memory"
+order += "temps"
 order += "battery all"
 order += "tztime local"
 
@@ -82,4 +83,15 @@ keyboard_layout {
         format = "⌨ {layout}"
         color_good = "#C5C8C6"
         cache_timeout = 0.5
+}
+
+sysdata {
+        format = "CPU {cpu_used_percent}% ({cpu_temp}°C)"
+        cpu_temp_unit = "C"
+        cache_timeout = 2
+}
+
+temps {
+        format = "💻 {chassis}°C 🌀 {fan_speed}"
+        cache_timeout = 5
 }
