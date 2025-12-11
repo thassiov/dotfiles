@@ -1,0 +1,5 @@
+#!/bin/bash
+# Autorandr postswitch hook to reset wallpaper after monitor configuration changes
+
+# Run the wallpaper script
+$HOME/.dotfiles/scripts/utilities/set-wallpaper.sh
