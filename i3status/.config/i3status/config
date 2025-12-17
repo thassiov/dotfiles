@@ -20,6 +20,7 @@ order += "sysdata"
 order += "memory"
 order += "temps"
 order += "battery all"
+order += "battery_notify"
 order += "tztime local"
 
 disk "/" {
@@ -94,4 +95,8 @@ sysdata {
 temps {
         format = "💻 {chassis}°C 🌀 {fan_speed}"
         cache_timeout = 5
+}
+
+battery_notify {
+        cache_timeout = 30
 }

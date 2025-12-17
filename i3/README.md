@@ -33,6 +33,7 @@ sudo pacman -S \
     xdotool \
     lm_sensors \
     dunst \
+    libnotify \
     feh \
     xorg-xbacklight \
     xlock \
@@ -40,7 +41,8 @@ sudo pacman -S \
     playerctl \
     blueman \
     network-manager-applet \
-    parcellite
+    parcellite \
+    ffmpeg
 ```
 
 #### Ubuntu/Debian
@@ -57,6 +59,7 @@ sudo apt install \
     xdotool \
     lm-sensors \
     dunst \
+    libnotify-bin \
     feh \
     xbacklight \
     xlockmore \
@@ -64,7 +67,8 @@ sudo apt install \
     playerctl \
     blueman \
     network-manager-gnome \
-    parcellite
+    parcellite \
+    ffmpeg
 
 # Install py3status via pip
 pip3 install --user py3status
@@ -114,13 +118,22 @@ ln -s ~/.dotfiles/rofi/.config/rofi ~/.config/rofi
 ### 2. Verify Custom Modules
 
 ```bash
-# Check py3status custom module is linked
+# Check py3status custom modules are linked
 ls -la ~/.config/py3status/modules/temps.py
+ls -la ~/.config/py3status/modules/battery_notify.py
 
 # Should show: ~/.config/py3status -> ~/.dotfiles/py3status/.config/py3status
 ```
 
-### 3. Setup Keyboard Layouts
+### 3. Setup Battery Alert Sound
+
+```bash
+# Generate the custom alert sound
+mkdir -p ~/.local/share/sounds
+ffmpeg -y -f lavfi -i "sine=frequency=880:duration=0.5" -af "volume=0.6" ~/.local/share/sounds/battery-alert.wav
+```
+
+### 4. Setup Keyboard Layouts
 
 The keyboard layout scripts support both X11 and TTY:
 ```bash
@@ -134,7 +147,7 @@ chmod +x ~/.dotfiles/scripts/kb/useabntkb
 # yourusername ALL=(ALL) NOPASSWD: /usr/bin/loadkeys
 ```
 
-### 4. Reload i3
+### 5. Reload i3
 
 ```bash
 i3-msg reload
@@ -163,6 +176,38 @@ The status bar shows:
 - Click volume to toggle mute
 - Scroll on volume to adjust
 - Auto-updates on keyboard layout change
+
+### Battery Notifications
+
+Uses custom py3status module (`~/.config/py3status/modules/battery_notify.py`) to monitor battery level and alert when low.
+
+**Thresholds and Actions:**
+
+| Battery | Notification | Duration | Sound | Screen |
+|---------|--------------|----------|-------|--------|
+| 20% | Normal | 8 sec | 1x beep | - |
+| 10% | Critical | 30 sec | 3x beep | Dims to minimum |
+| 5% | Critical | 30 sec | 3x beep | - |
+
+**Features:**
+- Notifications via dunst with appropriate urgency levels
+- Custom 3-beep alert sound (`~/.local/share/sounds/battery-alert.wav`)
+- Screen dims to minimum brightness at 10% to save power
+- Screen restores to 60% brightness when charger is plugged in
+- Notifications reset when charging (will alert again next discharge cycle)
+
+**Custom Alert Sound:**
+
+The alert sound is generated with ffmpeg. To regenerate:
+```bash
+mkdir -p ~/.local/share/sounds
+ffmpeg -y -f lavfi -i "sine=frequency=880:duration=0.5" -af "volume=0.6" ~/.local/share/sounds/battery-alert.wav
+```
+
+**Dependencies:**
+- `notify-send` (libnotify) - for notifications
+- `paplay` (pulseaudio) - for playing alert sounds
+- `xbacklight` - for screen dimming
 
 ### Temperature Monitoring
 
@@ -233,6 +278,23 @@ All from i3status/py3status:
 - `memory` - RAM usage
 - `battery` - Battery status
 - `tztime` - Date/time
+
+#### Custom Module: battery_notify.py
+
+**Location:** `~/.config/py3status/modules/battery_notify.py`
+
+**What it does:**
+- Monitors battery level every 30 seconds
+- Sends dunst notifications at 20%, 10%, and 5%
+- Plays alert sound (3x repeats for critical levels)
+- Dims screen at 10%, restores brightness when charging
+
+**Configuration in i3status config:**
+```ini
+battery_notify {
+        cache_timeout = 30
+}
+```
 
 #### Custom Module: temps.py
 
@@ -416,10 +478,13 @@ sudo pacman -S xorg-xset xorg-setxkbmap xdotool xorg-xbacklight
 sudo pacman -S lm_sensors
 
 # Notifications and wallpaper
-sudo pacman -S dunst feh
+sudo pacman -S dunst libnotify feh
 
 # Audio and media
 sudo pacman -S pulseaudio pulseaudio-alsa playerctl
+
+# Battery notification sound generation (optional)
+sudo pacman -S ffmpeg
 
 # System tray apps
 sudo pacman -S blueman network-manager-applet parcellite
@@ -450,10 +515,13 @@ sudo apt install x11-xserver-utils xdotool xbacklight
 sudo apt install lm-sensors
 
 # Notifications and wallpaper
-sudo apt install dunst feh
+sudo apt install dunst libnotify-bin feh
 
 # Audio and media
 sudo apt install pulseaudio-utils playerctl
+
+# Battery notification sound generation (optional)
+sudo apt install ffmpeg
 
 # System tray apps
 sudo apt install blueman network-manager-gnome parcellite
