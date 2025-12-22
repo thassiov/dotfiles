@@ -1,5 +1,0 @@
-# Installing fzf does not automaticaly enable its key-bindings or completion, so:
-if [[ -d /usr/share/fzf ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi

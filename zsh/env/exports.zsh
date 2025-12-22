@@ -1,3 +1,5 @@
+# Environment variable exports
+
 # My Scripts
 export MY_SCRIPTS=~/bin
 
@@ -25,3 +27,7 @@ export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat 
 
 # vi-mode
 export KEYTIMEOUT=1
+
+# Sensitive environment variables (API keys, tokens, etc.)
+# This file is gitignored - safe to add your real API keys there
+[ -f ~/.envs.sensitive ] && source ~/.envs.sensitive

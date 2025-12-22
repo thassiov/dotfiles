@@ -6,6 +6,9 @@
 # Get your key from: https://console.anthropic.com/
 export ANTHROPIC_API_KEY="sk-ant-api03-your-key-here"
 
+# Jira API Token
+export JIRA_API_TOKEN="your-jira-token-here"
+
 # Add other sensitive API keys below
 # export OPENAI_API_KEY="your-key-here"
 # export GITHUB_TOKEN="your-token-here"
