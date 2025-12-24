@@ -6,11 +6,13 @@ output DP-3
 off
 output DP-4
 off
+output DP-3-3
+off
 output DP-3-2
 crtc 2
-mode 2560x1440
+mode DualUpMode
 pos 4480x0
-rate 59.95
+rate 59.96
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
@@ -18,7 +20,7 @@ x-prop-non_desktop 0
 output DP-3-1
 crtc 0
 mode 2560x1440
-pos 1920x787
+pos 1920x314
 primary
 rate 120.00
 x-prop-audio auto
@@ -28,19 +30,10 @@ x-prop-non_desktop 0
 output eDP-1
 crtc 1
 mode 1920x1200
-pos 0x907
+pos 0x434
 rate 59.88
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 12
 x-prop-non_desktop 0
 x-prop-scaling_mode Full aspect
-output DP-3-3
-crtc 3
-mode 2560x1440
-pos 4480x1440
-rate 59.95
-x-prop-audio auto
-x-prop-broadcast_rgb Automatic
-x-prop-max_bpc 12
-x-prop-non_desktop 0
