@@ -34,8 +34,8 @@ class Py3status:
 
             # Clear notifications when battery goes above threshold (charging)
             self._notified = {t for t in self._notified if capacity <= t}
-        elif status == "Charging" or status == "Full":
-            # Reset all notifications and restore brightness when charging
+        elif status and status != "Discharging":
+            # Reset all notifications and restore brightness when not discharging
             if self._notified:
                 self._restore_brightness()
             self._notified.clear()
