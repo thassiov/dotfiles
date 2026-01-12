@@ -1,0 +1,4 @@
+prometheus_url = "http://prometheus.monitoring.grid.local:9090"
+refresh_rate = 1000
+time_range = "1h"
+theme = "dracula"
