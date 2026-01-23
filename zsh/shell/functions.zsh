@@ -2,9 +2,9 @@
 
 # ls wrapper - use exa if available
 function ls () {
-    if exa &> /dev/null
+    if command -v exa &> /dev/null
     then
-        exa "$@" --color always
+        exa "$@" --color=auto
     else
         command ls "$@"
     fi
