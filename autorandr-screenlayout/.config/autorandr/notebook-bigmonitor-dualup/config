@@ -9,7 +9,7 @@ off
 output DP-3-3
 off
 output DP-3-2
-crtc 2
+crtc 1
 mode DualUpMode
 pos 4480x0
 rate 59.96
@@ -28,7 +28,7 @@ x-prop-broadcast_rgb Automatic
 x-prop-max_bpc 12
 x-prop-non_desktop 0
 output eDP-1
-crtc 1
+crtc 2
 mode 1920x1200
 pos 0x434
 rate 59.88
