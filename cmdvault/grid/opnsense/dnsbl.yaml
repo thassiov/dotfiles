@@ -1,0 +1,40 @@
+name: OPNsense DNSBL
+description: DNS blocklist (ad blocking) management
+
+commands:
+  - name: grid dnsbl status
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["dnsbl", "status"]
+    description: Show DNSBL ad-blocking status and stats
+
+  - name: grid dnsbl enable
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["dnsbl", "enable"]
+    description: Enable ad blocking
+
+  - name: grid dnsbl disable
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["dnsbl", "disable"]
+    description: Disable ad blocking
+
+  # NOTE: The following subcommands don't exist in the grid script yet.
+  # Uncomment when implemented.
+  # - name: grid dnsbl lists
+  #   command: /storage/dev/personal/grid.local/scripts/grid
+  #   args: ["dnsbl", "lists"]
+  #   description: Show available blocklists
+
+  # - name: grid dnsbl stats
+  #   command: /storage/dev/personal/grid.local/scripts/grid
+  #   args: ["dnsbl", "stats"]
+  #   description: Show detailed DNS statistics
+
+  # - name: grid dnsbl add
+  #   command: /storage/dev/personal/grid.local/scripts/grid
+  #   args: ["dnsbl", "add"]
+  #   description: Add a blocklist (prompts for list key)
+
+  # - name: grid dnsbl remove
+  #   command: /storage/dev/personal/grid.local/scripts/grid
+  #   args: ["dnsbl", "remove"]
+  #   description: Remove a blocklist (prompts for list key)

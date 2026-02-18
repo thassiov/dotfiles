@@ -1,0 +1,33 @@
+name: Grid Rescue
+description: Diagnose and recover grid.local from the ISP network via jump host
+
+commands:
+  - name: grid rescue
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue"]
+    description: Full infrastructure check via jump host (from ISP network)
+
+  - name: grid rescue services
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue", "services"]
+    description: Check key services (postgres, grafana, etc.) via jump host
+
+  - name: grid rescue start-all
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue", "start-all"]
+    description: Start all stopped guests via jump host
+
+  - name: grid rescue start-opnsense
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue", "start-opnsense"]
+    description: Start OPNsense VM via jump host
+
+  - name: grid rescue start
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue", "start", "{{guest}}"]
+    description: Start a specific guest by name via jump host
+
+  - name: grid rescue ssh
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["rescue", "ssh", "{{host}}"]
+    description: SSH to internal host via gateway jump host

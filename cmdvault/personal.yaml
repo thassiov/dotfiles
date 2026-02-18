@@ -1,0 +1,19 @@
+name: Personal Tools
+description: Personal workflow scripts and utilities
+
+commands:
+  # Day recap
+  - name: recap
+    command: /storage/dev/personal/tools/recap/recap
+    args: []
+    description: Show daily notes, tasks, and sessions from previous day
+
+  - name: recap today
+    command: /storage/dev/personal/tools/recap/recap
+    args: ["--date=$(date +%Y-%m-%d)"]
+    description: Show today's notes, tasks, and sessions
+
+  - name: recap no-lookback
+    command: /storage/dev/personal/tools/recap/recap
+    args: [--no-lookback]
+    description: Show yesterday's recap without looking back further

@@ -1,0 +1,40 @@
+name: OPNsense Status
+description: OPNsense router status, gateways, leases, DNS, and traffic
+
+commands:
+  # NOTE: "grid opnsense" (general status) is commented out — it hangs.
+  # Uncomment when fixed.
+  # - name: grid opnsense
+  #   command: /storage/dev/personal/grid.local/scripts/grid
+  #   args: ["opnsense"]
+  #   description: OPNsense router status
+
+  - name: grid gateways
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["gateways"]
+    description: Gateway status from OPNsense
+
+  - name: grid leases
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["leases"]
+    description: DHCP leases (all)
+
+  - name: grid online
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["online"]
+    description: Online devices only
+
+  - name: grid dns
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["dns"]
+    description: DNS statistics (Unbound)
+
+  - name: grid traffic
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["traffic"]
+    description: Top traffic by host
+
+  - name: grid opnsense-api
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["opnsense-api"]
+    description: Raw OPNsense API call (prompts for method and endpoint)

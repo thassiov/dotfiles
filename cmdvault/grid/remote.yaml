@@ -1,0 +1,13 @@
+name: Grid Remote Access
+description: SSH and remote command execution on grid.local hosts
+
+commands:
+  - name: grid ssh
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["ssh"]
+    description: SSH to a host by name (prompts for host)
+
+  - name: grid exec
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["exec"]
+    description: Run command on all PVE hosts (prompts for command)

@@ -1,0 +1,43 @@
+name: Grid Health & Status
+description: Infrastructure health checks, host status, and inventory
+
+commands:
+  - name: grid inet
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["inet"]
+    description: Internet connectivity and latency check
+
+  - name: grid health
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["health"]
+    description: Infrastructure health check (ping, ssh, resources, services)
+
+  - name: grid wol
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["wol"]
+    description: List Wake-on-LAN capable hosts
+
+  - name: grid wol all
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["wol", "all"]
+    description: Wake all WOL-capable hosts
+
+  - name: grid status
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["status"]
+    description: Show status of all PVE hosts
+
+  - name: grid list
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["list"]
+    description: List all known hosts
+
+  - name: grid inventory
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["inventory"]
+    description: Run full PVE inventory (VMs/LXCs)
+
+  - name: grid info
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["info"]
+    description: Show detailed info for a host (prompts for host)

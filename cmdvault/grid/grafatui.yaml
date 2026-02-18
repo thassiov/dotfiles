@@ -1,0 +1,23 @@
+name: Grafatui Dashboards
+description: Terminal dashboards via grafatui
+
+commands:
+  - name: grafatui system-metrics
+    command: /storage/dev/personal/grid.local/scripts/grafatui/system-metrics
+    args: []
+    description: Terminal dashboard - System metrics
+
+  - name: grafatui infrastructure-health
+    command: /storage/dev/personal/grid.local/scripts/grafatui/infrastructure-health
+    args: []
+    description: Terminal dashboard - Infrastructure health
+
+  - name: grafatui opnsense-firewall
+    command: /storage/dev/personal/grid.local/scripts/grafatui/opnsense-firewall
+    args: []
+    description: Terminal dashboard - OPNsense firewall
+
+  - name: grafatui dns-adblock
+    command: /storage/dev/personal/grid.local/scripts/grafatui/dns-adblock
+    args: []
+    description: Terminal dashboard - DNS/Adblock stats

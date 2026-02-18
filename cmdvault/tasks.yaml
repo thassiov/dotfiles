@@ -1,0 +1,23 @@
+name: Task Management
+description: Manage tasks via Vikunja at tasks.grid.local
+
+commands:
+  - name: tasks projects
+    command: python3
+    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "projects"]
+    description: List all task projects
+
+  - name: tasks list
+    command: python3
+    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "list"]
+    description: List pending tasks (all projects)
+
+  - name: tasks add
+    command: python3
+    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "add", "{{title}}"]
+    description: Add a new task to Inbox
+
+  - name: tasks done
+    command: python3
+    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "done", "{{task_id}}"]
+    description: Mark a task as done

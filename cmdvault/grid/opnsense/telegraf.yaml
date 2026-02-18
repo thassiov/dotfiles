@@ -1,0 +1,23 @@
+name: OPNsense Telegraf
+description: Telegraf metrics service management
+
+commands:
+  - name: grid telegraf status
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["telegraf", "status"]
+    description: Telegraf metrics service status
+
+  - name: grid telegraf enable
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["telegraf", "enable"]
+    description: Enable Telegraf metrics service
+
+  - name: grid telegraf input
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["telegraf", "input"]
+    description: Configure Telegraf input (prompts for input name and enabled)
+
+  - name: grid telegraf output
+    command: /storage/dev/personal/grid.local/scripts/grid
+    args: ["telegraf", "output"]
+    description: Configure Telegraf output settings

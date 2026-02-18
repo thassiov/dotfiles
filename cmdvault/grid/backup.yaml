@@ -1,0 +1,21 @@
+name: Grid Backups
+description: Backup management for grid.local hosts
+
+commands:
+  # NOTE: All backup commands are commented out — SSH to NAS is broken.
+  # Uncomment when fixed.
+
+  # - name: grid backup status
+  #   command: /storage/dev/personal/grid.local/scripts/grid-backup
+  #   args: ["--status"]
+  #   description: Show backup status for all hosts
+
+  # - name: grid backup run
+  #   command: /storage/dev/personal/grid.local/scripts/grid-backup
+  #   args: []
+  #   description: Run full backup of all hosts
+
+  # - name: grid backup metrics
+  #   command: /storage/dev/personal/grid.local/scripts/grid-backup
+  #   args: ["--metrics"]
+  #   description: Generate Prometheus backup metrics only
