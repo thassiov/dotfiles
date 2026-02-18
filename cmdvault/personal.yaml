@@ -17,3 +17,9 @@ commands:
     command: /storage/dev/personal/tools/recap/recap
     args: [--no-lookback]
     description: Show yesterday's recap without looking back further
+
+  # Quick system commands (portable, works in containers too)
+  - name: top
+    command: top
+    args: ["-b", "-n", "1"]
+    description: Show running processes (single snapshot)
