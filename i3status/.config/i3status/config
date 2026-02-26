@@ -19,6 +19,7 @@ order += "keyboard_layout"
 order += "sysdata"
 order += "memory"
 order += "temps"
+order += "brightness"
 order += "battery all"
 order += "battery_notify"
 order += "tztime local"
@@ -95,6 +96,11 @@ sysdata {
 temps {
         format = "💻 {chassis}°C 🌀 {fan_speed}"
         cache_timeout = 5
+}
+
+brightness {
+        format = "{icon} {level}"
+        cache_timeout = 2
 }
 
 battery_notify {

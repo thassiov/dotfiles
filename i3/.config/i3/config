@@ -57,7 +57,7 @@ bindsym $mod+f exec pcmanfm
  # Screen brightness controls
  bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1
  bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1
- bindsym $mod+space exec $HOME/.dotfiles/scripts/utilities/toggle-xbacklight-brightness.sh
+ bindsym $mod+space exec $HOME/.dotfiles/scripts/utilities/toggle-brightness.sh
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -177,6 +177,7 @@ bar {
 }
 
 # startup apps
+exec --no-startup-id autorandr --change &
 exec --no-startup-id i3-layouts &
 exec --no-startup-id nm-applet &
 exec --no-startup-id parcellite &
