@@ -8,6 +8,9 @@
 # The UltraGear is on a DPMST bus that ddcutil can't detect (known bug),
 # so we talk to it directly via Python/i2c.
 #
+# At the "dim" level, xrandr software brightness (0.4) is stacked on top of
+# DDC/CI hardware brightness (1) for extra dimming on the LG monitors.
+#
 # Monitors that aren't connected are silently skipped.
 
 set -euo pipefail
@@ -18,6 +21,13 @@ LAPTOP_LEVELS=(0.01 30 60 90)
 
 # LG monitor levels (DDC/CI 0-100)
 LG_LEVELS=(1 5 15 40)
+
+# xrandr software brightness per level (stacked on DDC for extra dimming)
+# 1.0 = no software dimming, <1.0 = additional software dimming
+XRANDR_LEVELS=(0.4 1.0 1.0 1.0)
+
+# xrandr output names for external monitors
+XRANDR_OUTPUTS=(DP-3-1 DP-3-2)
 
 # --- Helper: get current laptop brightness level index ---
 get_laptop_level_index() {
@@ -183,6 +193,14 @@ os.close(fd)
 " 2>/dev/null || true
 }
 
+# --- Helper: set xrandr software brightness on external monitors ---
+set_xrandr_brightness() {
+  local value="$1"
+  for output in "${XRANDR_OUTPUTS[@]}"; do
+    xrandr --output "$output" --brightness "$value" 2>/dev/null || true
+  done
+}
+
 # --- Helper: map a DDC brightness value to a level index ---
 ddc_to_level_index() {
   local current="$1"
@@ -207,6 +225,9 @@ next_index=$(( (level_index + 1) % num_levels ))
 
 # Set laptop brightness
 set_laptop_brightness "${LAPTOP_LEVELS[$next_index]}"
+
+# Set xrandr software brightness on external monitors
+set_xrandr_brightness "${XRANDR_LEVELS[$next_index]}"
 
 # Set DualUp brightness (if connected)
 dualup_display=$(find_dualup_display)
