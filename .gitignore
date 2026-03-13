@@ -11,3 +11,4 @@ tmux/.config/tmux/plugins
 
 # Secrets and API keys
 zsh/.envs.sensitive
+AUDIT.md
