@@ -1,0 +1,80 @@
+{
+  "links": [
+    {
+      "source": "alacritty",
+      "target": "~/.config/alacritty"
+    },
+    {
+      "source": "autorandr",
+      "target": "~/.config/autorandr"
+    },
+    {
+      "source": "cmdvault",
+      "target": "~/.config/cmdvault/commands"
+    },
+    {
+      "source": "dunst",
+      "target": "~/.config/dunst"
+    },
+    {
+      "source": "gitconfig/.gitconfig",
+      "target": "~/.gitconfig"
+    },
+    {
+      "source": "i3",
+      "target": "~/.config/i3"
+    },
+    {
+      "source": "i3status",
+      "target": "~/.config/i3status"
+    },
+    {
+      "source": "nvim",
+      "target": "~/.config/nvim"
+    },
+    {
+      "source": "py3status",
+      "target": "~/.config/py3status"
+    },
+    {
+      "source": "rofi",
+      "target": "~/.config/rofi"
+    },
+    {
+      "source": "tmux",
+      "target": "~/.config/tmux"
+    },
+    {
+      "source": "xinit/.xinitrc",
+      "target": "~/.xinitrc"
+    },
+    {
+      "source": "xrandr",
+      "target": "~/.screenlayout"
+    },
+    {
+      "source": "zsh/.zshrc",
+      "target": "~/.zshrc"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "zsh",
+      "description": "Initialize Zinit and plugins",
+      "run": "zsh -ic 'exit' 2>/dev/null",
+      "check": "test -d ~/.local/share/zinit"
+    },
+    {
+      "name": "tmux",
+      "description": "Install tmux plugins via TPM",
+      "run": "~/.config/tmux/plugins/tpm/bin/install_plugins",
+      "check": "test -d ~/.config/tmux/plugins/tokyo-night-tmux"
+    },
+    {
+      "name": "nvim",
+      "description": "Install Neovim plugins via Lazy.nvim",
+      "run": "nvim --headless '+Lazy! sync' +qa 2>/dev/null",
+      "check": "test -d ~/.local/share/nvim/lazy/lazy.nvim"
+    }
+  ]
+}
