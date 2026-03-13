@@ -1,0 +1,23 @@
+[Unit]
+Description=Lid close grace period handler
+Documentation=man:logind.conf(5)
+After=systemd-logind.service
+Requires=systemd-logind.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/lid-grace
+Restart=on-failure
+RestartSec=5
+Environment=LID_GRACE_SECONDS=15
+Environment=LID_INPUT_DEVICE=/dev/input/event0
+Environment=LID_GRACE_LOG_LEVEL=INFO
+
+# Hardening
+ProtectSystem=strict
+ProtectHome=yes
+NoNewPrivileges=no
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,13 +1,12 @@
-mpd/mpd.db
-mpd/mpd.pid
-mpd/mpd.log
-mpd/mpdstate
 *.swp
 *.swo
-nvim/autoload
-nvim/plugged
-nvim/session
-nvim/.netrwhist
+*.pyc
+__pycache__/
+
+# Zsh generated files
+zsh/.zcompdump
+
+# Tmux plugins (installed at runtime via tpm)
 tmux/.config/tmux/plugins
 
 # Secrets and API keys

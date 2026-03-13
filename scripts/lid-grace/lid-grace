@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""
+lid-grace: Lid close grace period handler.
+
+Monitors lid switch events via /dev/input/eventN.
+On lid close, waits GRACE_SECONDS before checking for external displays.
+If no external display is found, suspends the system.
+If the lid reopens during the grace period, cancels the pending suspend.
+
+Environment variables:
+  LID_GRACE_SECONDS    - Grace period in seconds (default: 15)
+  LID_INPUT_DEVICE     - Input device path (default: /dev/input/event0)
+  LID_GRACE_LOG_LEVEL  - Log level: DEBUG, INFO, WARNING (default: INFO)
+"""
+
+import struct
+import os
+import sys
+import signal
+import subprocess
+import threading
+import logging
+
+GRACE_SECONDS = int(os.environ.get("LID_GRACE_SECONDS", "15"))
+LID_INPUT = os.environ.get("LID_INPUT_DEVICE", "/dev/input/event0")
+LOG_LEVEL = os.environ.get("LID_GRACE_LOG_LEVEL", "INFO")
+
+# input_event: struct timeval (long, long), __u16 type, __u16 code, __s32 value
+# On 64-bit: timeval is two 8-byte longs = 16 bytes, then 2+2+4 = 8 bytes = 24 total
+EVENT_FORMAT = 'llHHi'
+EVENT_SIZE = struct.calcsize(EVENT_FORMAT)
+
+# Event types and codes
+EV_SW = 0x05
+SW_LID = 0x00
+
+logging.basicConfig(
+    level=getattr(logging, LOG_LEVEL.upper(), logging.INFO),
+    format='%(asctime)s lid-grace: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+log = logging.getLogger('lid-grace')
+
+
+def has_external_display():
+    """Check if any non-eDP display is connected via sysfs (no X needed)."""
+    drm_path = "/sys/class/drm"
+    try:
+        for card in os.listdir(drm_path):
+            # Skip eDP (embedded/internal) and card directories without a connector
+            if "eDP" in card:
+                continue
+            status_file = os.path.join(drm_path, card, "status")
+            if os.path.isfile(status_file):
+                with open(status_file) as f:
+                    status = f.read().strip()
+                if status == "connected":
+                    log.info(f"External display detected: {card}")
+                    return True
+    except OSError as e:
+        log.warning(f"Error checking displays: {e}")
+    return False
+
+
+def suspend_system():
+    """Suspend the system via systemd."""
+    log.info("No external display found. Suspending system.")
+    subprocess.run(["systemctl", "suspend"], check=False)
+
+
+class LidGraceHandler:
+    def __init__(self):
+        self.grace_timer = None
+        self.lid_closed = False
+        self._lock = threading.Lock()
+
+    def on_lid_close(self):
+        with self._lock:
+            self.lid_closed = True
+            # Cancel any existing timer
+            if self.grace_timer is not None:
+                self.grace_timer.cancel()
+                self.grace_timer = None
+
+            log.info(f"Lid closed. Starting {GRACE_SECONDS}s grace period...")
+            self.grace_timer = threading.Timer(GRACE_SECONDS, self._grace_expired)
+            self.grace_timer.start()
+
+    def on_lid_open(self):
+        with self._lock:
+            self.lid_closed = False
+            if self.grace_timer is not None:
+                self.grace_timer.cancel()
+                self.grace_timer = None
+                log.info("Lid opened. Grace period cancelled.")
+            else:
+                log.info("Lid opened.")
+
+    def _grace_expired(self):
+        with self._lock:
+            self.grace_timer = None
+            if not self.lid_closed:
+                log.info("Grace period expired but lid is open. No action.")
+                return
+
+        # Check outside the lock (has_external_display can be slow)
+        if has_external_display():
+            log.info("Grace period expired. External display connected. Not suspending.")
+        else:
+            suspend_system()
+
+    def cleanup(self):
+        with self._lock:
+            if self.grace_timer is not None:
+                self.grace_timer.cancel()
+                self.grace_timer = None
+
+
+def get_initial_lid_state():
+    """Read initial lid state from ACPI."""
+    try:
+        with open("/proc/acpi/button/lid/LID0/state") as f:
+            state = f.read().strip()
+            return "closed" in state
+    except OSError:
+        return False
+
+
+def main():
+    log.info(f"Starting lid-grace handler (grace={GRACE_SECONDS}s, device={LID_INPUT})")
+
+    handler = LidGraceHandler()
+
+    def shutdown(signum, frame):
+        log.info("Shutting down.")
+        handler.cleanup()
+        sys.exit(0)
+
+    signal.signal(signal.SIGTERM, shutdown)
+    signal.signal(signal.SIGINT, shutdown)
+
+    # Check initial state
+    if get_initial_lid_state():
+        log.info("Lid is already closed at startup. Starting grace period.")
+        handler.on_lid_close()
+
+    # Open the input device and read events
+    try:
+        fd = os.open(LID_INPUT, os.O_RDONLY)
+    except OSError as e:
+        log.error(f"Cannot open {LID_INPUT}: {e}")
+        sys.exit(1)
+
+    log.info("Listening for lid events...")
+
+    try:
+        while True:
+            data = os.read(fd, EVENT_SIZE)
+            if len(data) < EVENT_SIZE:
+                continue
+
+            _tv_sec, _tv_usec, ev_type, ev_code, ev_value = struct.unpack(EVENT_FORMAT, data)
+
+            if ev_type == EV_SW and ev_code == SW_LID:
+                if ev_value == 1:
+                    handler.on_lid_close()
+                elif ev_value == 0:
+                    handler.on_lid_open()
+    except OSError as e:
+        log.error(f"Error reading events: {e}")
+    finally:
+        os.close(fd)
+        handler.cleanup()
+
+
+if __name__ == "__main__":
+    main()

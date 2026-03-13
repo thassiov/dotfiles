@@ -1,2 +1,0 @@
-#!/bin/bash
-nvim + +put_ +'r!date' +put_ +startinsert /home/thassiov/journal.md
