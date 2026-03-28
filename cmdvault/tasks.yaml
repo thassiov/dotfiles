@@ -1,23 +1,27 @@
-name: Task Management
-description: Manage tasks via Vikunja at tasks.grid.local
-
-commands:
-  - name: tasks projects
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "projects"]
-    description: List all task projects
-
-  - name: tasks list
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "list"]
-    description: List pending tasks (all projects)
-
-  - name: tasks add
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "add", "{{title}}"]
-    description: Add a new task to Inbox
-
-  - name: tasks done
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "done", "{{task_id}}"]
-    description: Mark a task as done
+# Vikunja decommissioned (2026-03-14). Task management moved to Plane at plane.grid.local.
+# Plane is accessed via MCP tools in Claude Code / OpenCode sessions (55+ tools).
+# No CLI binary — all interaction through Plane MCP server.
+#
+# name: Task Management
+# description: Manage tasks via Vikunja at tasks.grid.local
+#
+# commands:
+#   - name: tasks projects
+#     command: python3
+#     args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "projects"]
+#     description: List all task projects
+#
+#   - name: tasks list
+#     command: python3
+#     args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "list"]
+#     description: List pending tasks (all projects)
+#
+#   - name: tasks add
+#     command: python3
+#     args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "add", "{{title}}"]
+#     description: Add a new task to Inbox
+#
+#   - name: tasks done
+#     command: python3
+#     args: ["/storage/dev/personal/grid.local/tools/tasks/tasks.py", "done", "{{task_id}}"]
+#     description: Mark a task as done

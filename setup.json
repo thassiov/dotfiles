@@ -55,6 +55,18 @@
     {
       "source": "zsh/.zshrc",
       "target": "~/.zshrc"
+    },
+    {
+      "source": "obs-studio/global.ini",
+      "target": "~/.config/obs-studio/global.ini"
+    },
+    {
+      "source": "obs-studio/basic/profiles/emberrecordings",
+      "target": "~/.config/obs-studio/basic/profiles/emberrecordings"
+    },
+    {
+      "source": "obs-studio/basic/scenes",
+      "target": "~/.config/obs-studio/basic/scenes"
     }
   ],
   "hooks": [
