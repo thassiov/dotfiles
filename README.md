@@ -43,6 +43,7 @@ Symlink mappings are defined in `setup.json`.
 | `i3status/` | `~/.config/i3status` | Config consumed by py3status. |
 | `py3status/` | `~/.config/py3status` | Custom modules: temps, brightness, battery notifications. |
 | `cmdvault/` | `~/.config/cmdvault/commands` | Searchable command snippets. |
+| `obs-studio/` | `~/.config/obs-studio` | OBS Studio. QSV encoder profile, scenes, global config. |
 | `xinit/` | `~/.xinitrc` | Starts i3. |
 | `wallpaper/` | (referenced by path) | Desktop wallpapers. |
 
