@@ -1,0 +1,307 @@
+;; eww bar configuration
+;; Requires: Alloy running at localhost:12345 for system metrics
+
+;; ============================================
+;; Variables
+;; ============================================
+
+;; System metrics from Alloy (single HTTP call, parsed to JSON)
+(deflisten metrics
+  :initial '{"cpu":{"total":0,"cores":[],"freq":0,"throttles_active":false,"type":"P","temp":0},"mem":{"used":0,"total":0,"pct":0,"cached":0,"buffers":0,"swap_used":0,"swap_total":0},"temps":{"package":0,"fans":[],"zones":[],"fan_rpm":0},"disk":{"mounts":[],"worst_pct":0},"net":{"ifaces":[],"has_wifi":false,"has_wired":false},"bat":{"pct":0,"status":"","remaining":"","watts":0}}'
+  `scripts/metrics-poller.sh`)
+
+;; Non-Alloy stuff (polled individually)
+(defpoll volume
+  :interval "1s"
+  :initial '{"pct":0,"muted":0}'
+  `scripts/get-volume.sh`)
+
+(defpoll brightness
+  :interval "2s"
+  :initial "50"
+  `brightnessctl -m | awk -F, '{print substr($4,1,length($4)-1)}'`)
+
+(defpoll kb_layout
+  :interval "1s"
+  :initial "us"
+  `setxkbmap -query | awk '/layout/{print $2}'`)
+
+(defpoll datetime
+  :interval "1s"
+  :initial ""
+  `date '+%Y-%m-%d %H:%M:%S'`)
+
+;; Workspaces (event-driven via i3 IPC subscribe)
+(deflisten workspaces
+  :initial "[]"
+  `scripts/workspaces.sh`)
+
+;; ============================================
+;; Popup windows
+;; ============================================
+
+(defwindow cpu-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (cpu-popup-content))
+
+(defwindow mem-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (mem-popup-content))
+
+(defwindow temp-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (temp-popup-content))
+
+(defwindow disk-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (disk-popup-content))
+
+(defwindow net-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (net-popup-content))
+
+(defwindow bat-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (bat-popup-content))
+
+;; ============================================
+;; Popup content widgets
+;; ============================================
+
+(defwidget cpu-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "CPU")
+    (label :class "popup-subtitle"
+      :text "Freq: ${round(metrics.cpu.freq / 1000000000, 1)} GHz  |  Pkg: ${round(metrics.temps.package, 0)}°C")
+    (box :class "popup-body" :orientation "v" :space-evenly false
+      (for core in {metrics.cpu.cores}
+        (box :orientation "h" :space-evenly false :spacing 6
+          (label :class {core.type == "P" ? "popup-label-accent" : "popup-label"}
+            :width 32 :text "${core.type}${core.id}")
+          (scale :class {core.pct > 90 ? "bar-bad" : core.pct > 70 ? "bar-warn" : "bar-good"}
+            :min 0 :max 100 :value {core.pct} :active false)
+          (label :class "popup-value" :width 36 :text "${round(core.pct, 0)}%")
+          (label :class {core.temp > 85 ? "popup-value-bad" : core.temp > 70 ? "popup-value-warn" : "popup-value"}
+            :width 36 :text "${round(core.temp, 0)}°C"))))))
+
+(defwidget mem-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Memory")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 4
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Used")
+        (label :class "popup-value" :text "${round(metrics.mem.used / 1073741824, 1)} / ${round(metrics.mem.total / 1073741824, 1)} GB"))
+      (scale :class {metrics.mem.pct > 90 ? "bar-bad" : metrics.mem.pct > 70 ? "bar-warn" : "bar-good"}
+        :min 0 :max 100 :value {metrics.mem.pct} :active false)
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Cached")
+        (label :class "popup-value" :text "${round(metrics.mem.cached / 1073741824, 1)} GB"))
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Buffers")
+        (label :class "popup-value" :text "${round(metrics.mem.buffers / 1073741824, 1)} GB"))
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Swap")
+        (label :class "popup-value" :text "${round(metrics.mem.swap_used / 1073741824, 1)} / ${round(metrics.mem.swap_total / 1073741824, 1)} GB")))))
+
+(defwidget temp-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Temperatures")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 4
+      (for zone in {metrics.temps.zones}
+        (box :orientation "h" :space-evenly false :spacing 8
+          (label :class "popup-label" :width 100 :text {zone.name})
+          (label :class {zone.temp > 85 ? "popup-value-bad" : zone.temp > 70 ? "popup-value-warn" : "popup-value"}
+            :text "${round(zone.temp, 0)}°C"))))
+    (label :class "popup-subtitle" :text "Fans")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 4
+      (for fan in {metrics.temps.fans}
+        (box :orientation "h" :space-evenly false :spacing 8
+          (label :class "popup-label" :width 100 :text {fan.name})
+          (label :class "popup-value" :text "${round(fan.rpm, 0)} RPM"))))))
+
+(defwidget disk-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Disk")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 6
+      (for mnt in {metrics.disk.mounts}
+        (box :orientation "v" :space-evenly false :spacing 2
+          (box :orientation "h" :space-evenly false :spacing 8
+            (label :class "popup-label" :width 80 :text {mnt.mount})
+            (label :class "popup-value"
+              :text "${round(mnt.used / 1073741824, 1)} / ${round(mnt.total / 1073741824, 1)} GB"))
+          (scale :class {mnt.pct > 95 ? "bar-bad" : mnt.pct > 80 ? "bar-warn" : "bar-good"}
+            :min 0 :max 100 :value {mnt.pct} :active false))))))
+
+(defwidget net-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Network")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 6
+      (for ifc in {metrics.net.ifaces}
+        (box :orientation "v" :space-evenly false :spacing 3 :class "popup-section"
+          (label :class "popup-subtitle"
+            :text {ifc.type == "wifi" ? " ${ifc.iface}" : " ${ifc.iface}"})
+          (box :orientation "h" :space-evenly false :spacing 8
+            (label :class "popup-label" :width 80 :text "IP")
+            (label :class "popup-value" :text {ifc.ip}))
+          (box :orientation "h" :space-evenly false :spacing 8
+              :visible {ifc.type == "wifi"}
+            (label :class "popup-label" :width 80 :text "SSID")
+            (label :class "popup-value" :text {ifc.essid ?: ""}))
+          (box :orientation "h" :space-evenly false :spacing 8
+              :visible {ifc.type == "wifi"}
+            (label :class "popup-label" :width 80 :text "Signal")
+            (label :class "popup-value" :text "${ifc.signal ?: 0}%"))
+          (box :orientation "h" :space-evenly false :spacing 8
+            (label :class "popup-label" :width 80 :text "RX")
+            (label :class "popup-value" :text "${round(ifc.rx_rate / 1024, 1)} KB/s"))
+          (box :orientation "h" :space-evenly false :spacing 8
+            (label :class "popup-label" :width 80 :text "TX")
+            (label :class "popup-value" :text "${round(ifc.tx_rate / 1024, 1)} KB/s")))))))
+
+(defwidget bat-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Battery")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 4
+      (scale :class {metrics.bat.pct < 10 ? "bar-bad" : metrics.bat.pct < 25 ? "bar-warn" : "bar-good"}
+        :min 0 :max 100 :value {metrics.bat.pct} :active false)
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Status")
+        (label :class "popup-value" :text {metrics.bat.status}))
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Remaining")
+        (label :class "popup-value" :text {metrics.bat.remaining}))
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :class "popup-label" :width 80 :text "Power")
+        (label :class "popup-value" :text "${round(metrics.bat.watts, 1)} W")))))
+
+;; ============================================
+;; Bar item widgets
+;; ============================================
+
+(defwidget bar-cpu []
+  (eventbox :onclick "scripts/toggle-popup.sh cpu-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text "CPU")
+      (label :class {metrics.cpu.total > 90 ? "val-bad" : metrics.cpu.total > 70 ? "val-warn" : "val-good"}
+        :text "${round(metrics.cpu.total, 0)}%"))))
+
+(defwidget bar-mem []
+  (eventbox :onclick "scripts/toggle-popup.sh mem-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text "MEM")
+      (label :class {metrics.mem.pct > 90 ? "val-bad" : metrics.mem.pct > 70 ? "val-warn" : "val-good"}
+        :text "${round(metrics.mem.pct, 0)}%"))))
+
+(defwidget bar-temps []
+  (eventbox :onclick "scripts/toggle-popup.sh temp-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text "${round(metrics.temps.package, 0)}°C")
+      (label :class "val-dim"
+        :text {metrics.temps.fan_rpm > 0 ?
+          "${round(metrics.temps.fan_rpm, 0)}rpm" : ""})
+      (label :class {metrics.cpu.throttles_active ? "val-bad" : "val-dim"}
+        :text {metrics.cpu.throttles_active ? "THR" : ""}))))
+
+(defwidget bar-disk []
+  (eventbox :onclick "scripts/toggle-popup.sh disk-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text "DSK")
+      (label :class {metrics.disk.worst_pct > 95 ? "val-bad" : metrics.disk.worst_pct > 80 ? "val-warn" : "val-good"}
+        :text "${round(metrics.disk.worst_pct, 0)}%"))))
+
+(defwidget bar-net []
+  (eventbox :onclick "scripts/toggle-popup.sh net-popup"
+    (box :class "bar-item" :spacing 4
+      (label :visible {metrics.net.has_wired} :text "")
+      (label :visible {metrics.net.has_wifi} :text ""))))
+
+(defwidget bar-bat []
+  (eventbox :onclick "scripts/toggle-popup.sh bat-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text {metrics.bat.status == "Charging" ? "CHR" :
+                    metrics.bat.status == "Full" ? "FULL" :
+                    metrics.bat.status == "Not charging" ? "AC" : "BAT"})
+      (label :class {metrics.bat.pct < 10 ? "val-bad" : metrics.bat.pct < 25 ? "val-warn" : "val-good"}
+        :text "${round(metrics.bat.pct, 0)}%"))))
+
+(defwidget bar-volume []
+  (eventbox
+    :onclick "scripts/volume.sh toggle"
+    :onscroll "[ {} = up ] && scripts/volume.sh up || scripts/volume.sh down"
+    (box :class "bar-item" :spacing 4
+      (label :text {volume.muted == 1 ? "MUT" : "VOL"})
+      (label :class {volume.muted == 1 ? "val-bad" : ""}
+        :text {volume.muted == 1 ? "---" : "${volume.pct}%"}))))
+
+(defwidget bar-brightness []
+  (box :class "bar-item" :spacing 4
+    (label :text "BRI")
+    (label :text "${brightness}%")))
+
+(defwidget bar-keyboard []
+  (box :class "bar-item"
+    (label :text "${kb_layout}")))
+
+(defwidget bar-datetime []
+  (box :class "bar-item"
+    (label :text datetime)))
+
+;; ============================================
+;; Bar layout
+;; ============================================
+
+(defwidget bar-left []
+  (box :halign "start" :spacing 0 :space-evenly false
+    (for ws in workspaces
+      (eventbox :onclick "i3-msg workspace '${ws.name}'"
+        (label :class {ws.focused ? "ws-focused" :
+                       ws.visible ? "ws-visible" : "ws-inactive"}
+          :text {ws.name})))))
+
+(defwidget bar-center []
+  (box :halign "center" :spacing 0 :space-evenly false
+    (bar-datetime)))
+
+(defwidget bar-right []
+  (box :halign "end" :spacing 0 :space-evenly false
+    (bar-cpu)
+    (bar-mem)
+    (bar-temps)
+    (bar-disk)
+    (bar-net)
+    (label :class "bar-sep" :text "|")
+    (bar-volume)
+    (bar-brightness)
+    (bar-keyboard)
+    (label :class "bar-sep" :text "|")
+    (bar-bat)))
+
+(defwidget bar-layout []
+  (centerbox :class "bar"
+    (bar-left)
+    (bar-center)
+    (bar-right)))
+
+;; ============================================
+;; Bar window
+;; ============================================
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "28px" :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  :windowtype "dock"
+  (bar-layout))

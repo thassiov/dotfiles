@@ -1,0 +1,152 @@
+// eww bar — styles
+// Color scheme from existing i3bar config
+
+$bg:      #282A2E;
+$fg:      #C5C8C6;
+$dim:     #707880;
+$good:    #8ABEB7;
+$warn:    #F0C674;
+$bad:     #A54242;
+$accent:  #F0C674;
+$popup-bg: #1D1F21;
+$border:  #373B41;
+
+// ============================================
+// Bar
+// ============================================
+
+.bar {
+  background-color: $bg;
+  color: $fg;
+  font-family: "FiraMono Medium", "FontAwesome", monospace;
+  font-size: 10pt;
+}
+
+.bar-item {
+  padding: 0 6px;
+}
+
+// Workspace buttons
+.ws-focused {
+  color: $fg;
+  background-color: $border;
+  border-bottom: 2px solid $accent;
+  padding: 0 8px;
+}
+
+.ws-visible {
+  color: $fg;
+  padding: 0 8px;
+}
+
+.ws-inactive {
+  color: $dim;
+  padding: 0 8px;
+}
+
+.bar-sep {
+  color: $dim;
+  padding: 0 2px;
+}
+
+// Value colors
+.val-good { color: $good; }
+.val-warn { color: $warn; }
+.val-bad  { color: $bad; font-weight: bold; }
+.val-dim  { color: $dim; }
+
+// ============================================
+// Popup windows
+// ============================================
+
+.popup-window {
+  background-color: $popup-bg;
+  border: 1px solid $border;
+  border-radius: 6px;
+  padding: 10px;
+  min-width: 260px;
+}
+
+.popup-title {
+  color: $accent;
+  font-weight: bold;
+  font-size: 11pt;
+  margin-bottom: 6px;
+}
+
+.popup-subtitle {
+  color: $dim;
+  font-size: 9pt;
+  margin-bottom: 4px;
+  margin-top: 6px;
+}
+
+.popup-body {
+  padding: 4px 0;
+}
+
+.popup-label {
+  color: $dim;
+}
+
+.popup-label-accent {
+  color: $accent;
+}
+
+.popup-value {
+  color: $fg;
+}
+
+.popup-value-warn { color: $warn; }
+.popup-value-bad  { color: $bad; font-weight: bold; }
+
+.popup-section {
+  padding-top: 4px;
+  border-top: 1px solid $border;
+}
+
+.popup-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+// ============================================
+// Progress bars (scale widgets)
+// ============================================
+
+scale {
+  padding: 0;
+}
+
+scale trough {
+  background-color: $border;
+  border-radius: 3px;
+  min-height: 6px;
+  min-width: 120px;
+}
+
+scale slider {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  -gtk-icon-source: none;
+}
+
+.bar-good trough highlight {
+  background-color: $good;
+  border-radius: 3px;
+}
+
+.bar-warn trough highlight {
+  background-color: $warn;
+  border-radius: 3px;
+}
+
+.bar-bad trough highlight {
+  background-color: $bad;
+  border-radius: 3px;
+}

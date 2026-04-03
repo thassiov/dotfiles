@@ -67,6 +67,10 @@
     {
       "source": "obs-studio/basic/scenes",
       "target": "~/.config/obs-studio/basic/scenes"
+    },
+    {
+      "source": "eww",
+      "target": "~/.config/eww"
     }
   ],
   "hooks": [
