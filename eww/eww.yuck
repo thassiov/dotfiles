@@ -286,7 +286,9 @@
     (bar-brightness)
     (bar-keyboard)
     (label :class "bar-sep" :text "|")
-    (bar-bat)))
+    (bar-bat)
+    (label :class "bar-sep" :text "|")
+    (systray :class "bar-tray" :icon-size 18 :spacing 4)))
 
 (defwidget bar-layout []
   (centerbox :class "bar"
