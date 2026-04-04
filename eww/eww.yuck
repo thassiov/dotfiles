@@ -174,14 +174,19 @@
   (box :class "popup-window" :orientation "v" :space-evenly false
     (label :class "popup-title" :text "Battery")
     (box :class "popup-body" :orientation "v" :space-evenly false :spacing 4
-      (scale :class {metrics.bat.pct < 10 ? "bar-bad" : metrics.bat.pct < 25 ? "bar-warn" : "bar-good"}
-        :min 0 :max 100 :value {metrics.bat.pct} :active false)
+      (box :orientation "v" :space-evenly false :spacing 2
+        (scale :class {metrics.bat.pct < 10 ? "bar-bad" : metrics.bat.pct < 25 ? "bar-warn" : "bar-good"}
+          :min 0 :max 100 :value {metrics.bat.pct} :active false)
+        (label :class "popup-value" :text "${round(metrics.bat.pct, 0)}%"))
       (box :orientation "h" :space-evenly false :spacing 8
         (label :class "popup-label" :width 80 :text "Status")
         (label :class "popup-value" :text {metrics.bat.status}))
       (box :orientation "h" :space-evenly false :spacing 8
         (label :class "popup-label" :width 80 :text "Remaining")
-        (label :class "popup-value" :text {metrics.bat.remaining}))
+        (label :class "popup-value" :text {metrics.bat.remaining == "" ? "" :
+          metrics.bat.status == "Charging" ? "${metrics.bat.remaining} until charged" :
+          metrics.bat.status == "Discharging" ? "${metrics.bat.remaining} until drained" :
+          metrics.bat.remaining}))
       (box :orientation "h" :space-evenly false :spacing 8
         (label :class "popup-label" :width 80 :text "Power")
         (label :class "popup-value" :text "${round(metrics.bat.watts, 1)} W")))))
@@ -224,8 +229,8 @@
 (defwidget bar-net []
   (eventbox :onclick "scripts/toggle-popup.sh net-popup"
     (box :class "bar-item" :spacing 4
-      (label :visible {metrics.net.has_wired} :text "")
-      (label :visible {metrics.net.has_wifi} :text ""))))
+      (label :visible {metrics.net.has_wired} :text "ETH")
+      (label :visible {metrics.net.has_wifi} :text "WiFi"))))
 
 (defwidget bar-bat []
   (eventbox :onclick "scripts/toggle-popup.sh bat-popup"

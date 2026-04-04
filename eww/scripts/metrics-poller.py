@@ -403,14 +403,26 @@ def build_output(metrics):
         except Exception:
             pass
         try:
-            power_now = int(open(f"{bat_path}/power_now").read().strip())
-            energy_now = int(open(f"{bat_path}/energy_now").read().strip())
-            bat_watts = power_now / 1e6
+            # Try energy-based (µWh/µW) first, fall back to charge-based (µAh/µA)
+            if os.path.exists(f"{bat_path}/power_now"):
+                power_now = int(open(f"{bat_path}/power_now").read().strip())
+                energy_now = int(open(f"{bat_path}/energy_now").read().strip())
+                energy_full = int(open(f"{bat_path}/energy_full").read().strip())
+                bat_watts = power_now / 1e6
+            else:
+                current_now = int(open(f"{bat_path}/current_now").read().strip())
+                voltage_now = int(open(f"{bat_path}/voltage_now").read().strip())
+                charge_now = int(open(f"{bat_path}/charge_now").read().strip())
+                charge_full = int(open(f"{bat_path}/charge_full").read().strip())
+                bat_watts = (current_now * voltage_now) / 1e12
+                # Convert to energy units for time calc
+                power_now = current_now
+                energy_now = charge_now
+                energy_full = charge_full
             if power_now > 0:
                 if bat_status == "Discharging":
                     hours = energy_now / power_now
                 elif bat_status == "Charging":
-                    energy_full = int(open(f"{bat_path}/energy_full").read().strip())
                     hours = (energy_full - energy_now) / power_now
                 else:
                     hours = 0
