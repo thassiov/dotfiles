@@ -1,15 +1,16 @@
 #!/bin/bash
-# Unified brightness toggle for laptop + external LG monitors.
+# Unified brightness toggle for laptop + external monitors.
 #
 # Laptop (eDP-1):      xbacklight (cycles 0.01 -> 30 -> 60 -> 90 -> 0.01)
 # LG DualUp (SDQHD):   ddcutil via DDC/CI (cycles 1 -> 5 -> 15 -> 40 -> 1)
 # LG UltraGear:        raw i2c DDC/CI (same levels as DualUp)
+# Portable (SYN):      ddcutil via DDC/CI (cycles 1 -> 10 -> 30 -> 70 -> 1)
 #
 # The UltraGear is on a DPMST bus that ddcutil can't detect (known bug),
 # so we talk to it directly via Python/i2c.
 #
 # At the "dim" level, xrandr software brightness (0.4) is stacked on top of
-# DDC/CI hardware brightness (1) for extra dimming on the LG monitors.
+# DDC/CI hardware brightness (1) for extra dimming on the external monitors.
 #
 # Monitors that aren't connected are silently skipped.
 
@@ -22,12 +23,15 @@ LAPTOP_LEVELS=(0.01 30 60 90)
 # LG monitor levels (DDC/CI 0-100)
 LG_LEVELS=(1 5 15 40)
 
+# Portable monitor levels (DDC/CI 0-100)
+PORTABLE_LEVELS=(1 10 30 70)
+
 # xrandr software brightness per level (stacked on DDC for extra dimming)
 # 1.0 = no software dimming, <1.0 = additional software dimming
 XRANDR_LEVELS=(0.4 1.0 1.0 1.0)
 
-# xrandr output names for external monitors
-XRANDR_OUTPUTS=(DP-3-1 DP-3-2)
+# xrandr output names for external monitors (auto-detected, excludes eDP-1)
+mapfile -t XRANDR_OUTPUTS < <(xrandr --query 2>/dev/null | awk '/^[^ ]+ connected/ && !/^eDP/ {print $1}')
 
 # --- Helper: get current laptop brightness level index ---
 get_laptop_level_index() {
@@ -193,6 +197,21 @@ os.close(fd)
 " 2>/dev/null || true
 }
 
+# --- Helper: find the ddcutil display number for the portable monitor ---
+find_portable_display() {
+  ddcutil detect 2>/dev/null | awk '
+    /^Display [0-9]+/ { display = $2 }
+    /SYN.*Non-PnP/    { print display; exit }
+  '
+}
+
+# --- Helper: set portable brightness via ddcutil ---
+set_portable_brightness() {
+  local display="$1"
+  local value="$2"
+  ddcutil setvcp 10 "$value" --display "$display" 2>/dev/null || true
+}
+
 # --- Helper: set xrandr software brightness on external monitors ---
 set_xrandr_brightness() {
   local value="$1"
@@ -239,6 +258,12 @@ fi
 ultragear_bus=$(find_ultragear_bus 2>/dev/null || true)
 if [[ -n "$ultragear_bus" ]]; then
   set_ultragear_brightness "$ultragear_bus" "${LG_LEVELS[$next_index]}" &
+fi
+
+# Set portable monitor brightness (if connected)
+portable_display=$(find_portable_display)
+if [[ -n "$portable_display" ]]; then
+  set_portable_brightness "$portable_display" "${PORTABLE_LEVELS[$next_index]}" &
 fi
 
 # Wait for background jobs
