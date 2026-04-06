@@ -4,7 +4,7 @@
 # Usage: toggle-popup.sh <popup-name>
 #
 TARGET="$1"
-ALL_POPUPS="cpu-popup mem-popup temp-popup disk-popup net-popup bat-popup"
+ALL_POPUPS="cpu-popup mem-popup temp-popup disk-popup net-popup bat-popup brightness-popup"
 
 for p in $ALL_POPUPS; do
     if [[ "$p" != "$TARGET" ]]; then

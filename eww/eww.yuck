@@ -21,6 +21,11 @@
   :initial "50"
   `brightnessctl -m | awk -F, '{print substr($4,1,length($4)-1)}'`)
 
+(defpoll brightness-monitors
+  :interval "5s"
+  :initial "[]"
+  `scripts/get-brightness.sh`)
+
 (defpoll kb_layout
   :interval "1s"
   :initial "us"
@@ -75,6 +80,12 @@
   :stacking "overlay"
   :focusable false
   (bat-popup-content))
+
+(defwindow brightness-popup
+  :geometry (geometry :x "0px" :y "32px" :anchor "top center")
+  :stacking "overlay"
+  :focusable false
+  (brightness-popup-content))
 
 ;; ============================================
 ;; Popup content widgets
@@ -191,6 +202,16 @@
         (label :class "popup-label" :width 80 :text "Power")
         (label :class "popup-value" :text "${round(metrics.bat.watts, 1)} W")))))
 
+(defwidget brightness-popup-content []
+  (box :class "popup-window" :orientation "v" :space-evenly false
+    (label :class "popup-title" :text "Brightness")
+    (box :class "popup-body" :orientation "v" :space-evenly false :spacing 6
+      (for mon in brightness-monitors
+        (box :orientation "h" :space-evenly false :spacing 8
+          (label :class "popup-label" :width 100 :text {mon.name})
+          (scale :class "bar-good" :min 0 :max 100 :value {mon.pct} :active false)
+          (label :class "popup-value" :width 36 :text "${mon.pct}%"))))))
+
 ;; ============================================
 ;; Bar item widgets
 ;; ============================================
@@ -251,9 +272,10 @@
         :text {volume.muted == 1 ? "---" : "${volume.pct}%"}))))
 
 (defwidget bar-brightness []
-  (box :class "bar-item" :spacing 4
-    (label :text "BRI")
-    (label :text "${brightness}%")))
+  (eventbox :onclick "scripts/toggle-popup.sh brightness-popup"
+    (box :class "bar-item" :spacing 4
+      (label :text "BRI")
+      (label :text "${brightness}%"))))
 
 (defwidget bar-keyboard []
   (box :class "bar-item"
