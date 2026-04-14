@@ -1,3 +1,0 @@
-#!/bin/bash
-# Reopen eww bars on all active monitors after monitor change
-$HOME/.config/eww/scripts/open-bars.sh &

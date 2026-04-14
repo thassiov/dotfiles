@@ -154,8 +154,28 @@ gaps outer 5
 smart_gaps on
 smart_borders on
 
-# eww bar (replaces i3bar + py3status)
-exec_always --no-startup-id ~/.config/eww/scripts/open-bars.sh
+# i3bar configuration
+bar {
+    output primary
+    status_command py3status
+    position top
+    font pango:FiraMono Medium 10, FontAwesome 10
+    separator_symbol "  |  "
+
+    colors {
+        background #282A2E
+        statusline #C5C8C6
+        separator  #C5C8C6
+
+        # workspace colors       border  backgr  text
+        focused_workspace       #F0C674 #373B41 #C5C8C6
+        active_workspace        #373B41 #282A2E #C5C8C6
+        inactive_workspace      #282A2E #282A2E #707880
+        urgent_workspace        #A54242 #A54242 #C5C8C6
+    }
+
+    tray_output primary
+}
 
 
 # startup apps
