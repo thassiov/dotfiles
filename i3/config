@@ -156,7 +156,6 @@ smart_borders on
 
 # i3bar configuration
 bar {
-    output primary
     status_command py3status
     position top
     font pango:FiraMono Medium 10, FontAwesome 10
