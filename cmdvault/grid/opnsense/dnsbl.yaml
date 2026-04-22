@@ -3,17 +3,17 @@ description: DNS blocklist (ad blocking) management
 
 commands:
   - name: grid dnsbl status
-    command: /storage/dev/personal/grid.local/scripts/grid
+    command: grid
     args: ["dnsbl", "status"]
     description: Show DNSBL ad-blocking status and stats
 
   - name: grid dnsbl enable
-    command: /storage/dev/personal/grid.local/scripts/grid
+    command: grid
     args: ["dnsbl", "enable"]
     description: Enable ad blocking
 
   - name: grid dnsbl disable
-    command: /storage/dev/personal/grid.local/scripts/grid
+    command: grid
     args: ["dnsbl", "disable"]
     description: Disable ad blocking
 
