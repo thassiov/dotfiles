@@ -3,31 +3,31 @@ description: Search and manage documents in the vault (PostgreSQL)
 
 commands:
   - name: kb search
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "search", "{{query}}"]
+    command: kb
+    args: ["search", "{{query}}"]
     description: Search documents by keyword
 
   - name: kb list
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "list"]
+    command: kb
+    args: ["list"]
     description: List recent documents
 
   - name: kb show
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "show", "{{id}}"]
+    command: kb
+    args: ["show", "{{id}}"]
     description: View document content by ID
 
   - name: kb add
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "add"]
+    command: kb
+    args: ["add"]
     description: Add a document to the vault (interactive)
 
   - name: kb stats
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "stats"]
+    command: kb
+    args: ["stats"]
     description: Show vault database statistics
 
   - name: kb ping
-    command: python3
-    args: ["/storage/dev/personal/grid.local/tools/kb/kb.py", "ping"]
+    command: kb
+    args: ["ping"]
     description: Check vault connectivity
