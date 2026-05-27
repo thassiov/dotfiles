@@ -101,7 +101,14 @@ return {
 
       -- Auto-install all configured servers + extra formatter tools
       local ensure_installed = vim.tbl_keys(servers)
-      vim.list_extend(ensure_installed, { "stylua" })
+      vim.list_extend(ensure_installed, {
+        "stylua",
+        "prettierd",
+        "gofumpt",
+        "goimports",
+        "markdownlint",
+        "sqlfmt",
+      })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       -- mason-lspconfig v2: drops handlers/setup_handlers; uses automatic_enable
@@ -174,17 +181,12 @@ return {
     "stevearc/conform.nvim",
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 700,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
+      format_on_save = {
+        timeout_ms = 700,
+        lsp_fallback = true,
+      },
       formatters_by_ft = {
         lua = { "stylua" },
-        c = { "astyle" },
-        cpp = { "astyle" },
         css = { "prettierd", "prettier", stop_after_first = true },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
