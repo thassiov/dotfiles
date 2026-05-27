@@ -48,12 +48,8 @@ return {
         end,
       })
 
-      -- Global capabilities (extends defaults with nvim-cmp's LSP capabilities)
-      local capabilities = vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      -- Global capabilities (extends defaults with blink.cmp's LSP capabilities)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       vim.lsp.config("*", { capabilities = capabilities })
 
       -- Per-server configuration
@@ -117,13 +113,15 @@ return {
     opts = {},
   },
 
-  -- Autocompletion
+  -- Autocompletion (blink.cmp replaces nvim-cmp + cmp-* sources)
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
     event = "InsertEnter",
+    version = "1.*",
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
+        version = "v2.*",
         build = (function()
           if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
             return
@@ -138,98 +136,31 @@ return {
             end,
           },
         },
+        config = function()
+          require("luasnip").filetype_extend("typescript", { "javascript" })
+        end,
       },
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "rasulomaroff/cmp-bufname",
     },
-    config = function()
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      luasnip.config.setup({})
-
-      -- Extend TypeScript snippets to JavaScript
-      luasnip.filetype_extend("typescript", { "javascript" })
-
-      -- Check if there are words before cursor
-      local has_words_before = function()
-        -- selene: allow(incorrect_standard_library_use)
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        completion = { completeopt = "menu,menuone,noinsert" },
-        mapping = cmp.mapping.preset.insert({
-          -- Super-Tab completion
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              if #cmp.get_entries() == 1 then
-                cmp.confirm({ select = true })
-              else
-                cmp.select_next_item()
-              end
-            elseif not cmp.visible() and has_words_before() then
-              cmp.complete()
-              if #cmp.get_entries() == 1 then
-                cmp.confirm({ select = true })
-              end
-            elseif luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          -- Scroll docs
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-          -- Confirm completion
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-          -- Manually trigger completion
-          ["<C-Space>"] = cmp.mapping.complete({}),
-
-          -- Snippet navigation
-          ["<C-l>"] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { "i", "s" }),
-          ["<C-h>"] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { "i", "s" }),
-        }),
-        sources = {
-          { name = "buffer" },
-          { name = "luasnip" },
-          { name = "nvim_lsp" },
-          { name = "path" },
-          { name = "bufname" },
-        },
-      })
-    end,
+    opts = {
+      keymap = {
+        preset = "super-tab",
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-l>"] = { "snippet_forward", "fallback" },
+        ["<C-h>"] = { "snippet_backward", "fallback" },
+      },
+      snippets = { preset = "luasnip" },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      completion = {
+        list = { selection = { preselect = true, auto_insert = false } },
+        menu = { auto_show = true },
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+      },
+    },
   },
 
   -- Formatting
