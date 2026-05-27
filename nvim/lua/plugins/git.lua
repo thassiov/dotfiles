@@ -1,151 +1,49 @@
 -- Git Plugins
--- Git integration and tools
+-- gitsigns: gutter signs, current-line blame lens, detailed blame popup,
+--           status-bar branch/diff (via lualine defaults that read gitsigns state)
+-- fugitive: project status, file blame, side-by-side diff, file/line history
 
 return {
-  -- Git signs in gutter
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 300,
+        virt_text_pos = "eol",
+      },
+    },
+    keys = {
+      {
+        "<leader>5",
+        function()
+          require("gitsigns").blame_line({ full = true })
+        end,
+        desc = "Blame current line (detailed popup)",
+      },
+    },
   },
 
-  -- Git commands
   {
     "tpope/vim-fugitive",
     keys = {
       { "<leader>gs", "<cmd>Git<CR>", desc = "[G]it [S]tatus" },
-      { "<leader>gb", "<cmd>Git blame<CR>", desc = "[G]it [B]lame" },
-      { "<leader>vd", "<cmd>Gdiffsplit<CR>", desc = "Git vertical diff (current file vs HEAD)" },
-    },
-  },
-
-  -- Git diff viewer
-  {
-    "sindrets/diffview.nvim",
-    opts = {
-      keymaps = {
-        view = {
-          { "n", "<leader>q", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" } },
-        },
-      },
-    },
-    keys = {
-      { "<leader>gD", "<cmd>DiffviewOpen<CR>", desc = "[G]it [D]iff index" },
-    },
-  },
-
-  -- Visual git with inline diff, blame, and history
-  {
-    "tanvirtin/vgit.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = "VimEnter",
-    config = function()
-      require("vgit").setup({
-        settings = {
-          live_blame = {
-            enabled = true,
-          },
-          live_gutter = {
-            enabled = true,
-          },
-          scene = {
-            diff_preference = "unified", -- or "split"
-          },
-        },
-      })
-    end,
-    keys = {
-      -- Hunk operations
-      {
-        "<leader>ghp",
-        function()
-          require("vgit").hunk_preview()
-        end,
-        desc = "[G]it [H]unk [P]review",
-      },
-      {
-        "<leader>ghs",
-        function()
-          require("vgit").buffer_hunk_stage()
-        end,
-        desc = "[G]it [H]unk [S]tage",
-      },
-      {
-        "<leader>ghr",
-        function()
-          require("vgit").buffer_hunk_reset()
-        end,
-        desc = "[G]it [H]unk [R]eset",
-      },
-      {
-        "<leader>ghu",
-        function()
-          require("vgit").buffer_reset()
-        end,
-        desc = "[G]it [H]unk [U]ndo buffer",
-      },
-      {
-        "]h",
-        function()
-          require("vgit").hunk_down()
-        end,
-        desc = "Next git hunk",
-      },
-      {
-        "[h",
-        function()
-          require("vgit").hunk_up()
-        end,
-        desc = "Previous git hunk",
-      },
-
-      -- Buffer operations
-      {
-        "<leader>gf",
-        function()
-          require("vgit").buffer_diff_preview()
-        end,
-        desc = "[G]it buffer diff (File)",
-      },
-      {
-        "<leader>gl",
-        function()
-          require("vgit").buffer_blame_preview()
-        end,
-        desc = "[G]it buffer blame (Line)",
-      },
+      { "<leader>gb", "<cmd>Git blame<CR>", desc = "[G]it [B]lame (file)" },
+      { "<leader>gD", "<cmd>Gdiffsplit<CR>", desc = "[G]it [D]iff current file" },
+      { "<leader>gt", "<cmd>0Glog<CR>", desc = "[G]it file history (timeline)" },
       {
         "<leader>gt",
         function()
-          require("vgit").buffer_history_preview()
+          local s = vim.fn.getpos("v")[2]
+          local e = vim.fn.getpos(".")[2]
+          if s > e then
+            s, e = e, s
+          end
+          vim.cmd(string.format("Gclog -L%d,%d:%%", s, e))
         end,
-        desc = "[G]it buffer history (Timeline)",
-      },
-
-      -- Project operations
-      {
-        "<leader>gp",
-        function()
-          require("vgit").project_diff_preview()
-        end,
-        desc = "[G]it [P]roject diff",
-      },
-      {
-        "<leader>gP",
-        function()
-          require("vgit").project_logs_preview()
-        end,
-        desc = "[G]it [P]roject logs",
-      },
-
-      -- Toggle
-      {
-        "<leader>gx",
-        function()
-          require("vgit").toggle_diff_preference()
-        end,
-        desc = "[G]it toggle diff style (unified/split)",
+        mode = "v",
+        desc = "[G]it line history (visual range)",
       },
     },
   },
