@@ -27,41 +27,27 @@ return {
         },
       })
 
-      -- Enable extensions
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
 
-      -- Keymaps
       local builtin = require("telescope.builtin")
 
       -- ============================================================================
-      -- SUPER QUICK ACCESS (Most Common - Single Key)
+      -- NUMBERED / SYMBOL PICKERS (revived from the coc.nvim era)
       -- ============================================================================
-      -- vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Find files (git)" })
-      -- vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find ALL files" })
-      -- vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Grep text in project" })
-      -- vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Search buffers" })
-      -- vim.keymap.set("n", "<leader>/", function()
-      --   builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-      --     winblend = 10,
-      --     previewer = false,
-      --   }))
-      -- end, { desc = "Search in current buffer" })
+      vim.keymap.set("n", "<leader>1", builtin.lsp_document_symbols, { desc = "File symbols (LSP)" })
+      vim.keymap.set("n", "<leader>!", builtin.lsp_document_symbols, { desc = "File symbols (LSP)" })
+      vim.keymap.set("n", "<leader>2", builtin.buffers, { desc = "Buffers" })
+      vim.keymap.set("n", "<leader>3", builtin.git_files, { desc = "Git files" })
+      vim.keymap.set("n", "<leader>#", builtin.find_files, { desc = "All files" })
+      vim.keymap.set("n", "<leader>4", builtin.live_grep, { desc = "Grep project" })
 
-      -- ============================================================================
-      -- FILE OPERATIONS (f prefix)
-      -- ============================================================================
-      vim.keymap.set("n", "<leader>ff", builtin.git_files, { desc = "[F]ind [F]iles (git)" })
-      vim.keymap.set("n", "<leader>fa", builtin.find_files, { desc = "[F]ind [A]ll files" })
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
-      vim.keymap.set("n", "<leader>fn", function()
-        builtin.find_files({ cwd = vim.fn.stdpath("config") })
-      end, { desc = "[F]ind [N]eovim config files" })
+      -- Command palette
+      vim.keymap.set("n", "<leader><leader>", builtin.commands, { desc = "Command palette" })
 
       -- ============================================================================
       -- SEARCH OPERATIONS (s prefix)
       -- ============================================================================
-      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch [W]ord under cursor" })
       vim.keymap.set("n", "<leader>sb", function()
         builtin.live_grep({
@@ -76,30 +62,31 @@ return {
         }))
       end, { desc = "[S]earch in current buffer" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-      vim.keymap.set("n", "<leader>sc", builtin.commands, { desc = "[S]earch [C]ommands" })
 
       -- ============================================================================
-      -- LSP OPERATIONS (l prefix)
+      -- FILE OPERATIONS (f prefix)
       -- ============================================================================
-      vim.keymap.set("n", "<leader>ld", builtin.lsp_definitions, { desc = "[L]SP [D]efinition" })
-      vim.keymap.set("n", "<leader>lt", builtin.lsp_type_definitions, { desc = "[L]SP [T]ype definition" })
-      vim.keymap.set("n", "<leader>lr", builtin.lsp_references, { desc = "[L]SP [R]eferences" })
-      vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, { desc = "[L]SP document [S]ymbols" })
+      vim.keymap.set("n", "<leader>fn", function()
+        builtin.find_files({ cwd = vim.fn.stdpath("config") })
+      end, { desc = "[F]ind [N]eovim config files" })
+      vim.keymap.set("n", "<leader>ff", vim.lsp.buf.code_action, { desc = "Code action (LSP fix)" })
+
+      -- ============================================================================
+      -- LSP / CODE NAVIGATION (g prefix + diagnostics)
+      -- ============================================================================
+      vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, { desc = "[G]o to [D]efinition" })
+      vim.keymap.set("n", "<leader>gy", builtin.lsp_type_definitions, { desc = "[G]o to t[Y]pe definition" })
+      vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "[G]o to [R]eferences" })
       vim.keymap.set("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { desc = "[L]SP [W]orkspace symbols" })
-      vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "[L]SP re[N]ame" })
-      vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "[L]SP code [A]ction" })
       vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[L]SP show [E]rrors (float)" })
-      vim.keymap.set("n", "<leader>lD", builtin.diagnostics, { desc = "[L]SP search [D]iagnostics" })
+      vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "[C]ode [D]iagnostics" })
 
       -- ============================================================================
-      -- GIT OPERATIONS (g prefix)
+      -- GIT (telescope-side; fugitive owns <leader>gs and <leader>gb)
       -- ============================================================================
-      vim.keymap.set("n", "<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus" })
       vim.keymap.set("n", "<leader>gc", builtin.git_commits, { desc = "[G]it [C]ommits" })
-      vim.keymap.set("n", "<leader>gb", builtin.git_bcommits, { desc = "[G]it [B]uffer commits" })
     end,
     init = function()
-      -- Disable folding in Telescope results
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "TelescopeResults",
         command = "setlocal nofoldenable",

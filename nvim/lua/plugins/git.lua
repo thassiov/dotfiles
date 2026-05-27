@@ -13,6 +13,7 @@ return {
     keys = {
       { "<leader>gs", "<cmd>Git<CR>", desc = "[G]it [S]tatus" },
       { "<leader>gb", "<cmd>Git blame<CR>", desc = "[G]it [B]lame" },
+      { "<leader>vd", "<cmd>Gdiffsplit<CR>", desc = "Git vertical diff (current file vs HEAD)" },
     },
   },
 
@@ -27,7 +28,6 @@ return {
       },
     },
     keys = {
-      { "<leader>gd", "<cmd>DiffviewFileHistory %<CR>", desc = "[G]it [D]iff current file" },
       { "<leader>gD", "<cmd>DiffviewOpen<CR>", desc = "[G]it [D]iff index" },
     },
   },

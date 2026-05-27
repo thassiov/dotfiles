@@ -33,6 +33,12 @@ return {
 
           map("K", vim.lsp.buf.hover, "Hover Documentation")
 
+          -- Remove Nvim 0.11+ built-in LSP defaults (grn/gra/grr/gri).
+          -- Prefer leader-prefixed bindings to keep bare `g<x>` free.
+          for _, key in ipairs({ "grn", "gra", "grr", "gri" }) do
+            pcall(vim.keymap.del, "n", key, { buffer = event.buf })
+          end
+
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
