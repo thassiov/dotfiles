@@ -2,15 +2,25 @@
 -- Language Server Protocol, completion, and related tools
 
 return {
+  -- Lua dev support for Neovim configs (replaces archived neodev.nvim)
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
-      { "folke/neodev.nvim", opts = {} },
     },
     config = function()
       -- LSP attach autocommand
@@ -21,10 +31,8 @@ return {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
-          -- Hover documentation
           map("K", vim.lsp.buf.hover, "Hover Documentation")
 
-          -- Highlight references under cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -40,11 +48,15 @@ return {
         end,
       })
 
-      -- Extend capabilities with nvim-cmp
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      -- Global capabilities (extends defaults with nvim-cmp's LSP capabilities)
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+      )
+      vim.lsp.config("*", { capabilities = capabilities })
 
-      -- Language servers
+      -- Per-server configuration
       local servers = {
         bashls = {},
         clangd = {},
@@ -70,33 +82,30 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
+              runtime = { version = "LuaJIT" },
+              diagnostics = { globals = { "vim" } },
+              workspace = { checkThirdParty = false },
+              completion = { callSnippet = "Replace" },
             },
           },
         },
       }
 
-      -- Setup Mason
+      for server, config in pairs(servers) do
+        vim.lsp.config(server, config)
+      end
+
       require("mason").setup()
 
-      -- Ensure servers are installed
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        "stylua", -- Lua formatter
-      })
+      -- Auto-install all configured servers + extra formatter tools
+      local ensure_installed = vim.tbl_keys(servers)
+      vim.list_extend(ensure_installed, { "stylua" })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-      -- Setup language servers
+      -- mason-lspconfig v2: drops handlers/setup_handlers; uses automatic_enable
       require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_enable = true,
       })
     end,
   },

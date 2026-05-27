@@ -66,15 +66,16 @@ return {
     "echasnovski/mini.nvim",
     config = function()
       -- Better Around/Inside textobjects
-      -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [']quote
       --  - ci'  - [C]hange [I]nside [']quote
       require("mini.ai").setup({ n_lines = 500 })
 
-      -- NOTE: mini.statusline and mini.tabline are disabled since we use lualine
-      -- NOTE: mini.pairs is disabled since we use auto-pairs
-      -- NOTE: mini.surround is disabled since we use vim-surround
+      -- Auto-close brackets and quotes (replaces jiangmiao/auto-pairs)
+      require("mini.pairs").setup({})
+
+      -- mini.statusline / mini.tabline disabled in favor of lualine
+      -- mini.surround disabled in favor of vim-surround
     end,
   },
 }

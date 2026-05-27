@@ -8,15 +8,9 @@ return {
   -- Buffer management
   "kazhala/close-buffers.nvim",
 
-  -- Commenting (gc to comment visual regions/lines)
-  { "numToStr/Comment.nvim", opts = {} },
-
-  -- NOTE: Removed nerdcommenter - it overlaps with Comment.nvim
-  -- Comment.nvim is more modern and simpler
-
   -- Surround text objects
   "tpope/vim-surround",
 
-  -- Auto-close brackets and quotes
-  "jiangmiao/auto-pairs",
+  -- Commenting uses Nvim 0.10+ built-in `gc` (treesitter + commentstring aware)
+  -- Auto-close brackets/quotes provided by mini.pairs (configured in ui.lua)
 }
