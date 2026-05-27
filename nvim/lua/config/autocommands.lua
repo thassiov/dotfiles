@@ -19,13 +19,22 @@ function _G.markdown_foldtext()
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-  desc = "Markdown fold tuning",
+  desc = "Markdown fold + wrap tuning",
   group = vim.api.nvim_create_augroup("markdown-folds", { clear = true }),
   pattern = "markdown",
   callback = function()
+    -- Folds
     vim.opt_local.foldlevel = 1
     vim.opt_local.foldcolumn = "1"
     vim.opt_local.foldtext = "v:lua.markdown_foldtext()"
     vim.opt_local.fillchars:append({ fold = " " })
+    -- Wrap config so render-markdown.nvim's quote.repeat_linebreak works correctly
+    -- (the quote bar `▋` repeats on wrapped lines).
+    vim.opt_local.wrap = true
+    vim.opt_local.breakindent = true
+    vim.opt_local.breakindentopt = ""
+    vim.opt_local.showbreak = "  "
+    -- Hard-wrap at 160 chars on insert (and for gq formatting).
+    vim.opt_local.textwidth = 160
   end,
 })
