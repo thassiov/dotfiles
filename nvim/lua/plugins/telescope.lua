@@ -35,12 +35,18 @@ return {
       -- ============================================================================
       -- NUMBERED / SYMBOL PICKERS (revived from the coc.nvim era)
       -- ============================================================================
-      vim.keymap.set("n", "<leader>1", builtin.lsp_document_symbols, { desc = "File symbols (LSP)" })
-      vim.keymap.set("n", "<leader>!", builtin.lsp_document_symbols, { desc = "File symbols (LSP)" })
-      vim.keymap.set("n", "<leader>2", builtin.buffers, { desc = "Buffers" })
-      vim.keymap.set("n", "<leader>3", builtin.git_files, { desc = "Git files" })
-      vim.keymap.set("n", "<leader>#", builtin.find_files, { desc = "All files" })
-      vim.keymap.set("n", "<leader>4", builtin.live_grep, { desc = "Grep project" })
+      vim.keymap.set("n", "<leader>1", builtin.live_grep, { desc = "Grep tracked files (.gitignore-respecting)" })
+      vim.keymap.set("n", "<leader>!", function()
+        builtin.live_grep({
+          additional_args = function()
+            return { "--no-ignore", "--hidden" }
+          end,
+          prompt_title = "Live Grep (no ignore, hidden)",
+        })
+      end, { desc = "Grep everywhere (no ignore, hidden)" })
+      vim.keymap.set("n", "<leader>2", builtin.git_files, { desc = "List git-tracked files" })
+      vim.keymap.set("n", "<leader>@", builtin.find_files, { desc = "List all files" })
+      vim.keymap.set("n", "<leader>3", builtin.buffers, { desc = "Buffers" })
 
       -- Command palette
       vim.keymap.set("n", "<leader><leader>", builtin.commands, { desc = "Command palette" })
@@ -62,6 +68,7 @@ return {
         }))
       end, { desc = "[S]earch in current buffer" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+      vim.keymap.set("n", "<leader>#", builtin.lsp_document_symbols, { desc = "File symbols (LSP)" })
 
       -- ============================================================================
       -- FILE OPERATIONS (f prefix)
