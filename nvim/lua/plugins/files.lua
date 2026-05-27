@@ -4,7 +4,7 @@
 return {
   -- File tree explorer
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function()
       require("nvim-tree").setup({
         disable_netrw = true,
