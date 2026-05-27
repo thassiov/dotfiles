@@ -9,13 +9,12 @@ return {
     priority = 1000,
     config = function()
       require("ayu").setup({
-        overrides = {
-          Normal = { bg = "#05070A" },
-        },
+        mirage = false,
+        -- overrides intentionally omitted so we get dark's actual palette
       })
-      require("ayu").colorscheme()
+      vim.cmd.colorscheme("ayu-dark")
 
-      -- Custom highlights
+      -- Custom highlights (kept from before; drop if you want the theme's defaults)
       vim.cmd.highlight("CursorLine gui=bold")
       vim.cmd.highlight("LineNr guifg=grey")
       vim.cmd.hi("Visual guibg=#404040")

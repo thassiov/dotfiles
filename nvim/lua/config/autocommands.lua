@@ -9,3 +9,23 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- Markdown fold experience: open with sections collapsed below H1, show the fold
+-- column on the left, and render closed folds as a clean heading line.
+function _G.markdown_foldtext()
+  local line = vim.fn.getline(vim.v.foldstart)
+  local count = vim.v.foldend - vim.v.foldstart + 1
+  return string.format("%s   ⮟ [%d lines]", line, count)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Markdown fold tuning",
+  group = vim.api.nvim_create_augroup("markdown-folds", { clear = true }),
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.foldlevel = 1
+    vim.opt_local.foldcolumn = "1"
+    vim.opt_local.foldtext = "v:lua.markdown_foldtext()"
+    vim.opt_local.fillchars:append({ fold = " " })
+  end,
+})
