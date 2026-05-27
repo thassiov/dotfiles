@@ -41,10 +41,10 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 
 -- Search
-vim.opt.ignorecase = true  -- Case-insensitive searching
-vim.opt.smartcase = true   -- Unless \C or capital in search
-vim.opt.hlsearch = true    -- Highlight search results
-vim.opt.inccommand = "split"  -- Preview substitutions live
+vim.opt.ignorecase = true -- Case-insensitive searching
+vim.opt.smartcase = true -- Unless \C or capital in search
+vim.opt.hlsearch = true -- Highlight search results
+vim.opt.inccommand = "split" -- Preview substitutions live
 
 -- Sign column
 vim.opt.signcolumn = "yes"
