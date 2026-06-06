@@ -198,10 +198,11 @@ os.close(fd)
 }
 
 # --- Helper: find the ddcutil display number for the portable monitor ---
+# Matches either old EDID ("SYN Non-PnP") or new EDID ("RTK J585J11").
 find_portable_display() {
   ddcutil detect 2>/dev/null | awk '
-    /^Display [0-9]+/ { display = $2 }
-    /SYN.*Non-PnP/    { print display; exit }
+    /^Display [0-9]+/         { display = $2 }
+    /SYN.*Non-PnP|J585J11/    { print display; exit }
   '
 }
 
