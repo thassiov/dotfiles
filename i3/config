@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Font for window titles
-font pango:FiraMono Medium 10, FontAwesome 10
+font pango:Fira Mono Medium 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -158,8 +158,9 @@ smart_borders on
 bar {
     status_command py3status
     position top
-    font pango:FiraMono Medium 10, FontAwesome 10
-    separator_symbol "  |  "
+    font pango:Fira Mono Medium 10
+    # separator uses U+202F (narrow no-break space, 4px) on each side, not normal spaces
+    separator_symbol " | "
 
     colors {
         background #282A2E
