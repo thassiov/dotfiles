@@ -45,7 +45,13 @@ return {
       -- Auto-open for markdown buffers.
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "markdown" },
-        callback = function()
+        callback = function(args)
+          -- Only real markdown *files*. LSP hover docs render in a float with
+          -- filetype=markdown (buftype=nofile); without this guard, pressing K
+          -- would fire this autocmd and pop the outline sidebar every time.
+          if vim.bo[args.buf].buftype ~= "" then
+            return
+          end
           vim.cmd("AerialOpen")
         end,
       })
