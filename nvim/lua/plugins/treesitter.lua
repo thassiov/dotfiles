@@ -57,8 +57,10 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           pcall(vim.treesitter.start, args.buf)
-          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-          vim.wo.foldmethod = "expr"
+          -- Folding is owned by nvim-ufo (see plugins/folds.lua). ufo's
+          -- treesitter provider applies *manual* folds, so don't set
+          -- foldmethod=expr here -- expr recomputes folds on every buffer
+          -- change, which slams the fold under the cursor shut on InsertLeave.
         end,
       })
     end,
