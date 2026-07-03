@@ -106,6 +106,16 @@ return {
           view = {
             { "n", "<leader>e", actions.toggle_files, { desc = "Toggle file panel" } },
             { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close PR diff" } },
+            -- Diff-aware jump-back: builtin <C-o> bypasses diffview and desyncs
+            -- the panes; this re-syncs to the jumped-to file (see diffnav.lua).
+            {
+              "n",
+              "<C-o>",
+              function()
+                require("config.diffnav").jump("back")
+              end,
+              { desc = "Jump back (diff-aware)" },
+            },
           },
           file_panel = {
             { "n", "<leader>e", actions.toggle_files, { desc = "Toggle file panel" } },

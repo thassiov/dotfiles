@@ -159,6 +159,57 @@ local function references_picker(view, items)
     :find()
 end
 
+-- True if the current buffer is a real on-disk file (not a diffview synthetic
+-- buffer like the old/left pane `diffview://...` or `diffview://null`).
+local function on_real_file()
+  local buf = vim.api.nvim_get_current_buf()
+  local name = vim.api.nvim_buf_get_name(buf)
+  return vim.bo[buf].buftype == "" and name ~= "" and not name:match("^%a[%w+.%-]*://")
+end
+
+-- Diff-aware jumplist navigation. Two problems with builtin <C-o>/<C-i> in a
+-- diff:
+--   1. diffview's old/left panes (`diffview://null` etc.) end up in the
+--      jumplist, so a jump lands on a synthetic buffer instead of the real file.
+--   2. Even when it lands on a real file, it loads the buffer directly and
+--      diffview's old/left pane + file panel stay on the previous file (desync).
+-- Fix: repeat the builtin jump, skipping synthetic buffers until we reach a real
+-- file (or the jumplist can't move); then re-sync diffview to that file.
+---@param dir "back"|"forward"
+function M.jump(dir)
+  local key = vim.api.nvim_replace_termcodes(dir == "forward" and "<C-i>" or "<C-o>", true, false, true)
+  local ok, lib = pcall(require, "diffview.lib")
+  local view = ok and lib.get_current_view() or nil
+
+  if not view then
+    vim.api.nvim_feedkeys(key, "nx", false)
+    return
+  end
+
+  -- Skip synthetic diffview buffers; bail if a jump doesn't move (exhausted).
+  for _ = 1, 12 do
+    local pb, pc = vim.api.nvim_get_current_buf(), vim.api.nvim_win_get_cursor(0)
+    vim.api.nvim_feedkeys(key, "nx", false)
+    if on_real_file() then
+      break
+    end
+    local nb, nc = vim.api.nvim_get_current_buf(), vim.api.nvim_win_get_cursor(0)
+    if pb == nb and pc[1] == nc[1] and pc[2] == nc[2] then
+      break
+    end
+  end
+
+  if not on_real_file() then
+    return
+  end
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local name = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+  local rel = diff_relpath(view, name)
+  if rel and (not view.cur_entry or view.cur_entry.path ~= rel) then
+    goto_in_diff(view, rel, { lnum = pos[1], col = pos[2] + 1 })
+  end
+end
+
 function M.definition()
   local ok, lib = pcall(require, "diffview.lib")
   local view = ok and lib.get_current_view() or nil
