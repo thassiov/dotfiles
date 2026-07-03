@@ -92,7 +92,17 @@ return {
         end
       end, { desc = "[D]efinition (diff-aware in diffview)" })
       vim.keymap.set("n", "<leader>gy", builtin.lsp_type_definitions, { desc = "[G]o to t[Y]pe definition" })
-      vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "[G]o to [R]eferences" })
+      -- References: diff-aware inside a diffview tab (picker tags in-diff refs
+      -- and routes selection within the diff, see config/diffnav.lua); normal
+      -- telescope picker everywhere else.
+      vim.keymap.set("n", "<leader>r", function()
+        local ok, lib = pcall(require, "diffview.lib")
+        if ok and lib.get_current_view() then
+          require("config.diffnav").references()
+        else
+          builtin.lsp_references()
+        end
+      end, { desc = "[R]eferences (diff-aware in diffview)" })
       vim.keymap.set("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { desc = "[L]SP [W]orkspace symbols" })
       vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "[C]ode [D]iagnostics" })
       vim.keymap.set("n", '<leader>"', function()

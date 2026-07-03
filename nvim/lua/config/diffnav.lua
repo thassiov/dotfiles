@@ -1,14 +1,18 @@
 -- Diff-aware LSP navigation for diffview.
 --
--- <leader>d (go to definition): inside a diffview tab, jump to the definition
--- WITHIN the diff -- the target file opens as its own diff and the cursor lands
--- on the local/right pane at the target line. If the target file isn't part of
--- the PR diff (unchanged file, node_modules, a global lib), it's opened in place
--- in the current window instead; the left/old pane just keeps showing the
--- previous file's diff, which is harmless.
+-- <leader>d (definition) / <leader>r (references): inside a diffview tab, a
+-- target that is part of the PR diff is navigated to WITHIN the diff -- the file
+-- opens as its own diff and the cursor lands on the local/right pane at the
+-- target line. A target that isn't in the diff (unchanged file, node_modules, a
+-- global lib) is opened in place in the current window; the left/old pane just
+-- keeps showing the previous file's diff, which is harmless.
 --
--- Outside a diffview tab, the keymap wrapper (plugins/telescope.lua) never calls
--- this -- it uses the normal telescope picker.
+-- References uses a telescope picker (only when there's more than one result):
+-- entries in the diff are tagged "[in diff]" and sorted to the top; selecting an
+-- entry routes through the same in-diff / open-in-place logic as definition.
+--
+-- Outside a diffview tab, the keymap wrappers (plugins/telescope.lua) never call
+-- this -- they use the normal telescope pickers.
 --
 -- Relies on diffview's semi-private view API (get_current_view, set_file_by_path,
 -- cur_layout:get_main_win, emitter). Pinned via lazy-lock, so stable for us.
@@ -30,14 +34,19 @@ local function relativize(abs, root)
   return nil
 end
 
--- Is `rel` (repo-relative path) one of the files in the current diff?
-local function in_diff(view, rel)
+-- Repo-relative path of `abs` if it's part of the current diff, else nil.
+local function diff_relpath(view, abs)
+  local root = view.adapter and view.adapter.ctx and view.adapter.ctx.toplevel
+  local rel = root and relativize(abs, root) or nil
+  if not rel then
+    return nil
+  end
   for _, file in view.files:iter() do
     if file.path == rel then
-      return true
+      return rel
     end
   end
-  return false
+  return nil
 end
 
 -- Move cursor to the target location in the current window and center.
@@ -74,11 +83,86 @@ local function goto_in_diff(view, rel, item)
   vim.defer_fn(place, 150)
 end
 
+-- Route a location item: navigate within the diff if it's a PR file, else open
+-- it in place. Shared by definition and references.
+local function goto_item(view, item)
+  local rel = diff_relpath(view, item.filename)
+  if rel then
+    goto_in_diff(view, rel, item)
+  else
+    open_in_place(item)
+  end
+end
+
+-- Telescope picker for references, with an "[in diff]" tag and in-diff-first order.
+local function references_picker(view, items)
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+  local entry_display = require("telescope.pickers.entry_display")
+
+  -- Orange tag, brighter than the muted default. Re-set on each open so it
+  -- survives colorscheme changes.
+  vim.api.nvim_set_hl(0, "DiffNavInDiff", { fg = "#ff8f40", bold = true })
+
+  local displayer = entry_display.create({
+    separator = " ",
+    items = {
+      { width = 9 }, -- "[in diff]" tag column (exactly 9 chars)
+      { width = 48 }, -- file:line
+      { remaining = true }, -- line text
+    },
+  })
+
+  local function make_display(entry)
+    return displayer({
+      { entry.value.in_diff and "[in diff]" or "", "DiffNavInDiff" },
+      { entry.value.floc, "TelescopeResultsIdentifier" },
+      vim.trim(entry.value.text or ""),
+    })
+  end
+
+  pickers
+    .new({}, {
+      prompt_title = "References",
+      finder = finders.new_table({
+        results = items,
+        entry_maker = function(it)
+          local short = vim.fn.fnamemodify(it.filename, ":.")
+          it.floc = string.format("%s:%d", short, it.lnum or 0)
+          return {
+            value = it,
+            display = make_display,
+            -- prefix keeps in-diff on top for the empty prompt / ties
+            ordinal = (it.in_diff and "0 " or "1 ") .. short .. " " .. (it.text or ""),
+            filename = it.filename,
+            lnum = it.lnum,
+            col = it.col,
+          }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      previewer = conf.qflist_previewer({}),
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          local entry = action_state.get_selected_entry()
+          actions.close(prompt_bufnr)
+          if entry and entry.value then
+            goto_item(view, entry.value)
+          end
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
 function M.definition()
   local ok, lib = pcall(require, "diffview.lib")
   local view = ok and lib.get_current_view() or nil
   if not view then
-    -- Not in a diff tab -- just do a normal jump.
     vim.lsp.buf.definition()
     return
   end
@@ -90,16 +174,46 @@ function M.definition()
         vim.notify("No definition found", vim.log.levels.INFO)
         return
       end
+      goto_item(view, items[1]) -- first result; multiple defs is a rare edge
+    end,
+  })
+end
 
-      local item = items[1] -- first result; multiple defs is a rare edge
-      local root = view.adapter and view.adapter.ctx and view.adapter.ctx.toplevel
-      local rel = root and relativize(item.filename, root) or nil
+function M.references()
+  local ok, lib = pcall(require, "diffview.lib")
+  local view = ok and lib.get_current_view() or nil
+  if not view then
+    require("telescope.builtin").lsp_references()
+    return
+  end
 
-      if rel and in_diff(view, rel) then
-        goto_in_diff(view, rel, item)
-      else
-        open_in_place(item)
+  vim.lsp.buf.references({ includeDeclaration = true }, {
+    on_list = function(result)
+      local items = result and result.items or {}
+      if #items == 0 then
+        vim.notify("No references found", vim.log.levels.INFO)
+        return
       end
+
+      -- Tag each with diff membership, then sort in-diff first.
+      for _, it in ipairs(items) do
+        it.in_diff = diff_relpath(view, it.filename) ~= nil
+      end
+      table.sort(items, function(a, b)
+        if a.in_diff ~= b.in_diff then
+          return a.in_diff
+        end
+        if a.filename ~= b.filename then
+          return a.filename < b.filename
+        end
+        return (a.lnum or 0) < (b.lnum or 0)
+      end)
+
+      if #items == 1 then
+        goto_item(view, items[1])
+        return
+      end
+      references_picker(view, items)
     end,
   })
 end
