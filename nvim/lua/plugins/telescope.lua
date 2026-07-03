@@ -81,12 +81,23 @@ return {
       -- ============================================================================
       -- LSP / CODE NAVIGATION (g prefix + diagnostics)
       -- ============================================================================
-      vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, { desc = "[G]o to [D]efinition" })
+      -- Definition: diff-aware inside a diffview tab (navigates within the diff,
+      -- see config/diffnav.lua); normal telescope picker everywhere else.
+      vim.keymap.set("n", "<leader>d", function()
+        local ok, lib = pcall(require, "diffview.lib")
+        if ok and lib.get_current_view() then
+          require("config.diffnav").definition()
+        else
+          builtin.lsp_definitions()
+        end
+      end, { desc = "[D]efinition (diff-aware in diffview)" })
       vim.keymap.set("n", "<leader>gy", builtin.lsp_type_definitions, { desc = "[G]o to t[Y]pe definition" })
       vim.keymap.set("n", "<leader>gr", builtin.lsp_references, { desc = "[G]o to [R]eferences" })
       vim.keymap.set("n", "<leader>lw", builtin.lsp_dynamic_workspace_symbols, { desc = "[L]SP [W]orkspace symbols" })
-      vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[L]SP show [E]rrors (float)" })
       vim.keymap.set("n", "<leader>cd", builtin.diagnostics, { desc = "[C]ode [D]iagnostics" })
+      vim.keymap.set("n", '<leader>"', function()
+        builtin.diagnostics({ bufnr = 0 })
+      end, { desc = "Diagnostics for current file" })
 
       -- ============================================================================
       -- GIT (telescope-side; fugitive owns <leader>gs and <leader>gb)

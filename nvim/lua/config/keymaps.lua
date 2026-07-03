@@ -44,10 +44,12 @@ vim.keymap.set(
 )
 
 -- Diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+-- NOTE: <leader>e is intentionally NOT a diagnostics map -- it is reserved for
+-- diffview's file-panel toggle (buffer-local, see plugins/git.lua). Cursor-scope
+-- diagnostics live on <leader>', whole-file on <leader>" (plugins/telescope.lua).
+vim.keymap.set("n", "<leader>'", function()
+  vim.diagnostic.open_float({ scope = "cursor" })
+end, { desc = "Show diagnostics for symbol under cursor" })
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
