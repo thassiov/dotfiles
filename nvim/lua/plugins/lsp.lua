@@ -123,7 +123,31 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
+    opts = {
+      -- Only attach when BOTH the target buffer and the *current* buffer have a
+      -- valid (real on-disk) name. Two reasons:
+      --   1. Synthetic buffers (diffview old-side `diffview://...`, fugitive)
+      --      aren't real files -- nothing for tsserver to serve.
+      --   2. typescript-tools' one-time init (TsserverProvider.new) reads the
+      --      CURRENT buffer, not `bufnr`. diffview sets `filetype` on the real
+      --      (right) pane while a `diffview://` buffer is still current, so init
+      --      fires in that bad context, asserts ("Invalid buffer name!"), and
+      --      tsserver never starts for the whole session. Gating on the current
+      --      buffer too suppresses that bad-context init; a clean one is then
+      --      triggered from the real pane via diffview's view_opened hook (see
+      --      git.lua). bufname_valid is the same check the assert uses.
+      -- Our root_dir wins over the plugin default (opts merge with "keep").
+      root_dir = function(bufnr, on_dir)
+        local utils = require("typescript-tools.utils")
+        if
+          not utils.bufname_valid(vim.api.nvim_buf_get_name(bufnr))
+          or not utils.bufname_valid(vim.api.nvim_buf_get_name(0))
+        then
+          return
+        end
+        on_dir(utils.get_root_dir(bufnr))
+      end,
+    },
   },
 
   -- Autocompletion (blink.cmp replaces nvim-cmp + cmp-* sources)
