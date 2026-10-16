@@ -12,6 +12,7 @@
 --   4. The "http" parser in site/parser, installed through the parser list in plugins/treesitter.lua.
 --      The copy luarocks builds is not on Neovim's runtimepath and is not used.
 -- Used with the workbench through tools/http/http-client (file tree on tool-data/http); see nvim/README.md "Using it with the workbench".
+-- Response bodies: scratch json buffers get formatprg=tools/http/lib/json-format (jq, original text on a parse error; rest.nvim formats with gq), and the result pane folds by indent (za, zM, zR). Needs jq on PATH.
 -- If a failed build retries on every start, rename this file to http.lua.disabled until it is fixed.
 
 return {
@@ -25,6 +26,28 @@ return {
         pattern = "http",
         callback = function(args)
           vim.keymap.set("n", "<Leader>S", "<cmd>Rest run<CR>", { buffer = args.buf, desc = "Run request under cursor" })
+        end,
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "json",
+        callback = function(args)
+          if vim.bo[args.buf].buftype == "nofile" then
+            vim.bo[args.buf].formatprg = vim.fn.expand("~/dev/secondnature/tools/http/lib/json-format")
+          end
+        end,
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "rest_nvim_result",
+        callback = function(args)
+          vim.bo[args.buf].shiftwidth = 2
+          vim.api.nvim_create_autocmd("BufWinEnter", {
+            buffer = args.buf,
+            callback = function()
+              vim.wo.foldmethod = "indent"
+              vim.wo.foldlevel = 99
+              vim.wo.foldenable = true
+            end,
+          })
         end,
       })
     end,

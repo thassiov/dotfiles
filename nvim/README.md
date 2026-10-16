@@ -46,7 +46,8 @@ nvim/
 
 | Optional | Why |
 |---|---|
-| `hurl`, `jq` | hurl.nvim REST client |
+| `jq` | formats JSON responses in the rest.nvim result pane (and hurl.nvim) |
+| `hurl` | hurl.nvim REST client |
 | `psql` (postgresql-client) | vim-dadbod shells out to it |
 | `docker` + the `mcp-vpn` container | dadbod's `prod` connection goes through the VPN container |
 | node / npm | provider, mason packages |
@@ -114,6 +115,11 @@ at its last entry. It loads `~/.work-credentials/appfolio.env` into nvim's envir
 placeholders resolve (it loads `propexo-prod.env` and `propexo-sandbox.env` too, when they exist). Put the cursor anywhere in a request (the `###` line included)
 and press `,S`: it runs the request, and it is the same key that runs a query in `.sql` files with dadbod. The mapping is buffer-local to `http` files
 (`lua/plugins/http.lua`).
+
+Response bodies are formatted and foldable. rest.nvim formats a body with the `formatprg` of its content type, so `lua/plugins/http.lua` gives scratch `json`
+buffers `formatprg = tools/http/lib/json-format` (jq; if the body is not valid JSON it prints the original text instead of an error). The result pane folds by
+indent, through your ufo setup: `za` toggles the fold under the cursor, `zM` closes all, `zR` opens all. Folds start open. Needs `jq`. A response of several hundred
+KiB becomes thousands of lines, so narrow the request (a recent `LastUpdatedAtFrom`, a page size) before sending it.
 
 The converted AppFolio requests fetch their own OAuth token when there is none or it is about to expire (it lasts 300 seconds), and ask for the AppFolio
 database id once per nvim session. Run `Auth/Select-database` to change the database. Propexo requests ask for the integration id once per session. The Lua helpers
