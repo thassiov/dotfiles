@@ -1,4 +1,5 @@
 -- Database client (dadbod) wired to the workbench
+-- Requirements: psql on the host (apt: postgresql-client) and the mcp-vpn container for prod. See nvim/README.md "dadbod".
 -- One `prod` connection, reached through the VPN container. Saved queries are the per-tray
 -- queries.sql files linked into <workbench>/tool-data/dadbod/prod/ by tools/db/tray-sql.
 

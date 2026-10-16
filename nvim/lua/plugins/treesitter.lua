@@ -33,6 +33,7 @@ return {
         "gitignore",
         "graphql",
         "hcl",
+        "http", -- rest.nvim (plugins/http.lua) needs this parser in site/parser, not the luarocks copy
         "jsdoc",
         "json",
         "javascript",
