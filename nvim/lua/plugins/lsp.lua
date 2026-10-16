@@ -205,10 +205,13 @@ return {
     "stevearc/conform.nvim",
     opts = {
       notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 700,
-        lsp_fallback = true,
-      },
+      format_on_save = function(bufnr)
+        local name = vim.api.nvim_buf_get_name(bufnr)
+        if name:find("/tool-data/dadbod/", 1, true) or name:find("/queries/database/", 1, true) then
+          return nil
+        end
+        return { timeout_ms = 700, lsp_fallback = true }
+      end,
       formatters_by_ft = {
         lua = { "stylua" },
         css = { "prettierd", "prettier", stop_after_first = true },
