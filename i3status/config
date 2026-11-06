@@ -22,6 +22,7 @@ order += "temps"
 order += "brightness"
 order += "battery all"
 order += "battery_notify"
+order += "cpu_pinned"
 order += "tztime local"
 
 disk "/" {
@@ -105,4 +106,8 @@ brightness {
 
 battery_notify {
         cache_timeout = 30
+}
+
+cpu_pinned {
+        cache_timeout = 5
 }
