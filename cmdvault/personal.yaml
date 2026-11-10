@@ -2,6 +2,24 @@ name: Personal Tools
 description: Personal workflow scripts and utilities
 
 commands:
+  - name: yt-transcript
+    command: /storage/dev/personal/tools/yt-transcript/yt-transcript.sh
+    args: ["{{url}}"]
+    description: Fetch auto-generated captions from a YouTube video and print plain text
+    placeholders:
+      url:
+        source: "echo ''"
+
+  - name: yt-transcript-save
+    command: /storage/dev/personal/tools/yt-transcript/yt-transcript.sh
+    args: ["{{url}}", "--out", "{{outfile}}"]
+    description: Fetch YouTube captions and save to a file
+    placeholders:
+      url:
+        source: "echo ''"
+      outfile:
+        source: "echo 'transcript.txt'"
+
   # Quick system commands (portable, works in containers too)
   - name: top
     command: top
