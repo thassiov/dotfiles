@@ -1,7 +1,7 @@
 {
     "name": "Untitled",
     "DesktopAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 537001986,
         "name": "Desktop Audio",
         "uuid": "539f1831-dd67-467b-91ef-55648303d446",
         "id": "pulse_output_capture",
@@ -12,7 +12,7 @@
         "mixers": 255,
         "sync": 0,
         "flags": 0,
-        "volume": 0.3709365427494049,
+        "volume": 0.4382970929145813,
         "balance": 0.5,
         "enabled": true,
         "muted": false,
@@ -34,7 +34,7 @@
         }
     },
     "AuxAudioDevice1": {
-        "prev_ver": 536936448,
+        "prev_ver": 537001986,
         "name": "Mic/Aux",
         "uuid": "39fccc36-1a05-477f-957d-a1fe1682edb1",
         "id": "pulse_input_capture",
@@ -45,7 +45,7 @@
         "mixers": 255,
         "sync": 0,
         "flags": 0,
-        "volume": 0.3730975091457367,
+        "volume": 0.7780731916427612,
         "balance": 0.5,
         "enabled": true,
         "muted": false,
@@ -66,7 +66,7 @@
     },
     "sources": [
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "main-screen-capture",
             "uuid": "5b37c06a-c4b2-4f66-bebb-971378b8fe4e",
             "id": "xshm_input",
@@ -92,7 +92,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "main",
             "uuid": "1210c7a4-6d85-4463-ac1b-c7b0bb44a090",
             "id": "xshm_input_v2",
@@ -122,7 +122,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "dualup-top-screen-pip",
             "uuid": "affb9340-f9a2-40e2-a225-24807a25113d",
             "id": "xshm_input_v2",
@@ -148,7 +148,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "Window Capture (Xcomposite)",
             "uuid": "9e262548-b852-4f39-b5fb-641c3c7971c4",
             "id": "xcomposite_input",
@@ -174,13 +174,13 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "Display Capture (XSHM)",
             "uuid": "2657c3d4-5de5-4081-873d-d26ddc979e8d",
             "id": "xshm_input_v2",
             "versioned_id": "xshm_input_v2",
             "settings": {
-                "screen": 2,
+                "screen": 1,
                 "cut_bot": 1080
             },
             "mixers": 0,
@@ -201,7 +201,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "Window Capture (Xcomposite) 2",
             "uuid": "6fb2553c-c910-4def-8083-cf7c28ca8911",
             "id": "xcomposite_input",
@@ -227,7 +227,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "main-screen-share-aux-screen-pip",
             "uuid": "1b22995f-aa70-4d1c-ab44-9b66688d8a0d",
             "id": "scene",
@@ -375,7 +375,7 @@
             }
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "main-screen",
             "uuid": "ab621c2c-b729-4bcd-a2ed-d5e4ff152421",
             "id": "scene",
@@ -413,12 +413,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.0406173467636108,
+                            "y": 1.0405405759811401
                         },
                         "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
+                            "x": 1.0406173467636108,
+                            "y": 1.0405405759811401
                         },
                         "bounds": {
                             "x": 0.0,
@@ -464,7 +464,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "aux-screen",
             "uuid": "f7a32b28-0398-4289-b0dc-cfb7adcbb461",
             "id": "scene",
@@ -476,7 +476,7 @@
                     {
                         "name": "Window Capture (Xcomposite)",
                         "source_uuid": "9e262548-b852-4f39-b5fb-641c3c7971c4",
-                        "visible": false,
+                        "visible": true,
                         "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
@@ -494,20 +494,20 @@
                         "id": 1,
                         "group_item_backup": false,
                         "pos": {
-                            "x": -418.0,
-                            "y": -179.0
+                            "x": 0.0,
+                            "y": 0.0
                         },
                         "pos_rel": {
-                            "x": -2.3583333492279053,
-                            "y": -1.2486110925674438
+                            "x": -1.7777777910232544,
+                            "y": -1.0
                         },
                         "scale": {
-                            "x": 1.2909449338912964,
-                            "y": 1.2908450365066528
+                            "x": 1.0185185670852661,
+                            "y": 1.0183875560760498
                         },
                         "scale_rel": {
-                            "x": 1.2909449338912964,
-                            "y": 1.2908450365066528
+                            "x": 1.0185185670852661,
+                            "y": 1.0183875560760498
                         },
                         "bounds": {
                             "x": 0.0,
@@ -531,7 +531,7 @@
                     {
                         "name": "Display Capture (XSHM)",
                         "source_uuid": "2657c3d4-5de5-4081-873d-d26ddc979e8d",
-                        "visible": true,
+                        "visible": false,
                         "locked": false,
                         "rot": 0.0,
                         "scale_ref": {
@@ -557,12 +557,12 @@
                             "y": -1.0
                         },
                         "scale": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 0.8500000238418579,
+                            "y": 0.8500000238418579
                         },
                         "scale_rel": {
-                            "x": 1.3333333730697632,
-                            "y": 1.3333333730697632
+                            "x": 0.8500000238418579,
+                            "y": 0.8500000238418579
                         },
                         "bounds": {
                             "x": 0.0,
@@ -610,7 +610,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 536936448,
+            "prev_ver": 537001986,
             "name": "workspace",
             "uuid": "3e0e5ac0-e1cb-4da3-a62a-76b1519f1843",
             "id": "scene",
@@ -746,7 +746,7 @@
     "saved_projectors": [],
     "preview_locked": false,
     "scaling_enabled": false,
-    "scaling_level": -11,
+    "scaling_level": -6,
     "scaling_off_x": 0.0,
     "scaling_off_y": 0.0,
     "virtual-camera": {
