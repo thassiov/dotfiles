@@ -12,6 +12,7 @@
 --   4. The "http" parser in site/parser, installed through the parser list in plugins/treesitter.lua.
 --      The copy luarocks builds is not on Neovim's runtimepath and is not used.
 -- Used with the workbench through tools/http/http-client (file tree on tool-data/http); see nvim/README.md "Using it with the workbench".
+-- Where the tools live depends on the machine: see config/workbench.lua.
 -- Response bodies: scratch json buffers get formatprg=tools/http/lib/json-format (jq, original text on a parse error; rest.nvim formats with gq), and the result pane folds by indent (za, zM, zR). Needs jq on PATH.
 -- If a failed build retries on every start, rename this file to http.lua.disabled until it is fixed.
 
@@ -32,7 +33,7 @@ return {
         pattern = "json",
         callback = function(args)
           if vim.bo[args.buf].buftype == "nofile" then
-            vim.bo[args.buf].formatprg = vim.fn.expand("~/dev/secondnature/tools/http/lib/json-format")
+            vim.bo[args.buf].formatprg = require("config.workbench").tools .. "/http/lib/json-format"
           end
         end,
       })

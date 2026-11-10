@@ -49,7 +49,8 @@ nvim/
 | `jq` | formats JSON responses in the rest.nvim result pane (and hurl.nvim) |
 | `hurl` | hurl.nvim REST client |
 | `psql` (postgresql-client) | vim-dadbod shells out to it |
-| `docker` + the `mcp-vpn` container | dadbod's `prod` connection goes through the VPN container |
+| `docker` + the `mcp-vpn` container | work machine only: dadbod's `prod` connection goes through the VPN container |
+| `grid` CLI with 1Password set up | personal machine only: dadbod fetches the grid database password with `grid secrets get` |
 | node / npm | provider, mason packages |
 | python3 + `pynvim` | optional python provider |
 
@@ -137,6 +138,9 @@ Known limits, all seen in testing:
 
 Spec: `lua/plugins/db.lua`. Open it with `:DBUI` (no mapping). Needs `psql` on the host.
 
+`lua/config/workbench.lua` decides which machine this is: the work machine when `~/dev/secondnature/workbench` exists, the personal machine otherwise. The
+bullets below describe the work machine. The personal machine is described under "Personal machine" at the end of this section.
+
 - One connection, `prod`. The URL is read at `:DBUI` time from `~/.work-credentials/db.env` (`POSTGRES_URL`); the host is replaced by the VPN
   container's address, port 15432. The container is started on demand with `~/.work-credentials/vpn/vpn-ctl.sh ensure`. No secret is stored in this repo.
 - Saved queries live in `workbench/tool-data/dadbod/prod/`: one link per tray to that tray's `queries/database/queries.sql`. The links are made by
@@ -146,6 +150,18 @@ Spec: `lua/plugins/db.lua`. Open it with `:DBUI` (no mapping). Needs `psql` on t
   logged entries keep their layout.
 - dadbod treats any `:word` as a bind parameter, even inside a comment, and prompts for a value. Avoid `:word` in query logs.
 - Opening a query file directly (`:edit`) does not bind it to `prod`. Open it through the drawer, or use `tools/db/db-client`.
+
+### Personal machine
+
+- The connections are `infrastructure` and `knowledge`, both on `postgres.grid.local`, over the home network. No VPN is involved.
+- The user is `grid_admin`. The password is fetched when you first open a connection, with `grid secrets get postgres-grid-admin password --reveal` (or taken
+  from `$POSTGRES_PASSWORD`), and handed to psql through `PGPASSWORD`. It is never in the URL. It stays in nvim's environment until you quit, so anything
+  started from nvim, such as a `:terminal`, can read it.
+- Saved queries are in `<workbench>/tool-data/dadbod/<connection>/`: one link per tray to that tray's `queries/database/queries.sql`, made by `tools/db/tray-sql`.
+  `tools/db/db-client [--db NAME] [tray-dir]` opens nvim with a tray's log already open. The tools are in `/storage/dev/personal/tools/`, not in this repo.
+- dadbod does not make a session read-only. `tools/db/grid-db-query.sh` does, so use it for anything that Claude runs.
+- The http side is the same as on the work machine, with the tools in `/storage/dev/personal/tools/http/`. `http-client` loads only the non-secret entries
+  (`*_URL`, `*_HOST`, `*_PORT`) of `~/.config/grid/credentials.env` into nvim's environment, and there are no Postman collections.
 
 ## Keybindings
 
