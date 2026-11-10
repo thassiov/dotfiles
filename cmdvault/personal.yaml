@@ -20,6 +20,48 @@ commands:
       outfile:
         source: "echo 'transcript.txt'"
 
+  - name: wb-db-query
+    command: /storage/dev/personal/tools/db/grid-db-query.sh
+    args: ["--tray", "{{tray}}", "--note", "{{note}}", "{{sql}}"]
+    description: Run read-only SQL on the grid database and log it in a workbench tray
+    placeholders:
+      tray:
+        source: "echo ''"
+      note:
+        source: "echo ''"
+      sql:
+        source: "echo ''"
+
+  - name: wb-http-request
+    command: /storage/dev/personal/tools/http/http-request
+    args: ["--tray", "{{tray}}", "--note", "{{note}}", "{{method}}", "{{url}}"]
+    description: Send an HTTP request with curl and log it in a workbench tray
+    placeholders:
+      tray:
+        source: "echo ''"
+      note:
+        source: "echo ''"
+      method:
+        source: "printf 'GET\nPOST\nPUT\nDELETE\n'"
+      url:
+        source: "echo ''"
+
+  - name: wb-db-client
+    command: /storage/dev/personal/tools/db/db-client
+    args: ["{{tray}}"]
+    description: Open nvim with dadbod on the grid database and a tray's query log
+    placeholders:
+      tray:
+        source: "echo ''"
+
+  - name: wb-http-client
+    command: /storage/dev/personal/tools/http/http-client
+    args: ["{{tray}}"]
+    description: Open nvim with the http client and a tray's request log
+    placeholders:
+      tray:
+        source: "echo ''"
+
   # Quick system commands (portable, works in containers too)
   - name: top
     command: top
